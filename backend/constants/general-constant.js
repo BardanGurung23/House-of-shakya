@@ -15,6 +15,11 @@ module.exports = {
         success: false,
         message: "Roles not found",
       },
+        SUPERADMIN_CANNOT_UPDATE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Super Admin Cannot be updated",
+      },
       ROLES_IS_IN_USE: {
         status: httpStatus.NOT_ACCEPTABLE,
         success: false,
