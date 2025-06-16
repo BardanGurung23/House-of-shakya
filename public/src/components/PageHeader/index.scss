@@ -1,0 +1,104 @@
+// company home page
+.page-main {
+  background-color: #f7f7f780;
+  height: 20rem;
+  position: relative;
+  width: 100%;
+
+  .page-frame {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .page-text {
+      color: #142e5f;
+      font-family: "Lexend Deca", sans-serif !important;
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.5;
+      position: relative;
+    }
+    @media (max-width: 768px) {
+      .page-text {
+        font-size: 2.1875rem;
+      }
+    }
+
+    @media (max-width: 425px) {
+      .page-text {
+        font-size: 1.875rem;
+      }
+    }
+
+    .page-p {
+      color: #142e5f;
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 2rem;
+      position: relative;
+      text-align: center;
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      .page-p {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 1.28;
+
+        // padding: 1rem;
+      }
+    }
+    @media (max-width: 425px) {
+      .page-p {
+        font-size: 1.0625rem;
+      }
+      .page-text {
+        font-size: 1.875rem;
+      }
+    }
+  }
+  .design-baclground-main {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .page-design-left {
+      height: 20rem;
+      width: 30%;
+    }
+    @media (max-width: 767.98px) {
+      .page-design-left {
+        height: 15rem;
+        width: 50%;
+      }
+    }
+
+    .page-design-right {
+      height: 20rem;
+      width: 40%;
+    }
+    @media (max-width: 767.98px) {
+      .page-design-right {
+        height: 15rem;
+        width: 50%;
+      }
+    }
+  }
+}
+@media (max-width: 767.98px) {
+  .page-main {
+    height: 15rem;
+    width: 98%;
+    margin-left: 0;
+    margin-top: 4.199rem;
+  }
+}

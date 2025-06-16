@@ -1,0 +1,100 @@
+.benefit-main-section {
+    height: 100%;
+    position: relative;
+    width: 100%;
+    white-space: nowrap;
+    margin-bottom: 3rem;
+    .benefit-text {
+        padding-top: 2rem;
+        color: #000000;
+        font-family: "Lexend Deca",Helvetica !important;
+        font-size: 2rem;
+        text-align: center;
+        letter-spacing: 0;
+        line-height: 2rem;
+        white-space: nowrap;
+        margin-bottom: 2rem;
+        padding-top: 3rem;
+    }
+    @media (max-width:767.98px){
+        .benefit-text{
+            font-size: 1.25rem;
+        }
+    }
+    @media (min-width: 768px) and (max-width:1366px) {
+        .benefit-text{
+            font-size: 1.8rem; 
+        }
+    }
+    .benefit-frame {
+        display: inline-flex;
+        align-items: center;
+        gap: 8rem;
+        .image-section{
+            margin-left: 7.2rem;
+            margin-bottom: 2rem;
+            .benefit-img{
+                height: 22rem;
+                width: 30rem;
+            }
+            @media (min-width: 768px) and (max-width:1366px){
+                .benefit-img{
+                    height: 18rem;
+                    width: 20rem;
+                }
+            }
+        }
+        @media (max-width: 767.98px){
+            .image-section{
+                display: none;
+            }
+        }
+        @media (min-width: 768px) and (max-width:1366px){
+            .image-section{
+                margin-left: 3rem;
+                margin-bottom: 2rem;
+            }
+        }
+        .content-section {
+            display: inline-flex;
+            flex-direction: column;
+            .benefit-text-wrapper{
+                color:#000000;
+                font-family: "Lexend Deca-Regular",Helvetica;
+                font-size:1rem;
+                font-weight: 500;
+                left: 0;
+                letter-spacing: 0;
+                line-height:2rem;
+                white-space:nowrap;
+                .dot{
+                    font-size: 2rem;
+                    font-weight:800;
+                }
+            }
+            @media (max-width:767.98px){
+                .benefit-text-wrapper{
+                    font-size:0.8rem;
+                }
+            }
+            @media (min-width: 768px) and (max-width:1366px){
+                .benefit-text-wrapper{
+                //   width: fit-content;
+                
+                }
+            }
+        }
+        @media (max-width: 767.98px){
+            .content-section{
+                margin-left: 2rem;
+                margin-top: -2rem;
+            }
+        }
+    }
+    @media (min-width: 768px) and (max-width:1366px){
+        .benefit-frame{
+          gap: 2rem;
+        }
+    }
+
+}

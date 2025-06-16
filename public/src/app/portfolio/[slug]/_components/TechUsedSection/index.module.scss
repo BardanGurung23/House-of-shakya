@@ -1,0 +1,57 @@
+@import "../../../portfolio.scss";
+
+.section {
+  width: 100vw;
+  display: flex;
+  padding-left: 3.8%;
+  padding-top: 2.75rem;
+
+  .title {
+    width: 44.11%;
+    padding-left: 5.2%;
+    display: flex;
+    align-items: center;
+    font-size: 1.75rem;
+    line-height: 1;
+    font-family: $title-font-stack !important;
+    font-weight: 500;
+  }
+
+  .carouselContainer {
+    width: 50%;
+    flex-grow: 1;
+  }
+}
+
+@media (max-width: 991px) {
+  .section {
+    margin-top: 2.453rem;
+    background-color: $grey-background;
+    padding-top: 1.25rem;
+    padding-left: 0;
+    padding-bottom: 1.875rem;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    .title {
+      display: block;
+      width: 100%;
+      padding-left: 0;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.28;
+    }
+    .carouselContainer {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .section {
+    .title {
+      font-size: 1.0625rem;
+    }
+  }
+}

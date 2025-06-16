@@ -1,0 +1,60 @@
+@import "../../../portfolio.scss";
+
+.section {
+  border-radius: 5rem;
+  width: 83.3%;
+  background-color: white;
+  padding: 3.313rem 5.688rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.563rem;
+  margin-top: 6.938rem;
+  margin-bottom: 8.375rem;
+  .title {
+    font-size: 1.75rem;
+    font-family: $title-font-stack;
+    font-weight: 500;
+    text-align: center;
+  }
+  .description {
+    line-height: 1.625rem;
+    font-weight: 400;
+    font-size: 1rem;
+    text-align: justify;
+    font-family: $normal-font-stack;
+  }
+}
+
+@media (max-width: 991px) {
+  .section {
+    margin-top: 2.438rem;
+    margin-bottom: 3.25rem;
+    padding: 2rem 1.875rem 1.25rem;
+    gap: 1.375rem;
+    width: 93.73%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 3.125rem;
+
+    .title {
+      font-size: 1.25rem;
+      line-height: 1.28;
+      margin: 0;
+    }
+    .description {
+      line-height: 1.4;
+      font-size: 0.875rem;
+      text-align: justify;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .section {
+    .title {
+      font-size: 1.0625rem;
+    }
+    .description {
+      font-size: 0.75rem;
+    }
+  }
+}

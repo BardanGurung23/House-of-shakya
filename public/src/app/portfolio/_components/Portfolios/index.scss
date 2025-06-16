@@ -1,0 +1,15 @@
+.portfolio-container {
+  display: flex;
+  column-gap: 4.25rem;
+  row-gap: 6.375rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 110rem;
+}
+
+@media (max-width: 991px) {
+  .portfolio-container {
+    row-gap: 2rem;
+    column-gap: 2rem;
+  }
+}

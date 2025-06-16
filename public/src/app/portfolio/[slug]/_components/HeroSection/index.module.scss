@@ -1,0 +1,118 @@
+@import "../../../portfolio.scss";
+
+.header {
+  background-color: $grey-background;
+  padding-top: 4.989rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .carouselContainer {
+    width: 45.1%;
+  }
+
+  .carouselContent {
+    width: 44.5%;
+    padding-right: 1.642rem;
+
+    .projectName {
+      font: $normal-font-stack !important;
+      font-size: 1.75rem;
+      margin: 0;
+      line-height: 1.25;
+      font-weight: 800;
+      justify-self: left;
+      position: relative;
+
+      &::before {
+        width: 30px;
+        height: 2px;
+        content: " ";
+        position: absolute;
+        z-index: 3;
+        background-color: black;
+        bottom: -7px;
+        left: 3px;
+      }
+    }
+    .projectType {
+      font: $normal-font-stack !important;
+      font-size: 1.1875rem;
+      justify-self: right;
+      line-height: 1;
+      font-weight: 500;
+      margin-top: 1.063rem;
+    }
+    .projectDescription {
+      font: $normal-font-stack !important;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.625rem;
+      margin-top: 1.75rem;
+      text-align: justify;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .header {
+    padding-top: 1.025rem;
+    background-color: #fff;
+    flex-direction: column;
+    width: 93.73%;
+
+    .carouselContainer {
+      order: 1;
+      width: 100%;
+      padding: 0 0.41rem;
+    }
+
+    .carouselContent {
+      width: 100%;
+      padding-right: 0;
+
+      .projectName {
+        font-weight: 600;
+        font-size: 1.25rem;
+        line-height: 1.28;
+
+        &::before {
+          bottom: -3px;
+          left: 0;
+        }
+      }
+
+      .projectType {
+        margin-top: 0.313rem;
+        font-size: 1rem;
+        line-height: 1.28;
+      }
+
+      .projectDescription {
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: 1.25rem;
+        text-align: justify;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+@media (max-width: 425px) {
+  .header {
+    .carouselContent {
+      .projectName {
+        font-size: 1.0625rem;
+      }
+
+      .projectType {
+        font-size: 0.875rem;
+        margin-top: 1rem;
+      }
+
+      .projectDescription {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}

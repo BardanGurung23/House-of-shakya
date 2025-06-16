@@ -1,0 +1,44 @@
+@import "../../../portfolio.scss";
+
+.cta-btn {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.531rem 1.125rem;
+  color: #fff;
+  background-color: $brand-color;
+  align-self: flex-start;
+}
+
+.cta-btn:hover {
+  background-color: #ffffff;
+  color: #142e5f;
+  box-shadow: 0px 0px 0px 2px $brand-color;
+}
+
+.text-content {
+  line-height: 2.25rem;
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .cta-btn {
+    padding: 0.563rem 1.625rem;
+    align-self: center;
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+  .text-content {
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+}
+@media (max-width: 425px) {
+  .cta-btn {
+    font-size: 0.75rem;
+  }
+  .text-content {
+    font-size: 0.75rem;
+    text-align: justify;
+    line-height: 1.4;
+  }
+}

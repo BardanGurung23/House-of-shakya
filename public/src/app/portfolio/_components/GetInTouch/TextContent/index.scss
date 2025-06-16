@@ -1,0 +1,54 @@
+@import "../../../portfolio.scss";
+
+.text-container {
+  width: 43%;
+
+  .GIT-Title {
+    font-family: $title-font-stack;
+    font-weight: 500;
+    font-size: 1.4375rem;
+    line-height: 1.15;
+  }
+
+  .GIT-Description {
+    line-height: 2.2;
+    text-align: justify;
+    margin: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .text-container {
+    width: 78%;
+    padding-bottom: 1.563rem;
+
+    .GIT-Title {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .GIT-Description {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+  }
+}
+@media (max-width: 425px) {
+  .text-container {
+    width: 78%;
+    padding-bottom: 1.563rem;
+
+    .GIT-Title {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+    }
+
+    .GIT-Description {
+      font-size: 0.75rem;
+      line-height: 1.25rem;
+    }
+  }
+}

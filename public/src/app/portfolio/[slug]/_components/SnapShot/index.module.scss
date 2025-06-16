@@ -1,0 +1,102 @@
+@import "../../../portfolio.scss";
+
+.section {
+  // background-color: rgb(224, 106, 106);
+  // padding-top: 4.063rem;
+  // padding-bottom: 6.438rem;
+  // background-color: #f6f6f6;
+  height: 30.3125rem;
+  width: 100vw;
+  position: relative;
+  .placeHolder {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .productImg {
+    max-width: 24.1875rem;
+    width: 20%;
+    min-width: 23.6875rem;
+    // height: 42%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50.5%, -50%);
+  }
+}
+
+.btn {
+  display: block;
+  width: fit-content;
+  text-decoration: none;
+  margin: 1rem auto 2rem;
+  padding: 0.625rem;
+  font-weight: 500;
+  line-height: 1.15;
+
+  border: none;
+  border-radius: 0.5rem;
+  // padding: 0.531rem 1.125rem;
+  background-color: #ffffff;
+  color: $brand-color;
+  box-shadow: 0px 0px 0px 2px $brand-color;
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: $brand-color;
+}
+
+@media (max-width: 991px) {
+  .btn {
+    padding: 0.563rem 1.625rem;
+    align-self: center;
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+}
+@media (max-width: 425px) {
+  .btn {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 1290px) {
+  .section {
+    .productImg {
+      min-width: 30%;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .section {
+    height: 370px;
+  }
+}
+@media (max-width: 684px) {
+  .section {
+    height: 275px;
+    .placeHolder {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .productImg {
+      width: 30%;
+      min-width: 205px;
+    }
+  }
+}
+@media (max-width: 484px) {
+  .section {
+    height: 350px;
+
+    .productImg {
+      width: 55%;
+      min-width: 266px;
+    }
+  }
+}

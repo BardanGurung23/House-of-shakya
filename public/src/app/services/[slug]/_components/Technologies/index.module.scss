@@ -1,0 +1,51 @@
+@import "../../../services.scss";
+
+.sectionContainer {
+  padding: 3.4375rem 0 7.5625rem 0;
+  .title {
+    text-align: center;
+    margin: 0;
+    font-size: 2.0625rem;
+    font-weight: 700;
+    line-height: 1.15;
+    font-family: $title-font-stack;
+    margin-bottom: 4rem;
+  }
+  .techDomainContainer {
+    display: flex;
+    flex-wrap: wrap;
+    // justify-content: space-between;
+    justify-content: center;
+    gap: 7.6875rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .sectionBGWrapper {
+    background-color: $grey-background;
+    .sectionContainer {
+      padding: 1.5rem 0rem 2.25rem 0rem;
+
+      .title {
+        font-size: 1.25rem;
+        line-height: 1.28;
+        font-weight: 600;
+        margin-bottom: 2.8438rem;
+      }
+
+      .techDomainContainer {
+        row-gap: 2.5313rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .sectionBGWrapper {
+    .sectionContainer {
+      .title {
+        font-size: 1.0625rem;
+      }
+    }
+  }
+}

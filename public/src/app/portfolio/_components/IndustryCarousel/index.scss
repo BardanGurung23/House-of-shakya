@@ -1,0 +1,59 @@
+@import "../../portfolio.scss";
+
+.industry-container {
+  display: flex;
+  // gap: 6.875rem;
+  justify-content: space-between;
+  // max-width: 78.75rem;
+  // width: 90%;
+  margin: 5.125rem auto 8.813rem;
+  // padding: 5.125rem 0 8.813rem;
+  height: auto;
+
+  .industry-title-text {
+    margin: 0;
+    font-family: $title-font-stack !important;
+    font-weight: 500;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  .industry-carousel-container {
+    width: 54%;
+  }
+}
+
+@media (max-width: 991px) {
+  .industry-container {
+    flex-direction: column;
+    gap: 1.75rem;
+    margin-top: 2rem;
+    margin-bottom: 3.188rem;
+    width: 81.5%;
+
+    .industry-title-text {
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.28;
+    }
+    .industry-carousel-container {
+      width: auto;
+    }
+  }
+}
+@media (max-width: 991px) {
+  .industry-container {
+    .industry-title-text {
+      font-size: 1.25rem;
+    }
+  }
+}
+@media (max-width: 425px) {
+  .industry-container {
+    .industry-title-text {
+      font-size: 1.0625rem;
+    }
+  }
+}

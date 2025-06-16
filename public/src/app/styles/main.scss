@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap");
+
+.body-main {
+  margin-top: 4rem;
+  // display: relative;
+  // margin-left: auto;
+  // margin-right: auto;
+  // max-width: 115rem;
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .body-main {
+    margin-top: 5rem;
+  }
+}
+
+// Aenir font family import!!!
+@font-face {
+  font-family: "Avenir";
+  src: url("/fonts/avenir-book.webfont.woff") format("woff");
+  src: url("/fonts/avenir-Regular.webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir";
+  src: url("/fonts/AvenirLTStd-Medium.odf") format("odf");
+  // src: url("/fonts/avenir-Regular.webfont.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir";
+  src: url("/AvenirLTStd-Heavy.otf") format("odf");
+  // src: url("/fonts/avenir-Regular.webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir";
+  src: url("/fonts/AvenirLTStd-Black.otf") format("odf");
+  // src: url("/fonts/avenir-Regular.webfont.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+p {
+  font-family: "Avenir", Helvetica !important;
+}
+div {
+  font-family: "Avenir", Helvetica !important;
+}
+link {
+  font-family: "Avenir", Helvetica !important;
+}
+input {
+  font-family: "Avenir", Helvetica !important;
+}
+button {
+  font-family: "Avenir", Helvetica !important;
+}
+placeholder {
+  font-family: "Avenir", Helvetica !important;
+}
+span {
+  font-family: "Avenir", Helvetica !important;
+}
+Link {
+  font-family: "Avenir", Helvetica !important;
+}
+Button {
+  font-family: "Avenir", Helvetica !important;
+}

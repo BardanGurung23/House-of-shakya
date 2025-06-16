@@ -1,0 +1,83 @@
+#root {
+  min-width: 100vw;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+main {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 3rem;
+  border: 1px solid black;
+  box-shadow: 0px 4px 10px rgba(20, 30, 87, 0.2);
+}
+
+.auth-logo {
+  width: 14rem;
+  height: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
+}
+
+.normal-button {
+  background-color: #0090dd;
+  border-color: #0090dd;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.submit-button {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: #0090dd;
+  border-color: #0090dd;
+  color: white;
+}
+
+.submit-button:hover {
+  background-color: #0079c4;
+}
+
+.checked-box {
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 0.25rem;
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+}
+
+.checked-box:checked {
+  background-color: rgb(209, 217, 222);
+  border-color: rgb(222, 233, 236);
+}
+
+.checked-box:checked::after {
+  content: "✔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 1rem;
+  color: rgb(79, 156, 238);
+  transform: translate(-50%, -50%);
+}
+
+@media (width<=766px) {
+  .auth-form-wrapper {
+    padding: 2rem;
+  }
+}

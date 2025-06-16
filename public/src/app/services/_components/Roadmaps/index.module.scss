@@ -1,0 +1,104 @@
+@import "../../services.scss";
+
+.roadmapSection {
+  padding-top: 4.25rem;
+  padding-bottom: 3.0625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.1875rem;
+
+  .roadmapTitleContents {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .title {
+      font-family: $title-font-stack;
+      font-size: 2.0625rem;
+      font-weight: 700;
+      line-height: 1.15;
+      text-align: center;
+      margin: 0;
+    }
+
+    .subtitle {
+      font-size: 1.4375rem;
+      line-height: 1.15;
+      text-align: center;
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+
+  .phasesContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 35.9375rem);
+    row-gap: 1.8125rem;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 1399px) {
+  .roadmapSection {
+    .phasesContainer {
+      grid-template-columns: repeat(2, 31.25rem);
+    }
+  }
+}
+@media (max-width: 1199px) {
+  .roadmapSection {
+    .phasesContainer {
+      grid-template-columns: repeat(2, 25rem);
+      padding: 0 1rem;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .roadmapSection {
+    padding-top: 1.5625rem;
+    gap: 1.5rem;
+
+    .roadmapTitleContents {
+      gap: 1rem;
+
+      .title {
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      .subtitle {
+        font-size: 0.875rem;
+        line-height: 1.28;
+      }
+    }
+
+    .phasesContainer {
+      grid-template-columns: min(90%, 30rem);
+      row-gap: 1.0625rem;
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .roadmapSection {
+    .roadmapTitleContents {
+      .title {
+        font-size: 1.0625rem;
+      }
+
+      .subtitle {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+// @media (max-width: 410px) {
+//   .roadmapSection {
+//     .phasesContainer {
+//       grid-template-columns: min(90%, 18.75rem);
+//     }
+//   }
+// }

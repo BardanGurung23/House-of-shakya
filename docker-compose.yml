@@ -1,0 +1,78 @@
+services:
+  my-mysql:
+    image: mysql:8.0
+    container_name: my_db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    ports:
+      - "3306:3306"
+    volumes:
+      - my-mysql:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - proxy
+
+  # backend:
+  #   build:
+  #     context: ./backend
+  #     target: production
+  #   container_name: backend
+  #   ports:
+  #     - "${PORT}:${PORT}"
+  #   environment:
+  #     DB_URL: ${DB_URL}
+  #     PORT: ${PORT}
+  #     SALT_ROUNDS: ${SALT_ROUNDS}
+  #     JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+  #   depends_on:
+  #     - my-mysql
+  #   volumes:
+  #     - ./backend/resources:/usr/src/app/resources
+  #   command: sh -c "npx sequelize-cli db:migrate && node index.js"
+  #   restart: always
+  #   networks:
+  #     - proxy
+
+  # adminpanel:
+  #   build:
+  #     context: ./admin
+  #   container_name: adminpanel
+  #   ports:
+  #     - "8080:8080"
+  #   env_file:
+  #     - .env
+  #   environment:
+  #     VITE_BACKEND_BASE_URL: ${VITE_BACKEND_BASE_URL}
+  #     VITE_IMAGE_BASE_URL: ${VITE_IMAGE_BASE_URL}
+  #   depends_on:
+  #     - backend
+  #   restart: always
+  #   networks:
+  #     - proxy
+
+  # publicsite:
+  #   build:
+  #     context: ./public
+  #     target: production
+  #   container_name: publicsite
+  #   ports:
+  #     - "3000:5171"
+  #   env_file:
+  #     - .env
+  #   environment:
+  #     NEXT_BACKEND_BASE_URL: ${NEXT_PUBLIC_BACKEND_URL}
+  #     NEXT_PUBLIC_IMAGE_URL: ${NEXT_PUBLIC_IMAGE_URL}
+  #   depends_on:
+  #     - backend
+  #   restart: always
+  #   networks:
+  #     - proxy
+
+
+volumes:
+  my-mysql:
+
+networks:
+  proxy:
+    external: false

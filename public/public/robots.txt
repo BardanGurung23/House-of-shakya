@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://technirvana.com.np.com
+
+# Sitemaps
+Sitemap: https://technirvana.com.np.com/sitemap.xml

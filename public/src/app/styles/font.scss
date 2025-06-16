@@ -1,0 +1,137 @@
+@import "responsive";
+@mixin font-style($weight, $size, $color) {
+  font-weight: $weight;
+  font-size: $size;
+  color: $color;
+}
+.default-font {
+  @include font-style(400, 1rem, #0e2652);
+}
+
+.default-title-font {
+  @include font-style(700, 2.5rem, #0e2652);
+}
+
+.black-title-font {
+  @include font-style(600, 1.5rem, #000000);
+}
+
+.default-font-white {
+  @include font-style(400, 1rem, #000000);
+}
+
+.title-font-main {
+  @include font-style(700, 2.25rem, #ffffff);
+  text-align: center;
+}
+
+.header-title-font {
+  @include font-style(400, 1rem, #1e3a8a);
+  @include breakpoint(md) {
+    @include font-style(700, 1.75rem, #0e2652);
+  }
+}
+
+.description-font {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.default-dim-font {
+  @include font-style(400, 0.875rem, #546881);
+}
+
+.card-title-font {
+  @include font-style(600, 1.5rem, #1d242d);
+}
+
+.card-description-font {
+  @include font-style(400, 1rem, #3d4c5e);
+}
+
+.card-price-font {
+  @include font-style(600, 1.5rem, #e8bb5b);
+}
+
+.card-price-font-default {
+  @include font-style(600, 1rem, #0e2652);
+}
+
+.card-package-font {
+  @include font-style(600, 1rem, #1d242d);
+}
+
+.location-title-font {
+  @include font-style(700, 2.245rem, #0e2652);
+}
+
+.location-title-bigger-font {
+  @include font-style(700, 2.5rem, #a58541);
+}
+
+.location-desc-font {
+  @include font-style(400, 0.75rem, #1d242d);
+  @include breakpoint(md) {
+    @include font-style(400, 1.25rem, #1d242d);
+  }
+}
+
+.extra-large-font {
+  @include font-style(800, 1.5rem, #000000);
+}
+
+.white-title-font {
+  @include font-style(700, 1.5rem, #ffffff);
+}
+
+.mobile-default-blue-small-font {
+  @include font-style(500, 0.75rem, #1e3a8a);
+}
+
+.mobile-default-blue-title-font {
+  @include font-style(600, 1.2rem, #1e3a8a);
+}
+
+.mobile-title-font-blue {
+  @include font-style(600, 1rem, #1e3a8a);
+}
+.mobile-title-font-blue-large {
+  @include font-style(600, 1.25rem, #1e3a8a);
+}
+
+.mobile-default-blue-font {
+  @include font-style(400, 1rem, #1e3a8a);
+}
+
+.mobile-title-default-font {
+  @include font-style(400, 1rem, #000000);
+}
+
+.mobile-description-default-font {
+  @include font-style(400, 0.75rem, #000000);
+}
+
+.mobile-title-bold-font-blue {
+  @include font-style(700, 1rem, #0e2652);
+}
+
+.nav-bar-font {
+  @include font-style(400, 1rem, #0e2652);
+}
+
+.nav-desc-font {
+  @include font-style(700, 1.5rem, #0e2652);
+}
+
+.light-yellow-title-font {
+  @include font-style(700, 2rem, #f8eacc);
+}
+
+.white-copyright-text {
+  @include font-style(600, 0.75rem, #ffffff);
+  @include breakpoint(md) {
+    @include font-style(600, 1rem, #ffffff);
+  }
+}

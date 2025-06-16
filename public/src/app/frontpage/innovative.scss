@@ -1,0 +1,82 @@
+.innovative-testimonial-color {
+  background-color: #f7f7f7;
+}
+
+.portfolio-text {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4.57rem;
+  padding: 0 3.25rem;
+  position: relative;
+  width: 100%;
+  .frame-start {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 0.6rem;
+    position: relative;
+    .div {
+      align-items: center;
+      display: inline-flex;
+      flex: 0 0 auto;
+      flex-direction: column;
+      width: 100%;
+      .text-wrapper {
+        color: #000000;
+        font-family: "Avenir-Book", Helvetica;
+        font-size: 1.25rem;
+        font-weight: 500;
+        letter-spacing: 0;
+        line-height: 1.91rem;
+        position: relative;
+        text-align: center;
+      }
+      @media (max-width: 992px) {
+        .text-wrapper {
+          font-size: 1rem;
+        }
+      }
+
+      .text-wrapper-2 {
+        color: #000000;
+        font-family: "Lexend Deca", Helvetica !important;
+        font-size: 2.5rem;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 3.2rem;
+        position: relative;
+        text-align: center;
+        white-space: nowrap;
+      }
+      @media (max-width: 992px) {
+        .text-wrapper-2 {
+          font-size: 1.25rem;
+          line-height: 2rem;
+        }
+      }
+    }
+    .innovative-content {
+      color: #000000;
+      font-family: "Avenir-Light", Helvetica;
+      font-size: 1.25rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.91rem;
+      position: relative;
+      text-align: center;
+      width:80%;
+      margin-bottom: 5rem;
+    }
+    @media (max-width: 992px) {
+      .innovative-content {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        margin-bottom: 3rem;
+        width: 100%;
+      }
+    }
+  }
+}

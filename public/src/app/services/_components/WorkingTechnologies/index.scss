@@ -1,0 +1,176 @@
+.tech-stack-section {
+  // margin-top: 4rem;
+  background-color: #f3f3f3;
+  // height: 100%;
+  // position: relative;
+  // margin-bottom: 2rem;
+  padding: 3.6875rem 0;
+
+  .tech-text {
+    color: #000000;
+    font-family: "Lexend Deca", sans-serif !important;
+    font-size: 2.0625rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.15;
+    // position: relative;
+    // top: 1.93rem;
+    text-align: center;
+  }
+
+  @media (max-width: 767.98px) {
+    .tech-text {
+      font-size: 1.25rem;
+      line-height: 1.28;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .tech-text {
+      font-size: 1.0625rem;
+    }
+  }
+
+  // @media (min-width: 768px) and (max-width: 1366px) {
+  //   .tech-text {
+  //     font-size: 1.5rem;
+  //     font-weight: 400;
+  //   }
+  // }
+
+  .company-mobile-nav-view {
+    margin-top: 4rem;
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+
+  .comapny-category {
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    .company-design-nav {
+      background-color: #ffffff;
+      font-size: 1rem;
+      font-weight: 400;
+      border-radius: 0.3rem;
+      height: 100%;
+      color: #1e1e1e;
+      line-height: 1;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+
+  .tech-frame-2 {
+    overflow-y: auto;
+    scrollbar-width: none;
+    // height: 6.5rem;
+
+    .tech-image {
+      margin-top: 1rem;
+      height: 4rem;
+      width: 4rem;
+      margin-left: 4rem;
+      cursor: pointer;
+      object-fit: cover;
+      transition: transform 0.3s ease-in-out;
+    }
+    .tech-image:first-child {
+      margin-left: 0rem;
+    }
+
+    .tech-image:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .tech-frame-2 {
+      // padding-left: 10rem;
+    }
+  }
+}
+
+.nav-mobile-button {
+  margin-left: -5rem;
+  margin-top: -5rem;
+}
+
+.tech-text-2 {
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.75rem;
+  opacity: 0.5;
+  text-decoration: none;
+}
+
+.click-class {
+  margin-top: -4rem;
+}
+
+@media (max-width: 991px) {
+  .tech-stack-section {
+    padding: 1.5625rem 0 1.6875rem;
+
+    .company-mobile-nav-view {
+      margin: 2.5rem 0 1rem;
+    }
+
+    .comapny-category {
+      overflow-y: visible;
+      flex-wrap: wrap;
+      background-color: #fff;
+      row-gap: 0.6875rem !important;
+      column-gap: 1.5rem !important;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+
+      .company-design-nav {
+        height: auto;
+        font-size: 0.875rem;
+      }
+
+      .company-design-nav.active {
+        text-decoration: underline;
+        text-decoration-thickness: 0.125rem;
+        text-underline-offset: 0.1875rem;
+      }
+    }
+
+    .tech-frame-2 {
+      .tech-image {
+        height: 2rem;
+        width: 2rem;
+      }
+    }
+  }
+}
+@media (max-width: 425px) {
+  .tech-stack-section {
+    .company-mobile-nav-view {
+    }
+
+    .comapny-category {
+      .company-design-nav {
+        font-size: 0.75rem;
+      }
+
+      .company-design-nav.active {
+      }
+    }
+
+    .tech-frame-2 {
+      .tech-image {
+        height: 1.1875rem;
+        width: 1.1875rem;
+      }
+    }
+  }
+}
