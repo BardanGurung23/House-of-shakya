@@ -1,11 +1,11 @@
 const nodemailer = require("nodemailer");
-const { smtpModel } = require("../models");
-const generalConstant = require("../constants/general-constant");
+const { smtpModel } = require("../../models");
+const generalConstant = require("../../constants/general-constant");
 
 const {
   getActiveTemplate,
   replacePlaceholders,
-} = require("../helpers/get-active-email-template");
+} = require("./get-active-email-template");
 
 /**
  * sendMail - a function that fetches the active template by actionKey,

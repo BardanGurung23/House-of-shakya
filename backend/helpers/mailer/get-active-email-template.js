@@ -1,4 +1,4 @@
-const { activeTemplateModel, emailTemplateModel } = require("../models");
+const { activeTemplateModel, emailTemplateModel } = require("../../models");
 
 const getActiveTemplate = async (actionKey) => {
   const activeTemplate = await activeTemplateModel.findOne({

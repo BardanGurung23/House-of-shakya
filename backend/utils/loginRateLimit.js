@@ -1,26 +1,59 @@
 const rateLimit = require("express-rate-limit");
+const redis = require("../configs/redis");
 
-// Create a rate limiter for login
-const loginLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // Limit each IP to 5 login attempts per 15 minutes
-  message: {
-    success: false,
-    msg: "Too many login attempts. Please try again later.",
-  },
-  keyGenerator: (req) => req.deviceFingerprint,
-  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-});
+const MAX_FAILED_ATTEMPTS = 5;
+const BLOCK_TIME_MS = 15 * 60 * 1000;
+
+function loginAttemptMiddleware(req, res, next) {
+  const key = req.deviceFingerprint;
+
+  redis.get(key).then((attemptJSON) => {
+    const attempt = attemptJSON ? JSON.parse(attemptJSON) : null;
+
+    if (attempt && attempt.blockUntil && attempt.blockUntil > Date.now()) {
+      return res.status(429).json({
+        success: false,
+        msg: "Too many login attempts. Please try again later.",
+      });
+    }
+
+    const originalSend = res.send;
+
+    res.send = async function (body) {
+      try {
+        const data = typeof body === "string" ? JSON.parse(body) : body;
+
+        if (!data.success) {
+          const current = attempt || { count: 0, blockUntil: null };
+          current.count += 1;
+
+          if (current.count >= MAX_FAILED_ATTEMPTS) {
+            current.blockUntil = Date.now() + BLOCK_TIME_MS;
+          }
+
+          await redis.set(key, JSON.stringify(current), "PX", BLOCK_TIME_MS);
+        } else {
+          await redis.del(key);
+        }
+      } catch (err) {
+        console.error("Failed to process login rate limit logic:", err);
+      }
+
+      return originalSend.call(this, body);
+    };
+
+    next();
+  });
+}
 
 const apiRateLimiter = rateLimit({
-  windowMs: 30 * 60 * 1000, // 30 minutes
-  max: 1000, // Limit each user to 1000 requests per hour
+  windowMs: 30 * 60 * 1000,
+  max: 1000,
   message: {
     success: false,
-    msg: "Too many requests, please try again later",
+    msg: "Too many requests, please try again later.",
   },
   keyGenerator: (req) => req.deviceFingerprint,
 });
 
-module.exports = { loginLimiter, apiRateLimiter };
+module.exports = { loginAttemptMiddleware, apiRateLimiter };

@@ -7,9 +7,9 @@ const slugGenerator = (name) => {
 
   // Replace spaces with dashes and remove unwanted characters
   const slug = normalized
-    .replace(/[\s]+/g, "-") // Replace spaces with dashes
+    .replace(/[\s]+/g, "-") 
     .replace(/[^\w\u4E00-\u9FAF\u3040-\u309F\u30A0-\u30FF-]/g, "")
-    .toLowerCase(); // Retain alphanumeric, dashes, and Japanese
+    .toLowerCase(); 
 
   return slug;
 };

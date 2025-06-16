@@ -36,61 +36,43 @@ const baseUrl = "";
 const app = express();
 const server = require("http").createServer(app);
 
-// const allowedOrigins = [
-//   "http://localhost:8081",
-//   "http://localhost:5173",
-//   "https://admin.technirvana.com.np/",
-//   process.env.ADMIN_FRONTEND_URL || "https://admin.technirvana.com.np" ,
-//   process.env.UK_PUBLIC_FRONTEND_URL ,
-//   process.env.NP_PUBLIC_FRONTEND_URL 
+app.use(
+  "/resources",
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: false,
+    methods: ["GET", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  }),
+  express.static(path.join(__dirname, "resources")),
+);
 
-// ];
+const allowedOrigins = [
+  "http://localhost:3000", // local dev
+  "http://localhost:5171", // local dev
+  "http://localhost:7001",
+  "http://192.168.1.66:9001",
+  "https://staging.unimomo.co.uk", // frontend URL
+  "https://admin.unimomo.co.uk", // frontend URL
+];
 
-app.use(cors());
-
-// app.use(
-//   cors({
-//     origin: (origin, callback) => {
-//       if (!origin || allowedOrigins.includes(origin)) {
-//         callback(null, origin);
-//       } else {
-//         callback(new Error("CORS policy: Origin not allowed"));
-//       }
-//     },
-//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-//     allowedHeaders: [
-//       "Content-Type",
-//       "Access-Control-Allow-Headers",
-//       "Authorization",
-//       "Origin",
-//       "X-Requested-With",
-//       "Accept",
-//       "Range",
-//     ],
-//     exposedHeaders: ["Content-Length", "Content-Range", "Accept-Ranges"],
-//     credentials: true,
-//     optionsSuccessStatus: 204,
-//     maxAge: 86400,
-//   }),
-// );
-
-// Add IP tracking middleware (separated from CORS)
-
-app.use(function (req, res, next) {
-  req.client_ip_address = ip.address();
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Authorization, Origin, X-Requested-With, Content-Type, Accept, Range",
-  );
-  res.header("Access-Control-Allow-Methods", "DELETE, GET, POST, PUT, PATCH");
-  next();
-});
-
-// app.use((req, res, next) => {
-//   req.client_ip_address = ip.address();
-//   next();
-// });
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // allow requests with no origin (like mobile apps or curl)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+  }),
+);
+;
 
 app.use(helmet());
 app.use(
@@ -139,13 +121,33 @@ app.use(
   }),
 );
 
+// Redis session storage
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "nirvana", // Use env for security
+    resave: false,
+    saveUninitialized: false, // Only save authenticated sessions
+    // cookie: {
+    //   maxAge: 1 * 60 * 60 * 1000, // 1 day expiration
+    //   httpOnly: true, // Prevent JS access
+    //   secure: process.env.NODE_ENV === "production", // HTTPS in prod
+    //   sameSite: "lax", // CSRF protection
+    // },
+  }),
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 app.use(baseUrl + "/api/v1", apiRateLimiter, require("./api")); // -------- main api -----------
 
 app.use("/setup/", setupPath);
 
 app.use("/public", express.static(path.join(__dirname, "public")));
-app.use("/resources", express.static(path.join(__dirname, "resources")));
 app.use(
   "/uploads",
   // authentication,
