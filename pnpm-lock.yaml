@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      TechNirvanaWebsite:
-        specifier: 'link:'
-        version: 'link:'
     devDependencies:
       husky:
         specifier: ^9.1.7
