@@ -247,15 +247,9 @@ router.get("/", async (req, res, next) => {
   try {
     await internal.saveRoles(req, setupData.roles);
      await internal.saveUsers(req, setupData.users);
- 
-    await internal.saveRTEMediaCategory(req, setupData.mediaCategory);
- 
-    await internal.saveRoleMenu(req, setupData.roleMenus);
- 
-    await internal.saveSettings(setupData.setting);
- 
-    await internal.saveRTEMediaCategory(req, setupData.mediaCategory);
- 
+     await internal.saveRoleMenu(req, setupData.roleMenus);
+     await internal.saveSettings(setupData.setting);
+     await internal.saveRTEMediaCategory(req, setupData.mediaCategory);
     await internal.saveBanner(req, setupData.banner);
  
 

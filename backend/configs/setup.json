@@ -29,6 +29,11 @@
       "id": 646,
       "name": "video",
       "slug": "videos"
+    },
+    {
+      "id": 777,
+      "name": "customer",
+      "slug": "customer"
     }
   ],
   "banner": [
@@ -1155,6 +1160,52 @@
           "serverPath": "/applicant/:id",
           "requestMethod": "DELETE",
           "list": "Applicant"
+        }
+      ]
+    },
+        {
+      "title": "Customer",
+      "key": "customer",
+      "actions": [
+        {
+          "title": "View Customer",
+          "key": "view",
+          "clientPath": "/customer-auth/list",
+          "serverPath": "/customer-auth/list",
+          "requestMethod": "GET",
+          "list": "Customer"
+        },
+        {
+          "title": "View One Customer",
+          "key": "view-one",
+          "clientPath": "/customer-auth/:id",
+          "serverPath": "/customer-auth/:id",
+          "requestMethod": "GET",
+          "list": "Customer"
+        },
+        {
+          "title": "Edit Customer",
+          "key": "edit",
+          "clientPath": "/customer-auth/:id",
+          "serverPath": "/customer-auth/:id",
+          "requestMethod": "PUT",
+          "list": "Customer"
+        },
+        {
+          "title": "Block Customer",
+          "key": "block",
+          "clientPath": "/customer-auth/block/:id",
+          "serverPath": "/customer-auth/block/:id",
+          "requestMethod": "PATCH",
+          "list": "Customer"
+        },
+        {
+          "title": "Delete Customer",
+          "key": "block",
+          "clientPath": "/customer-auth/soft-delete/:id",
+          "serverPath": "/customer-auth/soft-delete/:id",
+          "requestMethod": "PATCH",
+          "list": "Customer"
         }
       ]
     }
