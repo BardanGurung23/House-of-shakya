@@ -22,7 +22,7 @@ export default function EditAccess() {
   const tableHeader: string[] =
     success && accessModule?.data?.role_menu_actions
       ? accessModule?.data?.role_menu_actions.map(
-          (each: { key: string }) => each.key
+          (each: { key: string }) => each.key,
         )
       : [];
   return (

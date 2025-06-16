@@ -56,11 +56,11 @@ export default function AddEditPortfolio() {
 
   useEffect(() => {
     const portfolioInfoFields = Object.keys(
-      PortfolioInfoSchema.shape
+      PortfolioInfoSchema.shape,
     ) as PortfolioInfoFormType[];
 
     const projectDetailFields = Object.keys(
-      ProjectDetailSchema.shape
+      ProjectDetailSchema.shape,
     ) as ProjectDetailFormType[];
 
     setHasOverviewError(portfolioInfoFields.some((field) => errors[field]));
@@ -92,7 +92,7 @@ export default function AddEditPortfolio() {
             label: each.name,
             value: Number(each.id),
             image: each.image,
-          })
+          }),
         );
         setTechnologyOptions(options);
       }
@@ -110,7 +110,7 @@ export default function AddEditPortfolio() {
       if (technologySuccess) {
         const selectedTechnology = allTechnologies?.data?.data
           .filter((tech) =>
-            portfolioDetails?.data.core_tech_img.includes(tech.image)
+            portfolioDetails?.data.core_tech_img.includes(tech.image),
           )
           .map((each: { name: string; id: number; image: string }) => ({
             label: each.name,
@@ -121,7 +121,8 @@ export default function AddEditPortfolio() {
 
         const options = allTechnologies?.data?.data
           .filter(
-            (tech) => !portfolioDetails?.data.core_tech_img.includes(tech.image)
+            (tech) =>
+              !portfolioDetails?.data.core_tech_img.includes(tech.image),
           )
           .map((each: { name: string; id: number; image: string }) => ({
             label: each.name,
@@ -167,10 +168,10 @@ export default function AddEditPortfolio() {
 
   useEffect(() => {
     const portfolioInfoFields = Object.keys(
-      PortfolioInfoSchema.shape
+      PortfolioInfoSchema.shape,
     ) as PortfolioInfoFormType[];
     const projectDetailFields = Object.keys(
-      ProjectDetailSchema.shape
+      ProjectDetailSchema.shape,
     ) as ProjectDetailFormType[];
 
     setHasOverviewError(portfolioInfoFields.some((field) => errors[field]));

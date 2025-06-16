@@ -11,7 +11,7 @@ export default function ApproveRejectToggle({
   onToggle: (id: number, newStatus: string) => void;
 }) {
   const [status, setStatus] = useState(currentStatus);
-    const translate = useTranslation();
+  const translate = useTranslation();
 
   const handleToggle = (newStatus: string) => {
     setStatus(newStatus);
@@ -20,7 +20,6 @@ export default function ApproveRejectToggle({
 
   return (
     <div className="flex items-center gap-2">
-
       <div className="flex gap-2">
         <button
           className="px-3 py-1 text-sm rounded bg-green-500 text-white"

@@ -34,7 +34,7 @@ export default function Access() {
                 onClick={() => handleAccessEdit(id)}
               />
             </div>,
-          ]
+          ],
         )
       : [];
   return (

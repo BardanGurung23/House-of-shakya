@@ -3,7 +3,7 @@ export function TimeDifference(serverTime: Date | number | string): string {
   const currentDate = new Date();
 
   const diffInSeconds = Math.floor(
-    (currentDate.getTime() - serverDate.getTime()) / 1000
+    (currentDate.getTime() - serverDate.getTime()) / 1000,
   );
 
   const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });

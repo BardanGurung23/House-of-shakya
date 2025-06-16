@@ -42,12 +42,12 @@ class CustomUploadAdapter {
               } else {
                 this.__handleUploadFailure(
                   reject,
-                  data.error || "Upload Failed"
+                  data.error || "Upload Failed",
                 );
               }
             })
             .catch((error) => this.__handleUploadFailure(reject, error));
-        })
+        }),
     );
   }
   __handleUploadFailure(reject, errorMessage) {

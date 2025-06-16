@@ -12,7 +12,7 @@ interface WebSocketHook {
 }
 
 export default function useWebSocket(
-  url: string = WEBSOCKET_URL
+  url: string = WEBSOCKET_URL,
 ): WebSocketHook {
   const dispatch = useDispatch();
 
@@ -50,8 +50,8 @@ export default function useWebSocket(
         console.log("Web Socket disconnected");
         setSocketConnected(false);
         socketRef.current = null;
-        clearInterval(pingIntervalRef.current as NodeJS.Timeout); 
-        clearTimeout(pongTimeoutRef.current as NodeJS.Timeout); 
+        clearInterval(pingIntervalRef.current as NodeJS.Timeout);
+        clearTimeout(pongTimeoutRef.current as NodeJS.Timeout);
       };
     }
   };
@@ -60,8 +60,8 @@ export default function useWebSocket(
     if (socketRef.current) {
       socketRef.current.close();
       socketRef.current = null;
-      clearInterval(pingIntervalRef.current as NodeJS.Timeout); 
-      clearTimeout(pongTimeoutRef.current as NodeJS.Timeout); 
+      clearInterval(pingIntervalRef.current as NodeJS.Timeout);
+      clearTimeout(pongTimeoutRef.current as NodeJS.Timeout);
     }
   };
 
@@ -69,7 +69,7 @@ export default function useWebSocket(
   const sendPing = () => {
     if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
       console.log("Sending Ping to server");
-      socketRef.current.send("ping"); 
+      socketRef.current.send("ping");
     }
   };
 

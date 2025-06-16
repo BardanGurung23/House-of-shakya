@@ -18,7 +18,8 @@ const Innovative = () => {
               </div>
             </div>
             <p className="innovative-content">
-              Discover how Tech Nirvana's expertise has driven innovation and excellence for our clients across various industries.
+              Discover how Tech Nirvana's expertise has driven innovation and
+              excellence for our clients across various industries.
             </p>
           </div>
         </div>

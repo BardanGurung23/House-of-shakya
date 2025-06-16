@@ -16,7 +16,7 @@ export const TechInfoSchema = z.object({
         choosed: z
           .array(z.union([z.string(), z.number()]))
           .nonempty("technologies cannnot be empty"),
-      })
+      }),
     )
     .nonempty("TechStack cannot be empty"),
 
@@ -26,7 +26,7 @@ export const TechInfoSchema = z.object({
         title: z.string().min(1, "Title cannot be empty"),
         description: z.string().min(1, "description cannot be empty"),
         img_path: z.string().min(1, "Icon cannot be empty"),
-      })
+      }),
     )
     .nonempty("useCases cannot be empty"),
 });

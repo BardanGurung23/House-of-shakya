@@ -41,8 +41,13 @@ export default function AccountManagement() {
 
   return (
     <div className="flex flex-col ">
-      <h3 className="font-[600] text-[1.5rem] text-[#0090DD] self-start">{translate("Account Management")}</h3>
-      <form className="space-y-[2rem] mt-[3rem]" onSubmit={handleSubmit(onSubmit)}>
+      <h3 className="font-[600] text-[1.5rem] text-[#0090DD] self-start">
+        {translate("Account Management")}
+      </h3>
+      <form
+        className="space-y-[2rem] mt-[3rem]"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <Input
           label="New Password"
           placeholder="******"

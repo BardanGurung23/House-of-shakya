@@ -56,7 +56,7 @@ export default function Applicant() {
   const handleDelete = async () => {
     try {
       const response = await deleteBanner(
-        `${APPLICANT_URL}${deleteId}`
+        `${APPLICANT_URL}${deleteId}`,
       ).unwrap();
       handleResponse({
         res: response,
@@ -110,7 +110,7 @@ export default function Applicant() {
                 />
               )}
             </div>,
-          ]
+          ],
         )
       : [];
 

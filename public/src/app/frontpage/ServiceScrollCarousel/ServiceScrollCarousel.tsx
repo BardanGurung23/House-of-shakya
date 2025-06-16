@@ -37,7 +37,7 @@ const ServiceScrollCarousel: React.FC<PropType> = (props) => {
       resetOrStop();
       callback();
     },
-    [emblaApi]
+    [emblaApi],
   );
 
   const toggleAutoplay = useCallback(() => {
@@ -105,7 +105,7 @@ const ServiceScrollCarousel: React.FC<PropType> = (props) => {
                 key={index}
                 onClick={() => onDotButtonClick(index)}
                 className={"embla__dot".concat(
-                  index === selectedIndex ? " embla__dot--selected" : ""
+                  index === selectedIndex ? " embla__dot--selected" : "",
                 )}
               >
                 <GoDotFill />

@@ -79,7 +79,7 @@ export default function EmailTemplate() {
   const handleToggleSwitch = async (
     actionKey: string,
     templateId: id,
-    activeTemplate: any
+    activeTemplate: any,
   ) => {
     const body = { actionKey, templateId };
     const body1 = { actionKey };
@@ -149,7 +149,7 @@ export default function EmailTemplate() {
                 />
               )}
             </div>,
-          ]
+          ],
         )
       : [];
 

@@ -69,7 +69,7 @@ const NewFooter: React.FC<FooterProps> = ({ brandingFooterImage }) => {
 
   const openGmail = (email) => {
     const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-      email
+      email,
     )}`;
     window.open(gmailLink, "_blank");
   };

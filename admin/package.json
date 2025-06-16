@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-     "prettier": "prettier . --write"
+    "prettier": "prettier . --write"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-react": "^9.5.0",
@@ -61,6 +61,5 @@
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.11.0",
     "prettier": "3.3.3"
-
   }
 }

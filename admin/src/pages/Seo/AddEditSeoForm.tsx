@@ -77,9 +77,8 @@ export default function AddEditSeoForm({
     if (editId !== null) {
       refetch();
       if (getSeo?.data) {
-        const changedTags =changeTagType(getSeo?.data?.keywords);
-        reset({ ...getSeo.data,keywords:changedTags });
-        
+        const changedTags = changeTagType(getSeo?.data?.keywords);
+        reset({ ...getSeo.data, keywords: changedTags });
       }
     } else {
       reset({

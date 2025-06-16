@@ -2,7 +2,10 @@ import Input from "@/components/Input";
 import MediaComponent from "@/components/MediaComponent";
 import { IMAGE_BASE_URL } from "@/constants";
 import useTranslation from "@/locale/useTranslation";
-import { useGetSettingQuery, useUpdateSettingMutation } from "@/redux/services/settings";
+import {
+  useGetSettingQuery,
+  useUpdateSettingMutation,
+} from "@/redux/services/settings";
 import { z } from "zod";
 import { SettingSchema } from "./schema";
 import { useForm } from "react-hook-form";
@@ -41,14 +44,19 @@ export default function Settings() {
   const selectedImage = useAppSelector((state) => state.media.selectedImage);
   const [isFaviconOpen, setIsFavIconOpen] = useState<boolean>(false);
   const [isBrandingImage, setIsBrandingImage] = useState<boolean>(false);
-  const [isBrandingFooterImage, setIsBrandingFooterImage] = useState<boolean>(false);
+  const [isBrandingFooterImage, setIsBrandingFooterImage] =
+    useState<boolean>(false);
 
   // getting image
   const fav_icon = getValues("fav_icon");
   const brandingImage = getValues("brandingImage");
   const brandingFooterImage = getValues("brandingFooterImage");
 
-  const { data: settings, isSuccess: success, refetch } = useGetSettingQuery("");
+  const {
+    data: settings,
+    isSuccess: success,
+    refetch,
+  } = useGetSettingQuery("");
   const [updateSetting] = useUpdateSettingMutation();
 
   useEffect(() => {
@@ -94,13 +102,30 @@ export default function Settings() {
   };
 
   return (
-    <form className="flex flex-col gap-[5rem]" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="flex flex-col gap-[5rem]"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       {/* Brands */}
       <div className="shadow-xl rounded-[0.5rem]">
-        <h2 className="text-start w-full p-[1rem]">{translate("Brand Setting")}</h2>
+        <h2 className="text-start w-full p-[1rem]">
+          {translate("Brand Setting")}
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[1rem] px-[1rem] py-[3rem]">
-          <Input label="Brand Name" placeholder="Brand Name" type="text" {...register("brand_name")} error={errors?.brand_name?.message} />
-          <Input label="Email" placeholder="Email" type="text" {...register("email")} error={errors?.email?.message} />
+          <Input
+            label="Brand Name"
+            placeholder="Brand Name"
+            type="text"
+            {...register("brand_name")}
+            error={errors?.brand_name?.message}
+          />
+          <Input
+            label="Email"
+            placeholder="Email"
+            type="text"
+            {...register("email")}
+            error={errors?.email?.message}
+          />
           <Input
             label="Primary Phone"
             placeholder="Primary Phone Number"
@@ -115,7 +140,13 @@ export default function Settings() {
             {...register("secondary_phone")}
             error={errors?.secondary_phone?.message}
           />
-          <Input label="Address" placeholder="Address" type="text" {...register("address")} error={errors?.address?.message} />
+          <Input
+            label="Address"
+            placeholder="Address"
+            type="text"
+            {...register("address")}
+            error={errors?.address?.message}
+          />
           <Input
             label="Footer Description"
             placeholder="Footer Description"
@@ -134,11 +165,14 @@ export default function Settings() {
       </div>
       {/* Images */}
       <div className="shadow-xl rounded-[0.5rem]">
-        <h2 className="text-start w-full p-[1rem]">{translate("Image Settings")}</h2>
+        <h2 className="text-start w-full p-[1rem]">
+          {translate("Image Settings")}
+        </h2>
         <div className="flex flex-wrap lg:gap-[4rem] gap-[2rem] px-[1rem] py-[3rem]">
           <div className="flex flex-col items-start">
             <label className="font-[400] text-[0.75rem] text-start mb-[2px] text-[#626c78]">
-              {translate("Favicon Image")} <span className="text-red-500">*</span>
+              {translate("Favicon Image")}{" "}
+              <span className="text-red-500">*</span>
             </label>
             <MediaComponent
               title={<ImageInputUI type="large" image={fav_icon} />}
@@ -149,7 +183,8 @@ export default function Settings() {
           </div>
           <div className="flex flex-col items-start">
             <label className="font-[400] text-[0.75rem] text-start mb-[2px] text-[#626c78]">
-              {translate("Branding Image")} <span className="text-red-500">*</span>
+              {translate("Branding Image")}{" "}
+              <span className="text-red-500">*</span>
             </label>
             <MediaComponent
               title={<ImageInputUI type="large" image={brandingImage} />}
@@ -160,11 +195,14 @@ export default function Settings() {
           </div>
           <div className="flex flex-col items-start">
             <label className="font-[400] text-[0.75rem] text-start mb-[2px] text-[#626c78]">
-              {translate("Footer Branding Image")} <span className="text-red-500">*</span>
+              {translate("Footer Branding Image")}{" "}
+              <span className="text-red-500">*</span>
             </label>
             <MediaComponent
               title={<ImageInputUI type="large" image={brandingFooterImage} />}
-              handleConfirmImage={() => handleConfirmImage("brandingFooterImage")}
+              handleConfirmImage={() =>
+                handleConfirmImage("brandingFooterImage")
+              }
               open={isBrandingFooterImage}
               setOpen={setIsBrandingFooterImage}
             />
@@ -172,7 +210,9 @@ export default function Settings() {
         </div>
       </div>
       <Button type="submit" className="submit-button w-fit">
-        <div className="flex justify-center items-center gap-[0.5rem] text-white">{translate("Submit")}</div>
+        <div className="flex justify-center items-center gap-[0.5rem] text-white">
+          {translate("Submit")}
+        </div>
       </Button>
     </form>
   );
@@ -188,13 +228,20 @@ const ImageInputUI = ({ type, image }: { type: string; image?: string }) => {
         }`}
       >
         {image !== undefined ? (
-          <img src={`${IMAGE_BASE_URL}${image}`} alt="Gallery Icon" className="object-contain w-[307px] h-[60px]" crossOrigin="anonymous" />
+          <img
+            src={`${IMAGE_BASE_URL}${image}`}
+            alt="Gallery Icon"
+            className="object-contain w-[307px] h-[60px]"
+            crossOrigin="anonymous"
+          />
         ) : (
           <img src={galleryIcon} alt="Gallery Icon" />
         )}
       </div>
       {type === "large" && (
-        <p className="font-[400] text-[0.75rem] text-start mt-[2px] text-[#626c78]">{translate("Allowed JPG, GIF or PNG. Max size of 1MB")}</p>
+        <p className="font-[400] text-[0.75rem] text-start mt-[2px] text-[#626c78]">
+          {translate("Allowed JPG, GIF or PNG. Max size of 1MB")}
+        </p>
       )}
     </>
   );

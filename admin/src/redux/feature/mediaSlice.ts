@@ -24,7 +24,7 @@ export const mediaSlice = createSlice({
     setSelectMultipleMedia: (state, action: PayloadAction<string>) => {
       if (state.multipleSelectedImage.includes(action.payload)) {
         state.multipleSelectedImage = state.multipleSelectedImage.filter(
-          (each) => each !== action.payload
+          (each) => each !== action.payload,
         );
       } else {
         state.multipleSelectedImage.push(action.payload);

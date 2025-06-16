@@ -139,7 +139,7 @@ export default function SideMenu({
                       className={`text-[#2F2B3D] bg-[#EEEEEF] flex justify-between items-center rounded-[0.25rem] py-[0.5rem] px-[0.75rem] hover:text-white hover:bg-gradient-to-r hover:from-[#0190dd] hover:to-[#80c7ee] cursor-pointer ${
                         currentPath.includes(each.name.toLowerCase()) ||
                         currentPath.includes(
-                          each.name.toLowerCase() + "-category"
+                          each.name.toLowerCase() + "-category",
                         )
                           ? "bg-gradient-to-r from-[#0190dd] to-[#80c7ee] text-white"
                           : ""

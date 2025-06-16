@@ -156,7 +156,7 @@ export default function Roles() {
         handleReloadButton={handleReload}
         hasSubText
         subText={translate(
-          "Include Detailed Role Information in Each Section."
+          "Include Detailed Role Information in Each Section.",
         )}
       />
       {accessList.includes("view") ? (

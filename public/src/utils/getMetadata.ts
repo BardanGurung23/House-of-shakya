@@ -27,7 +27,7 @@ export async function getMetadata(pageName: string) {
   } catch (error) {
     console.log(
       error,
-      "error in meta tags \n Issue addressed from frontend component"
+      "error in meta tags \n Issue addressed from frontend component",
     );
     return {
       title: PROJECT_NAME,

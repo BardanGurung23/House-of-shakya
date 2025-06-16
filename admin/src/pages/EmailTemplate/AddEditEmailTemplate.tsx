@@ -61,7 +61,7 @@ export default function AddEditEmailTemplate() {
   }, [emailTemplate, success]);
   const handleVariableClick = (
     event: React.MouseEvent<HTMLButtonElement>,
-    value: string
+    value: string,
   ) => {
     event.preventDefault();
 

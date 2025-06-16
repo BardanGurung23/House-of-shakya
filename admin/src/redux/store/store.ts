@@ -34,7 +34,7 @@ export type RootReducer = ReturnType<typeof rootReducer>;
 
 const persistedReducer = persistReducer<RootReducer>(
   persistConfig,
-  rootReducer
+  rootReducer,
 );
 
 export const store = configureStore({

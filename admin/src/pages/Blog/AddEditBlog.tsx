@@ -76,7 +76,7 @@ export default function AddEditBlog() {
       (item: { id: string; name: string }) => ({
         value: item.id,
         label: item.name,
-      })
+      }),
     );
   }, [blogCategoryData]);
 

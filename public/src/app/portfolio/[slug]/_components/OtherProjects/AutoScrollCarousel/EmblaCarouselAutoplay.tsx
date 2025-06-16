@@ -8,7 +8,7 @@ type UseAutoplayType = {
 };
 
 export const useAutoplay = (
-  emblaApi: EmblaCarouselType | undefined
+  emblaApi: EmblaCarouselType | undefined,
 ): UseAutoplayType => {
   const [autoplayIsPlaying, setAutoplayIsPlaying] = useState(false);
 
@@ -25,7 +25,7 @@ export const useAutoplay = (
       resetOrStop();
       callback();
     },
-    [emblaApi]
+    [emblaApi],
   );
 
   const toggleAutoplay = useCallback(() => {

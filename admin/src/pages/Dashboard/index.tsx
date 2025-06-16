@@ -55,7 +55,7 @@ export default function Dashboard() {
                     <div>{full_name}</div>
                     <div>{email}</div>
                   </Link>
-                )
+                ),
               )}
           </div>
         </div>

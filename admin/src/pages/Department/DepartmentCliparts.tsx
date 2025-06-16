@@ -18,11 +18,11 @@ export default function DepartmentCliparts({ cliparts }: { cliparts: any }) {
 
   // State for managing open/close states of dialogs
   const [openStates, setOpenStates] = useState<boolean[]>(
-    Array(totalCliparts).fill(false)
+    Array(totalCliparts).fill(false),
   );
 
   const [clipartImages, setClipartImage] = useState<(string | null)[]>(
-    Array(totalCliparts).fill(null)
+    Array(totalCliparts).fill(null),
   );
 
   const [createClipart] = useCreateClipartsMutation();
@@ -47,7 +47,7 @@ export default function DepartmentCliparts({ cliparts }: { cliparts: any }) {
 
   const handleOpen = (index: number) => {
     setOpenStates((prev) =>
-      prev.map((state, i) => (i === index ? true : state))
+      prev.map((state, i) => (i === index ? true : state)),
     );
   };
 
@@ -84,7 +84,7 @@ export default function DepartmentCliparts({ cliparts }: { cliparts: any }) {
       }
     }
     setOpenStates((prev) =>
-      prev.map((state, i) => (i === index ? false : state))
+      prev.map((state, i) => (i === index ? false : state)),
     );
   };
 
@@ -104,7 +104,7 @@ export default function DepartmentCliparts({ cliparts }: { cliparts: any }) {
           open={openStates[index]}
           setOpen={(isOpen: boolean) => {
             setOpenStates((prev) =>
-              prev.map((state, i) => (i === index ? isOpen : state))
+              prev.map((state, i) => (i === index ? isOpen : state)),
             );
           }}
         />

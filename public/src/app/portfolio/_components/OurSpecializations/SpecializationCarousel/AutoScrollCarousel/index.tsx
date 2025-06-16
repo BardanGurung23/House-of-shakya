@@ -49,7 +49,7 @@ const AutoScrollCarousel: React.FC<PropType> = (props) => {
               key={index}
               onClick={() => onDotButtonClick(index)}
               className={"specialization__dot".concat(
-                index === selectedIndex ? " specialization__dot--selected" : ""
+                index === selectedIndex ? " specialization__dot--selected" : "",
               )}
             />
           ))}

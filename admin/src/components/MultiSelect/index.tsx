@@ -52,7 +52,7 @@ const MultiSelect = ({
 
   // Filter out already selected options from the dropdown
   const availableOptions = options.filter(
-    (option) => !value.includes(option.value)
+    (option) => !value.includes(option.value),
   );
 
   const handleReloadButton = () => {

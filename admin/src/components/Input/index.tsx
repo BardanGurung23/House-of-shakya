@@ -25,7 +25,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       autoFocus = false,
       ...rest
     },
-    ref
+    ref,
   ) => {
     const [showPasswordVisibility, setShowPasswordVisibility] =
       useState<boolean>(false);
@@ -76,7 +76,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = "Input"; // Needed for forwardRef components

@@ -21,31 +21,48 @@ type BasicInfoProps = {
   control: Control<InterviewFormType>;
 };
 
-export default function BasicInfo({ register, errors, setTab, setValue, getValues, control }: Readonly<BasicInfoProps>) {
+export default function BasicInfo({
+  register,
+  errors,
+  setTab,
+  setValue,
+  getValues,
+  control,
+}: Readonly<BasicInfoProps>) {
   const translate = useTranslation();
   const dispatch = useDispatch();
 
   //   state for the image pop up
   const [isWebViewOpen, setIsWebViewOpen] = useState<boolean>(false);
   const [isMobileViewOpen, setIsMobileViewOpen] = useState<boolean>(false);
-  const [isEmployeeCarouselOpen, setIsEmployeeCarouselOpen] = useState<boolean>(false);
-  const [isQuoteImageOneViewOpen, setIsQuoteImageOneViewOpen] = useState<boolean>(false);
-  const [isQuoteImageTwoViewOpen, setIsQuoteImageTwoViewOpen] = useState<boolean>(false);
+  const [isEmployeeCarouselOpen, setIsEmployeeCarouselOpen] =
+    useState<boolean>(false);
+  const [isQuoteImageOneViewOpen, setIsQuoteImageOneViewOpen] =
+    useState<boolean>(false);
+  const [isQuoteImageTwoViewOpen, setIsQuoteImageTwoViewOpen] =
+    useState<boolean>(false);
   const [isRoundImageOpen, setIsRoundImageOpen] = useState<boolean>(false);
-  const [isEmpCarouselHoverImageOpen, setIsEmpCarouselHoverImageOpen] = useState<boolean>(false);
-  const [isWorkStyleInterviewImageOpen, setIsWorkStyleInterviewImageOpen] = useState<boolean>(false);
+  const [isEmpCarouselHoverImageOpen, setIsEmpCarouselHoverImageOpen] =
+    useState<boolean>(false);
+  const [isWorkStyleInterviewImageOpen, setIsWorkStyleInterviewImageOpen] =
+    useState<boolean>(false);
 
-  const [departmentOptions, setDepartmentOptions] = useState<{ label: string; value: number }[]>([]);
+  const [departmentOptions, setDepartmentOptions] = useState<
+    { label: string; value: number }[]
+  >([]);
 
   // api calls
-  const { data: allDepartment, isSuccess: getDepartmentSuccess } = useListAllDepartmentsQuery({ page: 1, limit: 100 });
+  const { data: allDepartment, isSuccess: getDepartmentSuccess } =
+    useListAllDepartmentsQuery({ page: 1, limit: 100 });
 
   useEffect(() => {
     if (getDepartmentSuccess && allDepartment?.data?.data) {
-      const options = allDepartment?.data?.data.map((each: { name: string; id: number }) => ({
-        label: each.name,
-        value: Number(each.id),
-      }));
+      const options = allDepartment?.data?.data.map(
+        (each: { name: string; id: number }) => ({
+          label: each.name,
+          value: Number(each.id),
+        }),
+      );
       setDepartmentOptions(options);
     }
   }, [getDepartmentSuccess, allDepartment]);
@@ -105,10 +122,22 @@ export default function BasicInfo({ register, errors, setTab, setValue, getValue
     <>
       <form className="relative grid grid-cols-1 md:grid-cols-2 gap-[2rem] w-full md:w-[744px] border pl-[1.5rem] pt-[1.5rem] pb-[3rem] pr-[4.5rem] mt-[3rem]">
         <div className="absolute top-[-0.7rem] left-[43px] px-[1rem] z-20 bg-[#FAF7FA]">
-          <p className="font-[400] text-[1.25rem]">{translate("Basic Info")} *</p>
+          <p className="font-[400] text-[1.25rem]">
+            {translate("Basic Info")} *
+          </p>
         </div>
-        <Input label="Initials" isRequired {...register("initials")} error={errors?.initials?.message} />
-        <Input label="Slug" isRequired {...register("slug")} error={errors?.slug?.message} />
+        <Input
+          label="Initials"
+          isRequired
+          {...register("initials")}
+          error={errors?.initials?.message}
+        />
+        <Input
+          label="Slug"
+          isRequired
+          {...register("slug")}
+          error={errors?.slug?.message}
+        />
         <Controller
           name="departmentId"
           control={control}
@@ -117,7 +146,8 @@ export default function BasicInfo({ register, errors, setTab, setValue, getValue
               {...field}
               label={
                 <p>
-                  {translate("Department")} <span className="text-red-500">*</span>
+                  {translate("Department")}{" "}
+                  <span className="text-red-500">*</span>
                 </p>
               }
               options={departmentOptions}
@@ -125,10 +155,30 @@ export default function BasicInfo({ register, errors, setTab, setValue, getValue
             />
           )}
         />
-        <Input label="Sub Department" isRequired {...register("subDepartment")} error={errors?.subDepartment?.message} />
-        <Input label="Office Location" isRequired {...register("office_location")} error={errors?.office_location?.message} />
-        <Input label="Date entered in the company" isRequired {...register("entered_date")} error={errors?.entered_date?.message} />
-        <Input label="Designation" isRequired {...register("designation")} error={errors?.designation?.message} />
+        <Input
+          label="Sub Department"
+          isRequired
+          {...register("subDepartment")}
+          error={errors?.subDepartment?.message}
+        />
+        <Input
+          label="Office Location"
+          isRequired
+          {...register("office_location")}
+          error={errors?.office_location?.message}
+        />
+        <Input
+          label="Date entered in the company"
+          isRequired
+          {...register("entered_date")}
+          error={errors?.entered_date?.message}
+        />
+        <Input
+          label="Designation"
+          isRequired
+          {...register("designation")}
+          error={errors?.designation?.message}
+        />
         <div className="flex flex-col items-start">
           <label className="font-[400] text-[0.75rem] text-start mb-[2px] text-[#626c78]">
             {translate("Employee Words")}
@@ -151,7 +201,8 @@ export default function BasicInfo({ register, errors, setTab, setValue, getValue
         </div>
         <div className="flex flex-col items-start">
           <label className="font-[400] text-[0.75rem] text-start mb-[2px] text-[#626c78]">
-            {translate("Employee Banner Image (Web View)")} <span className="text-red-500">*</span>
+            {translate("Employee Banner Image (Web View)")}{" "}
+            <span className="text-red-500">*</span>
           </label>
           <MediaComponent
             title={<ImageInputUI type="large" image={web_view_img} />}
@@ -162,7 +213,8 @@ export default function BasicInfo({ register, errors, setTab, setValue, getValue
         </div>
         <div className="flex flex-col items-start">
           <label className="font-[400] text-[0.75rem] text-start mb-[2px] text-[#626c78]">
-            {translate("Employee Banner Image (Mobile View)")} <span className="text-red-500">*</span>
+            {translate("Employee Banner Image (Mobile View)")}{" "}
+            <span className="text-red-500">*</span>
           </label>
           <MediaComponent
             title={<ImageInputUI type="large" image={mobile_view_img} />}
@@ -174,11 +226,16 @@ export default function BasicInfo({ register, errors, setTab, setValue, getValue
 
         <div className="flex flex-col items-start">
           <label className="font-[400] text-[0.75rem] text-start mb-[2px] text-[#626c78]">
-            {translate("Employee Work style Interview Image")} <span className="text-red-500">*</span>
+            {translate("Employee Work style Interview Image")}{" "}
+            <span className="text-red-500">*</span>
           </label>
           <MediaComponent
-            title={<ImageInputUI type="large" image={work_style_interview_image} />}
-            handleConfirmImage={() => handleConfirmImage("work_style_interview_image")}
+            title={
+              <ImageInputUI type="large" image={work_style_interview_image} />
+            }
+            handleConfirmImage={() =>
+              handleConfirmImage("work_style_interview_image")
+            }
             open={isWorkStyleInterviewImageOpen}
             setOpen={setIsWorkStyleInterviewImageOpen}
           />
@@ -186,7 +243,8 @@ export default function BasicInfo({ register, errors, setTab, setValue, getValue
 
         <div className="flex flex-col items-start">
           <label className="font-[400] text-[0.75rem] text-start mb-[2px] text-[#626c78]">
-            {translate("Employee Carousel Image")} <span className="text-red-500">*</span>
+            {translate("Employee Carousel Image")}{" "}
+            <span className="text-red-500">*</span>
           </label>
           <MediaComponent
             title={<ImageInputUI type="large" image={emp_carousel_img} />}
@@ -208,11 +266,14 @@ export default function BasicInfo({ register, errors, setTab, setValue, getValue
         </div>
         <div className="flex flex-col items-start">
           <label className="font-[400] text-[0.75rem] text-start mb-[2px] text-[#626c78]">
-            {translate("Employee Carousel Hover Image")} <span className="text-red-500">*</span>
+            {translate("Employee Carousel Hover Image")}{" "}
+            <span className="text-red-500">*</span>
           </label>
           <MediaComponent
             title={<ImageInputUI type="large" image={emp_carousel_hov_img} />}
-            handleConfirmImage={() => handleConfirmImage("emp_carousel_hov_img")}
+            handleConfirmImage={() =>
+              handleConfirmImage("emp_carousel_hov_img")
+            }
             open={isEmpCarouselHoverImageOpen}
             setOpen={setIsEmpCarouselHoverImageOpen}
           />
@@ -220,10 +281,16 @@ export default function BasicInfo({ register, errors, setTab, setValue, getValue
         <br />
       </form>
       <div className="flex justify-end w-full md:w-[744px] gap-[1rem] mt-[3rem]">
-        <button className="submit-button text-white" onClick={() => setTab("Message")}>
+        <button
+          className="submit-button text-white"
+          onClick={() => setTab("Message")}
+        >
           {translate("Continue")}
         </button>
-        <button className="px-[20px] py-[8px] bg-slate-400 rounded-[6px]" onClick={() => setTab("BasicInfo")}>
+        <button
+          className="px-[20px] py-[8px] bg-slate-400 rounded-[6px]"
+          onClick={() => setTab("BasicInfo")}
+        >
           {translate("Discard")}
         </button>
       </div>
@@ -239,13 +306,20 @@ const ImageInputUI = ({ type, image }: { type: string; image?: string }) => {
         className={`h-[60px] border border-[#C9CBD1] rounded-[6px] flex items-center justify-center ${type === "small" ? "w-[147px] " : "w-[307px]"}`}
       >
         {image !== undefined ? (
-          <img src={`${IMAGE_BASE_URL}${image}`} alt="Gallery Icon" className="object-contain w-[307px] h-[60px]" crossOrigin="anonymous" />
+          <img
+            src={`${IMAGE_BASE_URL}${image}`}
+            alt="Gallery Icon"
+            className="object-contain w-[307px] h-[60px]"
+            crossOrigin="anonymous"
+          />
         ) : (
           <img src={galleryIcon} alt="Gallery Icon" />
         )}
       </div>
       {type === "large" && (
-        <p className="font-[400] text-[0.75rem] text-start mt-[2px] text-[#626c78]">{translate("Allowed JPG, GIF or PNG. Max size of 1MB")}</p>
+        <p className="font-[400] text-[0.75rem] text-start mt-[2px] text-[#626c78]">
+          {translate("Allowed JPG, GIF or PNG. Max size of 1MB")}
+        </p>
       )}
     </>
   );

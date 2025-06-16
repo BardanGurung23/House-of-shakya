@@ -83,7 +83,8 @@ export default function EditRoles({
   useEffect(() => {
     if (allowableRolesSuccess) {
       const allowedRoles = allowableRoles?.data?.role_actions.map(
-        (each: { role_menu_action: { id: number } }) => each.role_menu_action.id
+        (each: { role_menu_action: { id: number } }) =>
+          each.role_menu_action.id,
       );
       setAccessRoles(allowedRoles);
     }
@@ -135,7 +136,7 @@ export default function EditRoles({
                 className="mt-3"
                 type="checkbox"
                 checked={section.children.every((child) =>
-                  accessRoles.includes(child.id)
+                  accessRoles.includes(child.id),
                 )}
                 onChange={() => handleSelectAll(section)}
               />

@@ -108,7 +108,7 @@ export default function Media() {
   const handleInputKeyDown = async (
     event: React.KeyboardEvent<HTMLInputElement>,
     index: number,
-    id: number
+    id: number,
   ) => {
     if (event.key === "Enter") {
       const body = { name: inputValues[index] };
@@ -190,7 +190,7 @@ export default function Media() {
                   rows={2}
                 />
               </button>
-            )
+            ),
           )}
         </div>
       </div>
@@ -245,7 +245,7 @@ export default function Media() {
                 }
 
                 return null; // Skip other items
-              }
+              },
             )}
 
             {/* Right Arrow */}

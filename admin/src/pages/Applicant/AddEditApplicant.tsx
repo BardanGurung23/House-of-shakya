@@ -57,13 +57,13 @@ export default function AddEditCareer() {
     skip: !isEditMode,
   });
   const { data: careerCategoryData } = useGetApiQuery(
-    `${CAREER_CATEGORY_URL}list`
+    `${CAREER_CATEGORY_URL}list`,
   );
 
   useEffect(() => {
     if (isEditMode && careerData && careerData?.data) {
       const changedMetaKeywords = changeTagType(
-        careerData?.data?.meta_keywords
+        careerData?.data?.meta_keywords,
       );
       reset({ ...careerData?.data, meta_keywords: changedMetaKeywords });
     }
@@ -75,7 +75,7 @@ export default function AddEditCareer() {
       (item: { id: string; name: string }) => ({
         value: item.id,
         label: item.name,
-      })
+      }),
     );
   }, [careerCategoryData]);
 

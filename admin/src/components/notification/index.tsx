@@ -156,7 +156,7 @@ export default function Notification({ setOpen }: NotificationProps) {
                         each.user,
                         each.userId,
                         each.senderId,
-                        each.type
+                        each.type,
                       )
                     : each.message}
                 </h4>

@@ -85,7 +85,7 @@ export default function AddEditTestimonial() {
         (each: { title: string; id: number }) => ({
           label: each.title,
           value: Number(each.id),
-        })
+        }),
       );
       setPortfolioOptions(options);
     }

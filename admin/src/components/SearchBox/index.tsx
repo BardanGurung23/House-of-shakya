@@ -28,7 +28,7 @@ export default function SearchBox() {
 
     if (value.trim() !== "") {
       const matchedRoutes: RouteSuggestionType[] = SideMenuList.filter(
-        (route) => route.name.toLowerCase().includes(value)
+        (route) => route.name.toLowerCase().includes(value),
       ).flatMap((route) => {
         if (!route.menu) {
           return { name: route.name, path: route.path };

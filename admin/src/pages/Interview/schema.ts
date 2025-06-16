@@ -52,6 +52,6 @@ export const QuestionTwoSchema = z.object({
       title: z.string().optional(),
       description: z.string().optional(),
       date: z.string().optional(),
-    })
+    }),
   ),
 });

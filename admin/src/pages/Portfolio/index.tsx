@@ -126,7 +126,7 @@ export default function Portfolio() {
                 />
               )}
             </div>,
-          ]
+          ],
         )
       : [];
   console.log(tableData);

@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 export default function useImageHandler(
   setValue: UseFormSetValue<any>,
   getValues: UseFormGetValues<any>,
-  key: string = "media"
+  key: string = "media",
 ) {
   const dispatch = useDispatch();
 
@@ -15,7 +15,7 @@ export default function useImageHandler(
   const [isImageModelOpen, setIsImageModalOpen] = useState<boolean>(false);
 
   const selectedImage = useAppSelector(
-    (state) => state.media.multipleSelectedImage
+    (state) => state.media.multipleSelectedImage,
   );
 
   const media = getValues(key) || [];
@@ -36,7 +36,7 @@ export default function useImageHandler(
   const handleRemoveButton = (event: React.MouseEvent) => {
     event.preventDefault();
     const filterRemoved = media.filter(
-      (_, index) => index !== currentImageIndex
+      (_, index) => index !== currentImageIndex,
     );
     console.log(filterRemoved);
     setValue(key, filterRemoved, {
@@ -50,7 +50,7 @@ export default function useImageHandler(
     event.preventDefault();
     if (Array.isArray(media) && media.length > 0) {
       setCurrentImageIndex((prevIndex) =>
-        prevIndex === 0 ? media.length - 1 : prevIndex - 1
+        prevIndex === 0 ? media.length - 1 : prevIndex - 1,
       );
     }
   };
@@ -70,7 +70,7 @@ export default function useImageHandler(
 export function useSingleImageHandler<T>(
   setValue: UseFormSetValue<any>,
   getValues: UseFormGetValues<any>,
-  key: keyof T = "imageUrl" as keyof T
+  key: keyof T = "imageUrl" as keyof T,
 ) {
   const dispatch = useDispatch();
 

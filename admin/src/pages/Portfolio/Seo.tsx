@@ -48,7 +48,7 @@ export default function SEO({
   const onSubmit = async (data: any) => {
     data.serviceId = Number(data.serviceId);
     data.core_tech_img = data.core_tech_img.map((item) =>
-      item.split("~!").at(-1)
+      item.split("~!").at(-1),
     );
     try {
       const response = isEditMode

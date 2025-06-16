@@ -9,14 +9,14 @@ export const PortfolioInfoSchema = z.object({
   core_tech_img: z.array(z.string()).optional(),
   projectUrl: z.preprocess(
     (val) => (val === "" ? null : val),
-    z.string().url("Enter valid URL").nullable().optional()
+    z.string().url("Enter valid URL").nullable().optional(),
   ),
   portfolioImages: z.array(z.string().min(1)),
   slug: z
     .string()
     .regex(
       /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
-      "Slug is required and must be in proper format"
+      "Slug is required and must be in proper format",
     ),
 });
 

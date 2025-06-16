@@ -47,13 +47,16 @@ export default function AddEditInterview() {
   const [qnaData, setQnaData] = useState();
   const [timeTableData, setTimeTableData] = useState();
 
-  const { data: interviewDetails, isSuccess: success } = useGetInterviewByIdQuery(id, { skip: id === null || id === undefined });
+  const { data: interviewDetails, isSuccess: success } =
+    useGetInterviewByIdQuery(id, { skip: id === null || id === undefined });
 
   useEffect(() => {
     if (id && interviewDetails?.data) {
       reset({
         ...interviewDetails?.data,
-        entered_date: moment(interviewDetails?.data.entered_date).format("YYYY"),
+        entered_date: moment(interviewDetails?.data.entered_date).format(
+          "YYYY",
+        ),
       });
 
       setEmployeeId(interviewDetails?.data?.id);
@@ -69,7 +72,9 @@ export default function AddEditInterview() {
   };
 
   useEffect(() => {
-    const basicInfoFields = Object.keys(BasicFormSchema.shape) as BasicFormSchemaType[];
+    const basicInfoFields = Object.keys(
+      BasicFormSchema.shape,
+    ) as BasicFormSchemaType[];
 
     setHasBasicInfoErrors(basicInfoFields.some((field) => errors[field]));
   }, [errors]);
@@ -84,7 +89,8 @@ export default function AddEditInterview() {
           }`}
           onClick={() => handleTabChange("BasicInfo")}
         >
-          <BiUser size={20} /> {translate("Basic Info")} {hasBasicInfoErrors && "⚠️"}
+          <BiUser size={20} /> {translate("Basic Info")}{" "}
+          {hasBasicInfoErrors && "⚠️"}
         </button>
         <button
           className={`flex items-center gap-[6px] border px-[20px] py-[0.5rem] rounded-[6px] whitespace-nowrap ${
@@ -98,7 +104,9 @@ export default function AddEditInterview() {
         </button>
         <button
           className={`flex items-center gap-[6px] border px-[20px] py-[0.5rem] rounded-[6px] whitespace-nowrap ${
-            id === null || id === undefined ? "cursor-not-allowed text-gray-400" : "cursor-pointer"
+            id === null || id === undefined
+              ? "cursor-not-allowed text-gray-400"
+              : "cursor-pointer"
           } ${currentTab === "Interview" ? "bg-[#0090DD] text-white" : ""}`}
           onClick={() => handleTabChange("Interview")}
           disabled={id === undefined}
@@ -108,7 +116,14 @@ export default function AddEditInterview() {
         </button>
       </div>
       {currentTab === "BasicInfo" && (
-        <BasicInfo register={register} errors={errors} setTab={setCurrentTab} setValue={setValue} getValues={getValues} control={control} />
+        <BasicInfo
+          register={register}
+          errors={errors}
+          setTab={setCurrentTab}
+          setValue={setValue}
+          getValues={getValues}
+          control={control}
+        />
       )}
       {currentTab === "Message" && (
         <Message
@@ -121,7 +136,13 @@ export default function AddEditInterview() {
           setError={setError}
         />
       )}
-      {currentTab === "Interview" && <InterviewQuestion employeeId={employeeId} qnaData={qnaData} timeTableData={timeTableData} />}
+      {currentTab === "Interview" && (
+        <InterviewQuestion
+          employeeId={employeeId}
+          qnaData={qnaData}
+          timeTableData={timeTableData}
+        />
+      )}
     </div>
   );
 }

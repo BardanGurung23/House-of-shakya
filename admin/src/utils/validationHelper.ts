@@ -7,7 +7,11 @@ export const trimFormData = <T extends Record<string, any>>(data: T): T => {
       result[key as keyof T] = value.trim() as T[keyof T];
     } else if (Array.isArray(value)) {
       result[key as keyof T] = value.map((item) =>
-        typeof item === "object" ? trimFormData(item) : typeof item === "string" ? item.trim() : item
+        typeof item === "object"
+          ? trimFormData(item)
+          : typeof item === "string"
+            ? item.trim()
+            : item,
       ) as T[keyof T];
     } else if (typeof value === "object" && value !== null) {
       result[key as keyof T] = trimFormData(value) as T[keyof T];

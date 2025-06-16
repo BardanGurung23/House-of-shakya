@@ -193,7 +193,7 @@ export default function ApproveRequest() {
                   );
                 }
                 return null;
-              }
+              },
             )}
 
             <button

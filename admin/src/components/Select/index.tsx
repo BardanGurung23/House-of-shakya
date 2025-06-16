@@ -15,7 +15,7 @@ interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (
     { label, error, className, leftSection, rightSection, options, ...rest },
-    ref
+    ref,
   ) => {
     const translate = useTranslation();
     return (
@@ -76,7 +76,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Select.displayName = "Select"; // Needed for forwardRef components

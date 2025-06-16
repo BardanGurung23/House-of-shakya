@@ -54,7 +54,7 @@ export default function MediaImages() {
   }, [media, mediaSuccess]);
 
   const handleFileSelect = async (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const files = event.target.files;
     if (!files || files.length === 0) return;
@@ -87,7 +87,7 @@ export default function MediaImages() {
   const handleInputKeyDown = async (
     event: React.KeyboardEvent<HTMLInputElement>,
     index: number,
-    id: number
+    id: number,
   ) => {
     if (event.key === "Enter") {
       const body = { name: inputValues[index] };
@@ -205,7 +205,7 @@ export default function MediaImages() {
                 onKeyDown={(e) => handleInputKeyDown(e, index, each.id)}
               />
             </div>
-          )
+          ),
         )}
       </div>
       {/* Pagination */}

@@ -1,114 +1,112 @@
 .core-value-main {
-    height: 100%;
+  height: 100%;
+  width: 100%;
+  margin-top: 3rem;
+
+  .core-value-image {
+    background-image: url("/companybanner.png");
+    background-position: 50% 50%;
+    background-size: cover;
+    display: flex;
+    left: 0;
+    top: 0;
     width: 100%;
-    margin-top: 3rem;
 
-    .core-value-image {
-        background-image: url("/companybanner.png");
-        background-position: 50% 50%;
-        background-size: cover;
+    .core-value-frame {
+      display: flex;
+      gap: 3rem;
+      padding: 2rem 8rem;
+
+      .core-value-heading {
+        width: 40%;
         display: flex;
-        left: 0;
-        top: 0;
-        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
 
-        .core-value-frame {
-            display: flex;
-            gap: 3rem;
-            padding: 2rem 8rem;
-
-            .core-value-heading {
-                width: 40%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                gap: 1rem;
-
-                .core-value-title {
-                    color: #000000;
-                    font-family: "Lexend Deca", sans-serif !important;
-                    font-size: 2rem;
-                    line-height: 2rem;
-                }
-
-                @media (max-width: 767.98px) {
-                    .core-value-title {
-                        font-size: 1.25rem;
-                    }
-                }
-
-                .core-value-small-title {
-                    color: #000000;
-                    font-size: 1.25rem;
-                    font-weight: 400;
-                    line-height: 2rem;
-                }
-
-                @media (max-width: 767.98px) {
-                    .core-value-small-title {
-                        font-size: 1rem;
-                    }
-                }
-            }
-
-            @media (max-width: 767.98px) {
-                .core-value-heading {
-                    width: 100%;
-                    gap: 0rem;
-                    align-items: center;
-                    justify-content: center;
-
-                }
-            }
-
-            .core-value-description {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 60%;
-
-                .core-value-p {
-                    color: #000000;
-                    font-family: "Avenir-Light", Helvetica;
-                    font-size: 1.25rem;
-                    font-weight: 400;
-                    line-height: 2rem;
-                    text-align: justify;
-                }
-                @media (max-width: 767.98px){
-                    .core-value-p {
-                        color: #000000;
-                        font-size: 0.9rem;
-                        line-height: 1.5rem;
-                    }
-            }
-            }
-
-            @media (max-width: 767.98px) {
-                .core-value-description {
-                    padding: 1rem 1rem;
-                    width: 100%;
-                    align-items: center;
-                    justify-content: center;
-
-                }
-            }
+        .core-value-title {
+          color: #000000;
+          font-family: "Lexend Deca", sans-serif !important;
+          font-size: 2rem;
+          line-height: 2rem;
         }
 
         @media (max-width: 767.98px) {
-            .core-value-frame {
-                display: flex;
-                flex-direction: column;
-                gap: 0rem;
-                padding: 1rem 1rem;
-            }
+          .core-value-title {
+            font-size: 1.25rem;
+          }
         }
 
-        @media (min-width: 768px) and (max-width: 1366px) {
-            .core-value-frame {
-                padding: 3rem 2rem;
-                gap: 1rem;
-            }
+        .core-value-small-title {
+          color: #000000;
+          font-size: 1.25rem;
+          font-weight: 400;
+          line-height: 2rem;
         }
+
+        @media (max-width: 767.98px) {
+          .core-value-small-title {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      @media (max-width: 767.98px) {
+        .core-value-heading {
+          width: 100%;
+          gap: 0rem;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      .core-value-description {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+
+        .core-value-p {
+          color: #000000;
+          font-family: "Avenir-Light", Helvetica;
+          font-size: 1.25rem;
+          font-weight: 400;
+          line-height: 2rem;
+          text-align: justify;
+        }
+        @media (max-width: 767.98px) {
+          .core-value-p {
+            color: #000000;
+            font-size: 0.9rem;
+            line-height: 1.5rem;
+          }
+        }
+      }
+
+      @media (max-width: 767.98px) {
+        .core-value-description {
+          padding: 1rem 1rem;
+          width: 100%;
+          align-items: center;
+          justify-content: center;
+        }
+      }
     }
+
+    @media (max-width: 767.98px) {
+      .core-value-frame {
+        display: flex;
+        flex-direction: column;
+        gap: 0rem;
+        padding: 1rem 1rem;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1366px) {
+      .core-value-frame {
+        padding: 3rem 2rem;
+        gap: 1rem;
+      }
+    }
+  }
 }

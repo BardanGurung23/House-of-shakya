@@ -146,7 +146,7 @@ export default function Users() {
                 />
               )}
             </div>,
-          ]
+          ],
         )
       : [];
   // return ui
@@ -168,7 +168,7 @@ export default function Users() {
         toggleViewType={toggleViewType}
         hasSubText
         subText={translate(
-          "Add Comprehensive Client Information in Each Section"
+          "Add Comprehensive Client Information in Each Section",
         )}
       />
       {accessList.includes("view") ? (
@@ -204,7 +204,7 @@ export default function Users() {
                     email={email}
                     mobileNo={mobileNo}
                   />
-                )
+                ),
               )}
             </div>
           )}

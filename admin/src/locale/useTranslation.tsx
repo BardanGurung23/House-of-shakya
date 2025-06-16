@@ -11,7 +11,7 @@ const getTranslation = (key: string): React.ReactNode => {
       const normalizedKey = key.toLowerCase();
       // change the keys of the lang to lowercase
       const normalizedTranslation = Object.fromEntries(
-        Object.entries(translations).map(([k, v]) => [k.toLowerCase(), v])
+        Object.entries(translations).map(([k, v]) => [k.toLowerCase(), v]),
       );
 
       // check if the translation includes the key

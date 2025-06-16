@@ -26,13 +26,13 @@ export default function Blog() {
         const data = await getDataClient(
           `blog/list?${
             activeCategory ? `blogCategoryId=${activeCategory}` : ""
-          }`
+          }`,
         );
         setBlogs(data.data);
       }
       fetchInit();
     },
-    [activeCategory]
+    [activeCategory],
   );
 
   useEffect(function () {

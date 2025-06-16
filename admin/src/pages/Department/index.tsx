@@ -67,14 +67,14 @@ export default function Department() {
       setSelected([]);
     } else {
       setSelected(
-        allDepartments?.data?.data?.map((item: any) => item.id) || []
+        allDepartments?.data?.data?.map((item: any) => item.id) || [],
       );
     }
   };
 
   const toggleAll = (id: number) => {
     setSelected((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
     );
   };
 
@@ -163,7 +163,7 @@ export default function Department() {
                 />
               )}
             </div>,
-          ]
+          ],
         )
       : [];
   return (

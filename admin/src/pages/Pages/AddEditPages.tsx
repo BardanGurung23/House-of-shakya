@@ -93,7 +93,7 @@ export default function AddEditPages() {
       { name: "meta_keywords", label: "Meta Keywords", Component: MultiInput },
       // { name: "page_description", label: "Description", Component: TextArea },
     ],
-    []
+    [],
   );
 
   return (

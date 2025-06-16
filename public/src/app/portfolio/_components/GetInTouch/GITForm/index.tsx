@@ -40,7 +40,7 @@ export default function GITForm() {
     (
       event:
         | React.ChangeEvent<HTMLInputElement>
-        | React.ChangeEvent<HTMLTextAreaElement>
+        | React.ChangeEvent<HTMLTextAreaElement>,
     ) => {
       setContact({ ...contact, [full_name]: event.target.value });
       setErrors({ ...errors, [full_name]: "" });

@@ -11,7 +11,7 @@ export default function ActiveEmailTemplate() {
     useListActiveEmailTemplateMutation();
 
   const [currentTemplateKey, setCurrentTemplateKey] = useState<string | null>(
-    null
+    null,
   );
 
   const [activateEmail] = useActiveEmailTemplateMutation();

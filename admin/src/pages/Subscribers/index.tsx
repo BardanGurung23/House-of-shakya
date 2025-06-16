@@ -45,7 +45,7 @@ export default function Subscribers() {
   const handleDelete = async () => {
     try {
       const response = await deleteBanner(
-        `${SUBSCRIBERS_URL}${deleteId}`
+        `${SUBSCRIBERS_URL}${deleteId}`,
       ).unwrap();
       handleResponse({
         res: response,

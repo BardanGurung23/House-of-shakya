@@ -48,8 +48,8 @@ export default function Drawer({
         isOpen
           ? "transform translate-x-0"
           : position === "right"
-          ? "transform translate-x-full"
-          : "transform -translate-x-full"
+            ? "transform translate-x-full"
+            : "transform -translate-x-full"
       } ${width} ${className}`}
     >
       {/* Close button inside the drawer */}

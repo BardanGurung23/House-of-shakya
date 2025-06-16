@@ -57,7 +57,7 @@ export default function AddEditService() {
             title: each.title,
             choosed: each.technologies.map((each) => each.id),
           };
-        }
+        },
       );
       reset({
         ...response,
@@ -78,10 +78,10 @@ export default function AddEditService() {
 
   useEffect(() => {
     const overviewFields = Object.keys(
-      OverviewSchema.shape
+      OverviewSchema.shape,
     ) as OverviewFormType[];
     const techInfoField = Object.keys(
-      TechInfoSchema.shape
+      TechInfoSchema.shape,
     ) as TechInfoFormType[];
 
     setHasOverviewError(overviewFields.some((field) => errors[field]));

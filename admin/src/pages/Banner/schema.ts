@@ -9,6 +9,6 @@ export const BannerSchema = z.object({
       caption: z.string().optional(),
       title: z.string().min(1, "Title is Required"),
       subTitle: z.string().min(1, "Sub Title is Required"),
-    })
+    }),
   ),
 });

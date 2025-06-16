@@ -24,7 +24,7 @@ export const UseCases = ({
             img_path: string;
           }) => (
             <UseCard {...useCase} />
-          )
+          ),
         )}
       </div>
     </section>

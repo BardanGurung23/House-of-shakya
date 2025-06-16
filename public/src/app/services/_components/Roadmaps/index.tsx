@@ -70,7 +70,7 @@ export const Roadmaps = () => {
             <PhaseLeft {...data} SN={i + 1} />
           ) : (
             <PhaseRight SN={i + 1} {...data} />
-          )
+          ),
         )}
       </div>
     </section>

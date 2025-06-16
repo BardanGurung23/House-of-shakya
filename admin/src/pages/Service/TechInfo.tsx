@@ -79,7 +79,7 @@ export default function TechInfo({
       (item: { id: string; name: string }) => ({
         value: item.id,
         label: item.name,
-      })
+      }),
     );
   }, [allTechnologies]);
 
@@ -253,7 +253,7 @@ function UseCase({
   };
 
   const filteredIcons = icons.filter((icon) =>
-    icon.toLowerCase().includes(searchQuery.toLowerCase())
+    icon.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   const handleRemoveButton = (event: React.FormEvent) => {

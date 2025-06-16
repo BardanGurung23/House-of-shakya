@@ -81,7 +81,7 @@ export default function PortfolioInfo({
       (item: { image: string; name: string; id: number }) => ({
         value: `${item.id}~!${item.image}`,
         label: item.name,
-      })
+      }),
     );
   }, [allTechnologies]);
 
@@ -91,7 +91,7 @@ export default function PortfolioInfo({
         (each: { name: string; id: number }) => ({
           label: each.name,
           value: Number(each.id),
-        })
+        }),
       );
       setServiceOptions(options);
     }

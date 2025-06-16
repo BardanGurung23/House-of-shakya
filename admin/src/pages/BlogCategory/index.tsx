@@ -46,7 +46,7 @@ export default function BlogCategory() {
   const handleDelete = async () => {
     try {
       const response = await deleteBanner(
-        `${BLOG_CATEGORY_URL}${deleteId}`
+        `${BLOG_CATEGORY_URL}${deleteId}`,
       ).unwrap();
       handleResponse({
         res: response,

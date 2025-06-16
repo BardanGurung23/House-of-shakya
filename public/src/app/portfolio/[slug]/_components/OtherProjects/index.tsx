@@ -29,7 +29,7 @@ export default async function OtherProjects({
   const data = await getData("portfolio/list");
   const unFiltered = data.data.data;
   const filtered: PortfolioItem[] = unFiltered.filter(
-    (portfolio) => portfolio.id != currentPortfolioId
+    (portfolio) => portfolio.id != currentPortfolioId,
   );
 
   if (filtered.length == 0) return;

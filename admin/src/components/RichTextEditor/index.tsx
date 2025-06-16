@@ -316,18 +316,18 @@ export default function RichTextEditor({
                   <CKEditor
                     onReady={(editor) => {
                       editorToolbarRef.current.appendChild(
-                        editor.ui.view.toolbar.element
+                        editor.ui.view.toolbar.element,
                       );
                       editorMenuBarRef.current.appendChild(
-                        editor.ui.view.menuBarView.element
+                        editor.ui.view.menuBarView.element,
                       );
                     }}
                     onAfterDestroy={() => {
                       Array.from(editorToolbarRef.current.children).forEach(
-                        (child) => child.remove()
+                        (child) => child.remove(),
                       );
                       Array.from(editorMenuBarRef.current.children).forEach(
-                        (child) => child.remove()
+                        (child) => child.remove(),
                       );
                     }}
                     editor={DecoupledEditor}

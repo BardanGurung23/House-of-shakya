@@ -73,7 +73,7 @@ export default function MediaComponent({
   const selectedImage = useAppSelector((state) =>
     isMultiSelect
       ? state.media.multipleSelectedImage
-      : state.media.selectedImage
+      : state.media.selectedImage,
   );
 
   const { data: mediaCategoryList } = useListAllMediaQuery("");
@@ -87,7 +87,7 @@ export default function MediaComponent({
     { id: currentFolder, pageNumber },
     {
       skip: currentFolder === null,
-    }
+    },
   );
 
   useEffect(() => {
@@ -138,7 +138,7 @@ export default function MediaComponent({
   };
 
   const handleFileSelect = async (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const files = event.target.files;
     if (files && files.length > 0) {
@@ -171,7 +171,7 @@ export default function MediaComponent({
   const handleInputKeyDown = async (
     event: React.KeyboardEvent<HTMLInputElement>,
     index: number,
-    id: number
+    id: number,
   ) => {
     if (event.key === "Enter") {
       const body = { name: inputValues[index] };
@@ -308,7 +308,7 @@ export default function MediaComponent({
                         rows={3}
                       />
                     </button>
-                  )
+                  ),
                 )}
               {currentFolder !== null && (
                 <>
@@ -316,7 +316,7 @@ export default function MediaComponent({
                     {media?.data?.data.map(
                       (
                         each: { id: number; path: string; name: string },
-                        index: number
+                        index: number,
                       ) => (
                         <button
                           className={`relative border w-fit px-[0.5rem] md:px-[1.5rem] pt-[1.5rem] pb-[1rem] cursor-pointer ${
@@ -340,7 +340,7 @@ export default function MediaComponent({
                             {each.name}
                           </p>
                         </button>
-                      )
+                      ),
                     )}
                   </div>
                   {/*  Pagination */}

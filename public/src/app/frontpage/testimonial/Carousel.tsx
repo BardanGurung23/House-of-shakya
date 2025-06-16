@@ -100,7 +100,7 @@ const Carousel: React.FC<PropType> = (props) => {
               key={index}
               onClick={() => onDotButtonClick(index)}
               className={"embla__dot1".concat(
-                index === selectedIndex ? " embla__dot--selected1" : ""
+                index === selectedIndex ? " embla__dot--selected1" : "",
               )}
             >
               <GoDotFill />

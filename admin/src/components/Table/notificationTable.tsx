@@ -59,8 +59,8 @@ export default function NotificationTable({
                         each.status === "Approved"
                           ? "bg-[#0090dd]"
                           : each.status === "Pending"
-                          ? "bg-[#FF80C5]"
-                          : "bg-[#c6362a]"
+                            ? "bg-[#FF80C5]"
+                            : "bg-[#c6362a]"
                       }`}
                     />
                     {/* <div>
@@ -114,8 +114,8 @@ export default function NotificationTable({
                         each.status === "Approved"
                           ? "bg-[#0090dd]"
                           : each.status === "Pending"
-                          ? "bg-[#FF80C5]"
-                          : "bg-[#c6362a]"
+                            ? "bg-[#FF80C5]"
+                            : "bg-[#c6362a]"
                       }`}
                     />
                     {/* <div>

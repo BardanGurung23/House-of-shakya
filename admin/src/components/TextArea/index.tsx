@@ -16,7 +16,7 @@ interface TextAreaProps
 const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (
     { label, error, className, leftSection, rightSection, isRequired, ...rest },
-    ref
+    ref,
   ) => {
     const translate = useTranslation();
     return (
@@ -47,7 +47,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 TextArea.displayName = "TextArea"; // Needed for forwardRef components

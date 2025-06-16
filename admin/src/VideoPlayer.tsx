@@ -1,9 +1,12 @@
-import  { useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 const VideoPlayer = () => {
   const videoRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
-const fetchUrl = "videos/1744181761820-0a0xewbf-Order_APIs-20231001_164014-Meeting_Recording.mp4".split("videos/")
+  const fetchUrl =
+    "videos/1744181761820-0a0xewbf-Order_APIs-20231001_164014-Meeting_Recording.mp4".split(
+      "videos/",
+    );
   const videoUrl = `http://localhost:8080/video/${fetchUrl[1]}`;
 
   const handleLoadedData = () => {

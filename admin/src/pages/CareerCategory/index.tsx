@@ -46,7 +46,7 @@ export default function CareerCategory() {
   const handleDelete = async () => {
     try {
       const response = await deleteBanner(
-        `${CAREER_CATEGORY_URL}${deleteId}`
+        `${CAREER_CATEGORY_URL}${deleteId}`,
       ).unwrap();
       handleResponse({
         res: response,
