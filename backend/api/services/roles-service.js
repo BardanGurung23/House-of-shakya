@@ -40,7 +40,13 @@ const findAllRoles = async (req) => {
   try {
     let returnData = { ...generalConstant.EN.SERVER_ERROR };
     let { limit, page, title } = req.query;
-    const filters = { isDeleted: false, isActive: true };
+    const filters = {
+      isDeleted: false,
+      isActive: true,
+      title: {
+        [Op.ne]: "Super Admin",
+      },
+    };
     const include = [];
 
     if (title) {
@@ -111,7 +117,12 @@ const editSingleRole = async (req) => {
   const transaction = await sequelize.transaction();
   try {
     const roleId = +req.params.id;
-
+    if (roleId === 1) {
+      return {
+        ...generalConstant.EN.ROLES.SUPERADMIN_CANNOT_UPDATE,
+        data: null,
+      };
+    }
     // Validate the existence of the role
     const role = await roleModel.findOne({
       where: { id: roleId, isDeleted: false },
@@ -186,6 +197,13 @@ const deleteSingleRole = async (req) => {
     const roleId = +req.params.id;
 
     // Check if the role exists and is not deleted
+
+     if (roleId === 1) {
+      return {
+        ...generalConstant.EN.ROLES.SUPERADMIN_CANNOT_UPDATE,
+        data: null,
+      };
+    }
     const role = await roleModel.findOne({
       where: { id: roleId, isDeleted: false },
     });

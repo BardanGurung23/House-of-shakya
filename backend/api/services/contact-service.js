@@ -14,11 +14,12 @@ const create = async (req) => {
       };
     }
 
-    const placeholders = {
+   const placeholders = {
       name: `${req.body.full_name}`,
+      email: `${req.body.email}`,
     };
 
-    await sendMail("Contact Enquiry", placeholders, req.body.email);
+    await sendMail("contactEnquiry", placeholders, req.body.email);
 
     return {
       ...generalConstant.EN.CONTACT.CREATE_CONTACT_SUCCESS,

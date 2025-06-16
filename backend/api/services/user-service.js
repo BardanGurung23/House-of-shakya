@@ -17,7 +17,6 @@ const {
   blogModel,
 } = require("../../models");
 const { Op } = require("sequelize");
-const sequelize = require("../../models/index");
 const {
   createSessionLog,
   findSingleUserLog,
@@ -151,6 +150,19 @@ const createUser = async (req, res, next) => {
     let returnData = { ...generalConstant.EN.SERVER_ERROR };
     req.body.password = await hashPassword(req.body.password);
     req.body.addedBy = +req.user.id;
+    
+    // Check if username already exists
+
+        const existingUser = await userModel.findOne({
+      where: { username: req.body.username, isDeleted: false },
+    });
+
+    if (existingUser) {
+      return {
+        ...generalConstant.EN.USERS.USER_NAME_EXISTS,
+        data: null,
+      };
+    }
 
     //checking roleId
     if (req.body.roleId) {
