@@ -1,6 +1,6 @@
 const generalConstant = require("../../constants/general-constant");
 const { contactModel } = require("../../models");
-const { sendMail } = require("../../utils/mailer");
+const { sendMail } = require("../../helpers/mailer/mailer");
 const paginate = require("../../utils/paginate");
 
 const create = async (req) => {

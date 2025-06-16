@@ -1,7 +1,7 @@
 const { careerModel, applicantModel } = require("../../models");
 const generalConstant = require("../../constants/general-constant");
 const paginate = require("../../utils/paginate");
-const { sendMail } = require("../../utils/mailer");
+const { sendMail } = require("../../helpers/mailer/mailer");
 
 // // public api for career
 const applyCareer = async (req) => {

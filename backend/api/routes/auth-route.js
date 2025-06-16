@@ -30,7 +30,7 @@ const {
   idValidation,
   paginationValidation,
 } = require("../../validations/common-validation");
-const { loginLimiter } = require("../../utils/loginRateLimit");
+const { loginAttemptMiddleware } = require("../../utils/loginRateLimit");
 
 router.post(
   "/create",
@@ -108,7 +108,7 @@ router.get(
   authGetUser,
 );
 
-router.post("/login", loginLimiter, loginValidation, authLogin);
+router.post("/login", loginAttemptMiddleware, loginValidation, authLogin);
 router.post("/logout", authentication, authLogout);
 
 module.exports = router;

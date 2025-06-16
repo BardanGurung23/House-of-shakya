@@ -24,7 +24,7 @@ const {
 router.post(
   "/",
   authentication,
-  // authorization,
+  authorization,
   pagesPostValidation,
   create,
 );

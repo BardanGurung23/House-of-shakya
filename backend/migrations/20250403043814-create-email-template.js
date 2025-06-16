@@ -17,17 +17,9 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      information: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
       variables: {
         type: Sequelize.JSON,
         allowNull: true,
-      },
-      from: {
-        type: Sequelize.STRING,
-        allowNull: false,
       },
       subject: {
         type: Sequelize.STRING,

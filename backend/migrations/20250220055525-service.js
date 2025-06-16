@@ -52,7 +52,7 @@ module.exports = {
         allowNull: true,
       },
       summary: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false,
       },
       createdAt: {

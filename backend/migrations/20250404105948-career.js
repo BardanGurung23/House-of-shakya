@@ -13,6 +13,12 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      slug:{
+      type: Sequelize.STRING,
+      allowNull: false,
+      defaultValue: "NAN",
+      unique: true,
+      },
       no_of_opening: {
         type: Sequelize.INTEGER,
         allowNull: false,
