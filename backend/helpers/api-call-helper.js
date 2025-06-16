@@ -1,7 +1,9 @@
 const axios = require("axios");
-const { actionRequestModel, userModel } = require("../models"); // Adjust the path as needed
+const { actionRequestModel, userModel } = require("../models");
 const { sendNotification } = require("../helpers/send-notification");
 const { EN } = require("../constants/message-constant");
+const { sendMail } = require("../helpers/mailer/mailer");
+
 /**
  * Executes a dynamic API call based on the stored ActionRequest.
  * @param {number} actionRequestId - The ID of the ActionRequest to execute.
@@ -28,8 +30,11 @@ const executeApiCall = async (actionRequestId, token) => {
         endpoint = endpoint.replace(`:${key}`, value);
       });
     }
-    // let url = new URL(`/api/v1${endpoint}`, "http://backend:3333/api/v1");
-    let url = new URL(`/api/v1${endpoint}`, "http://localhost:8080/api/v1");
+    //prod
+    let url = new URL(`/api/v1${endpoint}`, "http://backend:3333/api/v1");
+
+    //dev
+    // let url = new URL(`/api/v1${endpoint}`, "http://localhost:8080/api/v1");
 
     if (query) {
       Object.entries(query).forEach(([key, value]) => {
@@ -48,14 +53,20 @@ const executeApiCall = async (actionRequestId, token) => {
     });
 
     const updated = await actionRequest.update({ status: "Approved" });
-    const user = await userModel.findByPk(actionRequest.userId);
+    const user = await userModel.findByPk(actionRequest.userId, {
+      include: {
+        model: userModel,
+        as: "supervisor",
+      },
+    });
     if (!user) {
       return {
         status: 404,
         success: false,
-        message: "User not found",
+        msg: "User not found",
       };
     }
+    // websocket notification
     await sendNotification(
       user.username,
       actionRequest.userId,
@@ -65,6 +76,21 @@ const executeApiCall = async (actionRequestId, token) => {
       actionRequest.id,
     );
 
+    //email notification
+    const placeholders = {
+      name: user.username,
+      senderUserName: user?.supervisor?.username,
+      requestId: actionRequest.id.toString(),
+      email: user.email,
+      supervisorId: user.supervisorId,
+    };
+
+    sendMail("requestApprovalSuccess", placeholders, user.email).catch(
+      (error) => {
+        // Log the error without throwing it further
+        console.error("Mail sending error:", error);
+      },
+    );
     return {
       success: true,
       data: updated,
@@ -77,12 +103,17 @@ const executeApiCall = async (actionRequestId, token) => {
     const actionRequest = await actionRequestModel.findOne({
       where: { id: actionRequestId },
     });
-    const user = await userModel.findByPk(actionRequest.userId);
+    const user = await userModel.findByPk(actionRequest.userId, {
+      include: {
+        model: userModel,
+        as: "supervisor",
+      },
+    });
     if (!user) {
       return {
         status: 404,
         success: false,
-        message: "User not found",
+        msg: "User not found",
       };
     }
     await sendNotification(
@@ -94,11 +125,23 @@ const executeApiCall = async (actionRequestId, token) => {
       actionRequest.id,
     );
 
+    const placeholders = {
+      name: user.username,
+      senderUserName: user?.supervisor?.username,
+      requestId: actionRequest.id.toString(),
+      email: user.email,
+      supervisorId: user.supervisorId,
+    };
+    sendMail("Rejected", placeholders, user.email).catch((error) => {
+      // Log the error without throwing it further
+      console.error("Mail sending error:", error);
+    });
+
     return {
       status: error?.status || 500,
       success: error.response?.data?.success,
       data: updated,
-      msg: error.response.data.message,
+      msg: error?.response?.data.message,
       // "An error occurred while executing the API call",
     };
   }
@@ -112,16 +155,21 @@ const reject = async (actionRequest) => {
     return {
       status: 400,
       success: false,
-      message: "Action request has already been processed",
+      msg: "Action request has already been processed",
     };
   }
   const updated = await actionRequest.update({ status: "Rejected" });
-  const user = await userModel.findByPk(actionRequest.userId);
+  const user = await userModel.findByPk(actionRequest.userId, {
+    include: {
+      model: userModel,
+      as: "supervisor",
+    },
+  });
   if (!user) {
     return {
       status: 404,
       success: false,
-      message: "User not found",
+      msg: "User not found",
     };
   }
   await sendNotification(
@@ -133,11 +181,23 @@ const reject = async (actionRequest) => {
     actionRequest.id,
   );
 
+  const placeholders = {
+    name: user.username,
+    senderUserName: user?.supervisor?.username,
+    requestId: actionRequest.id.toString(),
+    email: user.email,
+    supervisorId: user?.supervisorId,
+  };
+  sendMail("Rejected", placeholders, user.email).catch((error) => {
+    // Log the error without throwing it further
+    console.error("Mail sending error:", error);
+  });
+
   return {
     status: 200,
     success: true,
     data: updated,
-    message: "Action Request Rejected Successfully",
+    msg: "Action Request Rejected Successfully",
   };
 };
 
