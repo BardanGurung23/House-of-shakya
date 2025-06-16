@@ -52,7 +52,7 @@ router.put(
 router.get(
   "/list",
   authentication,
-  // authorization,
+  authorization,
   paginationValidation,
   authListUser,
 );
@@ -67,7 +67,7 @@ router.put(
 router.put(
   "/reset-password/:id",
   authentication,
-  // authorization,
+  authorization,
   idValidation,
   passwordValidation,
   resetPassword,
@@ -76,7 +76,7 @@ router.put(
 router.delete(
   "/:id",
   authentication,
-  // authorization,
+  authorization,
   idValidation,
   deleteUserValidation,
   authDeleteUser,
@@ -85,7 +85,7 @@ router.delete(
 router.put(
   "/:id",
   authentication,
-  // authorization,
+  authorization,
   idValidation,
   updateUserValidation,
   authUpdateUser,
@@ -103,7 +103,7 @@ router.patch(
 router.get(
   "/:id",
   authentication,
-  // authorization,
+  authorization,
   idValidation,
   authGetUser,
 );

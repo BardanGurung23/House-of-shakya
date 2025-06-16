@@ -37,7 +37,7 @@ router.get("/page/:slug", getBySlug);
 router.put(
   "/:id",
   authentication,
-  // authorization,
+  authorization,
   idValidation,
   pagesPutValidation,
   update,
@@ -46,7 +46,7 @@ router.put(
 router.delete(
   "/:id",
   authentication,
-  // authorization,
+  authorization,
   deletePage,
 );
 module.exports = router;

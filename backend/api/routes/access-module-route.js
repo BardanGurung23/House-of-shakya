@@ -16,21 +16,21 @@ const { paginationValidation } = require("../../validations/common-validation");
 router.get(
   "/role-menu-action/list",
   authentication,
-  // authorization,
+  authorization,
   getAllRoleMenuAction,
 );
 
 router.get(
   "/role-menu-action/:id",
   authentication,
-  // authorization,
+  authorization,
   getRoleMenuActions,
 );
 
 router.get(
   "/allowable-actions/:id",
   authentication,
-  // authorization,
+  authorization,
   getRoleAllowableActions,
 );
 
@@ -39,7 +39,7 @@ router.get("/role-actions", authentication, authorization, getRoleActions);
 router.get(
   "/",
   authentication,
-  // authorization,
+  authorization,
   paginationValidation,
   getAccessModules,
 );

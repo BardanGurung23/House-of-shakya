@@ -26,7 +26,7 @@ const {
 router.post(
   "/",
   authentication,
-  // authorization,
+  authorization,
   portfolioCategoryPostValidation,
   create,
 );
@@ -38,7 +38,7 @@ router.get("/:id", idValidation, getById);
 router.put(
   "/:id",
   authentication,
-  // authorization,
+  authorization,
   idValidation,
   portfolioCategoryPutValidation,
   update,
@@ -47,7 +47,7 @@ router.put(
 router.delete(
   "/:id",
   authentication,
-  // authorization,
+  authorization,
   remove,
 );
 

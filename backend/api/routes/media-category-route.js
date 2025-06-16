@@ -22,7 +22,7 @@ const {
 router.post(
   "/",
   authentication,
-  // authorization,
+  authorization,
   mediaCategoryPostValidation,
   createMediaCategory,
 );
@@ -31,7 +31,7 @@ router.get("/list", paginationValidation, list);
 router.get(
   "/:id",
   authentication,
-  // authorization,
+  authorization,
   idValidation,
   getById,
 );
@@ -39,7 +39,7 @@ router.get(
 router.put(
   "/:id",
   authentication,
-  // authorization,
+  authorization,
   idValidation,
   mediaCategoryPutValidation,
   update,
@@ -48,7 +48,7 @@ router.put(
 router.delete(
   "/:id",
   authentication,
-  // authorization,
+  authorization,
   deleteMediaCategory,
 );
 module.exports = router;

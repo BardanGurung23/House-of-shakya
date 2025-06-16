@@ -22,7 +22,7 @@ const {
 router.post(
   "/",
   authentication,
-  // authorization,
+  authorization,
   faqPostValidation,
   create,
 );
@@ -33,7 +33,7 @@ router.get("/:id", idValidation, getById);
 router.put(
   "/:id",
   authentication,
-  // authorization,
+  authorization,
   idValidation,
   faqPutValidation,
   update,
@@ -42,7 +42,7 @@ router.put(
 router.delete(
   "/:id",
   authentication,
-  // authorization,
+  authorization,
   deleteFaq,
 );
 module.exports = router;

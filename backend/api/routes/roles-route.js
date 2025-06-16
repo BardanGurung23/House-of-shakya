@@ -54,7 +54,7 @@ router.put(
 router.delete(
   "/:id",
   authentication,
-  // authorization,
+  authorization,
   rolesDetailViewValidation,
   deleteRoleSingle,
 );

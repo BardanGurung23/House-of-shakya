@@ -52,7 +52,7 @@ router.post("/upload-video", authentication, uploadVideo, uploadMedia);
 router.post(
   "/",
   authentication,
-  // authorization,
+  authorization,
   upload,
   uploadMedia,
 );
@@ -62,7 +62,7 @@ router.get("/:id", idValidation, getById);
 router.put(
   "/change-name/:id",
   authentication,
-  // authorization,
+  authorization,
   changeNameValidation,
   changeName,
 );
@@ -70,14 +70,14 @@ router.put(
 router.delete(
   "/bulk-delete",
   authentication,
-  // authorization,
+  authorization,
   mediaBulkDeleteValidation,
   bulkDelete,
 );
 router.delete(
   "/:id",
   authentication,
-  // authorization,
+  authorization,
   idValidation,
   deleteMedia,
 );
