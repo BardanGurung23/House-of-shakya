@@ -49,13 +49,7 @@ router.post(
 );
 
 router.post("/upload-video", authentication, uploadVideo, uploadMedia);
-router.post(
-  "/",
-  authentication,
-  authorization,
-  upload,
-  uploadMedia,
-);
+router.post("/", authentication, authorization, upload, uploadMedia);
 
 router.get("/list", paginationValidation, list);
 router.get("/:id", idValidation, getById);
@@ -74,12 +68,6 @@ router.delete(
   mediaBulkDeleteValidation,
   bulkDelete,
 );
-router.delete(
-  "/:id",
-  authentication,
-  authorization,
-  idValidation,
-  deleteMedia,
-);
+router.delete("/:id", authentication, authorization, idValidation, deleteMedia);
 
 module.exports = router;

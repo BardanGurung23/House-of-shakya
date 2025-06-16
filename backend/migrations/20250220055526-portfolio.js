@@ -40,9 +40,9 @@ module.exports = {
         type: Sequelize.JSON,
         allowNull: false,
       },
-      projectUrl:{
-         type: Sequelize.TEXT,
-      defaultValue: null,
+      projectUrl: {
+        type: Sequelize.TEXT,
+        defaultValue: null,
       },
       introduction: {
         type: Sequelize.TEXT,

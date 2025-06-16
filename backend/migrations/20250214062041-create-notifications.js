@@ -41,9 +41,9 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
       },
-      request_id:{
-         type: Sequelize.INTEGER,
-      allowNull: false,
+      request_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

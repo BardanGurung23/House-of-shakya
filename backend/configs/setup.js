@@ -246,12 +246,11 @@ router.get("/", async (req, res, next) => {
   //save data if they don't exist
   try {
     await internal.saveRoles(req, setupData.roles);
-     await internal.saveUsers(req, setupData.users);
-     await internal.saveRoleMenu(req, setupData.roleMenus);
-     await internal.saveSettings(setupData.setting);
-     await internal.saveRTEMediaCategory(req, setupData.mediaCategory);
+    await internal.saveUsers(req, setupData.users);
+    await internal.saveRoleMenu(req, setupData.roleMenus);
+    await internal.saveSettings(setupData.setting);
+    await internal.saveRTEMediaCategory(req, setupData.mediaCategory);
     await internal.saveBanner(req, setupData.banner);
- 
 
     res.send(`
             <h1>Setup completed</h1>

@@ -4,7 +4,6 @@ const { GENDER } = require("../constants/value-constants");
 module.exports = (sequelize, DataTypes) => {
   class Customer extends Model {
     static associate(models) {
-     
       // define association here
     }
   }

@@ -78,7 +78,6 @@ const create = async (req) => {
         },
         { transaction },
       );
-
     }
 
     await transaction.commit();

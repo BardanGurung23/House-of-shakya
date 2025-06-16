@@ -21,13 +21,7 @@ const {
   idValidation,
 } = require("../../validations/common-validation");
 
-router.post(
-  "/",
-  authentication,
-  authorization,
-  pagesPostValidation,
-  create,
-);
+router.post("/", authentication, authorization, pagesPostValidation, create);
 
 router.get("/list", paginationValidation, list);
 
@@ -43,10 +37,5 @@ router.put(
   update,
 );
 
-router.delete(
-  "/:id",
-  authentication,
-  authorization,
-  deletePage,
-);
+router.delete("/:id", authentication, authorization, deletePage);
 module.exports = router;

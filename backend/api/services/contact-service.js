@@ -14,7 +14,7 @@ const create = async (req) => {
       };
     }
 
-   const placeholders = {
+    const placeholders = {
       name: `${req.body.full_name}`,
       email: `${req.body.email}`,
     };

@@ -15,15 +15,8 @@ const {
 
 const { idValidation } = require("../../validations/common-validation");
 
-router.get(
-  "/",
-  getOne,
-);
-router.get(
-  "/:id",
-  idValidation,
-  getById,
-);
+router.get("/", getOne);
+router.get("/:id", idValidation, getById);
 router.put(
   "/:id",
   authentication,

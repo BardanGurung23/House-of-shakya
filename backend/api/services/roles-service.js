@@ -198,7 +198,7 @@ const deleteSingleRole = async (req) => {
 
     // Check if the role exists and is not deleted
 
-     if (roleId === 1) {
+    if (roleId === 1) {
       return {
         ...generalConstant.EN.ROLES.SUPERADMIN_CANNOT_UPDATE,
         data: null,

@@ -159,7 +159,6 @@ const login = async (req, res, next) => {
   }
 };
 
-
 const oAuthLogin = async (req, res, next) => {
   try {
     const token = await customerService.oauthLogin(req, res, next);

@@ -64,10 +64,10 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
       },
-      loyaltyPoints:{
-         type: Sequelize.INTEGER,
-      allowNull: false,
-      defaultValue: 0,
+      loyaltyPoints: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
       },
       mobileNo: {
         type: Sequelize.STRING,

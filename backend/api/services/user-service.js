@@ -150,10 +150,10 @@ const createUser = async (req, res, next) => {
     let returnData = { ...generalConstant.EN.SERVER_ERROR };
     req.body.password = await hashPassword(req.body.password);
     req.body.addedBy = +req.user.id;
-    
+
     // Check if username already exists
 
-        const existingUser = await userModel.findOne({
+    const existingUser = await userModel.findOne({
       where: { username: req.body.username, isDeleted: false },
     });
 

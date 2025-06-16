@@ -28,13 +28,7 @@ router.post(
 );
 router.get("/list", paginationValidation, list);
 
-router.get(
-  "/:id",
-  authentication,
-  authorization,
-  idValidation,
-  getById,
-);
+router.get("/:id", authentication, authorization, idValidation, getById);
 
 router.put(
   "/:id",
@@ -45,10 +39,5 @@ router.put(
   update,
 );
 
-router.delete(
-  "/:id",
-  authentication,
-  authorization,
-  deleteMediaCategory,
-);
+router.delete("/:id", authentication, authorization, deleteMediaCategory);
 module.exports = router;

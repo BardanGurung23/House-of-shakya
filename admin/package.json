@@ -8,7 +8,8 @@
     "start": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+     "prettier": "prettier . --write"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-react": "^9.5.0",
@@ -20,6 +21,7 @@
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-dropdown-menu": "^2.1.2",
     "@reduxjs/toolkit": "^2.4.0",
+    "admin": "link:",
     "ckeditor5": "^44.2.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -57,6 +59,8 @@
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.16",
     "typescript": "~5.6.2",
-    "typescript-eslint": "^8.11.0"
+    "typescript-eslint": "^8.11.0",
+    "prettier": "3.3.3"
+
   }
 }

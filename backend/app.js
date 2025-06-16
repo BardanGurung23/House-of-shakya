@@ -74,8 +74,6 @@ app.use(
     credentials: true,
   }),
 );
-;
-
 app.use(helmet());
 app.use(
   morgan(morganFormat, {
@@ -154,7 +152,6 @@ app.use(
   "/uploads",
   // authentication,
   express.static(path.join(__dirname, "uploads")),
-  
 );
 console.log("Static path:", path.join(__dirname, "../client/web"));
 app.use((req, res, next) => {

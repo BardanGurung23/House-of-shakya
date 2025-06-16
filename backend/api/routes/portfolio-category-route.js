@@ -44,11 +44,6 @@ router.put(
   update,
 );
 
-router.delete(
-  "/:id",
-  authentication,
-  authorization,
-  remove,
-);
+router.delete("/:id", authentication, authorization, remove);
 
 module.exports = router;

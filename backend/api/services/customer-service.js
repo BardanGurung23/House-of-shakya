@@ -12,7 +12,9 @@ const { hashPassword, comparePasswords } = require("../../utils/bcrypt");
 const paginate = require("../../utils/paginate");
 const { generateOTPForUser, verifyOTPForUser } = require("../../utils/otp");
 const { sendMail } = require("../../helpers/mailer/mailer");
-const { customerLoginHelper } = require("../../helpers/oauth/customer-login-helper");
+const {
+  customerLoginHelper,
+} = require("../../helpers/oauth/customer-login-helper");
 const { Op } = require("sequelize");
 const { endOfDay, startOfDay } = require("date-fns");
 
@@ -465,7 +467,6 @@ const profile = async (req) => {
     throw error;
   }
 };
-
 
 const changePassword = async (req) => {
   try {

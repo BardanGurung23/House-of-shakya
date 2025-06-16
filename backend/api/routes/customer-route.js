@@ -31,7 +31,6 @@ const {
   updateValidation,
 } = require("../../validations/customer-validation");
 
-
 router.get(
   "/google/callback",
   passport.authenticate("google", {
