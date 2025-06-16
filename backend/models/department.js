@@ -12,10 +12,6 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.employeeModel, {
         foreignKey: "departmentId",
       });
-
-      this.hasMany(models.clipArtModel, {
-        foreignKey: "departmentId",
-      });
     }
   }
 

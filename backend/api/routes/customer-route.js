@@ -30,9 +30,7 @@ const {
   forgetPasswordValidation,
   updateValidation,
 } = require("../../validations/customer-validation");
-const {
-  loyaltyPostValidation,
-} = require("../../validations/loyalty-validation");
+
 
 router.get(
   "/google/callback",

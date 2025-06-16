@@ -16,10 +16,6 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "employeeId",
         as: "qna",
       });
-      this.hasOne(models.timeTableHeaderModel, {
-        foreignKey: "employeeId",
-        as: "timeTableHeader",
-      });
     }
   }
 
