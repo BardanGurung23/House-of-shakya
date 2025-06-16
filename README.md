@@ -112,5 +112,12 @@ By following this convention, we ensure a structured and easily understandable c
   email,
   otp,
   ]
+
+- For Contact Us :
+  key: contactEnquiry
+  placeholders :[
+  name,
+  email,
+  ]
 ```
 # tech-nirvana-core
