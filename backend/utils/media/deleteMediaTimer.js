@@ -1,6 +1,6 @@
 const { mediaModel } = require("../../models");
 const { deleteMedia } = require("./deleteMedia");
-const checkIfMediaPathInUse = require("./isMediaUsed"); 
+const checkIfMediaPathInUse = require("./isMediaUsed");
 const cron = require("node-cron");
 const logger = require("../../configs/logger");
 
