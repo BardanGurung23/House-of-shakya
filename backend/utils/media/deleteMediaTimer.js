@@ -1,6 +1,6 @@
 const { mediaModel } = require("../../models");
 const { deleteMedia } = require("./deleteMedia");
-const checkIfMediaPathInUse = require("./isMediaUsed"); // Import your existing function
+const checkIfMediaPathInUse = require("./isMediaUsed"); 
 const cron = require("node-cron");
 const logger = require("../../configs/logger");
 
@@ -8,7 +8,7 @@ async function deleteMediaTimer() {
   try {
     // Step 1: Retrieve all media paths from the mediaModel
     const allMediaPaths = await mediaModel.findAll({
-      attributes: ["id", "path"], // Assuming 'path' is the field storing media paths
+      attributes: ["id", "path"],
     });
 
     // Step 2: Check each media path
