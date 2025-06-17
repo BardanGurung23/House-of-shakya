@@ -1,6 +1,6 @@
 const toCamelCase = (str) => {
   return str
-    ?.toLowerCase() 
+    ?.toLowerCase()
     ?.replace(/([-_\s][a-z])/g, (match) => {
       return match
         .toUpperCase()
