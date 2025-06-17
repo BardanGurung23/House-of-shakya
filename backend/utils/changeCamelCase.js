@@ -1,6 +1,6 @@
 const toCamelCase = (str) => {
   return str
-    ?.toLowerCase() // Ensure the entire string is lowercase first
+    ?.toLowerCase() 
     ?.replace(/([-_\s][a-z])/g, (match) => {
       return match
         .toUpperCase()
@@ -8,7 +8,7 @@ const toCamelCase = (str) => {
         .replace("_", "")
         .replace(" ", "");
     })
-    ?.replace(/^[a-z]/, (match) => match.toLowerCase()); // Ensure the first character is lowercase
+    ?.replace(/^[a-z]/, (match) => match.toLowerCase());
 };
 
 module.exports = { toCamelCase };
