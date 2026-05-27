@@ -24,10 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "userId",
         as: "actionRequests",
       });
-      this.hasMany(models.notificationModel, {
-        foreignKey: "userId",
-        as: "notifications",
-      });
+
       this.belongsTo(models.roleModel, {
         foreignKey: "roleId",
         as: "roles",

@@ -35,7 +35,7 @@ export default function AddUserForm({
       <div className="flex flex-wrap mt-[4rem] mb-[1.5rem]">
         <button
           className={`flex items-center gap-[6px] px-[20px] py-[8px] rounded-[0.25rem]  cursor-pointer ${
-            tabSection === "profile" ? "bg-[#0090DD] text-white" : ""
+            tabSection === "profile" ? "bg-primaryColor text-white" : ""
           } `}
           onClick={() => handleTabChange("profile")}
         >
@@ -44,7 +44,7 @@ export default function AddUserForm({
         </button>
         <button
           className={`flex items-center gap-[6px] px-[20px] py-[8px] rounded-[0.25rem]  cursor-pointer ${
-            tabSection === "security" ? "bg-[#0090DD] text-white" : ""
+            tabSection === "security" ? "bg-primaryColor text-white" : ""
           } ${editId === null ? "text-gray-400 cursor-not-allowed" : ""}`}
           onClick={() => handleTabChange("security")}
         >

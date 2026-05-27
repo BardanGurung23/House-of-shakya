@@ -128,14 +128,14 @@ export default function AddEditEmailTemplate() {
             error={errors?.information?.message}
           />
           <div className="text-start">
-            <label>Variables</label>
+            <label className="input-label">Variables</label>
             <div className="flex flex-wrap gap-[0.5rem]">
               {VariableOptions.map((each) => (
                 <button
                   key={each}
                   className={`border py-[0.5rem] rounded-[0.25rem] w-fit px-[1rem] ${
                     selectedVariables.includes(each)
-                      ? "bg-[#0090dd] text-white"
+                      ? "bg-primaryColor text-white"
                       : ""
                   }`}
                   onClick={(event) => handleVariableClick(event, each)}

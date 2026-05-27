@@ -12,6 +12,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { MantineProvider } from "@mantine/core";
 
 import "@mantine/core/styles.css";
+import { TooltipProvider } from "./components/ui/tooltip.tsx";
 
 const router = createBrowserRouter([...Routes]);
 
@@ -20,7 +21,9 @@ createRoot(document.getElementById("root")!).render(
     <MantineProvider>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <RouterProvider router={router} />
+          <TooltipProvider>
+            <RouterProvider router={router} />
+          </TooltipProvider>
           <ToastContainer />
         </PersistGate>
       </Provider>

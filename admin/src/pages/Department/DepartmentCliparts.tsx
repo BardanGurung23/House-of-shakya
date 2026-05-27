@@ -128,7 +128,7 @@ function ImageUploadUI({
   const translate = useTranslation();
   return (
     <button className="flex items-center gap-[2rem]" onClick={onUploadClick}>
-      <div className="border md:w-[344px] h-fit bg-[#0090dd] text-white px-[1rem] py-[0.75rem] rounded-[0.75rem] flex gap-[1rem] justify-between items-center cursor-pointer">
+      <div className="border md:w-[344px] h-fit bg-primaryColor text-white px-[1rem] py-[0.75rem] rounded-[0.75rem] flex gap-[1rem] justify-between items-center cursor-pointer">
         <p className="whitespace-nowrap">
           {translate("Position")} {index + 1}
         </p>

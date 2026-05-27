@@ -65,7 +65,7 @@ export default function PageHeader({
       <div className=" flex justify-end gap-[1rem]">
         {hasAddButton && (
           <Button
-            className="bg-[#0090DD] text-white rounded-[0.25rem]"
+            className="bg-primaryColor text-white rounded-[0.25rem]"
             handleClick={handleNewButton}
           >
             <div className="flex items-center gap-[0.5rem] px-[1.25rem] py-[0.5rem] ">

@@ -172,7 +172,7 @@ export default function ApproveRequest() {
                       onClick={() => handlePageChange(pageNumber)}
                       className={`rounded-full flex justify-center items-center py-[0.5rem] px-[0.75rem] cursor-pointer ${
                         isCurrentPage
-                          ? "bg-[#0090DD] text-white"
+                          ? "bg-primaryColor text-white"
                           : "bg-white border"
                       }`}
                     >

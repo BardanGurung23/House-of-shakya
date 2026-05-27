@@ -23,7 +23,7 @@ const Table: React.FC<TableProps> = ({
     <div className="overflow-x-auto ">
       {/* Table */}
       <table className="min-w-full border-collapse bg-[#F8F7FA] text-black">
-        <thead className="bg-[#0090DD]">
+        <thead className="bg-primaryColor">
           <tr>
             {isSN && (
               <th className="px-4 py-2 text-center text-white font-[400] text-[1.125rem] whitespace-nowrap">

@@ -30,7 +30,7 @@ export default function Access() {
             <div className="flex items-center justify-center gap-[0.5rem]">
               <MdEditSquare
                 size={18}
-                className="text-[#0090DD] cursor-pointer"
+                className="text-primaryColor cursor-pointer"
                 onClick={() => handleAccessEdit(id)}
               />
             </div>,

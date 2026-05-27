@@ -108,7 +108,7 @@ export default function AddEditTechnology() {
         />
         <br />
         <div className="flex flex-col items-start">
-          <label className="font-[400] text-[0.75rem] text-start mb-[2px] text-[#626c78]">
+          <label className="font-[400] input-label text-[0.75rem] text-start mb-[2px] text-[#626c78]">
             {"Icon Image"} <span className="text-red-500">*</span>
           </label>
           <MediaComponent

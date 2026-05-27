@@ -117,7 +117,7 @@ export default function Notification({ setOpen }: NotificationProps) {
           All
         </button>
         <button
-          className={`${buttonClassName} bg-[#0090DD] text-white`}
+          className={`${buttonClassName} bg-primaryColor text-white`}
           onClick={() => filterNotification(false)}
         >
           Unread
@@ -144,7 +144,7 @@ export default function Notification({ setOpen }: NotificationProps) {
               <div className="mt-[0.5rem] mr-[1rem] flex flex-col gap-[0.5rem] items-center">
                 <div
                   className={`w-[0.75rem] h-[0.75rem] rounded-full ${
-                    each.isRead ? "bg-[#FF80C5]" : "bg-[#0090dd]"
+                    each.isRead ? "bg-[#FF80C5]" : "bg-primaryColor"
                   }`}
                 />
                 <div className="w-[1px] h-[4rem] bg-[#a7acb2]" />

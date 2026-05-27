@@ -57,7 +57,7 @@ export default function Overview({
       />
       <div className="flex flex-wrap lg:gap-[4rem] gap-[2rem] px-[1rem] py-[3rem]">
         <div className="flex flex-col items-start">
-          <label className="font-[400] text-[.75rem] text-start mb-[2px] text-[#626c78]">
+          <label className="font-[400] input-label text-[.75rem] text-start mb-[2px] text-[#626c78]">
             {"Service Image"} <span className="text-red-500">*</span>
           </label>
           <MediaComponent

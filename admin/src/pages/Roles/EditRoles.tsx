@@ -122,7 +122,7 @@ export default function EditRoles({
   return (
     <div className="mt-[4rem]">
       <div className="flex mt-[4rem] mb-[1.5rem]">
-        <p className="flex items-center gap-[6px] px-[20px] py-[8px] rounded-[0.25rem] bg-[#0090DD] text-white">
+        <p className="flex items-center gap-[6px] px-[20px] py-[8px] rounded-[0.25rem] bg-primaryColor text-white">
           <MdOutlineFactCheck />
           <p className="font-[500] text-[15px]">{translate("Edit Role")}</p>
         </p>

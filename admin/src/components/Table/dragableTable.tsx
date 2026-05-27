@@ -146,7 +146,7 @@ function Table({ data }) {
   return (
     <div>
       {/* Table Headers */}
-      <div className="flex w-full justify-between bg-[#0090DD] px-4 py-2 text-center text-white font-[400] text-[1.125rem] whitespace-nowrap">
+      <div className="flex w-full justify-between bg-primaryColor px-4 py-2 text-center text-white font-[400] text-[1.125rem] whitespace-nowrap">
         <p className="w-[33%]">Title</p>
         <p className="w-[33%]">Page Name</p>
         <p className="w-[33%]">Action</p>

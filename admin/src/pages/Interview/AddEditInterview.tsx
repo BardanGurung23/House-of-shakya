@@ -85,7 +85,7 @@ export default function AddEditInterview() {
       <div className="flex gap-[1rem]  overflow-x-auto scrollbar-hide">
         <button
           className={`flex items-center gap-[6px] border px-[20px] py-[0.5rem] rounded-[6px] whitespace-nowrap ${
-            currentTab === "BasicInfo" ? "bg-[#0090DD] text-white" : ""
+            currentTab === "BasicInfo" ? "bg-primaryColor text-white" : ""
           }`}
           onClick={() => handleTabChange("BasicInfo")}
         >
@@ -94,7 +94,7 @@ export default function AddEditInterview() {
         </button>
         <button
           className={`flex items-center gap-[6px] border px-[20px] py-[0.5rem] rounded-[6px] whitespace-nowrap ${
-            currentTab === "Message" ? "bg-[#0090DD] text-white" : ""
+            currentTab === "Message" ? "bg-primaryColor text-white" : ""
           }`}
           onClick={() => handleTabChange("Message")}
         >
@@ -107,7 +107,7 @@ export default function AddEditInterview() {
             id === null || id === undefined
               ? "cursor-not-allowed text-gray-400"
               : "cursor-pointer"
-          } ${currentTab === "Interview" ? "bg-[#0090DD] text-white" : ""}`}
+          } ${currentTab === "Interview" ? "bg-primaryColor text-white" : ""}`}
           onClick={() => handleTabChange("Interview")}
           disabled={id === undefined}
         >

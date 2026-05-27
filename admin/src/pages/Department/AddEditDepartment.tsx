@@ -53,7 +53,7 @@ export default function AddEditDepartment() {
       <div className="flex gap-[1rem] mt-[2.25rem]">
         <button
           className={`flex items-center gap-[6px] border px-[20px] py-[0.5rem] rounded-[6px] ${
-            currentTab === "BasicInfo" ? "bg-[#0090DD] text-white" : ""
+            currentTab === "BasicInfo" ? "bg-primaryColor text-white" : ""
           }`}
           onClick={() => handleTabChange("BasicInfo")}
         >
@@ -61,7 +61,7 @@ export default function AddEditDepartment() {
         </button>
         <button
           className={`flex items-center gap-[6px] border px-[20px] py-[0.5rem] rounded-[6px] ${
-            currentTab === "ClipArts" ? "bg-[#0090DD] text-white" : ""
+            currentTab === "ClipArts" ? "bg-primaryColor text-white" : ""
           } ${!id ? "cursor-not-allowed text-gray-400" : ""}`}
           disabled={!id}
           onClick={() => handleTabChange("ClipArts")}

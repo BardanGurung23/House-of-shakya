@@ -83,7 +83,7 @@ export default function Contact() {
           >
             <FaEye
               size={18}
-              className="text-[#0090DD]"
+              className="text-primaryColor"
               onClick={() => handleDrawerOpen(id)}
             />
             {accessList.includes("delete") && (

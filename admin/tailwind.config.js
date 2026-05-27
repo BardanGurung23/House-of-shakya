@@ -10,6 +10,9 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        primaryColor: "var(--primary-color)",
+        primaryHoverColor: "var(--primary-hover-color",
+        gradientColor: "var(--gradient-color)",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

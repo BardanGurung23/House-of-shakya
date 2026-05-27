@@ -112,7 +112,7 @@ export default function Roles() {
           isActive ? (
             <span className="flex justify-center">
               {isActive ? (
-                <FaCircleCheck className="text-[#0090dd]" />
+                <FaCircleCheck className="text-primaryColor" />
               ) : (
                 <FaCircleXmark className="text-red-500" />
               )}
@@ -127,7 +127,7 @@ export default function Roles() {
             {accessList.includes("edit") && (
               <MdEditSquare
                 size={18}
-                className="text-[#0090DD] cursor-pointer"
+                className="text-primaryColor cursor-pointer"
                 onClick={() => handleEditRole(id)}
               />
             )}
@@ -185,7 +185,7 @@ export default function Roles() {
                     {" "}
                     Active :{" "}
                     {isActive ? (
-                      <FaCircleCheck className="text-[#0090dd]" />
+                      <FaCircleCheck className="text-primaryColor" />
                     ) : (
                       <FaCircleXmark className="text-red-500" />
                     )}

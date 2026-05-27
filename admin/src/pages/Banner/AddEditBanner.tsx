@@ -101,7 +101,7 @@ export default function AddEditBanner() {
             <p className="input-title">Add Slides</p>
             <button
               type="button"
-              className="text-[#0090dd]"
+              className="text-primaryColor"
               onClick={(event) => handleAddNewButton(event)}
             >
               Add Slides

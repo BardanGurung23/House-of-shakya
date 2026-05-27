@@ -21,7 +21,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <div className={`select-container ${className || ""}`}>
         {label && (
-          <label className="select-label">
+          <label className="input-label">
             {" "}
             {typeof label === "string" ? translate(label) : label}
             {/* {translate(label)} */}

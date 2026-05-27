@@ -23,7 +23,8 @@ import EnglishFlag from "@/assets/english.png";
 import JapanFlag from "@/assets/japan.png";
 import Notification from "@/components/notification";
 import { useState } from "react";
-export default function TopMenu() {
+import { ListCollapse, Menu } from "lucide-react";
+export default function TopMenu({ toggleView, handleToggle }) {
   const location = useLocation();
   const currentPath = location.pathname.split("/");
   const translate = useTranslation();
@@ -60,10 +61,18 @@ export default function TopMenu() {
   };
 
   return (
-    <div className="w-full px-[1.5rem] py-[1rem]">
-      <div className="bg-white h-full w-full shadow-lg pt-[10px] pb-[0.5rem] px-[0.5rem]">
-        <div className="flex justify-between">
-          <SearchBox />
+    <div className="w-full">
+      <div className="bg-white h-full w-full border-b pt-[10px] pb-[0.5rem] px-[0.5rem]">
+        <div className="flex justify-between py-[0.5rem]">
+          <div className="flex items-center h-full gap-8 w-full mx-[2rem]">
+            <button
+              className={`transition-all duration-300 ${toggleView ? "rotate-180" : ""}`}
+              onClick={handleToggle}
+            >
+              <ListCollapse />
+            </button>
+            <SearchBox />
+          </div>
           <div className="flex items-center gap-[1rem] pr-[1.5rem]">
             {/* <DropdownMenu>
               <DropdownMenuTrigger>
@@ -122,7 +131,7 @@ export default function TopMenu() {
             </DropdownMenu>
 
             <DropdownMenu>
-              <DropdownMenuTrigger>
+              <DropdownMenuTrigger className="pr-0">
                 <img
                   src={
                     profileImage
@@ -130,7 +139,7 @@ export default function TopMenu() {
                       : user_image
                   }
                   alt="Profile"
-                  className="h-[38px] w-[38px] rounded-full cursor-pointer border border-black object-contain"
+                  className="h-[40px] w-[40px] min-w-fit rounded-full cursor-pointer border border-black object-contain"
                   crossOrigin="anonymous"
                 />
               </DropdownMenuTrigger>
