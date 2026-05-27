@@ -100,7 +100,7 @@ export default function TechInfo({
             <p className="input-title">Tech Stack</p>
             <button
               type="button"
-              className="text-[#0090dd]"
+              className="text-primaryColor"
               onClick={(event) => handleTechStack(event)}
             >
               Add New
@@ -130,7 +130,7 @@ export default function TechInfo({
             <p className="input-title">Use Case</p>
             <button
               type="button"
-              className="text-[#0090dd]"
+              className="text-primaryColor"
               onClick={(event) => handleUseCase(event)}
             >
               Add New

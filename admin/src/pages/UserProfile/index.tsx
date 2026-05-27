@@ -15,11 +15,11 @@ export default function UserProfile() {
         <div className="md:w-[30%] flex gap-[1rem] md:flex-col md:space-y-[1rem] overflow-x-auto scrollbar-hide md:overflow-x-none">
           <button
             className={`flex gap-[1rem] h-fit rounded-[0.25rem] border py-[1rem] md:py-[3rem] pl-[1rem] lg:pl-[3rem] cursor-pointer ${
-              tabSection === "BasicInfo" ? "border-[#0090DD]" : ""
+              tabSection === "BasicInfo" ? "border-primaryColor" : ""
             }`}
             onClick={() => setTabSection("BasicInfo")}
           >
-            <IoMdInformationCircle className="text-[#0090DD] h-[2rem] w-[2rem]" />
+            <IoMdInformationCircle className="text-primaryColor h-[2rem] w-[2rem]" />
             <div>
               <h3 className="font-[500] text-[13px] leading-[1rem] whitespace-nowrap">
                 {translate("Basic Information")}
@@ -31,11 +31,11 @@ export default function UserProfile() {
           </button>
           <button
             className={`flex gap-[1rem] h-fit rounded-[0.25rem] border py-[1rem] px-[1rem] md:py-[3rem] pl-[1rem] lg:pl-[3rem] cursor-pointer ${
-              tabSection === "AccountManagement" ? "border-[#0090dd]" : ""
+              tabSection === "AccountManagement" ? "border-primaryColor" : ""
             }`}
             onClick={() => setTabSection("AccountManagement")}
           >
-            <FaServer className="text-[#0090DD] h-[2rem] w-[2rem]" />
+            <FaServer className="text-primaryColor h-[2rem] w-[2rem]" />
             <div>
               <h3 className="font-[500] text-[13px] leading-[1rem] whitespace-nowrap">
                 {translate("Account Management")}

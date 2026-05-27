@@ -101,7 +101,7 @@ export default function PortfolioInfo({
     <form className="form-container grid grid-cols-1 md:grid-cols-2 gap-[1rem]">
       {/* Portfolio logo */}
       <div className="flex flex-col items-start">
-        <label className="font-[400] text-[.75rem] text-start mb-[2px] text-[#626c78]">
+        <label className="font-[400] input-label text-[.75rem] text-start mb-[2px] text-[#626c78]">
           {"Portfolio logo"} <span className="text-red-500">*</span>
         </label>
         <MediaComponent
@@ -206,21 +206,21 @@ export default function PortfolioInfo({
         <div className="mt-[1rem] flex w-full justify-between">
           <button
             type="button"
-            className="px-[0.75rem] py-[0.5rem] rounded-[0.25rem] bg-[#0090dd] text-white"
+            className="px-[0.75rem] py-[0.5rem] rounded-[0.25rem] bg-primaryColor text-white"
             onClick={handlePrevButtonMultiple}
           >
             Previous
           </button>
           <button
             type="button"
-            className="px-[0.75rem] py-[0.5rem] rounded-[0.25rem] bg-[#0090dd] text-white"
+            className="px-[0.75rem] py-[0.5rem] rounded-[0.25rem] bg-primaryColor text-white"
             onClick={handleRemoveButtonMultiple}
           >
             Remove
           </button>
           <button
             type="button"
-            className="px-[0.75rem] py-[0.5rem] rounded-[0.25rem] bg-[#0090dd] text-white"
+            className="px-[0.75rem] py-[0.5rem] rounded-[0.25rem] bg-primaryColor text-white"
             onClick={handleNextButtonMultiple}
           >
             Next

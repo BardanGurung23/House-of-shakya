@@ -1,12 +1,12 @@
 .input-container {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.15rem;
 }
 
 .input-label {
-  font-weight: 400;
-  font-size: 0.75rem; /* Equivalent to Tailwind's text-sm */
+  font-weight: 600;
+  font-size: 0.875rem; /* Equivalent to Tailwind's text-sm */
   color: #374561;
   text-align: start;
 }
@@ -41,7 +41,11 @@
   outline: none;
   font-size: 1rem;
   background-color: white;
-  /* color: black; */
+  color: black;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* Inverts colors to make it visible */
 }
 
 .input-error-field {

@@ -121,7 +121,7 @@ export default function Testimonial() {
             {accessList.includes("edit") && (
               <MdEditSquare
                 size={18}
-                className="text-[#0090DD]"
+                className="text-primaryColor"
                 onClick={() => handleNavigation(id)}
               />
             )}
@@ -142,12 +142,12 @@ export default function Testimonial() {
     <>
       <PageHeader
         hasAddButton={accessList.includes("add")}
-        newButtonText={"Add New Technology"}
+        newButtonText={"Add New Testimonial"}
         handleNewButton={() => handleNavigation(null)}
         handleReloadButton={handleReload}
         toggleViewType={toggleViewType}
         hasSubText
-        subText={"Add Comprehensive Service Information in Each Section"}
+        subText={"Add Comprehensive Testimonial Information in Each Section"}
       />
       {console.log(success, "success")}
       {accessList.includes("view") && (

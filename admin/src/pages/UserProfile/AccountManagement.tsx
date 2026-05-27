@@ -41,7 +41,7 @@ export default function AccountManagement() {
 
   return (
     <div className="flex flex-col ">
-      <h3 className="font-[600] text-[1.5rem] text-[#0090DD] self-start">
+      <h3 className="font-[600] text-[1.5rem] text-primaryColor self-start">
         {translate("Account Management")}
       </h3>
       <form

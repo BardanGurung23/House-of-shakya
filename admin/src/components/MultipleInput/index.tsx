@@ -46,7 +46,7 @@ const MultiInput: React.FC<MultiInputProps> = ({
 
   return (
     <div className={className}>
-      <label className="text-sm">{label}</label>
+      <label className="text-sm input-label text-start">{label}</label>
       <Controller
         name={name}
         control={control}

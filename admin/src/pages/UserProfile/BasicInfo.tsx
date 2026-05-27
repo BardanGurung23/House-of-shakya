@@ -111,7 +111,7 @@ export default function BasicInfo() {
         </div>
         <div className="space-y-[1rem]">
           <div className="flex gap-[1rem]">
-            <button className="bg-[#0090DD] px-[20px] py-[8px] rounded-[6px] text-white">
+            <button className="bg-primaryColor px-[20px] py-[8px] rounded-[6px] text-white">
               <p className="font-[500] text-[15px]">
                 <MediaComponent
                   title="Upload New Photo"

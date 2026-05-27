@@ -26,7 +26,6 @@ const {
   authentication,
   authorization,
 } = require("../../middlewares/auth-middleware");
-const { isValidCaptcha } = require("../../middlewares/captcha-middleware");
 
 const {
   idValidation,
@@ -104,13 +103,7 @@ router.patch(
 // this route is for getting user by id
 router.get("/:id", authentication, authorization, idValidation, authGetUser);
 
-router.post(
-  "/login",
-  loginValidation,
-  loginAttemptMiddleware,
-  isValidCaptcha,
-  authLogin,
-);
+router.post("/login", loginValidation, loginAttemptMiddleware, authLogin);
 router.post("/logout", authentication, authLogout);
 
 module.exports = router;

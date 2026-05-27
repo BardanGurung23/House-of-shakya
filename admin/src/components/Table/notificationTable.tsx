@@ -22,7 +22,7 @@ export default function NotificationTable({
         <div className="flex gap-[1rem]">
           <div className="flex items-center gap-[0.375rem]">
             {" "}
-            <div className="w-[0.5rem] h-[0.5rem] bg-[#0090dd] rounded-full" />{" "}
+            <div className="w-[0.5rem] h-[0.5rem] bg-primaryColor rounded-full" />{" "}
             <p>Accepted</p>
           </div>
           <div className="flex items-center gap-[0.375rem]">
@@ -57,7 +57,7 @@ export default function NotificationTable({
                     <div
                       className={`w-[0.5rem] h-[0.5rem] rounded-full ${
                         each.status === "Approved"
-                          ? "bg-[#0090dd]"
+                          ? "bg-primaryColor"
                           : each.status === "Pending"
                             ? "bg-[#FF80C5]"
                             : "bg-[#c6362a]"
@@ -112,7 +112,7 @@ export default function NotificationTable({
                     <div
                       className={`w-[0.5rem] h-[0.5rem] rounded-full ${
                         each.status === "Approved"
-                          ? "bg-[#0090dd]"
+                          ? "bg-primaryColor"
                           : each.status === "Pending"
                             ? "bg-[#FF80C5]"
                             : "bg-[#c6362a]"

@@ -45,14 +45,14 @@ export default function SearchBox() {
   };
 
   return (
-    <div className="relative text-[#444050] flex items-center pl-[13px] ">
+    <div className="relative text-[#444050] flex items-center pl-[13px] border-2 rounded-lg px-[0.75rem] py-[0.25rem] active:border-gray-400 w-[30%]">
       <MdOutlineSearch size={18} className="mr-[1rem]" />
       <input
         type="text"
         placeholder="Search Ctrl + k"
         value={userInput}
         onChange={handleInputChange}
-        className="flex-1 font-[400] text-[1rem] text-[#ACAAB1] outline-none bg-transparent placeholder-[#ACAAB1]"
+        className="flex-1 font-[400] text-[1rem] text-[#ACAAB1] outline-none bg-transparent placeholder-[#ACAAB1] min-h-[2.5rem]"
       />
       {suggestion.length > 0 && (
         <ul className="absolute bg-white shadow-xl top-[1rem] mt-[1rem] px-[1rem] space-y-[1rem] py-[1.5rem]">

@@ -2112,6 +2112,63 @@ module.exports = {
         message: "Blog Category Delete Failure",
       },
     },
+    PROPERTY_CATEGORY: {
+      CREATE_PROPERTY_CATEGORY_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Property Category Created Successfully",
+      },
+      CREATE_PROPERTY_CATEGORY_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Property Category Not Created",
+      },
+      PROPERTY_CATEGORY_NOT_FOUND: {
+        status: httpStatus.NOT_FOUND,
+        success: false,
+        message: "Property Category Not Found",
+      },
+      PROPERTY_CATEGORY_FOUND: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Property Category Found",
+      },
+      PROPERTY_CATEGORY_LIST_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Property Category List Success",
+      },
+      PROPERTY_CATEGORY_LIST_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Property Category List Failure",
+      },
+      PROPERTY_CATEGORY_UPDATE_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Property Category Updated Successfully",
+      },
+      PROPERTY_CATEGORY_UPDATE_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Property Category Update Failure",
+      },
+      PROPERTY_CATEGORY_DELETE_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Property Category Deleted Successfully",
+      },
+      PROPERTY_CATEGORY_DELETE_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Property Category Delete Failure",
+      },
+      PROPERTY_CATEGORY_IN_USED: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Property Category is used in properties",
+      },
+    },
     BLOG: {
       CREATE_BLOG_SUCCESS: {
         status: httpStatus.OK,
@@ -2164,6 +2221,110 @@ module.exports = {
         status: httpStatus.NOT_ACCEPTABLE,
         success: false,
         message: "Blog Delete Failure",
+      },
+    },
+    PROPERTY: {
+      CREATE_PROPERTY_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Property Created Successfully",
+      },
+      CREATE_PROPERTY_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Property Not Created",
+      },
+      PROPERTY_NOT_FOUND: {
+        status: httpStatus.NOT_FOUND,
+        success: false,
+        message: "Property Not Found",
+      },
+      PROPERTY_FOUND: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Property Found",
+      },
+      PROPERTY_LIST_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Property List Success",
+      },
+      PROPERTY_LIST_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Property List Failure",
+      },
+      PROPERTY_UPDATE_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Property Updated Successfully",
+      },
+      PROPERTY_UPDATE_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Property Update Failure",
+      },
+      PROPERTY_DELETE_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Property Deleted Successfully",
+      },
+      PROPERTY_DELETE_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Property Delete Failure",
+      },
+    },
+    PROJECTS: {
+      CREATE_PROJECTS_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Project Created Successfully",
+      },
+      CREATE_PROJECTS_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Project Not Created",
+      },
+      PROJECTS_NOT_FOUND: {
+        status: httpStatus.NOT_FOUND,
+        success: false,
+        message: "Project Not Found",
+      },
+      PROJECTS_FOUND: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Project Found",
+      },
+      PROJECTS_LIST_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Project List Success",
+      },
+      PROJECTS_LIST_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Project List Failure",
+      },
+      PROJECTS_UPDATE_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Project Updated Successfully",
+      },
+      PROJECTS_UPDATE_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Project Update Failure",
+      },
+      PROJECTS_DELETE_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Project Deleted Successfully",
+      },
+      PROJECTS_DELETE_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Project Delete Failure",
       },
     },
     SUBSCRIBERS: {

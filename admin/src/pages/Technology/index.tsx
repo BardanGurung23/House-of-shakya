@@ -124,7 +124,7 @@ export default function Technology() {
             {accessList.includes("edit") && (
               <MdEditSquare
                 size={18}
-                className="text-[#0090DD]"
+                className="text-primaryColor"
                 onClick={() => handleNavigation(id)}
               />
             )}

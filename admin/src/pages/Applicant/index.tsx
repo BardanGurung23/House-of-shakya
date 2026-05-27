@@ -98,7 +98,7 @@ export default function Applicant() {
             >
               <FaEye
                 size={18}
-                className="text-[#0090DD]"
+                className="text-primaryColor"
                 onClick={() => handleDrawerOpen(id)}
               />
               {accessList.includes("delete") && (
@@ -122,8 +122,6 @@ export default function Applicant() {
         newButtonText="Add New Career"
         handleNewButton={() => handleNewUser(null)}
         handleReloadButton={handleReload}
-        hasSubText
-        subText="Add Comprehensive Career in Each Section"
       />
       {accessList.includes("view") ? (
         <Table

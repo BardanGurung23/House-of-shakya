@@ -170,7 +170,7 @@ export default function Settings() {
         </h2>
         <div className="flex flex-wrap lg:gap-[4rem] gap-[2rem] px-[1rem] py-[3rem]">
           <div className="flex flex-col items-start">
-            <label className="font-[400] text-[0.75rem] text-start mb-[2px] text-[#626c78]">
+            <label className="font-[400] input-label text-[0.75rem] text-start mb-[2px] text-[#626c78]">
               {translate("Favicon Image")}{" "}
               <span className="text-red-500">*</span>
             </label>
@@ -182,7 +182,7 @@ export default function Settings() {
             />
           </div>
           <div className="flex flex-col items-start">
-            <label className="font-[400] text-[0.75rem] text-start mb-[2px] text-[#626c78]">
+            <label className="font-[400] input-label text-[0.75rem] text-start mb-[2px] text-[#626c78]">
               {translate("Branding Image")}{" "}
               <span className="text-red-500">*</span>
             </label>
@@ -194,7 +194,7 @@ export default function Settings() {
             />
           </div>
           <div className="flex flex-col items-start">
-            <label className="font-[400] text-[0.75rem] text-start mb-[2px] text-[#626c78]">
+            <label className="font-[400] input-label text-[0.75rem] text-start mb-[2px] text-[#626c78]">
               {translate("Footer Branding Image")}{" "}
               <span className="text-red-500">*</span>
             </label>

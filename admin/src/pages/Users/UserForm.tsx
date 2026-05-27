@@ -199,7 +199,7 @@ export default function UserForm({
           </div>
           <div className="space-y-[1rem]">
             <div className="flex gap-[1rem]">
-              <button className="bg-[#0090DD] px-[1.25rem] py-[0.5rem] rounded-[0.375rem] text-white">
+              <button className="bg-primaryColor px-[1.25rem] py-[0.5rem] rounded-[0.375rem] text-white">
                 <p className="font-[500] text-[0.9375rem]">
                   <MediaComponent
                     title={translate("Upload New Photo")}

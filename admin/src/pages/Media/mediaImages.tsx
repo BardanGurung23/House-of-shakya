@@ -137,7 +137,7 @@ export default function MediaImages() {
         {accessList.includes("add") && (
           <div>
             <button
-              className="bg-[#0090dd] px-[10px] py-[0.5rem] text-white rounded-[0.3rem] flex items-center gap-[10px] cursor-pointer"
+              className="bg-primaryColor px-[10px] py-[0.5rem] text-white rounded-[0.3rem] flex items-center gap-[10px] cursor-pointer"
               onClick={handleButtonClick}
             >
               <MdPhotoLibrary size={22} />
@@ -181,7 +181,7 @@ export default function MediaImages() {
               )}
               {accessList.includes("edit") && (
                 <MdEditSquare
-                  className="absolute top-[0.5rem] right-[0.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#0090DD]"
+                  className="absolute top-[0.5rem] right-[0.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-primaryColor"
                   onClick={() => handleEditClick(index)} // Trigger edit mode and focus
                 />
               )}
@@ -235,7 +235,7 @@ export default function MediaImages() {
                     onClick={() => handlePageChange(pageNumber)} // Change page
                     className={`rounded-full flex justify-center items-center py-[0.5rem] px-[0.75rem] cursor-pointer ${
                       isCurrentPage
-                        ? "bg-[#0090DD] text-white"
+                        ? "bg-primaryColor text-white"
                         : "bg-white border"
                     }`}
                   >

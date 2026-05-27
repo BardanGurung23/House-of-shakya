@@ -104,7 +104,7 @@ export default function EmailTemplate() {
               </div>
             ) : (
               <div className="flex items-center  justify-center gap-[1rem]">
-                <div className="h-[1rem] w-[1rem] rounded-full bg-[#0090dd]" />
+                <div className="h-[1rem] w-[1rem] rounded-full bg-primaryColor" />
                 {templateName}
               </div>
             ),
@@ -136,7 +136,7 @@ export default function EmailTemplate() {
               {accessList.includes("edit") && (
                 <MdEditSquare
                   size={18}
-                  className="text-[#0090DD]"
+                  className="text-primaryColor"
                   onClick={() => handleAddEditButton(id)}
                 />
               )}

@@ -98,7 +98,7 @@ export default function Seo() {
             {accessList.includes("edit") && (
               <MdEditSquare
                 size={18}
-                className="text-[#0090DD]"
+                className="text-primaryColor"
                 onClick={() => handleNewUser(id)}
               />
             )}

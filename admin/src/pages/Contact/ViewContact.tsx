@@ -16,7 +16,7 @@ export default function ViewContact({ id }: { id: number | null }) {
     <div>
       {/* Tab Section */}
       <div className="flex mt-[4rem] mb-[1.5rem]">
-        <p className="flex items-center gap-[6px] px-[20px] py-[8px] rounded-[0.25rem] bg-[#0090DD] text-white">
+        <p className="flex items-center gap-[6px] px-[20px] py-[8px] rounded-[0.25rem] bg-primaryColor text-white">
           <RiSeoLine />
           <p className="font-[500] text-[15px]">Contact</p>
         </p>

@@ -95,7 +95,7 @@ export default function AddEditService() {
         {FormType.map((each) => (
           <button
             className={`border text-white font-medium px-[1.25rem] py-[0.75rem] ${
-              tab === each ? "bg-[#0090dd]" : "bg-gray-400"
+              tab === each ? "bg-primaryColor" : "bg-gray-400"
             } `}
             onClick={() => handleNavigateTab(each)}
           >

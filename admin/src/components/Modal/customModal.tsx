@@ -34,7 +34,7 @@ export default function CustomModal({
       >
         <DialogHeader>
           <DialogTitle>
-            <span className="text-[1.25rem] font-[500] text-[#0090dd]">
+            <span className="text-[1.25rem] font-[500] text-primaryColor">
               {title}
             </span>
           </DialogTitle>

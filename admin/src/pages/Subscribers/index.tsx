@@ -95,8 +95,6 @@ export default function Subscribers() {
         newButtonText="Add New Banner"
         handleNewButton={() => handleNewUser(null)}
         handleReloadButton={handleReload}
-        hasSubText
-        subText="Add Comprehensive Banner Information in Each Section"
       />
       {accessList.includes("view") ? (
         <Table

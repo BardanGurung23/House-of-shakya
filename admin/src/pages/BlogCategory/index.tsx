@@ -82,7 +82,7 @@ export default function BlogCategory() {
             {accessList.includes("edit") && (
               <MdEditSquare
                 size={18}
-                className="text-[#0090DD]"
+                className="text-primaryColor"
                 onClick={() => handleNewUser(id)}
               />
             )}
@@ -103,11 +103,11 @@ export default function BlogCategory() {
       <PageTitle title="Blog Category" />
       <PageHeader
         hasAddButton={accessList.includes("add")}
-        newButtonText="Add New Blog"
+        newButtonText="Add New Blog Category"
         handleNewButton={() => handleNewUser(null)}
         handleReloadButton={handleReload}
         hasSubText
-        subText="Add Comprehensive Blog in Each Section"
+        subText="Add Comprehensive Blog Category in Each Section"
       />
       {accessList.includes("view") ? (
         <Table

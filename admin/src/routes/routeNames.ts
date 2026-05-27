@@ -55,7 +55,7 @@ export const BLOG_CATEGORY_ADD_ROUTE = "/admin/blog-category/";
 export const BLOG_LIST_ROUTE = "/admin/blog/list";
 export const BLOG_ADD_ROUTE = "/admin/blog/";
 
-export const SUBSCRIBERS_LIST_ROUTE = "/admin/subscriber/list";
+export const SUBSCRIBERS_LIST_ROUTE = "/admin/subscriber";
 
 export const CONTACT_LIST_ROUTE = "/admin/contact";
 

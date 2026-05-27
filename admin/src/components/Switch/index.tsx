@@ -25,7 +25,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ isActive, onToggle }) => {
         />
         <div
           className={`block w-10 h-6 rounded-full transition ${
-            checked ? "bg-[#0090dd]" : "bg-gray-400"
+            checked ? "bg-primaryColor" : "bg-gray-400"
           }`}
         ></div>
         <div

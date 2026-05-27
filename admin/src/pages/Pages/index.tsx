@@ -87,7 +87,7 @@ export default function Pages() {
               {accessList.includes("edit") && (
                 <MdEditSquare
                   size={18}
-                  className="text-[#0090DD]"
+                  className="text-primaryColor"
                   onClick={() => handleNewUser(id)}
                 />
               )}
@@ -113,7 +113,7 @@ export default function Pages() {
         handleNewButton={() => handleNewUser(null)}
         handleReloadButton={handleReload}
         hasSubText
-        subText="Add Comprehensive Banner Information in Each Section"
+        subText="Add Comprehensive Page Information in Each Section"
       />
       {accessList.includes("view") ? (
         <Table

@@ -55,10 +55,7 @@ app.use(
 );
 
 const allowedOrigins = [
-  "http://localhost:3000", // local dev
-  "http://localhost:5171", // local dev
-  "http://localhost:7001",
-  "http://192.168.1.66:9001",
+  "http://192.168.1.251:2004",
   "https://staging.unimomo.co.uk", // frontend URL
   "https://admin.unimomo.co.uk", // frontend URL
 ];
@@ -68,7 +65,11 @@ app.use(
     origin: function (origin, callback) {
       // allow requests with no origin (like mobile apps or curl)
       if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) return callback(null, true);
+      if (
+        allowedOrigins.includes(origin) ||
+        /^http:\/\/localhost:\d+$/.test(origin)
+      )
+        return callback(null, true);
       return callback(new Error("Not allowed by CORS"));
     },
     credentials: true,
