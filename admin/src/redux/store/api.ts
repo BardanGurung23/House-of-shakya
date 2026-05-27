@@ -42,6 +42,9 @@ export const api = createApi({
     "portfolio",
     "technologies",
     "testimonial",
+    "property-category",
+    "property",
+    "projects",
   ],
   endpoints: () => ({}),
 });

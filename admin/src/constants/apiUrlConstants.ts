@@ -6,6 +6,12 @@ export const BLOG_CATEGORY_URL = "blog-category/";
 
 export const BLOG_URL = "blog/";
 
+export const PROPERTY_CATEGORY_URL = "property-category/";
+
+export const PROPERTY_URL = "property/";
+
+export const PROJECTS_URL = "projects/";
+
 export const SUBSCRIBERS_URL = "subscriber/";
 
 export const CONTACT_URL = "contact/";
