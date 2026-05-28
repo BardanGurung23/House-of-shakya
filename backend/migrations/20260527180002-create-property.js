@@ -1,4 +1,5 @@
 "use strict";
+const { PROPERTY_STATUS } = require("../constants/value-constants");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -43,6 +44,9 @@ module.exports = {
       price: {
         type: Sequelize.DECIMAL(15, 2),
         allowNull: false,
+      },
+      status: {
+        type: Sequelize.ENUM(...PROPERTY_STATUS),
       },
       createdAt: {
         allowNull: false,

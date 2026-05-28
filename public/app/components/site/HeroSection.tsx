@@ -4,22 +4,29 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
-const words = ["Building Trust.", "Creating Homes.", "Shaping Nepal's\nFuture of Housing."];
+const words = [
+  "Building Trust.",
+  "Creating Homes.",
+  "Shaping Nepal's\nFuture of Housing.",
+];
 
 export default function HeroSection() {
   const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
-    <section ref={ref} className="relative h-svh min-h-[640px] overflow-hidden flex items-center justify-center">
+    <section
+      ref={ref}
+      className="relative h-svh min-h-[640px] overflow-hidden flex items-center justify-center"
+    >
       {/* Background image with parallax */}
-      <motion.div
-        style={{ y: bgY }}
-        className="absolute inset-0 scale-110"
-      >
+      <motion.div style={{ y: bgY }} className="absolute inset-0 scale-110">
         <img
           src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1800&h=1200&fit=crop&q=85"
           alt="Aerial view of premium housing development in Pokhara, Nepal"
@@ -29,7 +36,10 @@ export default function HeroSection() {
           height={1200}
         />
         {/* Hero overlay */}
-        <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
+        <div
+          className="absolute inset-0"
+          style={{ background: "var(--gradient-hero)" }}
+        />
         <div className="absolute inset-0 bg-navy-deep/30" />
       </motion.div>
 
@@ -38,18 +48,6 @@ export default function HeroSection() {
         style={{ y: textY, opacity }}
         className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full"
       >
-        {/* Eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-semibold tracking-widest uppercase rounded-full border text-cream/80 border-cream/25 mb-7">
-            <span className="w-1.5 h-1.5 rounded-full bg-forest animate-pulse" />
-            Pokhara's Premier Developer
-          </span>
-        </motion.div>
-
         {/* Headline */}
         <div className="overflow-hidden">
           {words.map((line, i) => (
@@ -57,12 +55,21 @@ export default function HeroSection() {
               key={i}
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, delay: 0.35 + i * 0.14, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{
+                duration: 0.85,
+                delay: 0.35 + i * 0.14,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
             >
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight text-cream"
-                style={{ lineHeight: 1.1 }}>
+              <h1
+                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight text-cream"
+                style={{ lineHeight: 1.1 }}
+              >
                 {line.split("\n").map((part, j) => (
-                  <span key={j} className={j === 1 ? "block text-forest" : "block"}>
+                  <span
+                    key={j}
+                    className={j === 1 ? "block text-forest" : "block"}
+                  >
                     {part}
                   </span>
                 ))}
@@ -78,7 +85,8 @@ export default function HeroSection() {
           transition={{ duration: 0.7, delay: 0.9 }}
           className="mt-6 text-base md:text-lg text-cream/70 max-w-md leading-relaxed"
         >
-          Premium residential developments and investment-grade properties in Pokhara's finest locations.
+          Premium residential developments and investment-grade properties in
+          Pokhara's finest locations.
         </motion.p>
 
         {/* CTAs */}
