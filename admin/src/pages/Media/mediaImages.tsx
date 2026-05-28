@@ -5,7 +5,9 @@ import {
   MdKeyboardArrowRight,
   MdPhotoLibrary,
 } from "react-icons/md";
-import { useParams } from "react-router-dom";
+import { MdOutlineArrowBack } from "react-icons/md";
+
+import { useNavigate, useParams } from "react-router-dom";
 import {
   useDeleteMediaMutation,
   useGetMediaByCategoryQuery,
@@ -22,6 +24,7 @@ import { checkAccess } from "@/utils/accessHelper";
 export default function MediaImages() {
   const translate = useTranslation();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const accessList = checkAccess("Media");
 
@@ -133,9 +136,18 @@ export default function MediaImages() {
   return (
     <div className="relative mt-[3rem]">
       {/* button section */}
-      <div className="flex justify-end gap-[1rem]">
+      <div className="flex  justify-between gap-[1rem]">
+        <div
+          onClick={() => navigate("/admin/media-category/list")}
+          className="flex bg-red-500 hover:bg-red-600 cursor-pointer text-white p-2 rounded-sm font-medium"
+        >
+          <span className="p-1">
+            <MdOutlineArrowBack />
+          </span>
+          <span className=" ">Go Back</span>
+        </div>
         {accessList.includes("add") && (
-          <div>
+          <div className="">
             <button
               className="bg-primaryColor px-[10px] py-[0.5rem] text-white rounded-[0.3rem] flex items-center gap-[10px] cursor-pointer"
               onClick={handleButtonClick}
@@ -162,11 +174,11 @@ export default function MediaImages() {
         </button> */}
       </div>
       {/* images */}
-      <div className="flex flex-wrap gap-[2rem] md:gap-[4rem] mt-[5rem]">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap gap-4 md:gap-[4rem] mt-8 md:mt-12 w-full">
         {media?.data?.data.map(
           (each: { id: number; path: string; name: string }, index: number) => (
             <div
-              className="relative border w-fit px-[1.5rem] pt-[1.5rem] pb-[1rem] cursor-pointer hover:scale-80 group transition-transform duration-300 ease-in-out "
+              className="relative border w-full sm:w-auto px-4 pt-4 pb-2 cursor-pointer hover:scale-95 md:hover:scale-80 group transition-transform duration-300 ease-in-out flex flex-col items-center"
               key={index}
             >
               {accessList.includes("delete") && (
@@ -181,15 +193,14 @@ export default function MediaImages() {
               )}
               {accessList.includes("edit") && (
                 <MdEditSquare
-                  className="absolute top-[0.5rem] right-[0.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-primaryColor"
+                  className="absolute top-[0.5rem] right-[0.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#0090DD]"
                   onClick={() => handleEditClick(index)} // Trigger edit mode and focus
                 />
               )}
               <img
                 src={`${IMAGE_BASE_URL}${each.path}`}
                 alt="Gallery"
-                className="w-[109px] h-[90px] object-cover"
-                crossOrigin="anonymous"
+                className="w-full max-w-[200px] md:w-[109px] md:h-[90px] h-auto aspect-square object-cover rounded-md"
               />
               <input
                 type="text"

@@ -1,4 +1,4 @@
-import { BACKEND_BASE_URL } from "@/app/constants/index";
+import { BACKEND_BASE_URL } from "@/constants/index";
 
 const DEFAULT_REVALIDATE_SECONDS = 300;
 

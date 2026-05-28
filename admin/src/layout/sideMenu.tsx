@@ -43,6 +43,7 @@ export default function SideMenu({
 
   // Always show expanded view on mobile, respect toggleView on desktop
   const shouldShowExpanded = isMobile || toggleView;
+  const pathname = location.pathname;
 
   const handleClick = (key: number) => {
     setIsVisible((prev) => {
@@ -226,10 +227,7 @@ export default function SideMenu({
                   {viewAccess.includes(each.name) && (
                     <div
                       className={`text-[#2F2B3D] flex  ${shouldShowExpanded ? "bg-[#EEEEEF] justify-between" : "justify-center"}  items-center rounded-[0.25rem] py-[0.5rem] px-[0.75rem] hover:text-white hover:bg-gradient-to-r hover:from-primaryColor hover:to-gradientColor cursor-pointer ${
-                        currentPath.includes(each.name.toLowerCase()) ||
-                        currentPath.includes(
-                          each.name.toLowerCase() + "-category",
-                        )
+                        isMenuItemActive(pathname, each.path)
                           ? "bg-gradient-to-r from-primaryColor to-gradientColor text-white"
                           : ""
                       }`}
@@ -278,6 +276,7 @@ export default function SideMenu({
                       isActive={isActive}
                       item={item}
                       currentPath={currentPath}
+                      pathname={pathname}
                       index={index}
                     />
                   ))}
@@ -297,6 +296,7 @@ function SideBarMenuContent({
   isActive,
   item,
   currentPath,
+  pathname,
   index,
 }) {
   const translate = useTranslation();
@@ -306,8 +306,7 @@ function SideBarMenuContent({
         <div
           key={index}
           className={`flex items-center gap-[0.5rem] text-[#2F2B3D] hover:text-white px-[1.5rem] py-[0.5rem] rounded-[0.25rem] cursor-pointer hover:bg-gradient-to-r hover:from-primaryColor hover:to-gradientColor ${
-            isActive === item.name ||
-            currentPath.includes(item.name.toLowerCase())
+            isActive === item.name || isMenuItemActive(pathname, item.path)
               ? "bg-gradient-to-r from-primaryColor to-gradientColor text-white"
               : ""
           }`}
@@ -324,5 +323,21 @@ function SideBarMenuContent({
         </div>
       )}
     </div>
+  );
+}
+
+function isMenuItemActive(pathname: string, menuPath?: string) {
+  if (!menuPath) {
+    return false;
+  }
+
+  const normalizedPath = menuPath.replace(/\/$/, "");
+  const normalizedPathname = pathname.replace(/\/$/, "");
+  const menuBasePath = normalizedPath.replace(/\/list$/, "");
+
+  return (
+    normalizedPathname === normalizedPath ||
+    normalizedPathname === menuBasePath ||
+    normalizedPathname.startsWith(`${menuBasePath}/`)
   );
 }

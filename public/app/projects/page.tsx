@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
-import PageHeader from "../components/site/PageHeader";
-import ProjectsBento from "../components/site/ProjectsBento";
-import Properties from "../components/site/Properties";
-import CTABanner from "../components/site/CTABanner";
+import PageHeader from "../_components/site/PageHeader";
+import ProjectsBento from "../_components/site/ProjectsBento";
+import Properties from "../_components/site/Properties";
+import CTABanner from "../_components/site/CTABanner";
 
 export const metadata: Metadata = {
   title: "Projects & Properties",
-  description: "Explore Yours Housing's portfolio of premium villas, apartments, and land projects across Pokhara's most desirable neighbourhoods.",
+  description:
+    "Explore Yours Housing's portfolio of premium villas, apartments, and land projects across Pokhara's most desirable neighbourhoods.",
   openGraph: {
     title: "Projects & Properties | Yours Housing Pokhara",
-    description: "Premium villas, apartments and land in Lakeside, Sedi, Begnas and Sarangkot.",
+    description:
+      "Premium villas, apartments and land in Lakeside, Sedi, Begnas and Sarangkot.",
   },
 };
 

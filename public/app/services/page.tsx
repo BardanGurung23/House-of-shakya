@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
-import PageHeader from "../components/site/PageHeader";
-import Services from "../components/site/Services";
-import WhyUs from "../components/site/WhyUs";
-import CTABanner from "../components/site/CTABanner";
+import PageHeader from "../_components/site/PageHeader";
+import Services from "../_components/site/Services";
+import WhyUs from "../_components/site/WhyUs";
+import CTABanner from "../_components/site/CTABanner";
 
 export const metadata: Metadata = {
   title: "Services",
-  description: "Yours Housing offers real estate development, housing projects, land planning, and investment opportunities across Pokhara, Nepal.",
+  description:
+    "Yours Housing offers real estate development, housing projects, land planning, and investment opportunities across Pokhara, Nepal.",
   openGraph: {
     title: "Services | Yours Housing Pokhara",
-    description: "From raw land to finished homes — every real estate service you need in Pokhara.",
+    description:
+      "From raw land to finished homes — every real estate service you need in Pokhara.",
   },
 };
 
