@@ -16,6 +16,7 @@ import {
   useListAllMediaQuery,
   useUpdateMediaCategoryByIdMutation,
   useUploadMediaMutation,
+  useUploadVideoMutation, // Add this import
 } from "../../redux/services/media";
 import React, { useEffect, useRef, useState } from "react";
 import { handleError, handleResponse } from "../../utils/responseHandler";
@@ -32,7 +33,7 @@ import Input from "../Input";
 import Button from "../Button";
 import { useForm } from "react-hook-form";
 import { checkAccess } from "@/utils/accessHelper";
-// import Pagination from "../Pagination";
+import Pagination from "../Pagination";
 
 type MediaComponentProps = {
   title: string | React.ReactElement;
@@ -42,6 +43,7 @@ type MediaComponentProps = {
   setOpen:
     | React.Dispatch<React.SetStateAction<boolean>>
     | ((isOpen: boolean) => void);
+  acceptFiles?: string; //specifies which file types to accept (e.g., "image/*,video/*")
 };
 export default function MediaComponent({
   title,
@@ -49,6 +51,7 @@ export default function MediaComponent({
   isMultiSelect = false,
   open,
   setOpen,
+  acceptFiles = "image/*", // Default to images only
 }: Readonly<MediaComponentProps>) {
   const translate = useTranslation();
   const dispatch = useDispatch();
@@ -69,15 +72,20 @@ export default function MediaComponent({
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [pageNumber, setPageNumber] = useState<number>(1);
+  const [mediaCategoryPageNumber, setMediaCategoryPageNumber] =
+    useState<number>(1);
 
-  const selectedImage = useAppSelector((state) =>
-    isMultiSelect
-      ? state.media.multipleSelectedImage
-      : state.media.selectedImage,
-  );
+  const selectedImage = isMultiSelect
+    ? useAppSelector((state) => state.media.multipleSelectedImage)
+    : useAppSelector((state) => state.media.selectedImage);
 
-  const { data: mediaCategoryList } = useListAllMediaQuery("");
+  const {
+    data: mediaCategoryList,
+    isSuccess: mediaCategorySuccess,
+    refetch: mediaCategoryRefetch,
+  } = useListAllMediaQuery(mediaCategoryPageNumber);
   const [uploadImage] = useUploadMediaMutation();
+  const [uploadVideo] = useUploadVideoMutation();
 
   const {
     data: media,
@@ -144,14 +152,24 @@ export default function MediaComponent({
     if (files && files.length > 0) {
       const file = files[0];
       const formData = new FormData();
-      formData.append("image", file);
+
+      // Check if the file is a video
+      const isVideo = file.type.startsWith("video/");
+
+      formData.append(isVideo ? "video" : "image", file);
+
       if (currentFolder) {
         formData.append("mediaCategoryId", currentFolder);
       }
+
       try {
-        const response = await uploadImage(formData).unwrap();
+        const response = isVideo
+          ? await uploadVideo(formData).unwrap()
+          : await uploadImage(formData).unwrap();
+
         handleResponse({ res: response, onSuccess: () => {} });
       } catch (error) {
+        console.error("Upload error:", error);
         handleError({ error });
       }
     }
@@ -195,19 +213,31 @@ export default function MediaComponent({
     }
   };
 
+  const handleMediaCategoryPageChange = (page: number) => {
+    if (page >= 1 && page <= mediaCategoryList.data.totalPages) {
+      setMediaCategoryPageNumber(page);
+      mediaCategoryRefetch();
+    }
+  };
+
   const mediaCategory = mediaCategoryList?.data?.data ?? [];
+
+  // Update the button text to be more generic when accepting videos/other files
+  const isAcceptingVideos = acceptFiles.includes("video");
+  const fileButtonText = isAcceptingVideos ? "Choose File" : "Choose Image";
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <button onClick={() => setOpen(true)} className="">
-          {title}
+          {translate(title)}
         </button>
       </DialogTrigger>
       <DialogContent
         ref={modelRef}
-        className="w-full md:w-[calc(100vw-20rem)] h-[calc(100vh-10rem)] overflow-y-auto overflow-x-hidden lg:max-h-[80%]"
+        className="w-[90%] md:w-[calc(100vw-20rem)] h-[calc(100vh-10rem)] overflow-y-auto overflow-x-hidden lg:max-h-[80%]"
       >
-        <DialogHeader>
+        <DialogHeader className="p-[0.75rem]">
           <DialogTitle>Choose Image</DialogTitle>
           <DialogDescription>
             {/* for buttons */}
@@ -233,19 +263,19 @@ export default function MediaComponent({
                       disabled={!currentFolder}
                     >
                       <MdPhotoLibrary size={22} />
-                      Choose File
+                      {fileButtonText}
                     </button>
                   )}
                   <input
                     ref={fileInputRef}
                     type="file"
-                    accept="image/*"
+                    accept={acceptFiles}
                     onChange={handleFileSelect}
                     style={{ display: "none" }} // Hide the file input
                   />
                   {accessListFolder.includes("add") && (
                     <button
-                      className={`bg-[#FF80C5] px-[10px] py-[0.5rem] text-white rounded-[0.3rem] flex items-center gap-[10px] whitespace-nowrap ${
+                      className={`bg-secondaryBtn px-[10px] py-[0.5rem] text-white rounded-[0.3rem] flex items-center gap-[10px] whitespace-nowrap ${
                         currentFolder ? "hidden" : "cursor-pointer"
                       }`}
                       onClick={handleOpenModel}
@@ -266,92 +296,142 @@ export default function MediaComponent({
                 </button>
               )}
             </div>
-            <div className="mt-[1rem] flex flex-wrap border-red-500 gap-[1rem] md:gap-[4rem] w-[calc(100vw-4rem)] md:w-[calc(100vw-25rem)]">
-              {currentFolder === null &&
-                mediaCategory?.map(
-                  (each: { id: number; name: string }, index: number) => (
-                    <button
-                      key={index}
-                      className="relative border w-fit px-[0.5rem] md:px-[1.5rem] pt-[1.5rem] pb-[1rem] cursor-pointer group "
-                      onDoubleClick={() => handleDoubleClick(each.id)}
-                      style={{ userSelect: "none" }}
-                    >
-                      {accessListFolder.includes("delete") && (
-                        <HiTrash
-                          className="absolute top-[0.5rem] left-[0.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-red-500"
-                          onClick={() => handleDeleteFolder(each.id)}
-                        />
-                      )}
-                      {accessListFolder.includes("edit") && (
-                        <MdEditSquare
-                          className="absolute top-[0.5rem] right-[0.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-primaryColor"
-                          onClick={() => handleEditClick(index)} // Trigger edit mode and focus
-                        />
-                      )}
-                      <FaFolder
-                        size={108}
-                        className="text-yellow-500 group-hover:text-blue-500"
-                      />
-                      <textarea
-                        ref={(el) => (inputRefs.current[index] = el)}
-                        className="bg-inherit text-black w-[6rem] text-center resize-none overflow-hidden break-words whitespace-pre-wrap"
-                        value={
-                          inputValues[index] !== undefined
-                            ? inputValues[index]
-                            : each.name
-                        }
-                        disabled={editingIndex !== index}
-                        onChange={(e) =>
-                          handleInputChange(index, e.target.value)
-                        }
-                        onKeyDown={(e) => handleInputKeyDown(e, index, each.id)}
-                        rows={3}
-                      />
-                    </button>
-                  ),
-                )}
-              {currentFolder !== null && (
-                <>
-                  <div className="flex flex-wrap gap-[1rem] md:gap-[4rem] mt-[5rem] min-w-[70%]">
-                    {media?.data?.data.map(
-                      (
-                        each: { id: number; path: string; name: string },
-                        index: number,
-                      ) => (
+            <div className="mt-4 w-full">
+              {/* Folder Grid - Responsive */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4">
+                {currentFolder === null && (
+                  <>
+                    {mediaCategory?.map(
+                      (each: { id: number; name: string }, index: number) => (
                         <button
-                          className={`relative border w-fit px-[0.5rem] md:px-[1.5rem] pt-[1.5rem] pb-[1rem] cursor-pointer ${
-                            (typeof selectedImage === "string" &&
-                              each.path === selectedImage) ||
-                            (selectedImage.length > 0 &&
-                              selectedImage.includes(each.path))
-                              ? "border-[2px] border-black"
-                              : ""
-                          }`}
                           key={index}
-                          onClick={() => handleImageSelect(each.path)}
+                          className="relative border w-full aspect-square flex flex-col items-center justify-center px-2 md:px-4 py-3 md:py-4 cursor-pointer group"
+                          onDoubleClick={() => handleDoubleClick(each.id)}
+                          style={{ userSelect: "none" }}
                         >
-                          <img
-                            src={`${IMAGE_BASE_URL}${each.path}`}
-                            alt="Gallery"
-                            className="w-[109px] h-[90px] object-cover"
-                            crossOrigin="anonymous"
+                          {accessListFolder.includes("delete") && (
+                            <HiTrash
+                              size={18}
+                              className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-red-500 z-10"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleDeleteFolder(each.id);
+                              }}
+                            />
+                          )}
+                          {accessListFolder.includes("edit") && (
+                            <MdEditSquare
+                              size={18}
+                              className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-primaryColor z-10"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleEditClick(index);
+                              }}
+                            />
+                          )}
+                          <FaFolder
+                            size={108}
+                            className="text-yellow-500 group-hover:text-blue-500 mb-2 sm:mb-3 flex-shrink-0"
                           />
-                          <p className="bg-inherit text-black w-[6rem] text-center overflow-hidden line-clamp-1 mt-[0.5rem]">
-                            {each.name}
-                          </p>
+                          <textarea
+                            ref={(el) => (inputRefs.current[index] = el)}
+                            className="bg-inherit text-black w-full text-center text-xs sm:text-sm resize-none overflow-hidden break-words whitespace-pre-wrap"
+                            value={
+                              inputValues[index] !== undefined
+                                ? inputValues[index]
+                                : each.name
+                            }
+                            disabled={editingIndex !== index}
+                            onChange={(e) =>
+                              handleInputChange(index, e.target.value)
+                            }
+                            onKeyDown={(e) =>
+                              handleInputKeyDown(e, index, each.id)
+                            }
+                            rows={2}
+                          />
                         </button>
                       ),
                     )}
-                  </div>
-                  {/*  Pagination */}
-                  {/* {mediaSuccess && (
-                    <Pagination
-                      media={media}
-                      handlePageChange={handlePageChange}
-                    />
-                  )} */}
-                </>
-              )}
+                    {mediaCategorySuccess && (
+                      <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5 xl:col-span-6">
+                        <Pagination
+                          media={mediaCategoryList}
+                          handlePageChange={handleMediaCategoryPageChange}
+                        />
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {/* Media Grid */}
+                {currentFolder !== null && (
+                  <>
+                    {media?.data?.data.map(
+                      (
+                        each: {
+                          id: number;
+                          path: string;
+                          name: string;
+                          type?: string;
+                        },
+                        index: number,
+                      ) => {
+                        const isVideo =
+                          each.path.match(/\.(mp4|webm|ogg|mov)$/i) ||
+                          each.type === "video";
+
+                        return (
+                          <button
+                            className={`relative border w-full aspect-square flex flex-col items-center justify-center p-2 md:p-3 cursor-pointer transition-all ${
+                              (typeof selectedImage === "string" &&
+                                each.path === selectedImage) ||
+                              (Array.isArray(selectedImage) &&
+                                selectedImage.includes(each.path))
+                                ? "border-2 border-black"
+                                : "border hover:border-gray-400"
+                            }`}
+                            key={index}
+                            onClick={() => handleImageSelect(each.path)}
+                          >
+                            {isVideo ? (
+                              <div className="relative w-full h-full max-h-[120px] sm:max-h-[140px]">
+                                <video
+                                  src={`${IMAGE_BASE_URL}${each.path}`}
+                                  className="w-full h-full object-cover"
+                                  crossOrigin="anonymous"
+                                />
+                                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                                  <span className="text-white text-xl sm:text-2xl">
+                                    ▶
+                                  </span>
+                                </div>
+                              </div>
+                            ) : (
+                              <img
+                                src={`${IMAGE_BASE_URL}${each.path}`}
+                                alt="Gallery"
+                                className="w-full h-full max-h-[120px] sm:max-h-[140px] object-cover"
+                              />
+                            )}
+                            <p className="bg-inherit text-black w-full text-center text-xs sm:text-sm overflow-hidden line-clamp-1 mt-1 sm:mt-2">
+                              {each.name}
+                            </p>
+                          </button>
+                        );
+                      },
+                    )}
+                    {mediaSuccess && (
+                      <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5 xl:col-span-6">
+                        <Pagination
+                          media={media}
+                          handlePageChange={handlePageChange}
+                        />
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
             </div>
             <div className="absolute top-[25%] pl-[25%] w-full">
               <Model
@@ -359,9 +439,8 @@ export default function MediaComponent({
                 isOpen={openModel}
                 onClose={handleCloseModel}
               >
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} className="py-10">
                   <Input
-                    autoFocus={true}
                     label="Create Folder"
                     placeholder="Enter Folder Name"
                     className="mb-[1rem]"
