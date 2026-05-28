@@ -9,6 +9,10 @@ export const BannerSchema = z.object({
       caption: z.string().optional(),
       title: z.string().min(1, "Title is Required"),
       subTitle: z.string().min(1, "Sub Title is Required"),
+      primaryButton: z.string().optional(),
+      primaryButtonUrl: z.string().optional(),
+      secondaryButton: z.string().optional(),
+      secondaryButtonUrl: z.string().optional(),
     }),
   ),
 });

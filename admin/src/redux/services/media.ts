@@ -12,7 +12,7 @@ const mediaApi = api.injectEndpoints({
     }),
     listAllMedia: builder.query({
       query: (pageNumber) =>
-        `media-category/list${pageNumber ? `?page=${pageNumber}` : ""}`,
+        `media-category/list?limit=10${pageNumber ? `&page=${pageNumber}` : ""}`,
       providesTags: ["media-category"],
     }),
     getMediaById: builder.query({
@@ -37,6 +37,17 @@ const mediaApi = api.injectEndpoints({
     uploadMedia: builder.mutation({
       query: (body) => ({
         url: "media",
+        method: "POST",
+        body,
+        headers: {
+          "Content-Type": "multipart/form",
+        },
+      }),
+      invalidatesTags: ["media"],
+    }),
+    uploadVideo: builder.mutation({
+      query: (body) => ({
+        url: "media/upload-video",
         method: "POST",
         body,
         headers: {
@@ -78,6 +89,7 @@ export const {
   useUpdateMediaCategoryByIdMutation,
   useDeleteMediaCategoryMutation,
   useUploadMediaMutation,
+  useUploadVideoMutation,
   useGetMediaByCategoryQuery,
   useRenameMediaMutation,
   useDeleteMediaMutation,

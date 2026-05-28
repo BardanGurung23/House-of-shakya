@@ -225,6 +225,64 @@ function SlidesInputComponent({
               />
             )}
           />
+          <div className="flex flex-col gap-4">
+            <div className="flex w-full gap-4">
+              <Controller
+                name={`bannerItems.${index}.primaryButton`}
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    label="Primary button"
+                    placeholder="Enter title"
+                    error={errors.bannerItems?.[index]?.title?.message}
+                    className="w-full"
+                  />
+                )}
+              />
+              <Controller
+                name={`bannerItems.${index}.primaryButtonUrl`}
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    label="Primary button url"
+                    placeholder="Enter title"
+                    error={errors.bannerItems?.[index]?.title?.message}
+                    className="w-full"
+                  />
+                )}
+              />
+            </div>
+            <div className="flex w-full gap-4">
+              <Controller
+                name={`bannerItems.${index}.secondaryButton`}
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    label="Secondary button"
+                    placeholder="Enter title"
+                    error={errors.bannerItems?.[index]?.title?.message}
+                    className="w-full"
+                  />
+                )}
+              />
+              <Controller
+                name={`bannerItems.${index}.secondaryButtonUrl`}
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    label="Secondary button url"
+                    placeholder="Enter title"
+                    error={errors.bannerItems?.[index]?.title?.message}
+                    className="w-full"
+                  />
+                )}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
