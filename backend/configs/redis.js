@@ -1,5 +1,17 @@
 const Redis = require("ioredis");
 
+if (process.env.REDIS_DISABLED === "true") {
+  console.warn("Redis disabled; using no-op Redis client.");
+
+  module.exports = {
+    get: async () => null,
+    set: async () => "OK",
+    del: async () => 0,
+    ping: async () => "PONG",
+  };
+  return;
+}
+
 const redis = process.env.REDIS_URL
   ? new Redis(process.env.REDIS_URL)
   : new Redis({
