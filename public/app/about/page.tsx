@@ -4,6 +4,8 @@ import WhyUs from "../_components/site/WhyUs";
 import CTABanner from "../_components/site/CTABanner";
 import Reveal from "../_components/site/Reveal";
 import Counter from "../_components/site/Counter";
+import { getData } from "@/utils/apiHandle";
+import { IMAGE_BASE_URL } from "@/constants";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -16,14 +18,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const response = await getData("banner/about-banner");
+  const aboutbanner = response?.data?.bannerItems;
+  const banner = Array.isArray(aboutbanner) ? aboutbanner[0] : null;
+
   return (
     <>
       <PageHeader
         eyebrow="Our Story"
         breadcrumb="Home / About"
-        title="Built on Trust. Driven by Purpose."
-        description="For over a decade, Yours Housing has been Pokhara's most trusted name in premium real estate development — guided by transparency, professionalism, and a long-term vision for Nepal."
+        title={`${banner?.title}`}
+        description={`${banner?.subTitle}`}
+        imageUrl={`${IMAGE_BASE_URL}${banner?.image}`}
       />
 
       {/* Mission & Vision */}

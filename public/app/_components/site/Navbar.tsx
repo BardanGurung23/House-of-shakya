@@ -4,6 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import logo from "@/public/logo.png";
 
 const links = [
   { href: "/", label: "Home" },
@@ -39,15 +41,10 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBg}`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-18 py-4">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-20 py-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded flex items-center justify-center" style={{ background: "var(--gradient-brand)" }}>
-            <span className="text-sm font-bold text-cream tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>YH</span>
-          </div>
-          <span className="text-cream font-semibold text-lg tracking-tight hidden sm:block" style={{ fontFamily: "'Playfair Display', serif" }}>
-            Yours <span className="text-forest">Housing</span>
-          </span>
+          <Image className="size-[70px]" src={logo} alt="Yours housing logo" />
         </Link>
 
         {/* Desktop Links */}

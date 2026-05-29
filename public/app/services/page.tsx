@@ -3,6 +3,8 @@ import PageHeader from "../_components/site/PageHeader";
 import Services from "../_components/site/Services";
 import WhyUs from "../_components/site/WhyUs";
 import CTABanner from "../_components/site/CTABanner";
+import { getData } from "@/utils/apiHandle";
+import { IMAGE_BASE_URL } from "@/constants";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -15,14 +17,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const response = await getData("banner/services-banner");
+  const aboutbanner = response?.data?.bannerItems;
+  const banner = Array.isArray(aboutbanner) ? aboutbanner[0] : null;
   return (
     <>
       <PageHeader
         eyebrow="What We Do"
         breadcrumb="Home / Services"
-        title="End-to-End Real Estate Services in Pokhara"
-        description="From site acquisition and master planning to construction and investment advisory — Yours Housing delivers the full spectrum of real estate services under one roof."
+        title={`${banner?.title}`}
+        description={`${banner?.subTitle}`}
+        imageUrl={`${IMAGE_BASE_URL}${banner?.image}`}
       />
       <Services />
       <WhyUs />

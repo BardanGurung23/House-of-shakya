@@ -5,21 +5,38 @@ interface PageHeaderProps {
   title: string;
   description?: string;
   breadcrumb?: string;
+  imageUrl?: string | null;
 }
-
-export default function PageHeader({ eyebrow, title, description, breadcrumb }: PageHeaderProps) {
+export default function PageHeader({
+  eyebrow,
+  title,
+  description,
+  breadcrumb,
+  imageUrl,
+}: PageHeaderProps) {
   return (
-    <section className="bg-navy-deep pt-28 pb-20 relative overflow-hidden">
+    <section
+      className="bg-navy-deep pt-28 pb-20 relative overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: `url("${imageUrl}")` }}
+    >
+      <div className="absolute inset-0 bg-navy-deep/75 pointer-events-none" />
       {/* Radial backdrop */}
       <div className="absolute inset-0 radial-backdrop pointer-events-none" />
-      <div className="absolute inset-0 pointer-events-none" style={{
-        background: "radial-gradient(ellipse 60% 80% at 80% 50%, oklch(0.42 0.09 155 / 0.08), transparent 70%)"
-      }} />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 80% at 80% 50%, oklch(0.42 0.09 155 / 0.08), transparent 70%)",
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         {breadcrumb && (
           <Reveal>
-            <p className="text-xs font-medium tracking-widest uppercase mb-4" style={{ color: "var(--gold)" }}>
+            <p
+              className="text-xs font-medium tracking-widest uppercase mb-4"
+              style={{ color: "var(--gold)" }}
+            >
               {breadcrumb}
             </p>
           </Reveal>
