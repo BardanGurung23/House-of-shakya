@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import HeroSection from "./_components/site/HeroSection";
+import Hero from "./_components/Hero";
 import AboutPreview from "./_components/site/AboutPreview";
-import Properties from "./_components/site/Properties";
-import ProjectsBento from "./_components/site/ProjectsBento";
+import Properties from "./_components/Properties";
+import Projects from "./_components/Projects/index";
 import Services from "./_components/site/Services";
 import WhyUs from "./_components/site/WhyUs";
 import CTABanner from "./_components/site/CTABanner";
@@ -21,10 +21,10 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <HeroSection />
+      <Hero />
       <AboutPreview />
       <Properties limit={6} showHeader={true} />
-      <ProjectsBento />
+      <Projects />
       <Services />
       <WhyUs />
       <CTABanner />

@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./_components/site/Navbar";
 import Footer from "./_components/site/Footer";
+import { getData } from "@/utils/apiHandle";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: {
@@ -38,13 +43,16 @@ const jsonLd = {
   url: "https://yourshousing.com",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const response = await getData("company-setting");
+  const settingsdata = response?.data;
+  console.log("settings", settingsdata);
   return (
-    <html lang="en">
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -64,7 +72,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         <main>{children}</main>
-        <Footer />
+        <Footer settings={settingsdata} />
       </body>
     </html>
   );
