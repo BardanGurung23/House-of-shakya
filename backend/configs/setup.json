@@ -38,19 +38,103 @@
   ],
   "banner": [
     {
-      "id": "167",
+      "id": "1",
       "name": "Home Banner",
       "slug": "home-banner",
       "responsiveSettings": "",
       "sliderSettings": "",
       "bannerItems": [
         {
-          "id": "267",
-          "bannerId": "167",
+          "id": "1",
+          "bannerId": "1",
           "image": "/test",
           "caption": "Banner",
           "title": "Tech Nirvana",
           "subTitle": "Teach Nirvana",
+          "primaryButton": "",
+          "primaryButtonUrl": "",
+          "secondaryButton": "",
+          "secondaryButtonUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "About banner",
+      "slug": "about-banner",
+      "responsiveSettings": "",
+      "sliderSettings": "",
+      "bannerItems": [
+        {
+          "id": "2",
+          "bannerId": "2",
+          "image": "",
+          "caption": "Banner",
+          "title": "Mudita",
+          "subTitle": "Unimomo Generic Banner",
+          "primaryButton": "",
+          "primaryButtonUrl": "",
+          "secondaryButton": "",
+          "secondaryButtonUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Projects banner",
+      "slug": "projects-offers",
+      "responsiveSettings": "",
+      "sliderSettings": "",
+      "bannerItems": [
+        {
+          "id": "3",
+          "bannerId": "3",
+          "image": "",
+          "caption": "Banner",
+          "title": "Mudita",
+          "subTitle": "Unimomo Generic Banner",
+          "primaryButton": "",
+          "primaryButtonUrl": "",
+          "secondaryButton": "",
+          "secondaryButtonUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Services-Banner",
+      "slug": "services-banner",
+      "responsiveSettings": "",
+      "sliderSettings": "",
+      "bannerItems": [
+        {
+          "id": "4",
+          "bannerId": "4",
+          "image": "",
+          "caption": "Banner",
+          "title": "Mudita",
+          "subTitle": "Unimomo Generic Banner",
+          "primaryButton": "",
+          "primaryButtonUrl": "",
+          "secondaryButton": "",
+          "secondaryButtonUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Contact Banner",
+      "slug": "contact-banner",
+      "responsiveSettings": "",
+      "sliderSettings": "",
+      "bannerItems": [
+        {
+          "id": "5",
+          "bannerId": "5",
+          "image": "",
+          "caption": "Banner",
+          "title": "Mudita",
+          "subTitle": "Unimomo Generic Banner",
           "primaryButton": "",
           "primaryButtonUrl": "",
           "secondaryButton": "",
