@@ -23,6 +23,7 @@ const setupPath = require("./configs/setup");
 const { Sequelize } = require("./models");
 const logger = require("./configs/logger");
 const { apiRateLimiter } = require("./utils/loginRateLimit");
+const redis = require("./configs/redis");
 
 // const { apiRateLimiter } = require("./utils/loginRateLimit");
 
@@ -142,6 +143,20 @@ app.use(passport.session());
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
+});
+
+app.get("/health", async (req, res) => {
+  try {
+    await Sequelize.authenticate();
+    if (redis?.ping) await redis.ping();
+    res.status(200).json({ status: "ok" });
+  } catch (error) {
+    logger.error("Health check failed:", error);
+    res.status(503).json({
+      status: "error",
+      message: error instanceof Error ? error.message : "Health check failed",
+    });
+  }
 });
 
 app.use(baseUrl + "/api/v1", apiRateLimiter, require("./api")); // -------- main api -----------
