@@ -1,15 +1,16 @@
 {
   "index.html": {
-    "file": "assets/index-LlwKp_Bq.js",
+    "file": "assets/index-DY1Lf0Ec.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
     "css": [
-      "assets/index-ryHBuRrD.css"
+      "assets/index-BXNV0Izl.css"
     ],
     "assets": [
       "assets/brandLogo-BBLnl-KM.png",
       "assets/logo-C3zYhZ6b.svg",
+      "assets/logo-CPNEbVrJ.png",
       "assets/english-CRM_ihKu.png",
       "assets/japan-DPDezSku.png",
       "assets/oops-image-rFS4jjSf.png"
@@ -26,6 +27,10 @@
   "src/assets/japan.png": {
     "file": "assets/japan-DPDezSku.png",
     "src": "src/assets/japan.png"
+  },
+  "src/assets/logo.png": {
+    "file": "assets/logo-CPNEbVrJ.png",
+    "src": "src/assets/logo.png"
   },
   "src/assets/logo.svg": {
     "file": "assets/logo-C3zYhZ6b.svg",
