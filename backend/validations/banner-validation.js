@@ -6,6 +6,8 @@ const isEmpty = require("../helpers/is-empty-helper");
 
 const { validateRequestBody } = require("../helpers/validator-helper");
 
+const optionalButtonField = joi.string().allow("").optional();
+
 const bannerPostValidation = async (req, res, next) => {
   let joiModel = joi.object({
     name: joi.string().min(1).required().messages({
@@ -26,10 +28,11 @@ const bannerPostValidation = async (req, res, next) => {
           subTitle: joi.string().min(1).required().messages({
             "string.empty": "Sub Title is Required",
           }),
-          primaryButton: joi.string().optional(),
-          primaryButtonUrl: joi.string().optional(),
-          secondaryButton: joi.string().optional(),
-          seondaryButtonUrl: joi.string().optional(),
+          primaryButton: optionalButtonField,
+          primaryButtonUrl: optionalButtonField,
+          secondaryButton: optionalButtonField,
+          secondaryButtonUrl: optionalButtonField,
+          seondaryButtonUrl: optionalButtonField,
         }),
       )
       .required(),
@@ -63,10 +66,10 @@ const bannerPutValidation = async (req, res, next) => {
           caption: joi.optional(),
           title: joi.optional(),
           subTitle: joi.optional(),
-          primaryButton: joi.string().optional(),
-          primaryButtonUrl: joi.string().optional(),
-          secondaryButton: joi.string().optional(),
-          secondaryButtonUrl: joi.string().optional(),
+          primaryButton: optionalButtonField,
+          primaryButtonUrl: optionalButtonField,
+          secondaryButton: optionalButtonField,
+          secondaryButtonUrl: optionalButtonField,
         }),
       )
       .required(),
