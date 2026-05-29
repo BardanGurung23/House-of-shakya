@@ -13,7 +13,11 @@ type ContactSetting = {
 const getPhoneHref = (phone?: string | null) =>
   phone ? `tel:${phone.replace(/[^\d+]/g, "")}` : undefined;
 
-export default function ContactForm({ contact }: { contact?: ContactSetting | null }) {
+export default function ContactForm({
+  contact,
+}: {
+  contact?: ContactSetting | null;
+}) {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -30,10 +34,9 @@ export default function ContactForm({ contact }: { contact?: ContactSetting | nu
     ? contact.address.split(/\r?\n/).filter(Boolean)
     : ["New Road, Pokhara — 33700", "Gandaki Province, Nepal"];
   const email = contact?.email || "sales@yourshousing.com";
-  const phoneLines = [
-    contact?.primary_phone,
-    contact?.secondary_phone,
-  ].filter(Boolean) as string[];
+  const phoneLines = [contact?.primary_phone, contact?.secondary_phone].filter(
+    Boolean
+  ) as string[];
   const phones = phoneLines.length ? phoneLines : ["+977 98690 28924"];
 
   return (
@@ -138,10 +141,7 @@ export default function ContactForm({ contact }: { contact?: ContactSetting | nu
               {submitted ? (
                 <div className="flex flex-col items-center justify-center h-full py-16 text-center">
                   <CheckCircle2 size={52} className="text-forest mb-5" />
-                  <h3
-                    className="text-2xl font-semibold text-navy-deep mb-3"
-                    style={{ fontFamily: "'Playfair Display', serif" }}
-                  >
+                  <h3 className="text-2xl font-semibold text-navy-deep mb-3">
                     Message Sent
                   </h3>
                   <p className="text-sm text-navy/60 max-w-xs">
@@ -160,10 +160,7 @@ export default function ContactForm({ contact }: { contact?: ContactSetting | nu
                 </div>
               ) : (
                 <>
-                  <h3
-                    className="text-xl font-semibold text-navy-deep mb-2"
-                    style={{ fontFamily: "'Playfair Display', serif" }}
-                  >
+                  <h3 className="text-xl font-semibold text-navy-deep mb-2">
                     Send a Message
                   </h3>
                   <p className="text-sm text-navy/50 mb-8">

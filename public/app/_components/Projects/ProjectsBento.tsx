@@ -126,10 +126,7 @@ export default function ProjectsBento({ projects }: ProjectProps) {
                 <p className="text-xs text-cream/60 mb-1 uppercase tracking-widest">
                   {project.type}
                 </p>
-                <h3
-                  className="text-lg md:text-xl font-semibold text-cream mb-1"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                >
+                <h3 className="text-lg md:text-xl font-semibold text-cream mb-1">
                   {project.name}
                 </h3>
                 <div className="flex items-center gap-1.5 text-xs text-cream/60 mb-2">

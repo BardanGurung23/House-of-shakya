@@ -3,8 +3,7 @@ import {
   MdKeyboardArrowRight,
   MdOutlineDashboard,
 } from "react-icons/md";
-import FullLogo from "../assets/brandLogo.png";
-import SmallLogo from "../assets/smallLogo.webp";
+import FullLogo from "../assets/logo.png";
 import { SideListMenuType, SideMenuList } from "./sideMenuList";
 import { SetStateAction, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -73,11 +72,11 @@ export default function SideMenu({
           <img
             src={FullLogo}
             alt="Logo"
-            className={`h-[3rem] object-contain`}
+            className={`h-[5rem] object-contain`}
           />
         ) : (
           <img
-            src={SmallLogo}
+            src={FullLogo}
             alt="Logo"
             className={`h-[3rem] object-contain`}
           />

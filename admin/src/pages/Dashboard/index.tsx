@@ -101,7 +101,7 @@ export default function Dashboard() {
     <PageContent>
       <div className="flex flex-1 flex-col gap-4 p-4">
         {/* Welcome Section */}
-        <div className="rounded-lg bg-gradient-to-r from-blue-600 to-blue-800 p-8 text-white text-start">
+        <div className="rounded-lg bg-primaryColor p-8 text-white text-start">
           <h1 className="text-[2.5rem] font-bold capitalize">
             Welcome back, {username ? username : "Admin"}!
           </h1>

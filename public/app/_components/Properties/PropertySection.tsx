@@ -140,10 +140,7 @@ export default function PropertiesSection({
                   </div>
 
                   <div className="p-5">
-                    <h3
-                      className="font-semibold text-navy-deep text-base leading-tight mb-1"
-                      style={{ fontFamily: "'Playfair Display', serif" }}
-                    >
+                    <h3 className="font-semibold text-navy-deep text-base leading-tight mb-1">
                       {prop.name}
                     </h3>
                     <div className="flex items-center gap-1.5 text-xs text-navy/60 mb-3">

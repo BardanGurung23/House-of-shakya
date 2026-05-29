@@ -42,10 +42,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-18 py-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded flex items-center justify-center" style={{ background: "var(--gradient-brand)" }}>
-            <span className="text-sm font-bold text-cream tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>YH</span>
+          <div
+            className="w-9 h-9 rounded flex items-center justify-center"
+            style={{ background: "var(--gradient-brand)" }}
+          >
+            <span className="text-sm font-bold text-cream tracking-tight">
+              YH
+            </span>
           </div>
-          <span className="text-cream font-semibold text-lg tracking-tight hidden sm:block" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <span className="text-cream font-semibold text-lg tracking-tight hidden sm:block">
             Yours <span className="text-forest">Housing</span>
           </span>
         </Link>

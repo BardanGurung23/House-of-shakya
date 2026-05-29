@@ -96,10 +96,7 @@ export default async function AboutPage() {
               { value: 11, suffix: " Yrs", label: "Industry Experience" },
             ].map((stat) => (
               <Reveal key={stat.label}>
-                <p
-                  className="text-4xl font-bold text-cream mb-2"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                >
+                <p className="text-4xl font-bold text-cream mb-2">
                   <Counter target={stat.value} suffix={stat.suffix} />
                 </p>
                 <p className="text-xs uppercase tracking-widest text-cream/40">

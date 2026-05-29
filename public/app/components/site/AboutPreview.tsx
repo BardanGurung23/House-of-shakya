@@ -29,12 +29,18 @@ export default function AboutPreview() {
             </Reveal>
             <Reveal delay={0.2}>
               <p className="text-base text-navy/60 leading-relaxed mb-4">
-                Yours Housing was founded on a single conviction: that every Nepali family deserves access to premium, legally secure, and well-planned housing. From our base in Pokhara, we've grown into one of Gandaki Province's most trusted developers.
+                Yours Housing was founded on a single conviction: that every
+                Nepali family deserves access to premium, legally secure, and
+                well-planned housing. From our base in Pokhara, we've grown into
+                one of Gandaki Province's most trusted developers.
               </p>
             </Reveal>
             <Reveal delay={0.25}>
               <p className="text-base text-navy/60 leading-relaxed mb-8">
-                Our mission is to develop properties that create long-term value for buyers, investors, and communities alike — backed by rigorous planning, professional execution, and full transparency.
+                Our mission is to develop properties that create long-term value
+                for buyers, investors, and communities alike — backed by
+                rigorous planning, professional execution, and full
+                transparency.
               </p>
             </Reveal>
             <Reveal delay={0.3}>
@@ -57,14 +63,21 @@ export default function AboutPreview() {
                     className="p-7 rounded-xl border shadow-card"
                     style={{
                       borderColor: "oklch(0.26 0.07 258 / 0.1)",
-                      background: i % 2 === 0 ? "white" : "var(--navy-deep)"
+                      background: i % 2 === 0 ? "white" : "var(--navy-deep)",
                     }}
                   >
-                    <p className={`text-3xl md:text-4xl font-bold mb-2 ${i % 2 === 0 ? "text-navy-deep" : "text-cream"}`}
-                      style={{ fontFamily: "'Playfair Display', serif" }}>
+                    <p
+                      className={`text-3xl md:text-4xl font-bold mb-2 ${
+                        i % 2 === 0 ? "text-navy-deep" : "text-cream"
+                      }`}
+                    >
                       <Counter target={stat.value} suffix={stat.suffix} />
                     </p>
-                    <p className={`text-xs font-medium uppercase tracking-widest ${i % 2 === 0 ? "text-navy/50" : "text-cream/50"}`}>
+                    <p
+                      className={`text-xs font-medium uppercase tracking-widest ${
+                        i % 2 === 0 ? "text-navy/50" : "text-cream/50"
+                      }`}
+                    >
                       {stat.label}
                     </p>
                   </div>

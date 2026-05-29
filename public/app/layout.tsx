@@ -3,10 +3,15 @@ import "./globals.css";
 import Navbar from "./_components/site/Navbar";
 import Footer from "./_components/site/Footer";
 import { getData } from "@/utils/apiHandle";
-import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+import { Figtree } from "next/font/google";
+
+const figtree = Figtree({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-figtree",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -52,7 +57,7 @@ export default async function RootLayout({
   const settingsdata = response?.data;
   console.log("settings", settingsdata);
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
+    <html lang="en" className={cn("font-sans", figtree.variable)}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -69,7 +74,7 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>
+      <body className={figtree.className}>
         <Navbar />
         <main>{children}</main>
         <Footer settings={settingsdata} />

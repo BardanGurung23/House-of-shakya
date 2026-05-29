@@ -17,7 +17,8 @@ const properties = [
     beds: 4,
     baths: 4,
     tag: "Furnished",
-    image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=600&h=750&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=600&h=750&fit=crop",
   },
   {
     id: 2,
@@ -31,7 +32,8 @@ const properties = [
     beds: 3,
     baths: 2,
     tag: "New launch",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&h=750&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&h=750&fit=crop",
   },
   {
     id: 3,
@@ -45,7 +47,8 @@ const properties = [
     beds: 0,
     baths: 0,
     tag: "Corner plot",
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=750&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=750&fit=crop",
   },
   {
     id: 4,
@@ -59,7 +62,8 @@ const properties = [
     beds: 5,
     baths: 5,
     tag: "Mountain view",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=750&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=750&fit=crop",
   },
   {
     id: 5,
@@ -73,7 +77,8 @@ const properties = [
     beds: 2,
     baths: 2,
     tag: "Furnished",
-    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=750&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=750&fit=crop",
   },
   {
     id: 6,
@@ -87,7 +92,8 @@ const properties = [
     beds: 0,
     baths: 0,
     tag: "Lake frontage",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&h=750&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&h=750&fit=crop",
   },
 ];
 
@@ -103,7 +109,10 @@ interface PropertiesProps {
   showHeader?: boolean;
 }
 
-export default function Properties({ limit, showHeader = true }: PropertiesProps) {
+export default function Properties({
+  limit,
+  showHeader = true,
+}: PropertiesProps) {
   const [filter, setFilter] = useState("All");
   const categories = ["All", "Villas", "Apartments", "Land"];
 
@@ -181,9 +190,19 @@ export default function Properties({ limit, showHeader = true }: PropertiesProps
                     width={600}
                     height={400}
                   />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, oklch(0.18 0.05 255 / 0.5), transparent 60%)" }} />
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(to top, oklch(0.18 0.05 255 / 0.5), transparent 60%)",
+                    }}
+                  />
                   <div className="absolute top-3 left-3 flex items-center gap-2">
-                    <span className={`px-2.5 py-1 text-xs font-semibold rounded-full border ${statusColors[prop.statusType]}`}>
+                    <span
+                      className={`px-2.5 py-1 text-xs font-semibold rounded-full border ${
+                        statusColors[prop.statusType]
+                      }`}
+                    >
                       {prop.status}
                     </span>
                   </div>
@@ -196,7 +215,7 @@ export default function Properties({ limit, showHeader = true }: PropertiesProps
 
                 {/* Content */}
                 <div className="p-5">
-                  <h3 className="font-semibold text-navy-deep text-base leading-tight mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  <h3 className="font-semibold text-navy-deep text-base leading-tight mb-1">
                     {prop.name}
                   </h3>
                   <div className="flex items-center gap-1.5 text-xs text-navy/60 mb-3">
@@ -206,9 +225,15 @@ export default function Properties({ limit, showHeader = true }: PropertiesProps
 
                   {prop.beds > 0 && (
                     <div className="flex items-center gap-4 text-xs text-navy/60 mb-4">
-                      <span className="flex items-center gap-1"><Bed size={11} /> {prop.beds} Beds</span>
-                      <span className="flex items-center gap-1"><Bath size={11} /> {prop.baths} Baths</span>
-                      <span className="flex items-center gap-1"><Square size={11} /> {prop.area}</span>
+                      <span className="flex items-center gap-1">
+                        <Bed size={11} /> {prop.beds} Beds
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Bath size={11} /> {prop.baths} Baths
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Square size={11} /> {prop.area}
+                      </span>
                     </div>
                   )}
                   {prop.beds === 0 && (
@@ -220,7 +245,9 @@ export default function Properties({ limit, showHeader = true }: PropertiesProps
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-xs text-navy/50 mb-0.5">Starting at</p>
-                      <p className="font-bold text-forest text-base">{prop.price}</p>
+                      <p className="font-bold text-forest text-base">
+                        {prop.price}
+                      </p>
                     </div>
                     <Link
                       href="/contact"

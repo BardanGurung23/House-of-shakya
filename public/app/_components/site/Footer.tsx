@@ -13,17 +13,9 @@ export default function Footer({ settings }: any) {
                 className="w-9 h-9 rounded flex items-center justify-center"
                 style={{ background: "var(--gradient-brand)" }}
               >
-                <span
-                  className="text-sm font-bold text-cream"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                >
-                  YH
-                </span>
+                <span className="text-sm font-bold text-cream">YH</span>
               </div>
-              <span
-                className="font-semibold text-lg tracking-tight"
-                style={{ fontFamily: "'Playfair Display', serif" }}
-              >
+              <span className="font-semibold text-lg tracking-tight">
                 Yours <span className="text-forest">Housing</span>
               </span>
             </div>
