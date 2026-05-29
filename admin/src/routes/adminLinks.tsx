@@ -35,6 +35,12 @@ import BlogCategory from "@/pages/BlogCategory";
 import AddEditBlogCategory from "@/pages/BlogCategory/AddEditBlog";
 import Blog from "@/pages/Blog";
 import AddEditBlog from "@/pages/Blog/AddEditBlog";
+import Property from "@/pages/Property";
+import AddEditProperty from "@/pages/Property/AddEditProperty";
+import PropertyCategory from "@/pages/PropertyCategory";
+import AddEditPropertyCategory from "@/pages/PropertyCategory/AddEditPropertyCategory";
+import Projects from "@/pages/Projects";
+import AddEditProjects from "@/pages/Projects/AddEditProjects";
 import Contact from "@/pages/Contact";
 import Subscribers from "@/pages/Subscribers";
 import CareerCategory from "@/pages/CareerCategory";
@@ -234,6 +240,42 @@ export const adminLinks = [
   {
     path: "/blog/:id",
     element: <AddEditBlog />,
+  },
+  {
+    path: "/property/list",
+    element: <Property />,
+  },
+  {
+    path: "/property/",
+    element: <AddEditProperty />,
+  },
+  {
+    path: "/property/:id",
+    element: <AddEditProperty />,
+  },
+  {
+    path: "/property-category/list",
+    element: <PropertyCategory />,
+  },
+  {
+    path: "/property-category/",
+    element: <AddEditPropertyCategory />,
+  },
+  {
+    path: "/property-category/:id",
+    element: <AddEditPropertyCategory />,
+  },
+  {
+    path: "/projects/list",
+    element: <Projects />,
+  },
+  {
+    path: "/projects/",
+    element: <AddEditProjects />,
+  },
+  {
+    path: "/projects/:id",
+    element: <AddEditProjects />,
   },
   {
     path: "contact",

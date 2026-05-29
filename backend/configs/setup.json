@@ -1,7 +1,7 @@
 {
   "setting": {
     "id": 627,
-    "brand_name": "Tech Nirvana",
+    "brand_name": "Yours housing",
     "brand_logo": "https://res.cloudinary.com/dx9n8tsyu/image/upload/v1616740134/General_Asahi_Logo",
     "brand_favicon": "https://res.cloudinary.com/dx9n8tsyu/image/upload/v1616740134/General_Asahi_Logo",
     "email": "info@technirvana.com.np, sales@technirvana.co.uk",
@@ -38,19 +38,103 @@
   ],
   "banner": [
     {
-      "id": "167",
+      "id": "1",
       "name": "Home Banner",
       "slug": "home-banner",
       "responsiveSettings": "",
       "sliderSettings": "",
       "bannerItems": [
         {
-          "id": "267",
-          "bannerId": "167",
+          "id": "1",
+          "bannerId": "1",
           "image": "/test",
           "caption": "Banner",
           "title": "Tech Nirvana",
           "subTitle": "Teach Nirvana",
+          "primaryButton": "",
+          "primaryButtonUrl": "",
+          "secondaryButton": "",
+          "secondaryButtonUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "About banner",
+      "slug": "about-banner",
+      "responsiveSettings": "",
+      "sliderSettings": "",
+      "bannerItems": [
+        {
+          "id": "2",
+          "bannerId": "2",
+          "image": "",
+          "caption": "Banner",
+          "title": "Mudita",
+          "subTitle": "Unimomo Generic Banner",
+          "primaryButton": "",
+          "primaryButtonUrl": "",
+          "secondaryButton": "",
+          "secondaryButtonUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Projects banner",
+      "slug": "projects-offers",
+      "responsiveSettings": "",
+      "sliderSettings": "",
+      "bannerItems": [
+        {
+          "id": "3",
+          "bannerId": "3",
+          "image": "",
+          "caption": "Banner",
+          "title": "Mudita",
+          "subTitle": "Unimomo Generic Banner",
+          "primaryButton": "",
+          "primaryButtonUrl": "",
+          "secondaryButton": "",
+          "secondaryButtonUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Services-Banner",
+      "slug": "services-banner",
+      "responsiveSettings": "",
+      "sliderSettings": "",
+      "bannerItems": [
+        {
+          "id": "4",
+          "bannerId": "4",
+          "image": "",
+          "caption": "Banner",
+          "title": "Mudita",
+          "subTitle": "Unimomo Generic Banner",
+          "primaryButton": "",
+          "primaryButtonUrl": "",
+          "secondaryButton": "",
+          "secondaryButtonUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Contact Banner",
+      "slug": "contact-banner",
+      "responsiveSettings": "",
+      "sliderSettings": "",
+      "bannerItems": [
+        {
+          "id": "5",
+          "bannerId": "5",
+          "image": "",
+          "caption": "Banner",
+          "title": "Mudita",
+          "subTitle": "Unimomo Generic Banner",
           "primaryButton": "",
           "primaryButtonUrl": "",
           "secondaryButton": "",
@@ -500,190 +584,6 @@
       ]
     },
     {
-      "title": "Service",
-      "key": "service",
-      "actions": [
-        {
-          "title": "Add Service",
-          "key": "add",
-          "clientPath": "/service-module",
-          "serverPath": "/service-module",
-          "requestMethod": "POST",
-          "list": "Service"
-        },
-        {
-          "title": "View Service",
-          "key": "view",
-          "clientPath": "/service-module/list",
-          "serverPath": "/service-module/list",
-          "requestMethod": "GET",
-          "list": "Service"
-        },
-        {
-          "title": "View One Service",
-          "key": "view-one",
-          "clientPath": "/service-module/:id",
-          "serverPath": "/service-module/:id",
-          "requestMethod": "GET",
-          "list": "Service"
-        },
-        {
-          "title": "Edit Service",
-          "key": "edit",
-          "clientPath": "/service-module/:id",
-          "serverPath": "/service-module/:id",
-          "requestMethod": "PUT",
-          "list": "Service"
-        },
-        {
-          "title": "Delete Service",
-          "key": "delete",
-          "clientPath": "/service-module/:id",
-          "serverPath": "/service-module/:id",
-          "requestMethod": "DELETE",
-          "list": "Service"
-        }
-      ]
-    },
-    {
-      "title": "Portfolio",
-      "key": "portfolio",
-      "actions": [
-        {
-          "title": "Add Portfolio",
-          "key": "add",
-          "clientPath": "/portfolio",
-          "serverPath": "/portfolio",
-          "requestMethod": "POST",
-          "list": "Portfolio"
-        },
-        {
-          "title": "View Portfolio",
-          "key": "view",
-          "clientPath": "/portfolio/list",
-          "serverPath": "/portfolio/list",
-          "requestMethod": "GET",
-          "list": "Portfolio"
-        },
-        {
-          "title": "View One Portfolio",
-          "key": "view-one",
-          "clientPath": "/portfolio/:id",
-          "serverPath": "/portfolio/:id",
-          "requestMethod": "GET",
-          "list": "Portfolio"
-        },
-        {
-          "title": "Edit Portfolio",
-          "key": "edit",
-          "clientPath": "/portfolio/:id",
-          "serverPath": "/portfolio/:id",
-          "requestMethod": "PUT",
-          "list": "Portfolio"
-        },
-        {
-          "title": "Delete Portfolio",
-          "key": "delete",
-          "clientPath": "/portfolio/:id",
-          "serverPath": "/portfolio/:id",
-          "requestMethod": "DELETE",
-          "list": "Portfolio"
-        }
-      ]
-    },
-    {
-      "title": "Technology",
-      "key": "technology",
-      "actions": [
-        {
-          "title": "Add Technology",
-          "key": "add",
-          "clientPath": "/technologies",
-          "serverPath": "/technologies",
-          "requestMethod": "POST",
-          "list": "Technology"
-        },
-        {
-          "title": "View Technology",
-          "key": "view",
-          "clientPath": "/technologies/list",
-          "serverPath": "/technologies/list",
-          "requestMethod": "GET",
-          "list": "Technology"
-        },
-        {
-          "title": "View One Technology",
-          "key": "view-one",
-          "clientPath": "/technologies/:id",
-          "serverPath": "/technologies/:id",
-          "requestMethod": "GET",
-          "list": "Technology"
-        },
-        {
-          "title": "Edit Technology",
-          "key": "edit",
-          "clientPath": "/technologies/:id",
-          "serverPath": "/technologies/:id",
-          "requestMethod": "PUT",
-          "list": "Technology"
-        },
-        {
-          "title": "Delete Technology",
-          "key": "delete",
-          "clientPath": "/technologies/:id",
-          "serverPath": "/technologies/:id",
-          "requestMethod": "DELETE",
-          "list": "Technology"
-        }
-      ]
-    },
-    {
-      "title": "Testimonial",
-      "key": "testimonial",
-      "actions": [
-        {
-          "title": "Add Testimonial",
-          "key": "add",
-          "clientPath": "/testimonial",
-          "serverPath": "/testimonial",
-          "requestMethod": "POST",
-          "list": "Testimonial"
-        },
-        {
-          "title": "View Testimonial",
-          "key": "view",
-          "clientPath": "/testimonial/list",
-          "serverPath": "/testimonial/list",
-          "requestMethod": "GET",
-          "list": "Testimonial"
-        },
-        {
-          "title": "View One Testimonial",
-          "key": "view-one",
-          "clientPath": "/testimonial/:id",
-          "serverPath": "/testimonial/:id",
-          "requestMethod": "GET",
-          "list": "Testimonial"
-        },
-        {
-          "title": "Edit Testimonial",
-          "key": "edit",
-          "clientPath": "/testimonial/:id",
-          "serverPath": "/testimonial/:id",
-          "requestMethod": "PUT",
-          "list": "Testimonial"
-        },
-        {
-          "title": "Delete Testimonial",
-          "key": "delete",
-          "clientPath": "/testimonial/:id",
-          "serverPath": "/testimonial/:id",
-          "requestMethod": "DELETE",
-          "list": "Testimonial"
-        }
-      ]
-    },
-    {
       "title": "Banner",
       "key": "banner",
       "actions": [
@@ -729,52 +629,7 @@
         }
       ]
     },
-    {
-      "title": "Pages",
-      "key": "pages",
-      "actions": [
-        {
-          "title": "Add Pages",
-          "key": "add",
-          "clientPath": "/pages",
-          "serverPath": "/pages",
-          "requestMethod": "POST",
-          "list": "Pages"
-        },
-        {
-          "title": "View Pages",
-          "key": "view",
-          "clientPath": "/pages/list",
-          "serverPath": "/pages/list",
-          "requestMethod": "GET",
-          "list": "Pages"
-        },
-        {
-          "title": "View One Pages",
-          "key": "view-one",
-          "clientPath": "/pages/:id",
-          "serverPath": "/pages/:id",
-          "requestMethod": "GET",
-          "list": "Pages"
-        },
-        {
-          "title": "Edit Pages",
-          "key": "edit",
-          "clientPath": "/pages/:id",
-          "serverPath": "/pages/:id",
-          "requestMethod": "PUT",
-          "list": "Pages"
-        },
-        {
-          "title": "Delete Pages",
-          "key": "delete",
-          "clientPath": "/pages/:id",
-          "serverPath": "/pages/:id",
-          "requestMethod": "DELETE",
-          "list": "Pages"
-        }
-      ]
-    },
+
     {
       "title": "Email Template",
       "key": "emailTemplate",
@@ -882,98 +737,6 @@
       ]
     },
     {
-      "title": "Blog Category",
-      "key": "blogCategory",
-      "actions": [
-        {
-          "title": "Add Blog Category",
-          "key": "add",
-          "clientPath": "/blog-category",
-          "serverPath": "/blog-category",
-          "requestMethod": "POST",
-          "list": "Blog Category"
-        },
-        {
-          "title": "View Blog Category",
-          "key": "view",
-          "clientPath": "/blog-category/list",
-          "serverPath": "/blog-category/list",
-          "requestMethod": "GET",
-          "list": "Blog Category"
-        },
-        {
-          "title": "View One Blog Category",
-          "key": "view-one",
-          "clientPath": "/blog-category/:id",
-          "serverPath": "/blog-category/:id",
-          "requestMethod": "GET",
-          "list": "Blog Category"
-        },
-        {
-          "title": "Edit Blog Category",
-          "key": "edit",
-          "clientPath": "/blog-category/:id",
-          "serverPath": "/blog-category/:id",
-          "requestMethod": "PUT",
-          "list": "Blog Category"
-        },
-        {
-          "title": "Delete Blog Category",
-          "key": "delete",
-          "clientPath": "/blog-category/:id",
-          "serverPath": "/blog-category/:id",
-          "requestMethod": "DELETE",
-          "list": "Blog Category"
-        }
-      ]
-    },
-    {
-      "title": "Blog",
-      "key": "blog",
-      "actions": [
-        {
-          "title": "Add Blog",
-          "key": "add",
-          "clientPath": "/blog",
-          "serverPath": "/blog",
-          "requestMethod": "POST",
-          "list": "Blog"
-        },
-        {
-          "title": "View Blog",
-          "key": "view",
-          "clientPath": "/blog/list",
-          "serverPath": "/blog/list",
-          "requestMethod": "GET",
-          "list": "Blog"
-        },
-        {
-          "title": "View One Blog",
-          "key": "view-one",
-          "clientPath": "/blog/:id",
-          "serverPath": "/blog/:id",
-          "requestMethod": "GET",
-          "list": "Blog"
-        },
-        {
-          "title": "Edit Blog",
-          "key": "edit",
-          "clientPath": "/blog/:id",
-          "serverPath": "/blog/:id",
-          "requestMethod": "PUT",
-          "list": "Blog"
-        },
-        {
-          "title": "Delete Blog",
-          "key": "delete",
-          "clientPath": "/blog/:id",
-          "serverPath": "/blog/:id",
-          "requestMethod": "DELETE",
-          "list": "Blog"
-        }
-      ]
-    },
-    {
       "title": "Contact",
       "key": "contact",
       "actions": [
@@ -1003,163 +766,142 @@
         }
       ]
     },
+
     {
-      "title": "Subscriber",
-      "key": "subscriber",
+      "title": "Property Category",
+      "key": "propertyCategory",
       "actions": [
         {
-          "title": "Add Subscriber",
+          "title": "Add Property Category",
           "key": "add",
-          "clientPath": "/subscriber",
-          "serverPath": "/subscriber",
+          "clientPath": "/property-category",
+          "serverPath": "/property-category",
           "requestMethod": "POST",
-          "list": "Subscriber"
+          "list": "Property Category"
         },
         {
-          "title": "View Subscriber",
+          "title": "View Property Category",
           "key": "view",
-          "clientPath": "/subscriber/list",
-          "serverPath": "/subscriber/list",
+          "clientPath": "/property-category/list",
+          "serverPath": "/property-category/list",
           "requestMethod": "GET",
-          "list": "Subscriber"
+          "list": "Property Category"
         },
         {
-          "title": "View One Subscriber",
+          "title": "View One Property Category",
           "key": "view-one",
-          "clientPath": "/subscriber/:id",
-          "serverPath": "/subscriber/:id",
+          "clientPath": "/property-category/:id",
+          "serverPath": "/property-category/:id",
           "requestMethod": "GET",
-          "list": "Subscriber"
+          "list": "Property Category"
         },
         {
-          "title": "Edit Subscriber",
+          "title": "Edit Property Category",
           "key": "edit",
-          "clientPath": "/subscriber/:id",
-          "serverPath": "/subscriber/:id",
+          "clientPath": "/property-category/:id",
+          "serverPath": "/property-category/:id",
           "requestMethod": "PUT",
-          "list": "Subscriber"
+          "list": "Property Category"
         },
         {
-          "title": "Delete Subscriber",
+          "title": "Delete Property Category",
           "key": "delete",
-          "clientPath": "/subscriber/:id",
-          "serverPath": "/subscriber/:id",
+          "clientPath": "/property-category/:id",
+          "serverPath": "/property-category/:id",
           "requestMethod": "DELETE",
-          "list": "Subscriber"
+          "list": "Property Category"
         }
       ]
     },
     {
-      "title": "Career Category",
-      "key": "careerCategory",
+      "title": "Property",
+      "key": "property",
       "actions": [
         {
-          "title": "Add Career Category",
+          "title": "Add Property",
           "key": "add",
-          "clientPath": "/career-category",
-          "serverPath": "/career-category",
+          "clientPath": "/property",
+          "serverPath": "/property",
           "requestMethod": "POST",
-          "list": "Career Category"
+          "list": "Property"
         },
         {
-          "title": "View One Career Category",
-          "key": "view",
-          "clientPath": "/career-category/list",
-          "serverPath": "/career-category/list",
-          "requestMethod": "GET",
-          "list": "Career Category"
-        },
-        {
-          "title": "Edit Career Category",
-          "key": "edit",
-          "clientPath": "/career-category",
-          "serverPath": "/career-category",
-          "requestMethod": "PUT",
-          "list": "Career Category"
-        },
-        {
-          "title": "Delete Career Category",
-          "key": "delete",
-          "clientPath": "/career-category/:id",
-          "serverPath": "/career-category/:id",
-          "requestMethod": "DELETE",
-          "list": "Career Category"
-        }
-      ]
-    },
-    {
-      "title": "Career",
-      "key": "career",
-      "actions": [
-        {
-          "title": "Add Career",
-          "key": "add",
-          "clientPath": "/career",
-          "serverPath": "/career",
-          "requestMethod": "POST",
-          "list": "Career"
-        },
-        {
-          "title": "View Career",
-          "key": "view",
-          "clientPath": "/career/admin-list",
-          "serverPath": "/career/admin-list",
-          "requestMethod": "GET",
-          "list": "Career"
-        },
-        {
-          "title": "Edit Career",
-          "key": "edit",
-          "clientPath": "/career/:id",
-          "serverPath": "/career/:id",
-          "requestMethod": "PUT",
-          "list": "Career"
-        },
-        {
-          "title": "Delete Career",
-          "key": "delete",
-          "clientPath": "/career/:id",
-          "serverPath": "/career/:id",
-          "requestMethod": "DELETE",
-          "list": "Career"
-        }
-      ]
-    },
-    {
-      "title": "Applicant",
-      "key": "applicant",
-      "actions": [
-        {
-          "title": "View Applicant",
+          "title": "View Property",
           "key": "view one",
-          "clientPath": "/applicant/:id",
-          "serverPath": "/applicant/:id",
+          "clientPath": "/property/:id",
+          "serverPath": "/property/:id",
           "requestMethod": "GET",
-          "list": "Applicant"
+          "list": "Property"
         },
         {
-          "title": "View Applicant",
+          "title": "View Property",
           "key": "view",
-          "clientPath": "/applicant/list",
-          "serverPath": "/applicant/list",
+          "clientPath": "/property/list",
+          "serverPath": "/property/list",
           "requestMethod": "GET",
-          "list": "Applicant"
+          "list": "Property"
         },
         {
-          "title": "Edit Applicant",
+          "title": "Edit Property",
           "key": "edit",
-          "clientPath": "/applicant/:id",
-          "serverPath": "/applicant/:id",
-          "requestMethod": "PATCH",
-          "list": "Applicant"
+          "clientPath": "/property/:id",
+          "serverPath": "/property/:id",
+          "requestMethod": "PUT",
+          "list": "Property"
         },
         {
-          "title": "Delete Applicant",
+          "title": "Delete Property",
           "key": "delete",
-          "clientPath": "/applicant/:id",
-          "serverPath": "/applicant/:id",
+          "clientPath": "/property/:id",
+          "serverPath": "/property/:id",
           "requestMethod": "DELETE",
-          "list": "Applicant"
+          "list": "Property"
+        }
+      ]
+    },
+    {
+      "title": "Projects",
+      "key": "projects",
+      "actions": [
+        {
+          "title": "Add Projects",
+          "key": "add",
+          "clientPath": "/projects",
+          "serverPath": "/projects",
+          "requestMethod": "POST",
+          "list": "Projects"
+        },
+        {
+          "title": "View Projects",
+          "key": "view one",
+          "clientPath": "/projects/:id",
+          "serverPath": "/projects/:id",
+          "requestMethod": "GET",
+          "list": "Projects"
+        },
+        {
+          "title": "View Projects",
+          "key": "view",
+          "clientPath": "/projects/list",
+          "serverPath": "/projects/list",
+          "requestMethod": "GET",
+          "list": "Projects"
+        },
+        {
+          "title": "Edit Projects",
+          "key": "edit",
+          "clientPath": "/projects/:id",
+          "serverPath": "/projects/:id",
+          "requestMethod": "PUT",
+          "list": "Projects"
+        },
+        {
+          "title": "Delete Projects",
+          "key": "delete",
+          "clientPath": "/projects/:id",
+          "serverPath": "/projects/:id",
+          "requestMethod": "DELETE",
+          "list": "Projects"
         }
       ]
     },

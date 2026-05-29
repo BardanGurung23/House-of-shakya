@@ -1,4 +1,5 @@
 const { Model } = require("sequelize");
+const { PROPERTY_STATUS } = require("../constants/value-constants");
 
 module.exports = (sequelize, DataTypes) => {
   class Property extends Model {
@@ -50,6 +51,9 @@ module.exports = (sequelize, DataTypes) => {
       price: {
         type: DataTypes.DECIMAL(15, 2),
         allowNull: false,
+      },
+      status: {
+        type: DataTypes.ENUM(...PROPERTY_STATUS),
       },
     },
     {

@@ -17,12 +17,11 @@ export default function ImageInputUIComponent({
           type === "small" ? "w-[147px] " : "w-[307px]"
         }`}
       >
-        {image !== undefined ? (
+        {image !== undefined && image !== "" ? (
           <img
             src={`${IMAGE_BASE_URL}${image}`}
             alt="Gallery Icon"
             className="object-contain w-[307px] h-[140px]"
-            crossOrigin="anonymous"
           />
         ) : (
           <img src={galleryIcon} alt="Gallery Icon" />
@@ -49,8 +48,6 @@ export const MultipleImageInputUI = ({
   images: string | string[];
   imageIndex: number;
 }) => {
-  // console.log(images);
-
   return (
     <div
       className={`h-[10rem] w-[25rem] border border-dashed border-[#C9CBD1] rounded-[6px] flex items-center justify-center `}
@@ -66,7 +63,6 @@ export const MultipleImageInputUI = ({
               }`}
               alt="Gallery Image"
               className="object-contain w-full h-full p-[1rem]"
-              crossOrigin="anonymous"
             />
           </div>
         </div>
@@ -75,7 +71,6 @@ export const MultipleImageInputUI = ({
           src={`${IMAGE_BASE_URL}${images}`}
           alt="Gallery Icon"
           className="object-contain h-full w-full p-[1rem]"
-          crossOrigin="anonymous"
         />
       ) : (
         <img

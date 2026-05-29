@@ -55,6 +55,15 @@ export const BLOG_CATEGORY_ADD_ROUTE = "/admin/blog-category/";
 export const BLOG_LIST_ROUTE = "/admin/blog/list";
 export const BLOG_ADD_ROUTE = "/admin/blog/";
 
+export const PROPERTY_LIST_ROUTE = "/admin/property/list";
+export const PROPERTY_ADD_ROUTE = "/admin/property/";
+
+export const PROPERTY_CATEGORY_LIST_ROUTE = "/admin/property-category/list";
+export const PROPERTY_CATEGORY_ADD_ROUTE = "/admin/property-category/";
+
+export const PROJECTS_LIST_ROUTE = "/admin/projects/list";
+export const PROJECTS_ADD_ROUTE = "/admin/projects/";
+
 export const SUBSCRIBERS_LIST_ROUTE = "/admin/subscriber";
 
 export const CONTACT_LIST_ROUTE = "/admin/contact";

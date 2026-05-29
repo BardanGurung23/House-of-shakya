@@ -10,7 +10,9 @@
     "dev": "nodemon index.js",
     "prettier": "prettier . --write",
     "db:create": "sequelize db:create",
-    "migrate": "sequelize db:migrate"
+    "migrate": "sequelize db:migrate",
+    "db:drop": "sequelize db:drop",
+    "undo": "sequelize db:migrate:undo:all"
   },
   "keywords": [
     "node",
