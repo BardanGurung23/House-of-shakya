@@ -2,6 +2,15 @@ import Link from "next/link";
 import { MapPin, Mail, Phone } from "lucide-react";
 
 export default function Footer({ settings }: any) {
+  const footerDesc =
+    settings?.footer_desc ||
+    "Premium real estate development, housing projects, and property services in Pokhara.";
+  const address = settings?.address || "Pokhara, Nepal";
+  const email = settings?.email || "sales@yourshousing.com";
+  const primaryPhone = settings?.primary_phone || "+9779869028924";
+  const secondaryPhone = settings?.secondary_phone;
+  const phoneLabel = [primaryPhone, secondaryPhone].filter(Boolean).join(" | ");
+
   return (
     <footer className="bg-navy-deep text-cream">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
@@ -20,7 +29,7 @@ export default function Footer({ settings }: any) {
               </span>
             </div>
             <p className="text-sm leading-relaxed opacity-70 max-w-xs">
-              {settings.footer_desc}
+              {footerDesc}
             </p>
           </div>
 
@@ -57,24 +66,24 @@ export default function Footer({ settings }: any) {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm opacity-70">
                 <MapPin size={15} className="mt-0.5 shrink-0 text-forest" />
-                <span>{settings.address}</span>
+                <span>{address}</span>
               </li>
               <li className="flex items-center gap-3 text-sm opacity-70">
                 <Mail size={15} className="shrink-0 text-forest" />
                 <a
-                  href="mailto:sales@yourshousing.com"
+                  href={`mailto:${email}`}
                   className="hover:opacity-100 hover:text-forest transition-all"
                 >
-                  {settings.email}
+                  {email}
                 </a>
               </li>
               <li className="flex items-center gap-3 text-sm opacity-70">
                 <Phone size={15} className="shrink-0 text-forest" />
                 <a
-                  href="tel:+9779869028924"
+                  href={`tel:${primaryPhone.replace(/[^\d+]/g, "")}`}
                   className="hover:opacity-100 hover:text-forest transition-all"
                 >
-                  {settings.primary_phone} | {settings.secondary_phone}
+                  {phoneLabel}
                 </a>
               </li>
             </ul>

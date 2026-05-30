@@ -23,14 +23,18 @@ export async function getData(
     });
 
     if (!res.ok) {
-      throw new Error(`Request failed with status ${res.status}`);
+      console.warn(`GET ${url} failed with status ${res.status}`);
+      return null;
     }
 
     return res.json();
   } catch (error) {
-    throw new Error(
-      error instanceof Error ? error.message : "fetch error occurred"
+    console.warn(
+      `GET ${url} failed: ${
+        error instanceof Error ? error.message : "fetch error occurred"
+      }`
     );
+    return null;
   }
 }
 
