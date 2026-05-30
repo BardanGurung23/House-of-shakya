@@ -1,6 +1,6 @@
 import { BACKEND_BASE_URL } from "@/constants/index";
 
-const DEFAULT_REVALIDATE_SECONDS = 300;
+const DEFAULT_REVALIDATE_SECONDS = 0;
 
 export async function getData(
   url: string,
