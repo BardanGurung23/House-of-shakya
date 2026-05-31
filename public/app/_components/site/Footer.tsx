@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { MapPin, Mail, Phone } from "lucide-react";
+import Image from "next/image";
+import logo from "@/public/logo.png";
+import { IMAGE_BASE_URL } from "@/constants";
 
 export default function Footer({ settings }: any) {
   const footerDesc =
@@ -17,17 +20,13 @@ export default function Footer({ settings }: any) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div
-                className="w-9 h-9 rounded flex items-center justify-center"
-                style={{ background: "var(--gradient-brand)" }}
-              >
-                <span className="text-sm font-bold text-cream">YH</span>
-              </div>
-              <span className="font-semibold text-lg tracking-tight">
-                Yours <span className="text-forest">Housing</span>
-              </span>
-            </div>
+            <img
+              src={`${IMAGE_BASE_URL}${settings?.brandingImage || logo.src}`}
+              alt="Yours Housing"
+              width={50}
+              height={50}
+            />
+
             <p className="text-sm leading-relaxed opacity-70 max-w-xs">
               {footerDesc}
             </p>
