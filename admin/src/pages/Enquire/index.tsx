@@ -10,6 +10,7 @@ import { checkAccess } from "@/utils/accessHelper";
 import { handleError, handleResponse } from "@/utils/responseHandler";
 import { useState } from "react";
 import { FaEye } from "react-icons/fa";
+import ViewEnquire from "./ViewEnquire";
 
 export default function Enquires() {
   const accessList = checkAccess("Enquires");
@@ -67,15 +68,17 @@ export default function Enquires() {
   const tableHeaders = [
     "Name",
     "Email",
+    "Property",
     // "Subject",
     accessList.includes("delete") && "Actions",
   ];
 
   const tableData =
     success && allenquire?.data?.data
-      ? allenquire?.data?.data.map(({ id, full_name, email }) => [
+      ? allenquire?.data?.data.map(({ id, full_name, email, property }) => [
           full_name,
           email,
+          property?.name || "-",
           <div
             key={id}
             className="flex items-center justify-center cursor-pointer gap-[0.5rem]"
@@ -117,13 +120,13 @@ export default function Enquires() {
       ) : (
         <p>You don't have Permission to view this table</p>
       )}
-      {/* <Drawer
+      <Drawer
         isOpen={openDrawer}
         setIsOpen={setOpenDrawer}
         width="w-full lg:w-[30%]"
       >
-        <Viewenquire id={drawerId} />
-      </Drawer> */}
+        <ViewEnquire id={drawerId} />
+      </Drawer>
     </>
   );
 }
