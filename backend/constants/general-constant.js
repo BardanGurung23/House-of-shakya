@@ -2275,6 +2275,48 @@ module.exports = {
         message: "Property Delete Failure",
       },
     },
+    ENQUIRE: {
+      CREATE_ENQUIRE_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Enquiry Created Successfully",
+      },
+      CREATE_ENQUIRE_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Enquiry Not Created",
+      },
+      ENQUIRE_NOT_FOUND: {
+        status: httpStatus.NOT_FOUND,
+        success: false,
+        message: "Enquiry Not Found",
+      },
+      ENQUIRE_FOUND: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Enquiry Found",
+      },
+      ENQUIRE_LIST_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Enquiry List Success",
+      },
+      ENQUIRE_LIST_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Enquiry List Failure",
+      },
+      ENQUIRE_DELETE_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Enquiry Deleted Successfully",
+      },
+      ENQUIRE_DELETE_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Enquiry Delete Failure",
+      },
+    },
     PROJECTS: {
       CREATE_PROJECTS_SUCCESS: {
         status: httpStatus.OK,

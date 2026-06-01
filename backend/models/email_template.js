@@ -27,10 +27,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       }, // e.g., "approval", "rejection"
-      information: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
       activeTemplateId: {
         type: DataTypes.INTEGER,
         allowNull: true,
@@ -39,17 +35,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.JSON,
         allowNull: true,
       },
-      from: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       subject: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      alternateText: {
-        type: DataTypes.STRING,
-        allowNull: true,
       },
       body: {
         type: DataTypes.TEXT,

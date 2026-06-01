@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { MapPin, Mail, Phone, Clock, CheckCircle2 } from "lucide-react";
 import Reveal from "./Reveal";
+import { postData } from "@/utils/apiHandle";
 
 type ContactSetting = {
   address?: string | null;
@@ -19,6 +20,8 @@ export default function ContactForm({
   contact?: ContactSetting | null;
 }) {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -26,9 +29,28 @@ export default function ContactForm({
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError("");
+    setIsSubmitting(true);
+
+    try {
+      await postData("contact", {
+        full_name: form.name,
+        email: form.email,
+        phone: form.phone,
+        message: form.message,
+      });
+      setSubmitted(true);
+    } catch (error) {
+      setError(
+        error instanceof Error
+          ? error.message
+          : "Unable to send message. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   const addressLines = contact?.address
     ? contact.address.split(/\r?\n/).filter(Boolean)
@@ -151,6 +173,7 @@ export default function ContactForm({
                   <button
                     onClick={() => {
                       setSubmitted(false);
+                      setError("");
                       setForm({ name: "", email: "", phone: "", message: "" });
                     }}
                     className="mt-8 px-6 py-2.5 text-sm font-semibold rounded border border-navy-deep text-navy-deep hover:bg-navy-deep hover:text-cream transition-all duration-200"
@@ -168,6 +191,11 @@ export default function ContactForm({
                   </p>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    {error && (
+                      <div className="rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                        {error}
+                      </div>
+                    )}
                     {[
                       {
                         id: "name",
@@ -229,9 +257,10 @@ export default function ContactForm({
                     </div>
                     <button
                       type="submit"
-                      className="w-full py-3.5 text-sm font-semibold rounded bg-navy-deep text-cream hover:bg-forest transition-all duration-200"
+                      disabled={isSubmitting}
+                      className="w-full py-3.5 text-sm font-semibold rounded bg-navy-deep text-cream hover:bg-forest transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-60"
                     >
-                      Send Message
+                      {isSubmitting ? "Sending..." : "Send Message"}
                     </button>
                   </form>
                 </>

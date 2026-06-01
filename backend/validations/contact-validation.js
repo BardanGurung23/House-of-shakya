@@ -10,7 +10,7 @@ const contactPostValidation = async (req, res, next) => {
   let joiModel = joi.object({
     full_name: joi.string().required().label("Full Name"),
     email: joi.string().email().required().label("Email"),
-    subject: joi.string().label("Subject"),
+    phone: joi.string().label("Subject"),
     message: joi.string().required().label("Message"),
   });
   const errors = await validateRequestBody(req, res, joiModel);

@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "propertyId",
         as: "images",
       });
+
+      this.hasMany(models.enquireModel, {
+        foreignKey: "propertyId",
+        as: "enquiries",
+      });
     }
   }
 

@@ -13,9 +13,7 @@ const emailTemplatePostValidation = async (req, res, next) => {
   let joiModel = joi.object({
     templateName: joi.string().required().label("templateName"),
     templateKey: joi.string().required().label("templateKey"),
-    information: joi.string().required().label("information"),
     variables: joi.array().items(joi.string()).allow(null),
-    from: joi.string().email().required(), // Assuming 'from' is an email
     subject: joi.string().required(),
     alternateText: joi.string().allow(null, ""),
     body: joi.string().required(),
@@ -39,9 +37,7 @@ const emailTemplatePutValidation = async (req, res, next) => {
   let joiModel = joi.object({
     templateName: joi.string().optional().label("templateName"),
     templateKey: joi.string().optional().label("templateKey"),
-    information: joi.string().optional().label("information"),
     variables: joi.array().items(joi.string()).allow(null),
-    from: joi.string().email().optional(), // Assuming 'from' is an email
     subject: joi.string().optional(),
     alternateText: joi.string().optional().allow(null, ""),
     body: joi.string().required(),

@@ -2,9 +2,7 @@ const { DataTypes, Model } = require("sequelize");
 
 module.exports = (sequelize) => {
   class Smtp extends Model {
-    static associate(models) {
-      // Each Social belongs to one Setting
-    }
+    static associate(models) {}
   }
 
   Smtp.init(
