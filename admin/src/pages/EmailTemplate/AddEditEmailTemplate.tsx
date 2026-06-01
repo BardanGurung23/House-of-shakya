@@ -9,7 +9,7 @@ import {
 import { EmailTemplateSchema } from "./schema";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm, useWatch } from "react-hook-form";
 import { handleError, handleResponse } from "@/utils/responseHandler";
 import { EMAIL_TEMPLATE_LIST_ROUTE } from "@/routes/routeNames";
 import Input from "@/components/Input";
@@ -17,10 +17,25 @@ import RichTextEditor from "@/components/RichTextEditor";
 import Button from "@/components/Button";
 import Loader from "@/components/Loader";
 import Select from "@/components/Select";
+import { EMAIL_TEMPLATE_OPTIONS } from "@/constants/dropdownConstant";
 import PageTitle from "@/components/PageTitle";
-import { EMAIL_TEMPLATE_OPTION } from "@/constants/dropdownConstant";
 
 type EmailTemplateFormType = z.infer<typeof EmailTemplateSchema>;
+
+const normalizeVariables = (variables: unknown): string[] => {
+  if (Array.isArray(variables)) {
+    return variables.filter((item): item is string => typeof item === "string");
+  }
+
+  if (typeof variables === "string") {
+    return variables
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+
+  return [];
+};
 
 export default function AddEditEmailTemplate() {
   const translate = useTranslation();
@@ -29,10 +44,10 @@ export default function AddEditEmailTemplate() {
 
   const {
     register,
-    watch,
-    setValue,
     reset,
+    watch,
     control,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm<EmailTemplateFormType>({
@@ -42,8 +57,12 @@ export default function AddEditEmailTemplate() {
     resolver: zodResolver(EmailTemplateSchema),
   });
 
-  // const [data1, setData1] = useState("");
-  const [selectedVariables, setSelectedVariables] = useState([]);
+  const templateKeys: string = useWatch({ name: "templateKey", control });
+  const selectedTemplate = EMAIL_TEMPLATE_OPTIONS.find(
+    (template) => template.value === templateKeys,
+  );
+
+  const [selectedVariables, setSelectedVariables] = useState<string[]>([]);
 
   const { data: emailTemplate, isSuccess: success } =
     useGetEmailTemplateByIdQuery(id, { skip: id === null || id === undefined });
@@ -52,10 +71,11 @@ export default function AddEditEmailTemplate() {
 
   useEffect(() => {
     if (success) {
-      setSelectedVariables(emailTemplate.data.variables);
+      const variables = normalizeVariables(emailTemplate.data.variables);
+      setSelectedVariables(variables);
       reset({
         ...emailTemplate?.data,
-        variables: emailTemplate.data.variables?.toString() || "",
+        variables,
       });
     }
   }, [emailTemplate, success]);
@@ -74,7 +94,7 @@ export default function AddEditEmailTemplate() {
   };
 
   const onSubmit = async (data: any) => {
-    const body = { ...data, variables: selectedVariables };
+    const body = { ...data, variables: normalizeVariables(selectedVariables) };
 
     try {
       const response = id
@@ -110,7 +130,7 @@ export default function AddEditEmailTemplate() {
               <div>
                 <Select
                   {...field}
-                  options={EMAIL_TEMPLATE_OPTION}
+                  options={EMAIL_TEMPLATE_OPTIONS}
                   label="Template Key"
                 />
                 {errors.templateKey && (
@@ -121,16 +141,15 @@ export default function AddEditEmailTemplate() {
               </div>
             )}
           />
-          <Input
-            label="Information"
-            isRequired
-            {...register("information")}
-            error={errors?.information?.message}
-          />
           <div className="text-start">
-            <label className="input-label">Variables</label>
+            <p className="font-medium text-[1rem] text-primaryColor">
+              {selectedTemplate?.desc}
+            </p>
+          </div>
+          <div className="text-start">
+            <label>Variables</label>
             <div className="flex flex-wrap gap-[0.5rem]">
-              {VariableOptions.map((each) => (
+              {selectedTemplate?.email_variables?.map((each) => (
                 <button
                   key={each}
                   className={`border py-[0.5rem] rounded-[0.25rem] w-fit px-[1rem] ${
@@ -148,29 +167,20 @@ export default function AddEditEmailTemplate() {
               <p className="text-red-500 text-sm">{errors.variables.message}</p>
             )}
           </div>
-
-          <Input
-            label="From"
-            isRequired
-            {...register("from")}
-            error={errors?.from?.message}
-          />
           <Input
             label="Subject"
             isRequired
             {...register("subject")}
             error={errors?.subject?.message}
           />
-          <Input
-            label="Alternative Text"
-            isRequired
-            {...register("alternateText")}
-            error={errors?.alternateText?.message}
-          />
+
           {(!id || success) && (
             <RichTextEditor
               data={watch("body")}
-              onChange={(value) => setValue("body", value)} // Update value
+              // onChange={(value) => setValue("body", value)}
+              onChange={(value: string) =>
+                setValue("body", value, { shouldValidate: true })
+              }
               error={errors.body?.message}
               className="w-1/2"
             />
@@ -192,4 +202,3 @@ export default function AddEditEmailTemplate() {
     </>
   );
 }
-const VariableOptions = ["name", "requestId", "email", "supervisorId"];

@@ -950,6 +950,28 @@
           "list": "Customer"
         }
       ]
+    },
+    {
+      "title": "Enquire",
+      "key": "enquire",
+      "actions": [
+        {
+          "title": "View Enquire",
+          "key": "view",
+          "clientPath": "/enquire/list",
+          "serverPath": "/enquire/list",
+          "requestMethod": "GET",
+          "list": "Enquires"
+        },
+        {
+          "title": "Delete enquire",
+          "key": "delete",
+          "clientPath": "/enquire/:id",
+          "serverPath": "/enquire/:id",
+          "requestMethod": "DELETE",
+          "list": "Enquires"
+        }
+      ]
     }
   ]
 }

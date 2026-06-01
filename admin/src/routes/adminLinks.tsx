@@ -48,6 +48,7 @@ import AddEditCareerCategory from "@/pages/CareerCategory/AddEditCareerCategory"
 import Career from "@/pages/Career";
 import AddEditCareer from "@/pages/Career/AddEditCareer";
 import Applicant from "@/pages/Applicant";
+import Enquires from "@/pages/Enquire";
 export const adminLinks = [
   {
     path: "/dashboard",
@@ -280,6 +281,10 @@ export const adminLinks = [
   {
     path: "contact",
     element: <Contact />,
+  },
+  {
+    path: "enquire/list",
+    element: <Enquires />,
   },
   {
     path: "Subscriber",

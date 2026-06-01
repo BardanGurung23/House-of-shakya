@@ -16,6 +16,8 @@ export const SUBSCRIBERS_URL = "subscriber/";
 
 export const CONTACT_URL = "contact/";
 
+export const ENQUIRE_URL = "enquire/";
+
 export const CAREER_CATEGORY_URL = "career-category/";
 
 export const CAREER_URL = "career/";
