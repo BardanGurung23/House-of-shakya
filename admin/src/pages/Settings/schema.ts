@@ -11,4 +11,13 @@ export const SettingSchema = z.object({
   address: z.string().min(1, "Address is Required"),
   footer_desc: z.string().min(1, "Footer Description is Required"),
   google_analytics: z.string().min(1, "Google Analytics Required"),
+  stats: z
+    .array(
+      z.object({
+        label: z.string().min(1, "Label is Required"),
+        value: z.coerce.number().min(0, "Value is Required"),
+        suffix: z.string().optional(),
+      }),
+    )
+    .length(4, "Exactly 4 stats are required"),
 });

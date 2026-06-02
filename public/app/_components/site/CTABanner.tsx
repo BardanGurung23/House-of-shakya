@@ -3,12 +3,19 @@ import Reveal from "./Reveal";
 
 export default function CTABanner() {
   return (
-    <section className="py-20 relative overflow-hidden" style={{ background: "var(--gradient-brand)" }}>
+    <section
+      className="py-20 relative overflow-hidden"
+      style={{ background: "var(--gradient-brand)" }}
+    >
       {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 opacity-10 pointer-events-none" style={{
-        background: "radial-gradient(circle, var(--cream) 0%, transparent 70%)",
-        transform: "translate(30%, -30%)"
-      }} />
+      <div
+        className="absolute top-0 right-0 w-96 h-96 opacity-10 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, var(--cream) 0%, transparent 70%)",
+          transform: "translate(30%, -30%)",
+        }}
+      />
       <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
         <Reveal>
           <span className="inline-block px-3 py-1 text-xs font-semibold tracking-widest uppercase rounded-full mb-6 border border-cream/30 text-cream/80">
@@ -17,12 +24,13 @@ export default function CTABanner() {
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-cream leading-tight">
-            Planning to invest, build,<br />or relocate to Pokhara?
+            Planning to invest, build <br /> or relocate ?
           </h2>
         </Reveal>
         <Reveal delay={0.2}>
           <p className="mt-5 text-base md:text-lg opacity-75 text-cream max-w-xl mx-auto">
-            Our team of experts will guide you through every step — from site selection to handover.
+            Our team of experts will guide you through every step — from site
+            selection to handover.
           </p>
         </Reveal>
         <Reveal delay={0.3}>

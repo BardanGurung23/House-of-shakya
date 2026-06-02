@@ -11,9 +11,13 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "yourshousing.servecafe.app",
-        pathname: "/uploads/**",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost:3000",
+        pathname: "/resources/**",
       },
     ],
   },
 };
-export default nextConfig;

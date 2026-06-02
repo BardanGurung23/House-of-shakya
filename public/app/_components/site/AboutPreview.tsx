@@ -2,15 +2,12 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Counter from "./Counter";
 import Reveal from "./Reveal";
+import type { CompanyStat } from "@/utils/companyStats";
+import { getCompanyStats } from "@/utils/companyStats";
 
-const stats = [
-  { value: 24, suffix: "+", label: "Projects Delivered" },
-  { value: 480, suffix: "+", label: "Homes Created" },
-  { value: 120, suffix: " Ropani", label: "Land Developed" },
-  { value: 11, suffix: " Yrs", label: "Industry Experience" },
-];
+export default function AboutPreview({ stats }: { stats?: CompanyStat[] }) {
+  const companyStats = getCompanyStats(stats);
 
-export default function AboutPreview() {
   return (
     <section className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -57,7 +54,7 @@ export default function AboutPreview() {
           <div>
             <Reveal delay={0.15}>
               <div className="grid grid-cols-2 gap-5">
-                {stats.map((stat, i) => (
+                {companyStats.map((stat, i) => (
                   <div
                     key={stat.label}
                     className="p-7 rounded-xl border shadow-card"

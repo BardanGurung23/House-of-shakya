@@ -12,7 +12,29 @@
     "brandingFooterImage": "/techlogo.webp",
     "address": "54 Foxley Close Blackwater Camberley Surrey GU17 0JZ (Sales Office : UK) || Jhamshikhel, Lalitpur (Nepal) ",
     "footer_desc": "Stay updated with Tech Nirvana on technology innovation. Explore our services and portfolio, and reach out to start achieving excellence in your business.",
-    "google_analytics": "G-1F55E90GHD"
+    "google_analytics": "G-1F55E90GHD",
+    "stats": [
+      {
+        "label": "Projects Delivered",
+        "value": 24,
+        "suffix": "+"
+      },
+      {
+        "label": "Homes Created",
+        "value": 480,
+        "suffix": "+"
+      },
+      {
+        "label": "Land Developed",
+        "value": 120,
+        "suffix": " Ropani"
+      },
+      {
+        "label": "Industry Experience",
+        "value": 11,
+        "suffix": " Yrs"
+      }
+    ]
   },
   "mediaCategory": [
     {

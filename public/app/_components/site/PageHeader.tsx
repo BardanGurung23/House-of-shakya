@@ -2,13 +2,26 @@ import Reveal from "./Reveal";
 
 interface PageHeaderProps {
   eyebrow?: string;
+  eyebrowVariant?: "forest" | "gold" | "cream" | "white";
   title: string;
   description?: string;
   breadcrumb?: string;
   imageUrl?: string | null;
 }
+
+const eyebrowVariants: Record<
+  NonNullable<PageHeaderProps["eyebrowVariant"]>,
+  string
+> = {
+  forest: "text-forest border-forest/40 bg-forest/10",
+  gold: "text-gold border-gold/40 bg-gold/10",
+  cream: "text-cream border-cream/30 bg-cream/10",
+  white: "text-white border-white/30 bg-white/10",
+};
+
 export default function PageHeader({
   eyebrow,
+  eyebrowVariant = "forest",
   title,
   description,
   breadcrumb,
@@ -43,7 +56,9 @@ export default function PageHeader({
         )}
         {eyebrow && (
           <Reveal delay={0.05}>
-            <span className="inline-block px-3 py-1 text-xs font-semibold tracking-widest uppercase rounded-full mb-5 text-forest border border-forest/40 bg-forest/10">
+            <span
+              className={`inline-block px-3 py-1 text-xs font-semibold tracking-widest uppercase rounded-full mb-5 border ${eyebrowVariants[eyebrowVariant]}`}
+            >
               {eyebrow}
             </span>
           </Reveal>

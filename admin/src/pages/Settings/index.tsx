@@ -20,6 +20,45 @@ import galleryIcon from "@/assets/gallery_icon.svg";
 
 type SettingFormType = z.infer<typeof SettingSchema>;
 
+const defaultStats = [
+  { label: "Projects Delivered", value: 24, suffix: "+" },
+  { label: "Homes Created", value: 480, suffix: "+" },
+  { label: "Land Developed", value: 120, suffix: " Ropani" },
+  { label: "Industry Experience", value: 11, suffix: " Yrs" },
+];
+
+const normalizeStats = (stats: unknown): SettingFormType["stats"] => {
+  let parsedStats = stats;
+
+  if (typeof stats === "string") {
+    try {
+      parsedStats = JSON.parse(stats || "[]");
+    } catch {
+      parsedStats = null;
+    }
+  }
+
+  if (!Array.isArray(parsedStats) || parsedStats.length === 0) {
+    return defaultStats;
+  }
+
+  return parsedStats.map((stat, index) => {
+    const fallback = defaultStats[index] || defaultStats[0];
+
+    return {
+      label:
+        typeof stat?.label === "string" && stat.label
+          ? stat.label
+          : fallback.label,
+      value: Number.isNaN(Number(stat?.value))
+        ? fallback.value
+        : Number(stat.value),
+      suffix:
+        typeof stat?.suffix === "string" ? stat.suffix : fallback.suffix || "",
+    };
+  });
+};
+
 interface SocialType {
   social_title: string;
   social_url: string;
@@ -38,7 +77,12 @@ export default function Settings() {
     setValue,
     setError,
     formState: { errors },
-  } = useForm<SettingFormType>({ resolver: zodResolver(SettingSchema) });
+  } = useForm<SettingFormType>({
+    resolver: zodResolver(SettingSchema),
+    defaultValues: {
+      stats: defaultStats,
+    },
+  });
 
   //   State for image
   const selectedImage = useAppSelector((state) => state.media.selectedImage);
@@ -61,9 +105,12 @@ export default function Settings() {
 
   useEffect(() => {
     if (settings?.data) {
-      reset({ ...settings.data });
+      reset({
+        ...settings.data,
+        stats: normalizeStats(settings.data.stats),
+      });
     }
-  }, [refetch, reset, success]);
+  }, [reset, settings]);
 
   const handleConfirmImage = (field: string) => {
     switch (field) {
@@ -161,6 +208,42 @@ export default function Settings() {
             {...register("google_analytics")}
             error={errors?.google_analytics?.message}
           />
+        </div>
+      </div>
+      {/* Stats */}
+      <div className="shadow-xl rounded-[0.5rem]">
+        <h2 className="text-start w-full p-[1rem]">
+          {translate("Company Stats")}
+        </h2>
+        <div className="grid grid-cols-1 gap-[1rem] px-[1rem] py-[3rem]">
+          {defaultStats.map((stat, index) => (
+            <div
+              key={stat.label}
+              className="grid grid-cols-1 md:grid-cols-3 gap-[1rem]"
+            >
+              <Input
+                label="Label"
+                placeholder="Projects Delivered"
+                type="text"
+                {...register(`stats.${index}.label`)}
+                error={errors?.stats?.[index]?.label?.message}
+              />
+              <Input
+                label="Value"
+                placeholder="24"
+                type="number"
+                {...register(`stats.${index}.value`)}
+                error={errors?.stats?.[index]?.value?.message}
+              />
+              <Input
+                label="Suffix"
+                placeholder="+"
+                type="text"
+                {...register(`stats.${index}.suffix`)}
+                error={errors?.stats?.[index]?.suffix?.message}
+              />
+            </div>
+          ))}
         </div>
       </div>
       {/* Images */}

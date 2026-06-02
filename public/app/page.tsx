@@ -6,6 +6,8 @@ import Projects from "./_components/Projects/index";
 import Services from "./_components/site/Services";
 import WhyUs from "./_components/site/WhyUs";
 import CTABanner from "./_components/site/CTABanner";
+import { getData } from "@/utils/apiHandle";
+import { getCompanyStats } from "@/utils/companyStats";
 
 export const metadata: Metadata = {
   title: "Yours Housing | Premium Real Estate Development in Pokhara, Nepal",
@@ -18,11 +20,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const settingsResponse = await getData("company-setting");
+  const stats = getCompanyStats(settingsResponse?.data?.stats);
+
   return (
     <>
       <Hero />
-      <AboutPreview />
+      <AboutPreview stats={stats} />
       <Properties limit={6} showHeader={true} />
       <Projects />
       <Services />

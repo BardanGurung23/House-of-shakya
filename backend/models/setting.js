@@ -60,6 +60,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      stats: {
+        type: DataTypes.JSON,
+        allowNull: true,
+      },
     },
     {
       timestamps: true,

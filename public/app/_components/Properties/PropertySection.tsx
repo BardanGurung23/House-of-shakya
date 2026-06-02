@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { IMAGE_BASE_URL } from "@/constants/index";
 import { postData } from "@/utils/apiHandle";
+import type { PropertyCard } from "@/utils/propertyMapper";
 import {
   ArrowRight,
   Bath,
@@ -19,20 +20,6 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 import Reveal from "../site/Reveal";
-
-export type PropertyCard = {
-  id: number;
-  name: string;
-  location: string;
-  category: string;
-  status: string;
-  statusType: string;
-  price: string;
-  area: string;
-  beds: number;
-  baths: number;
-  image: string;
-};
 
 interface PropertiesClientProps {
   properties: PropertyCard[];

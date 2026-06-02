@@ -24,6 +24,17 @@ const companySettingsPutValidation = async (req, res, next) => {
     address: joi.string().max(50).optional(),
     footer_desc: joi.string().min(3).max(1000).optional(),
     google_analytics: joi.string().optional(),
+    stats: joi
+      .array()
+      .items(
+        joi.object({
+          label: joi.string().required(),
+          value: joi.number().min(0).required(),
+          suffix: joi.string().allow("", null).optional(),
+        }),
+      )
+      .length(4)
+      .optional(),
     socials: joi
       .array()
       .items(

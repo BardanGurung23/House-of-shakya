@@ -6,6 +6,7 @@ import Reveal from "../_components/site/Reveal";
 import Counter from "../_components/site/Counter";
 import { getData } from "@/utils/apiHandle";
 import { IMAGE_BASE_URL } from "@/constants";
+import { getCompanyStats } from "@/utils/companyStats";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -22,12 +23,15 @@ export default async function AboutPage() {
   const response = await getData("banner/about-banner");
   const aboutbanner = response?.data?.bannerItems;
   const banner = Array.isArray(aboutbanner) ? aboutbanner[0] : null;
+  const settingsResponse = await getData("company-setting");
+  const stats = getCompanyStats(settingsResponse?.data?.stats);
 
   return (
     <>
       <PageHeader
         eyebrow="Our Story"
         breadcrumb="Home / About"
+        eyebrowVariant="white"
         title={`${banner?.title}`}
         description={`${banner?.subTitle}`}
         imageUrl={`${IMAGE_BASE_URL}${banner?.image}`}
@@ -45,18 +49,10 @@ export default async function AboutPage() {
               </Reveal>
               <Reveal delay={0.1}>
                 <p className="text-base text-navy/60 leading-relaxed mb-4">
-                  To develop institutional-quality residential properties in
-                  Pokhara that provide buyers with lasting value, legal
-                  security, and a genuine sense of home — while helping
-                  investors participate in Nepal's most promising real estate
-                  market.
-                </p>
-              </Reveal>
-              <Reveal delay={0.15}>
-                <p className="text-base text-navy/60 leading-relaxed">
-                  We believe that access to well-planned, properly documented
-                  housing is a right — not a privilege. Every project we
-                  undertake is guided by that conviction.
+                  To transform raw land into productive, income-generating
+                  assets and provide transparent, secure, and profitable real
+                  estate solutions along with collaborations with investors and
+                  partners for large-scale developments.
                 </p>
               </Reveal>
             </div>
@@ -68,16 +64,9 @@ export default async function AboutPage() {
               </Reveal>
               <Reveal delay={0.2}>
                 <p className="text-base text-navy/60 leading-relaxed mb-4">
-                  To become Nepal's leading integrated real estate developer —
-                  known internationally for quality, transparency, and the
-                  creation of communities that endure.
-                </p>
-              </Reveal>
-              <Reveal delay={0.25}>
-                <p className="text-base text-navy/60 leading-relaxed">
-                  Pokhara is one of South Asia's most spectacular and
-                  fastest-growing cities. We intend to shape it responsibly —
-                  one well-planned development at a time.
+                  To become one of Nepal’s most trusted and innovative real
+                  estate development companies, creating sustainable assets with
+                  long-term economic value.
                 </p>
               </Reveal>
             </div>
@@ -89,12 +78,7 @@ export default async function AboutPage() {
       <section className="py-16 bg-navy-deep">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[
-              { value: 24, suffix: "+", label: "Projects Delivered" },
-              { value: 480, suffix: "+", label: "Homes Created" },
-              { value: 120, suffix: " Ropani", label: "Land Developed" },
-              { value: 11, suffix: " Yrs", label: "Industry Experience" },
-            ].map((stat) => (
+            {stats.map((stat) => (
               <Reveal key={stat.label}>
                 <p className="text-4xl font-bold text-cream mb-2">
                   <Counter target={stat.value} suffix={stat.suffix} />

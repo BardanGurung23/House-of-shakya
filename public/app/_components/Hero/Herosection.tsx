@@ -63,7 +63,7 @@ export default function HeroSection({
       {/* Content */}
       <motion.div
         style={{ y: textY, opacity }}
-        className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full"
+        className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full mt-[13rem]"
       >
         {/* Headline */}
         <div className="overflow-hidden">
