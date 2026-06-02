@@ -4,7 +4,7 @@ import WhyUs from "../_components/site/WhyUs";
 import CTABanner from "../_components/site/CTABanner";
 import { getData } from "@/utils/apiHandle";
 import { IMAGE_BASE_URL } from "@/constants";
-import PropertiesSection from "./PropertySection";
+import PropertiesSection from "./_components/PropertySection";
 import { mapProperty } from "@/utils/propertyMapper";
 
 export const metadata: Metadata = {
@@ -36,6 +36,9 @@ export default async function ServicesPage() {
         title={`${banner?.title}`}
         description={`${banner?.subTitle}`}
         imageUrl={`${IMAGE_BASE_URL}${banner?.image}`}
+        overlayColor={banner?.overlayColor}
+        overlayOpacity={banner?.overlayOpacity}
+        overlayDirection={banner?.overlayDirection}
       />
       <PropertiesSection showHeader={false} properties={mappedProperties} />
       <WhyUs />

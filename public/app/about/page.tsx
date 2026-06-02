@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import PageHeader from "../_components/site/PageHeader";
 import WhyUs from "../_components/site/WhyUs";
 import CTABanner from "../_components/site/CTABanner";
-import Reveal from "../_components/site/Reveal";
-import Counter from "../_components/site/Counter";
 import { getData } from "@/utils/apiHandle";
 import { IMAGE_BASE_URL } from "@/constants";
 import { getCompanyStats } from "@/utils/companyStats";
 import { MissionVision } from "./_components/Mission&Vision";
 import { Stats } from "./_components/Stats";
-import { stat } from "fs";
+import { OurValues } from "./_components/OurValues";
+import { CompanyOverview } from "./_components/CompanyOverview";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -38,12 +37,17 @@ export default async function AboutPage() {
         title={`${banner?.title}`}
         description={`${banner?.subTitle}`}
         imageUrl={`${IMAGE_BASE_URL}${banner?.image}`}
+        overlayColor={banner?.overlayColor}
+        overlayOpacity={banner?.overlayOpacity}
+        overlayDirection={banner?.overlayDirection}
       />
 
+      <CompanyOverview />
       {/* Mission & Vision */}
       <MissionVision />
       <Stats stats={stats} />
       <WhyUs />
+      <OurValues />
       <CTABanner />
     </>
   );

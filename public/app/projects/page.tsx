@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import PageHeader from "../_components/site/PageHeader";
-import ProjectsBento from "../_components/Projects/ProjectsBento";
-import Projects, { getProjects } from "../_components/Projects";
+import ProjectsBento from "./ProjectsBento";
 import Properties from "../_components/Properties";
 import CTABanner from "../_components/site/CTABanner";
 import { getData } from "@/utils/apiHandle";
 import { IMAGE_BASE_URL } from "@/constants";
+import { mapProject } from "@/utils/propertyMapper";
 
 export const metadata: Metadata = {
   title: "Projects & Properties",
@@ -23,6 +23,12 @@ export default async function ProjectsPage() {
   const aboutbanner = response?.data?.bannerItems;
   const banner = Array.isArray(aboutbanner) ? aboutbanner[0] : null;
 
+  const projectResponse = await getData("/projects/list?page=1&limit=4");
+  const projects = projectResponse?.data?.data;
+  const mappedProjects = Array.isArray(projects)
+    ? projects.map(mapProject)
+    : [];
+
   return (
     <>
       <PageHeader
@@ -31,9 +37,14 @@ export default async function ProjectsPage() {
         title={`${banner?.title}`}
         description={`${banner?.subTitle}`}
         imageUrl={`${IMAGE_BASE_URL}${banner?.image}`}
+        overlayColor={banner?.overlayColor}
+        overlayOpacity={banner?.overlayOpacity}
+        overlayDirection={banner?.overlayDirection}
       />
-      <Projects />
-      <Properties showHeader={true} />
+      <div className="py-10 bg-background max-w-7xl mx-auto px-6 lg:px-8">
+        <ProjectsBento projects={mappedProjects} />
+      </div>
+
       <CTABanner />
     </>
   );

@@ -49,3 +49,60 @@ export const mapProperty = (property: ApiProperty): PropertyCard => ({
   baths: Number(property.bath || 0),
   image: property.images?.[0]?.image || "",
 });
+
+type ApiProject = {
+  id: number;
+  name: string;
+  location: string;
+  type: string;
+  description: string;
+  img?: string | null;
+};
+export type ProjectItem = {
+  id: number;
+  name: string;
+  location: string;
+  type: string;
+  status: string;
+  statusColor: string;
+  description: string;
+  image: string;
+  span?: string;
+};
+
+export type ProjectProps = {
+  projects?: ProjectItem[];
+};
+const statusColors = [
+  "bg-gold/80 text-navy-deep",
+  "bg-forest/80 text-cream",
+  "bg-navy/80 text-cream",
+];
+
+export const mapProject = (
+  project: ApiProject,
+  index: number
+): ProjectItem => ({
+  id: project.id,
+  name: project.name,
+  location: project.location,
+  type: project.type,
+  status: "Available",
+  statusColor: statusColors[index % statusColors.length],
+  description: project.description,
+  image: project.img || "",
+  span: index % 3 === 0 ? "lg:col-span-2" : "lg:col-span-1",
+});
+
+export type BannerItem = {
+  image?: string | null;
+  title?: string;
+  subTitle?: string;
+  primaryButton?: string;
+  primaryButtonUrl?: string;
+  secondaryButton?: string;
+  secondaryButtonUrl?: string;
+  overlayColor?: string | null;
+  overlayOpacity?: number | string | null;
+  overlayDirection?: string | null;
+};

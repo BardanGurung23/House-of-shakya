@@ -1,3 +1,4 @@
+import { hexToRgba } from "@/utils/color";
 import Reveal from "./Reveal";
 
 interface PageHeaderProps {
@@ -7,6 +8,9 @@ interface PageHeaderProps {
   description?: string;
   breadcrumb?: string;
   imageUrl?: string | null;
+  overlayColor?: string | null;
+  overlayOpacity?: number | string | null;
+  overlayDirection?: string | null;
 }
 
 const eyebrowVariants: Record<
@@ -26,13 +30,24 @@ export default function PageHeader({
   description,
   breadcrumb,
   imageUrl,
+  overlayColor,
+  overlayOpacity,
+  overlayDirection,
 }: PageHeaderProps) {
+  const bannerOverlayColor = hexToRgba(overlayColor, overlayOpacity);
+  const bannerOverlayDirection = overlayDirection?.trim() || "to right";
+
   return (
     <section
       className="bg-navy-deep pt-28 pb-20 relative overflow-hidden bg-cover bg-center"
       style={{ backgroundImage: `url("${imageUrl}")` }}
     >
-      <div className="absolute inset-0 bg-navy-deep/75 pointer-events-none" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `linear-gradient(${bannerOverlayDirection}, ${bannerOverlayColor}, transparent 80%)`,
+        }}
+      />
       {/* Radial backdrop */}
       <div className="absolute inset-0 radial-backdrop pointer-events-none" />
       <div
