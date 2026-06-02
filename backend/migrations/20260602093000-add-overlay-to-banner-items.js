@@ -17,11 +17,17 @@ module.exports = {
       allowNull: true,
       defaultValue: "to right",
     });
+    await queryInterface.addColumn("banner_items", "overlayType", {
+      type: Sequelize.STRING,
+      allowNull: true,
+      defaultValue: "linear",
+    });
   },
 
   async down(queryInterface, Sequelize) {
     await queryInterface.removeColumn("banner_items", "overlayDirection");
     await queryInterface.removeColumn("banner_items", "overlayOpacity");
     await queryInterface.removeColumn("banner_items", "overlayColor");
+    await queryInterface.removeColumn("banner_items", "overlayType");
   },
 };

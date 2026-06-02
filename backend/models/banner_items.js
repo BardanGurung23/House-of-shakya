@@ -49,6 +49,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      overlayType: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: "linear",
+      },
       overlayColor: {
         type: DataTypes.STRING,
         allowNull: true,

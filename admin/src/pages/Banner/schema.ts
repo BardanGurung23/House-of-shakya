@@ -13,6 +13,7 @@ export const BannerSchema = z.object({
       primaryButtonUrl: z.string().optional(),
       secondaryButton: z.string().optional(),
       secondaryButtonUrl: z.string().optional(),
+      overlayType: z.enum(["linear", "solid"]).optional(),
       overlayColor: z.string().optional(),
       overlayOpacity: z.coerce.number().min(0).max(1).optional(),
       overlayDirection: z.string().optional(),

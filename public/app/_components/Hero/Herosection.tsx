@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { IMAGE_BASE_URL } from "@/constants";
-import { hexToRgba } from "@/utils/color";
+import { getBannerOverlayBackground } from "@/utils/color";
 import { BannerItem } from "@/utils/propertyMapper";
 
 const words = [
@@ -28,8 +28,13 @@ export default function HeroSection({
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
   const primaryButton = banner?.primaryButton?.trim();
   const secondaryButton = banner?.secondaryButton?.trim();
-  const overlayColor = hexToRgba(banner?.overlayColor, banner?.overlayOpacity);
-  const overlayDirection = banner?.overlayDirection?.trim() || "to right";
+  const overlayBackground = getBannerOverlayBackground({
+    type: banner?.overlayType,
+    color: banner?.overlayColor,
+    opacity: banner?.overlayOpacity,
+    direction: banner?.overlayDirection,
+    gradientStop: "75%",
+  });
 
   return (
     <section
@@ -50,7 +55,7 @@ export default function HeroSection({
         <div
           className="absolute inset-0"
           style={{
-            background: `linear-gradient(${overlayDirection}, ${overlayColor}, transparent 75%)`,
+            background: overlayBackground,
           }}
         />
       </motion.div>

@@ -62,6 +62,7 @@ export default function AddEditBanner() {
       caption: "",
       subTitle: "",
       title: "",
+      overlayType: "linear",
       overlayColor: "#00152f",
       overlayOpacity: 0.45,
       overlayDirection: "to right",
@@ -291,7 +292,31 @@ function SlidesInputComponent({
               />
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <Controller
+              name={`bannerItems.${index}.overlayType`}
+              control={control}
+              render={({ field }) => (
+                <div className="input-container w-full">
+                  <label className="input-label">Overlay Type</label>
+                  <div className="input-wrapper">
+                    <select
+                      {...field}
+                      value={field.value || "linear"}
+                      className="input-field"
+                    >
+                      <option value="linear">Linear Gradient</option>
+                      <option value="solid">Solid Background</option>
+                    </select>
+                  </div>
+                  {errors.bannerItems?.[index]?.overlayType?.message && (
+                    <span className="input-error">
+                      {errors.bannerItems?.[index]?.overlayType?.message}
+                    </span>
+                  )}
+                </div>
+              )}
+            />
             <Controller
               name={`bannerItems.${index}.overlayColor`}
               control={control}

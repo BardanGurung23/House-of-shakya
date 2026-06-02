@@ -19,3 +19,25 @@ export const hexToRgba = (
 
   return `rgba(0, 21, 47, ${alpha})`;
 };
+
+export const getBannerOverlayBackground = ({
+  type,
+  color,
+  opacity,
+  direction,
+  gradientStop = "80%",
+}: {
+  type?: string | null;
+  color?: string | null;
+  opacity?: number | string | null;
+  direction?: string | null;
+  gradientStop?: string;
+}) => {
+  const overlayColor = hexToRgba(color, opacity);
+
+  if (type === "solid") {
+    return overlayColor;
+  }
+
+  return `linear-gradient(${direction?.trim() || "to right"}, ${overlayColor}, transparent ${gradientStop})`;
+};

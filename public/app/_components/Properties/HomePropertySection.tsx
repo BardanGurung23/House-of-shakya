@@ -21,23 +21,16 @@ const statusColors: Record<string, string> = {
   ongoing: "bg-forest-deep/20 text-forest border-forest-deep/30",
 };
 
-export default function PropertiesSection({
+export default function HomePropertiesSection({
   properties,
   limit,
   showHeader = true,
 }: PropertiesClientProps) {
-  const [filter, setFilter] = useState("All");
-  const [selectedProperty, setSelectedProperty] =
-    useState<PropertyCard | null>(null);
+  const [selectedProperty, setSelectedProperty] = useState<PropertyCard | null>(
+    null
+  );
 
-  const categories = [
-    "All",
-    ...Array.from(new Set(properties.map((property) => property.category))),
-  ];
-
-  const filtered = properties
-    .filter((property) => filter === "All" || property.category === filter)
-    .slice(0, limit);
+  const visibleProperties = properties.slice(0, limit);
 
   return (
     <section className="py-20 bg-background">
@@ -55,48 +48,13 @@ export default function PropertiesSection({
                   Browse Available Properties
                 </h2>
               </Reveal>
-              <Reveal delay={0.2}>
-                <div className="flex flex-wrap gap-2">
-                  {categories.map((cat) => (
-                    <button
-                      key={cat}
-                      onClick={() => setFilter(cat)}
-                      className={`px-4 py-1.5 text-xs font-semibold rounded-full border transition-all duration-200 ${
-                        filter === cat
-                          ? "bg-navy-deep text-cream border-navy-deep"
-                          : "border-navy/20 text-navy hover:border-navy hover:bg-navy/5"
-                      }`}
-                    >
-                      {cat}
-                    </button>
-                  ))}
-                </div>
-              </Reveal>
             </div>
           </div>
         )}
 
-        {!showHeader && (
-          <div className="flex flex-wrap gap-2 mb-10">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setFilter(cat)}
-                className={`px-4 py-1.5 text-xs font-semibold rounded-full border transition-all duration-200 ${
-                  filter === cat
-                    ? "bg-navy-deep text-cream border-navy-deep"
-                    : "border-navy/20 text-navy hover:border-navy hover:bg-navy/5"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        )}
-
-        {filtered.length > 0 ? (
+        {visibleProperties.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-            {filtered.map((prop, i) => (
+            {visibleProperties.map((prop, i) => (
               <Reveal key={prop.id} delay={i * 0.08}>
                 <div className="rounded-xl overflow-hidden hover-lift shadow-card bg-cream group cursor-pointer">
                   <div className="relative h-56 overflow-hidden img-zoom">
@@ -204,7 +162,6 @@ export default function PropertiesSection({
           </Reveal>
         )}
       </div>
-
       <EnquireDialog
         property={selectedProperty}
         onOpenChange={(open) => {

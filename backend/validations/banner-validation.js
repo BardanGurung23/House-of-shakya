@@ -8,6 +8,7 @@ const { validateRequestBody } = require("../helpers/validator-helper");
 
 const optionalButtonField = joi.string().allow("").optional();
 const overlayFields = {
+  overlayType: joi.string().valid("linear", "solid").allow("").optional(),
   overlayColor: joi.string().allow("").optional(),
   overlayOpacity: joi.number().min(0).max(1).allow(null).optional(),
   overlayDirection: joi.string().allow("").optional(),

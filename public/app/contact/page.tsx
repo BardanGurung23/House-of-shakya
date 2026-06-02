@@ -30,6 +30,7 @@ export default async function ContactPage() {
         title={`${banner?.title}`}
         description={`${banner?.subTitle}`}
         imageUrl={`${IMAGE_BASE_URL}${banner?.image}`}
+        overlayType={banner?.overlayType}
         overlayColor={banner?.overlayColor}
         overlayOpacity={banner?.overlayOpacity}
         overlayDirection={banner?.overlayDirection}

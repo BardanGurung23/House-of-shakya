@@ -199,6 +199,10 @@ internal.saveBannerItems = async (req, bannerItems) => {
           primaryButtonUrl: bannerItem.primaryButtonUrl,
           secondaryButton: bannerItem.secondaryButton,
           secondaryButtonUrl: bannerItem.secondaryButtonUrl,
+          overlayType: bannerItem.overlayType,
+          overlayColor: bannerItem.overlayColor,
+          overlayOpacity: bannerItem.overlayOpacity,
+          overlayDirection: bannerItem.overlayDirection,
         });
       }
     }

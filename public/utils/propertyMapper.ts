@@ -102,6 +102,7 @@ export type BannerItem = {
   primaryButtonUrl?: string;
   secondaryButton?: string;
   secondaryButtonUrl?: string;
+  overlayType?: "linear" | "solid" | string | null;
   overlayColor?: string | null;
   overlayOpacity?: number | string | null;
   overlayDirection?: string | null;

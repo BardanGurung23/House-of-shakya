@@ -1,4 +1,4 @@
-import { hexToRgba } from "@/utils/color";
+import { getBannerOverlayBackground } from "@/utils/color";
 import Reveal from "./Reveal";
 
 interface PageHeaderProps {
@@ -8,6 +8,7 @@ interface PageHeaderProps {
   description?: string;
   breadcrumb?: string;
   imageUrl?: string | null;
+  overlayType?: string | null;
   overlayColor?: string | null;
   overlayOpacity?: number | string | null;
   overlayDirection?: string | null;
@@ -30,12 +31,17 @@ export default function PageHeader({
   description,
   breadcrumb,
   imageUrl,
+  overlayType,
   overlayColor,
   overlayOpacity,
   overlayDirection,
 }: PageHeaderProps) {
-  const bannerOverlayColor = hexToRgba(overlayColor, overlayOpacity);
-  const bannerOverlayDirection = overlayDirection?.trim() || "to right";
+  const overlayBackground = getBannerOverlayBackground({
+    type: overlayType,
+    color: overlayColor,
+    opacity: overlayOpacity,
+    direction: overlayDirection,
+  });
 
   return (
     <section
@@ -45,7 +51,7 @@ export default function PageHeader({
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `linear-gradient(${bannerOverlayDirection}, ${bannerOverlayColor}, transparent 80%)`,
+          background: overlayBackground,
         }}
       />
       {/* Radial backdrop */}

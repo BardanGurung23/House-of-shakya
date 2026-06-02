@@ -1,6 +1,6 @@
 import { getData } from "@/utils/apiHandle";
 import { mapProperty } from "@/utils/propertyMapper";
-import PropertiesSection from "./PropertySection";
+import HomePropertiesSection from "./HomePropertySection";
 
 interface PropertiesProps {
   limit?: number;
@@ -14,5 +14,5 @@ export default async function Properties(props: PropertiesProps) {
     ? properties.map(mapProperty)
     : [];
 
-  return <PropertiesSection {...props} properties={mappedProperties} />;
+  return <HomePropertiesSection {...props} properties={mappedProperties} />;
 }
