@@ -2,34 +2,8 @@ import { ArrowRight } from "lucide-react";
 import Reveal from "../site/Reveal";
 import Link from "next/link";
 import { getData } from "@/utils/apiHandle";
-import ProjectsBento, { ProjectItem } from "./ProjectsBento";
-
-type ApiProject = {
-  id: number;
-  name: string;
-  location: string;
-  type: string;
-  description: string;
-  img?: string | null;
-};
-
-const statusColors = [
-  "bg-gold/80 text-navy-deep",
-  "bg-forest/80 text-cream",
-  "bg-navy/80 text-cream",
-];
-
-const mapProject = (project: ApiProject, index: number): ProjectItem => ({
-  id: project.id,
-  name: project.name,
-  location: project.location,
-  type: project.type,
-  status: "Available",
-  statusColor: statusColors[index % statusColors.length],
-  description: project.description,
-  image: project.img || "",
-  span: index % 3 === 0 ? "lg:col-span-2" : "lg:col-span-1",
-});
+import ProjectsBento from "./ProjectsBento";
+import { ProjectItem, mapProject } from "@/utils/propertyMapper";
 
 async function getProjects() {
   const response = await getData("/projects/list?page=1&limit=4");

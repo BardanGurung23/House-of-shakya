@@ -10,6 +10,8 @@ export const PROPERTY_CATEGORY_URL = "property-category/";
 
 export const PROPERTY_URL = "property/";
 
+export const PROJECT_CATEGORY_URL = "project-category/";
+
 export const PROJECTS_URL = "projects/";
 
 export const SUBSCRIBERS_URL = "subscriber/";

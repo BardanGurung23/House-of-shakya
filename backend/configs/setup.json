@@ -836,6 +836,52 @@
       ]
     },
     {
+      "title": "Project Category",
+      "key": "projectCategory",
+      "actions": [
+        {
+          "title": "Add Project Category",
+          "key": "add",
+          "clientPath": "/project-category",
+          "serverPath": "/project-category",
+          "requestMethod": "POST",
+          "list": "Project Category"
+        },
+        {
+          "title": "View Project Category",
+          "key": "view",
+          "clientPath": "/project-category/list",
+          "serverPath": "/project-category/list",
+          "requestMethod": "GET",
+          "list": "Project Category"
+        },
+        {
+          "title": "View One Project Category",
+          "key": "view-one",
+          "clientPath": "/project-category/:id",
+          "serverPath": "/project-category/:id",
+          "requestMethod": "GET",
+          "list": "Project Category"
+        },
+        {
+          "title": "Edit Project Category",
+          "key": "edit",
+          "clientPath": "/project-category/:id",
+          "serverPath": "/project-category/:id",
+          "requestMethod": "PUT",
+          "list": "Project Category"
+        },
+        {
+          "title": "Delete Project Category",
+          "key": "delete",
+          "clientPath": "/project-category/:id",
+          "serverPath": "/project-category/:id",
+          "requestMethod": "DELETE",
+          "list": "Project Category"
+        }
+      ]
+    },
+    {
       "title": "Property",
       "key": "property",
       "actions": [

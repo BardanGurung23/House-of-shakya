@@ -20,18 +20,9 @@ const sendValidationError = (res, errors) => {
   );
 };
 
-const projectsPostValidation = async (req, res, next) => {
+const projectCategoryPostValidation = async (req, res, next) => {
   const joiModel = joi.object({
-    projectCategoryId: joi
-      .number()
-      .optional()
-      .allow(null, "")
-      .label("Category"),
-    type: joi.string().trim().required().label("Type"),
     name: joi.string().trim().required().label("Name"),
-    location: joi.string().trim().required().label("Location"),
-    description: joi.string().required().label("Description"),
-    img: joi.string().optional().allow(null, "").label("Image"),
   });
   const errors = await validateRequestBody(req, res, joiModel);
 
@@ -42,18 +33,9 @@ const projectsPostValidation = async (req, res, next) => {
   return next();
 };
 
-const projectsPutValidation = async (req, res, next) => {
+const projectCategoryPutValidation = async (req, res, next) => {
   const joiModel = joi.object({
-    projectCategoryId: joi
-      .number()
-      .optional()
-      .allow(null, "")
-      .label("Category"),
-    type: joi.string().trim().optional().label("Type"),
     name: joi.string().trim().optional().label("Name"),
-    location: joi.string().trim().optional().label("Location"),
-    description: joi.string().optional().label("Description"),
-    img: joi.string().optional().allow(null, "").label("Image"),
   });
   const errors = await validateRequestBody(req, res, joiModel);
 
@@ -64,15 +46,12 @@ const projectsPutValidation = async (req, res, next) => {
   return next();
 };
 
-const projectsListValidation = async (req, res, next) => {
+const projectCategoryListValidation = async (req, res, next) => {
   const joiModel = joi.object({
     page: joi.number().optional().label("page"),
     limit: joi.number().optional().label("limit"),
-    sort: joi.string().valid("latest", "oldest").optional().label("sort"),
-    projectCategoryId: joi.number().optional().label("Category"),
-    type: joi.string().optional().label("Type"),
     name: joi.string().optional().label("Name"),
-    location: joi.string().optional().label("Location"),
+    slug: joi.string().optional().label("Slug"),
   });
   const errors = await validateRequestQuery(req, res, joiModel);
 
@@ -84,7 +63,7 @@ const projectsListValidation = async (req, res, next) => {
 };
 
 module.exports = {
-  projectsPostValidation,
-  projectsPutValidation,
-  projectsListValidation,
+  projectCategoryPostValidation,
+  projectCategoryPutValidation,
+  projectCategoryListValidation,
 };

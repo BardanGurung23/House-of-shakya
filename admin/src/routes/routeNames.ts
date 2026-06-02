@@ -61,6 +61,9 @@ export const PROPERTY_ADD_ROUTE = "/admin/property/";
 export const PROPERTY_CATEGORY_LIST_ROUTE = "/admin/property-category/list";
 export const PROPERTY_CATEGORY_ADD_ROUTE = "/admin/property-category/";
 
+export const PROJECT_CATEGORY_LIST_ROUTE = "/admin/project-category/list";
+export const PROJECT_CATEGORY_ADD_ROUTE = "/admin/project-category/";
+
 export const PROJECTS_LIST_ROUTE = "/admin/projects/list";
 export const PROJECTS_ADD_ROUTE = "/admin/projects/";
 

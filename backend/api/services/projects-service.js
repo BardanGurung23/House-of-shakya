@@ -1,10 +1,31 @@
 const { Op } = require("sequelize");
 const generalConstant = require("../../constants/general-constant");
-const { projectsModel } = require("../../models");
+const { projectCategoryModel, projectsModel } = require("../../models");
 const paginate = require("../../utils/paginate");
+
+const projectInclude = [
+  {
+    model: projectCategoryModel,
+    as: "category",
+    attributes: ["id", "name", "slug"],
+  },
+];
 
 const create = async (req) => {
   try {
+    if (req.body.projectCategoryId) {
+      const category = await projectCategoryModel.findByPk(
+        +req.body.projectCategoryId,
+      );
+
+      if (!category) {
+        return {
+          ...generalConstant.EN.PROJECT_CATEGORY.PROJECT_CATEGORY_NOT_FOUND,
+          data: null,
+        };
+      }
+    }
+
     const result = await projectsModel.create(req.body);
 
     if (!result) {
@@ -25,8 +46,20 @@ const create = async (req) => {
 
 const list = async (req) => {
   try {
-    const { limit, page, type, name, location, sort = "latest" } = req.query;
+    const {
+      limit,
+      page,
+      projectCategoryId,
+      type,
+      name,
+      location,
+      sort = "latest",
+    } = req.query;
     const filters = {};
+
+    if (projectCategoryId) {
+      filters.projectCategoryId = projectCategoryId;
+    }
 
     if (type) {
       filters.type = type;
@@ -55,6 +88,7 @@ const list = async (req) => {
       page,
       filters,
       order,
+      include: projectInclude,
     });
 
     if (!result) {
@@ -75,7 +109,9 @@ const list = async (req) => {
 
 const getById = async (req) => {
   try {
-    const result = await projectsModel.findByPk(+req.params.id);
+    const result = await projectsModel.findByPk(+req.params.id, {
+      include: projectInclude,
+    });
 
     if (!result) {
       return {
@@ -102,6 +138,19 @@ const update = async (req) => {
         ...generalConstant.EN.PROJECTS.PROJECTS_UPDATE_FAILURE,
         data: null,
       };
+    }
+
+    if (req.body.projectCategoryId) {
+      const category = await projectCategoryModel.findByPk(
+        +req.body.projectCategoryId,
+      );
+
+      if (!category) {
+        return {
+          ...generalConstant.EN.PROJECT_CATEGORY.PROJECT_CATEGORY_NOT_FOUND,
+          data: null,
+        };
+      }
     }
 
     await result.update(req.body);

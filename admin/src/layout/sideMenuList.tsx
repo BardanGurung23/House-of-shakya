@@ -48,12 +48,18 @@ export const SideMenuList: SideListMenuType[] = [
   },
   {
     key: 4,
+    name: "Project Category",
+    path: "/admin/project-category/list",
+    icon: <GrServices />,
+  },
+  {
+    key: 5,
     name: "Projects",
     path: "/admin/projects/list",
     icon: <AiFillPropertySafety />,
   },
   {
-    key: 5,
+    key: 6,
     name: "Media",
     path: "/admin/media-category/list",
     icon: <MdOutlinePermMedia />,

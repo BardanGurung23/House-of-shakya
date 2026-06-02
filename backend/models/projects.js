@@ -2,7 +2,14 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  class Projects extends Model {}
+  class Projects extends Model {
+    static associate(models) {
+      this.belongsTo(models.projectCategoryModel, {
+        foreignKey: "projectCategoryId",
+        as: "category",
+      });
+    }
+  }
 
   Projects.init(
     {
@@ -11,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER,
+      },
+      projectCategoryId: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
       },
       type: {
         allowNull: false,

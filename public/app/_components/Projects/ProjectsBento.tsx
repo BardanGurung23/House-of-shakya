@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import Reveal from "../site/Reveal";
 import { IMAGE_BASE_URL } from "@/constants/index";
+import { ProjectItem } from "@/utils/propertyMapper";
 
 const fallbackProjects = [
   {
@@ -57,18 +58,6 @@ const fallbackProjects = [
     span: "lg:col-span-2",
   },
 ];
-
-export type ProjectItem = {
-  id: number;
-  name: string;
-  location: string;
-  type: string;
-  status: string;
-  statusColor: string;
-  description: string;
-  image: string;
-  span?: string;
-};
 
 type ProjectProps = {
   projects?: ProjectItem[];

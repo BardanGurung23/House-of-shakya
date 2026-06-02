@@ -39,6 +39,8 @@ import Property from "@/pages/Property";
 import AddEditProperty from "@/pages/Property/AddEditProperty";
 import PropertyCategory from "@/pages/PropertyCategory";
 import AddEditPropertyCategory from "@/pages/PropertyCategory/AddEditPropertyCategory";
+import ProjectCategory from "@/pages/ProjectCategory";
+import AddEditProjectCategory from "@/pages/ProjectCategory/AddEditProjectCategory";
 import Projects from "@/pages/Projects";
 import AddEditProjects from "@/pages/Projects/AddEditProjects";
 import Contact from "@/pages/Contact";
@@ -265,6 +267,18 @@ export const adminLinks = [
   {
     path: "/property-category/:id",
     element: <AddEditPropertyCategory />,
+  },
+  {
+    path: "/project-category/list",
+    element: <ProjectCategory />,
+  },
+  {
+    path: "/project-category/",
+    element: <AddEditProjectCategory />,
+  },
+  {
+    path: "/project-category/:id",
+    element: <AddEditProjectCategory />,
   },
   {
     path: "/projects/list",

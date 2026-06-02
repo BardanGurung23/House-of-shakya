@@ -3,8 +3,12 @@ import ImageInputUIComponent from "@/components/ImageInputUIComponent";
 import Input from "@/components/Input";
 import MediaComponent from "@/components/MediaComponent";
 import PageTitle from "@/components/PageTitle";
+import Select from "@/components/Select";
 import TextArea from "@/components/TextArea";
-import { PROJECTS_URL } from "@/constants/apiUrlConstants";
+import {
+  PROJECT_CATEGORY_URL,
+  PROJECTS_URL,
+} from "@/constants/apiUrlConstants";
 import { useSingleImageHandler } from "@/hooks/useImageHandler";
 import {
   useCreateApiMutation,
@@ -14,8 +18,8 @@ import {
 import { PROJECTS_LIST_ROUTE } from "@/routes/routeNames";
 import { handleError, handleResponse } from "@/utils/responseHandler";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useEffect, useMemo } from "react";
+import { Controller, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { ProjectsFormType, ProjectsSchema } from "./schema";
 
@@ -26,6 +30,7 @@ export default function AddEditProjects() {
 
   const {
     register,
+    control,
     handleSubmit,
     setValue,
     getValues,
@@ -35,6 +40,7 @@ export default function AddEditProjects() {
   } = useForm<ProjectsFormType>({
     resolver: zodResolver(ProjectsSchema),
     defaultValues: {
+      projectCategoryId: "",
       img: "",
     },
   });
@@ -51,6 +57,9 @@ export default function AddEditProjects() {
   const { data: projectsData } = useGetApiQuery(`${PROJECTS_URL}${id}`, {
     skip: !isEditMode,
   });
+  const { data: projectCategoryData } = useGetApiQuery(
+    `${PROJECT_CATEGORY_URL}list?limit=999`,
+  );
 
   useEffect(() => {
     if (projectsData?.data) {
@@ -58,16 +67,31 @@ export default function AddEditProjects() {
     }
   }, [projectsData, reset]);
 
+  const projectCategoryOptions = useMemo(() => {
+    if (!projectCategoryData?.data?.data) return [];
+    return projectCategoryData.data.data.map(
+      (item: { id: number; name: string }) => ({
+        value: item.id,
+        label: item.name,
+      }),
+    );
+  }, [projectCategoryData]);
+
   const onSubmit = async (data: ProjectsFormType) => {
+    const body = {
+      ...data,
+      projectCategoryId: data.projectCategoryId || null,
+    };
+
     try {
       const response = isEditMode
         ? await updateProjects({
             url: `${PROJECTS_URL}${projectsData?.data?.id}`,
-            body: data,
+            body,
           }).unwrap()
         : await createProjects({
             url: PROJECTS_URL,
-            body: data,
+            body,
           }).unwrap();
 
       handleResponse({
@@ -91,6 +115,18 @@ export default function AddEditProjects() {
           isRequired
           {...register("name")}
           error={errors?.name?.message}
+        />
+        <Controller
+          name="projectCategoryId"
+          control={control}
+          render={({ field }) => (
+            <Select
+              {...field}
+              label="Project Category"
+              options={projectCategoryOptions}
+              error={errors?.projectCategoryId?.message}
+            />
+          )}
         />
         <Input
           label="Type"

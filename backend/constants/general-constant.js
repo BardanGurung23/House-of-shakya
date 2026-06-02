@@ -2169,6 +2169,63 @@ module.exports = {
         message: "Property Category is used in properties",
       },
     },
+    PROJECT_CATEGORY: {
+      CREATE_PROJECT_CATEGORY_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Project Category Created Successfully",
+      },
+      CREATE_PROJECT_CATEGORY_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Project Category Not Created",
+      },
+      PROJECT_CATEGORY_NOT_FOUND: {
+        status: httpStatus.NOT_FOUND,
+        success: false,
+        message: "Project Category Not Found",
+      },
+      PROJECT_CATEGORY_FOUND: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Project Category Found",
+      },
+      PROJECT_CATEGORY_LIST_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Project Category List Success",
+      },
+      PROJECT_CATEGORY_LIST_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Project Category List Failure",
+      },
+      PROJECT_CATEGORY_UPDATE_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Project Category Updated Successfully",
+      },
+      PROJECT_CATEGORY_UPDATE_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Project Category Update Failure",
+      },
+      PROJECT_CATEGORY_DELETE_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Project Category Deleted Successfully",
+      },
+      PROJECT_CATEGORY_DELETE_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Project Category Delete Failure",
+      },
+      PROJECT_CATEGORY_IN_USED: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Project Category is used in projects",
+      },
+    },
     BLOG: {
       CREATE_BLOG_SUCCESS: {
         status: httpStatus.OK,

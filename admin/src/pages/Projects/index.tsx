@@ -64,6 +64,7 @@ export default function Projects() {
 
   const tableHeaders = [
     "Name",
+    "Category",
     "Type",
     "Location",
     "Description",
@@ -73,8 +74,9 @@ export default function Projects() {
   const tableData =
     success && allProjects?.data?.data
       ? allProjects.data.data.map(
-          ({ id, name, type, location, description }) => [
+          ({ id, name, category, type, location, description }) => [
             name,
+            category?.name || "-",
             type,
             location,
             <p key={`${id}-description`} className="line-clamp-2">
