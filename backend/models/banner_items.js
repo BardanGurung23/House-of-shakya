@@ -49,6 +49,21 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      overlayColor: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: "#00152f",
+      },
+      overlayOpacity: {
+        type: DataTypes.FLOAT,
+        allowNull: true,
+        defaultValue: 0.45,
+      },
+      overlayDirection: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: "to right",
+      },
     },
     {
       timestamps: true,

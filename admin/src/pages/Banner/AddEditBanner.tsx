@@ -57,7 +57,15 @@ export default function AddEditBanner() {
 
   const handleAddNewButton = (event: React.FormEvent) => {
     event.preventDefault();
-    append({ image: "", caption: "", subTitle: "", title: "" });
+    append({
+      image: "",
+      caption: "",
+      subTitle: "",
+      title: "",
+      overlayColor: "#00152f",
+      overlayOpacity: 0.45,
+      overlayDirection: "to right",
+    });
   };
 
   const onSubmit = async (data: BannerFormType) => {
@@ -282,6 +290,66 @@ function SlidesInputComponent({
                 )}
               />
             </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Controller
+              name={`bannerItems.${index}.overlayColor`}
+              control={control}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  value={field.value || "#00152f"}
+                  type="color"
+                  label="Overlay Color"
+                  error={errors.bannerItems?.[index]?.overlayColor?.message}
+                  className="w-full"
+                />
+              )}
+            />
+            <Controller
+              name={`bannerItems.${index}.overlayOpacity`}
+              control={control}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  value={field.value ?? 0.45}
+                  onChange={(event) => field.onChange(event.target.value)}
+                  type="number"
+                  min={0}
+                  max={1}
+                  step={0.05}
+                  label="Overlay Opacity"
+                  error={errors.bannerItems?.[index]?.overlayOpacity?.message}
+                  className="w-full"
+                />
+              )}
+            />
+            <Controller
+              name={`bannerItems.${index}.overlayDirection`}
+              control={control}
+              render={({ field }) => (
+                <div className="input-container w-full">
+                  <label className="input-label">Overlay Direction</label>
+                  <div className="input-wrapper">
+                    <select
+                      {...field}
+                      value={field.value || "to right"}
+                      className="input-field"
+                    >
+                      <option value="to right">Left to Right</option>
+                      <option value="to left">Right to Left</option>
+                      <option value="to bottom">Top to Bottom</option>
+                      <option value="to top">Bottom to Top</option>
+                    </select>
+                  </div>
+                  {errors.bannerItems?.[index]?.overlayDirection?.message && (
+                    <span className="input-error">
+                      {errors.bannerItems?.[index]?.overlayDirection?.message}
+                    </span>
+                  )}
+                </div>
+              )}
+            />
           </div>
         </div>
       </div>
