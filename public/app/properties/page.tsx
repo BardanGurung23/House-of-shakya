@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import PageHeader from "../_components/site/PageHeader";
-import Services from "../_components/site/Services";
 import WhyUs from "../_components/site/WhyUs";
 import CTABanner from "../_components/site/CTABanner";
 import { getData } from "@/utils/apiHandle";
 import { IMAGE_BASE_URL } from "@/constants";
+import PropertiesSection from "./PropertySection";
+import { mapProperty } from "@/utils/propertyMapper";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -21,6 +22,12 @@ export default async function ServicesPage() {
   const response = await getData("banner/services-banner");
   const aboutbanner = response?.data?.bannerItems;
   const banner = Array.isArray(aboutbanner) ? aboutbanner[0] : null;
+  const propertyResponse = await getData("property/list");
+  const properties = propertyResponse?.data?.data;
+  const mappedProperties = Array.isArray(properties)
+    ? properties.map(mapProperty)
+    : [];
+
   return (
     <>
       <PageHeader
@@ -30,7 +37,7 @@ export default async function ServicesPage() {
         description={`${banner?.subTitle}`}
         imageUrl={`${IMAGE_BASE_URL}${banner?.image}`}
       />
-      <Services />
+      <PropertiesSection showHeader={false} properties={mappedProperties} />
       <WhyUs />
       <CTABanner />
     </>
