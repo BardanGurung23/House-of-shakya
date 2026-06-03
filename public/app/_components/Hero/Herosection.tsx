@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { IMAGE_BASE_URL } from "@/constants";
 import { getBannerOverlayBackground } from "@/utils/color";
+import { getMediaUrl, isVideoPath } from "@/utils/media";
 import { BannerItem } from "@/utils/propertyMapper";
 
 const words = [
@@ -28,6 +29,9 @@ export default function HeroSection({
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
   const primaryButton = banner?.primaryButton?.trim();
   const secondaryButton = banner?.secondaryButton?.trim();
+  const mediaPath = banner?.image || "";
+  const mediaUrl = getMediaUrl(IMAGE_BASE_URL, mediaPath);
+  const isVideoBanner = banner?.type === "video" || isVideoPath(mediaPath);
   const overlayBackground = getBannerOverlayBackground({
     type: banner?.overlayType,
     color: banner?.overlayColor,
@@ -43,14 +47,25 @@ export default function HeroSection({
     >
       {/* Background image with parallax */}
       <motion.div style={{ y: bgY }} className="absolute inset-0 scale-110">
-        <img
-          src={`${IMAGE_BASE_URL}${banner?.image}`}
-          alt="Aerial view of premium housing development in Pokhara, Nepal"
-          className="w-full h-full object-cover"
-          fetchPriority="high"
-          width={1800}
-          height={1200}
-        />
+        {isVideoBanner ? (
+          <video
+            src={mediaUrl}
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+        ) : (
+          <img
+            src={mediaUrl}
+            alt="Aerial view of premium housing development in Pokhara, Nepal"
+            className="w-full h-full object-cover"
+            fetchPriority="high"
+            width={1800}
+            height={1200}
+          />
+        )}
         {/* Hero overlay */}
         <div
           className="absolute inset-0"

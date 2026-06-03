@@ -25,8 +25,9 @@ const bannerPostValidation = async (req, res, next) => {
       .items(
         joi.object({
           image: joi.string().min(1).required().messages({
-            "string.empty": "Image is Required",
+            "string.empty": "Media is Required",
           }),
+          type: joi.string().valid("image", "video").optional(),
           caption: joi.string().optional(),
           title: joi.string().min(1).required().messages({
             "string.empty": "Title is Required",
@@ -70,6 +71,7 @@ const bannerPutValidation = async (req, res, next) => {
       .items(
         joi.object({
           image: joi.optional(),
+          type: joi.string().valid("image", "video").optional(),
           caption: joi.optional(),
           title: joi.optional(),
           subTitle: joi.optional(),

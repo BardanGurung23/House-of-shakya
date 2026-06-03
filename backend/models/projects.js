@@ -8,6 +8,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "projectCategoryId",
         as: "category",
       });
+
+      this.hasMany(models.projectMediaModel, {
+        foreignKey: "projectId",
+        as: "images",
+      });
     }
   }
 

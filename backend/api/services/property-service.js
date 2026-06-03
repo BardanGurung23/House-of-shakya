@@ -17,9 +17,13 @@ const propertyInclude = [
   {
     model: propertyMediaModel,
     as: "images",
-    attributes: ["id", "image"],
+    attributes: ["id", "image", "type"],
   },
 ];
+
+const getMediaType = (path = "") => {
+  return /\.(mp4|mpeg|mov|webm|ogg)$/i.test(path) ? "video" : "image";
+};
 
 const syncImages = async (propertyId, images, transaction) => {
   if (!Array.isArray(images)) {
@@ -39,6 +43,7 @@ const syncImages = async (propertyId, images, transaction) => {
     images.map((image) => ({
       propertyId,
       image,
+      type: getMediaType(image),
     })),
     { transaction },
   );

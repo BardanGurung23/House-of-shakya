@@ -1,4 +1,5 @@
 import { getBannerOverlayBackground } from "@/utils/color";
+import { isVideoPath } from "@/utils/media";
 import Reveal from "./Reveal";
 
 interface PageHeaderProps {
@@ -42,12 +43,32 @@ export default function PageHeader({
     opacity: overlayOpacity,
     direction: overlayDirection,
   });
+  const hasMedia = Boolean(imageUrl && !imageUrl.includes("undefined"));
+  const isVideoBanner = isVideoPath(imageUrl);
 
   return (
     <section
       className="bg-navy-deep pt-28 pb-20 relative overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: `url("${imageUrl}")` }}
     >
+      {hasMedia &&
+        (isVideoBanner ? (
+          <video
+            src={imageUrl || ""}
+            className="absolute inset-0 h-full w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+        ) : (
+          <img
+            src={imageUrl || ""}
+            alt={`${title} banner`}
+            className="absolute inset-0 h-full w-full object-cover"
+            width={1800}
+            height={900}
+          />
+        ))}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{

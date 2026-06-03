@@ -21,6 +21,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      type: {
+        type: DataTypes.ENUM("image", "video"),
+        allowNull: false,
+        defaultValue: "image",
+      },
       caption: {
         type: DataTypes.STRING,
         allowNull: true,

@@ -1,6 +1,11 @@
 const { Op } = require("sequelize");
 const generalConstant = require("../../constants/general-constant");
-const { projectCategoryModel, projectsModel } = require("../../models");
+const {
+  projectCategoryModel,
+  projectsModel,
+  projectMediaModel,
+  sequelize,
+} = require("../../models");
 const paginate = require("../../utils/paginate");
 
 const projectInclude = [
@@ -9,16 +14,53 @@ const projectInclude = [
     as: "category",
     attributes: ["id", "name", "slug"],
   },
+  {
+    model: projectMediaModel,
+    as: "images",
+    attributes: ["id", "image", "type"],
+  },
 ];
 
+const getMediaType = (path = "") => {
+  return /\.(mp4|mpeg|mov|webm|ogg)$/i.test(path) ? "video" : "image";
+};
+
+const syncImages = async (projectId, images, transaction) => {
+  if (!Array.isArray(images)) {
+    return;
+  }
+
+  await projectMediaModel.destroy({
+    where: { projectId },
+    transaction,
+  });
+
+  if (images.length === 0) {
+    return;
+  }
+
+  await projectMediaModel.bulkCreate(
+    images.map((image) => ({
+      projectId,
+      image,
+      type: getMediaType(image),
+    })),
+    { transaction },
+  );
+};
+
 const create = async (req) => {
+  const transaction = await sequelize.transaction();
+
   try {
     if (req.body.projectCategoryId) {
       const category = await projectCategoryModel.findByPk(
         +req.body.projectCategoryId,
+        { transaction },
       );
 
       if (!category) {
+        await transaction.rollback();
         return {
           ...generalConstant.EN.PROJECT_CATEGORY.PROJECT_CATEGORY_NOT_FOUND,
           data: null,
@@ -26,20 +68,28 @@ const create = async (req) => {
       }
     }
 
-    const result = await projectsModel.create(req.body);
+    const { images, ...projectData } = req.body;
+    const result = await projectsModel.create(projectData, { transaction });
 
     if (!result) {
+      await transaction.rollback();
       return {
         ...generalConstant.EN.PROJECTS.CREATE_PROJECTS_FAILURE,
         data: null,
       };
     }
 
+    await syncImages(result.id, images, transaction);
+    await transaction.commit();
+
     return {
       ...generalConstant.EN.PROJECTS.CREATE_PROJECTS_SUCCESS,
-      data: result,
+      data: await projectsModel.findByPk(result.id, {
+        include: projectInclude,
+      }),
     };
   } catch (error) {
+    await transaction.rollback();
     throw error;
   }
 };
@@ -130,10 +180,15 @@ const getById = async (req) => {
 };
 
 const update = async (req) => {
+  const transaction = await sequelize.transaction();
+
   try {
-    const result = await projectsModel.findByPk(+req.params.id);
+    const result = await projectsModel.findByPk(+req.params.id, {
+      transaction,
+    });
 
     if (!result) {
+      await transaction.rollback();
       return {
         ...generalConstant.EN.PROJECTS.PROJECTS_UPDATE_FAILURE,
         data: null,
@@ -143,9 +198,11 @@ const update = async (req) => {
     if (req.body.projectCategoryId) {
       const category = await projectCategoryModel.findByPk(
         +req.body.projectCategoryId,
+        { transaction },
       );
 
       if (!category) {
+        await transaction.rollback();
         return {
           ...generalConstant.EN.PROJECT_CATEGORY.PROJECT_CATEGORY_NOT_FOUND,
           data: null,
@@ -153,13 +210,19 @@ const update = async (req) => {
       }
     }
 
-    await result.update(req.body);
+    const { images, ...projectData } = req.body;
+    await result.update(projectData, { transaction });
+    await syncImages(result.id, images, transaction);
+    await transaction.commit();
 
     return {
       ...generalConstant.EN.PROJECTS.PROJECTS_UPDATE_SUCCESS,
-      data: result,
+      data: await projectsModel.findByPk(result.id, {
+        include: projectInclude,
+      }),
     };
   } catch (error) {
+    await transaction.rollback();
     throw error;
   }
 };

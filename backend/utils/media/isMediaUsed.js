@@ -50,6 +50,11 @@ async function checkIfMediaPathInUse(mediaPath) {
       fields: ["image"],
       name: "Property",
     },
+    {
+      modelKey: "projectMediaModel",
+      fields: ["image"],
+      name: "Project",
+    },
   ];
 
   const checksResult = await Promise.all(

@@ -1,5 +1,5 @@
 import Button from "@/components/Button";
-import ImageInputUIComponent from "@/components/ImageInputUIComponent";
+import { MultipleImageInputUI } from "@/components/ImageInputUIComponent";
 import Input from "@/components/Input";
 import MediaComponent from "@/components/MediaComponent";
 import PageTitle from "@/components/PageTitle";
@@ -9,7 +9,7 @@ import {
   PROJECT_CATEGORY_URL,
   PROJECTS_URL,
 } from "@/constants/apiUrlConstants";
-import { useSingleImageHandler } from "@/hooks/useImageHandler";
+import useImageHandler from "@/hooks/useImageHandler";
 import {
   useCreateApiMutation,
   useGetApiQuery,
@@ -41,16 +41,20 @@ export default function AddEditProjects() {
     resolver: zodResolver(ProjectsSchema),
     defaultValues: {
       projectCategoryId: "",
-      img: "",
+      images: [],
     },
   });
 
   const {
-    imageUrl,
-    handleConfirmImage,
+    media,
+    currentImageIndex,
     isImageModelOpen,
-    setIsImageModelOpen,
-  } = useSingleImageHandler(setValue, getValues, "img");
+    setIsImageModalOpen,
+    handleRemoveButton,
+    handleConfirmImage,
+    handleNextButton,
+    handlePrevButton,
+  } = useImageHandler(setValue, getValues, "images");
 
   const [createProjects] = useCreateApiMutation();
   const [updateProjects] = useUpdateApiMutation();
@@ -63,7 +67,13 @@ export default function AddEditProjects() {
 
   useEffect(() => {
     if (projectsData?.data) {
-      reset(projectsData.data);
+      reset({
+        ...projectsData.data,
+        images:
+          projectsData.data.images?.map(
+            (image: { image: string }) => image.image,
+          ) || [],
+      });
     }
   }, [projectsData, reset]);
 
@@ -146,23 +156,51 @@ export default function AddEditProjects() {
           {...register("description")}
           error={errors?.description?.message}
         />
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-start w-[20rem]">
           <label className="input-label text-start mb-[2px]">
-            Project Image
+            Project Media
           </label>
           <MediaComponent
             title={
-              <ImageInputUIComponent
-                type="large"
-                image={imageUrl}
-                error={errors?.img?.message}
+              <MultipleImageInputUI
+                images={media}
+                imageIndex={currentImageIndex}
               />
             }
-            isMultiSelect={false}
+            isMultiSelect={true}
+            handleConfirmImage={() => handleConfirmImage("images")}
             open={isImageModelOpen}
-            setOpen={setIsImageModelOpen}
-            handleConfirmImage={handleConfirmImage}
+            setOpen={setIsImageModalOpen}
+            acceptFiles="image/*,video/*"
           />
+          <div className="mt-[1rem] flex w-full justify-between">
+            <button
+              type="button"
+              className="px-[0.75rem] py-[0.5rem] rounded-[0.25rem] bg-primaryColor text-white"
+              onClick={handlePrevButton}
+            >
+              Previous
+            </button>
+            <button
+              type="button"
+              className="px-[0.75rem] py-[0.5rem] rounded-[0.25rem] bg-primaryColor text-white"
+              onClick={handleRemoveButton}
+            >
+              Remove
+            </button>
+            <button
+              type="button"
+              className="px-[0.75rem] py-[0.5rem] rounded-[0.25rem] bg-primaryColor text-white"
+              onClick={handleNextButton}
+            >
+              Next
+            </button>
+          </div>
+          {errors?.images && (
+            <span className="text-red-500 text-sm">
+              {errors.images.message}
+            </span>
+          )}
         </div>
 
         <div className="flex justify-start md:col-span-2">

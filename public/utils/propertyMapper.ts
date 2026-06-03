@@ -11,6 +11,7 @@ export type ApiProperty = {
   } | null;
   images?: {
     image: string;
+    type?: "image" | "video" | string;
   }[];
 };
 
@@ -36,6 +37,19 @@ export const formatPropertyPrice = (price?: number | string | null) => {
   return `Rs. ${price}`;
 };
 
+const getPrimaryImage = (
+  media?: {
+    image: string;
+    type?: "image" | "video" | string;
+  }[],
+) => {
+  return (
+    media?.find((item) => item.type !== "video")?.image ||
+    media?.[0]?.image ||
+    ""
+  );
+};
+
 export const mapProperty = (property: ApiProperty): PropertyCard => ({
   id: property.id,
   name: property.name,
@@ -47,7 +61,7 @@ export const mapProperty = (property: ApiProperty): PropertyCard => ({
   area: property.anna ? `${property.anna} Anna` : "Area on request",
   beds: Number(property.beds || 0),
   baths: Number(property.bath || 0),
-  image: property.images?.[0]?.image || "",
+  image: getPrimaryImage(property.images),
 });
 
 type ApiProject = {
@@ -57,6 +71,10 @@ type ApiProject = {
   type: string;
   description: string;
   img?: string | null;
+  images?: {
+    image: string;
+    type?: "image" | "video" | string;
+  }[];
 };
 export type ProjectItem = {
   id: number;
@@ -90,12 +108,13 @@ export const mapProject = (
   status: "Available",
   statusColor: statusColors[index % statusColors.length],
   description: project.description,
-  image: project.img || "",
+  image: getPrimaryImage(project.images) || project.img || "",
   span: index % 3 === 0 ? "lg:col-span-2" : "lg:col-span-1",
 });
 
 export type BannerItem = {
   image?: string | null;
+  type?: "image" | "video" | string | null;
   title?: string;
   subTitle?: string;
   primaryButton?: string;

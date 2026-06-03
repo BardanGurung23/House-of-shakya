@@ -225,6 +225,8 @@ export default function MediaComponent({
   // Update the button text to be more generic when accepting videos/other files
   const isAcceptingVideos = acceptFiles.includes("video");
   const fileButtonText = isAcceptingVideos ? "Choose File" : "Choose Image";
+  const dialogTitle = isAcceptingVideos ? "Choose Media" : "Choose Image";
+  const confirmButtonText = isAcceptingVideos ? "Confirm Media" : "Confirm Image";
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -238,7 +240,7 @@ export default function MediaComponent({
         className="w-[90%] md:w-[calc(100vw-20rem)] h-[calc(100vh-10rem)] overflow-y-auto overflow-x-hidden lg:max-h-[80%]"
       >
         <DialogHeader className="p-[0.75rem]">
-          <DialogTitle>Choose Image</DialogTitle>
+          <DialogTitle>{dialogTitle}</DialogTitle>
           <DialogDescription>
             {/* for buttons */}
             <div className="flex justify-end gap-[1rem] mt-[2rem] w-full md:w-[calc(100vw-23rem)]">
@@ -292,7 +294,7 @@ export default function MediaComponent({
                   onClick={handleConfirmImage}
                 >
                   <MdPhotoLibrary size={22} />
-                  Confirm Image
+                  {confirmButtonText}
                 </button>
               )}
             </div>

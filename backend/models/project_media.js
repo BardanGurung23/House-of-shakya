@@ -1,16 +1,16 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  class PropertyMedia extends Model {
+  class ProjectMedia extends Model {
     static associate(models) {
-      this.belongsTo(models.propertyModel, {
-        foreignKey: "propertyId",
-        as: "property",
+      this.belongsTo(models.projectsModel, {
+        foreignKey: "projectId",
+        as: "projects",
       });
     }
   }
 
-  PropertyMedia.init(
+  ProjectMedia.init(
     {
       id: {
         allowNull: false,
@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      propertyId: {
+      projectId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -35,9 +35,9 @@ module.exports = (sequelize, DataTypes) => {
     {
       timestamps: true,
       sequelize,
-      tableName: "property_media",
-      modelName: "PropertyMedia",
+      tableName: "project_media",
+      modelName: "ProjectMedia",
     },
   );
-  return PropertyMedia;
+  return ProjectMedia;
 };

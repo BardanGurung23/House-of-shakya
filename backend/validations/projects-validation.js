@@ -31,7 +31,7 @@ const projectsPostValidation = async (req, res, next) => {
     name: joi.string().trim().required().label("Name"),
     location: joi.string().trim().required().label("Location"),
     description: joi.string().required().label("Description"),
-    img: joi.string().optional().allow(null, "").label("Image"),
+    images: joi.array().items(joi.string().trim()).optional().label("Images"),
   });
   const errors = await validateRequestBody(req, res, joiModel);
 
@@ -53,7 +53,7 @@ const projectsPutValidation = async (req, res, next) => {
     name: joi.string().trim().optional().label("Name"),
     location: joi.string().trim().optional().label("Location"),
     description: joi.string().optional().label("Description"),
-    img: joi.string().optional().allow(null, "").label("Image"),
+    images: joi.array().items(joi.string().trim()).optional().label("Images"),
   });
   const errors = await validateRequestBody(req, res, joiModel);
 

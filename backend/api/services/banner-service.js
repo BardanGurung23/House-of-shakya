@@ -3,6 +3,15 @@ const { sequelize, bannerModel, bannerItemsModel } = require("../../models");
 const paginate = require("../../utils/paginate");
 const slugGenerator = require("../../utils/slugify");
 
+const getMediaType = (path = "") => {
+  return /\.(mp4|mpeg|mov|webm|ogg)$/i.test(path) ? "video" : "image";
+};
+
+const mapBannerItem = (item) => ({
+  ...item,
+  type: getMediaType(item.image) || item.type,
+});
+
 const create = async (req) => {
   const transaction = await sequelize.transaction();
 
@@ -22,7 +31,7 @@ const create = async (req) => {
     if (bannerItems?.length > 0) {
       const bulkBannerItemData = bannerItems.map((item) => ({
         bannerId: result.id,
-        ...item,
+        ...mapBannerItem(item),
       }));
 
       await bannerItemsModel.bulkCreate(bulkBannerItemData, { transaction });
@@ -151,7 +160,7 @@ const update = async (req) => {
       );
       const bulkBannerData = bannerItems.map((items) => ({
         bannerId: id,
-        ...items,
+        ...mapBannerItem(items),
       }));
       await bannerItemsModel.bulkCreate(bulkBannerData, { transaction });
     } else {

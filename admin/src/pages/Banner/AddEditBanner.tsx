@@ -59,6 +59,7 @@ export default function AddEditBanner() {
     event.preventDefault();
     append({
       image: "",
+      type: "image",
       caption: "",
       subTitle: "",
       title: "",
@@ -181,7 +182,7 @@ function SlidesInputComponent({
         <div className="space-y-[1rem] ">
           <div className="relative flex flex-col items-start w-[20rem] ">
             <label className="input-label">
-              Image <span className="text-red-500">*</span>
+              Media <span className="text-red-500">*</span>
             </label>
             <MediaComponent
               title={
@@ -193,6 +194,7 @@ function SlidesInputComponent({
               }
               open={isImageModelOpen}
               setOpen={setIsImageModelOpen}
+              acceptFiles="image/*,video/*"
             />
           </div>
           <Controller

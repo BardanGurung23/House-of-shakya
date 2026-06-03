@@ -174,7 +174,7 @@ export default function AddEditProperty() {
 
         <div className="flex flex-col items-start w-[20rem]">
           <label className="input-label text-start mb-[2px]">
-            Property Images
+            Property Media
           </label>
           <MediaComponent
             title={
@@ -187,6 +187,7 @@ export default function AddEditProperty() {
             handleConfirmImage={() => handleConfirmImage("images")}
             open={isImageModelOpen}
             setOpen={setIsImageModalOpen}
+            acceptFiles="image/*,video/*"
           />
           <div className="mt-[1rem] flex w-full justify-between">
             <button

@@ -149,6 +149,7 @@ app.use("/setup/", setupPath);
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use("/resources", express.static(path.join(__dirname, "resources")));
+app.use("/videos", express.static(path.join(__dirname, "videos")));
 app.use(
   "/uploads",
   // authentication,

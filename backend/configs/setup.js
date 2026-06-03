@@ -192,6 +192,7 @@ internal.saveBannerItems = async (req, bannerItems) => {
           id: bannerItem.id,
           bannerId: bannerItem.bannerId,
           image: bannerItem.image,
+          type: bannerItem.type,
           caption: bannerItem.caption,
           title: bannerItem.title,
           subTitle: bannerItem.subTitle,
