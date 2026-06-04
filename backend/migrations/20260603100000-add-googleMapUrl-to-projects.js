@@ -1,0 +1,17 @@
+"use strict";
+
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.addColumn("projects", "googleMapURL", {
+      type: Sequelize.TEXT,
+      allowNull: false,
+    });
+  },
+
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropColumn("projects", "googleMapURL", {
+      type: Sequelize.TEXT,
+      allowNull: false,
+    });
+  },
+};

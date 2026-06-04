@@ -44,6 +44,16 @@ const getById = async (req, res, next) => {
   }
 };
 
+const getBySlug = async (req, res, next) => {
+  try {
+    const result = await projectsService.getBySlug(req);
+    return sendResult(res, result);
+  } catch (err) {
+    logger.error(err);
+    next(err);
+  }
+};
+
 const update = async (req, res, next) => {
   try {
     const result = await projectsService.update(req);
@@ -68,6 +78,7 @@ module.exports = {
   create,
   list,
   getById,
+  getBySlug,
   update,
   deleteOne,
 };

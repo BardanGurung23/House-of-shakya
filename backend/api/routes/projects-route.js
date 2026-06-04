@@ -3,6 +3,7 @@ const {
   create,
   deleteOne,
   getById,
+  getBySlug,
   list,
   update,
 } = require("../controllers/projects-controller");
@@ -19,6 +20,7 @@ const {
 
 router.post("/", authentication, authorization, projectsPostValidation, create);
 router.get("/list", projectsListValidation, list);
+router.get("/slug/:slug", getBySlug);
 router.get("/:id", idValidation, getById);
 
 router.put(

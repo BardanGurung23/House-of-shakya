@@ -1,16 +1,16 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  class ProjectMedia extends Model {
+  class ProjectFeature extends Model {
     static associate(models) {
       this.belongsTo(models.projectsModel, {
         foreignKey: "projectId",
-        as: "projects",
+        as: "project",
       });
     }
   }
 
-  ProjectMedia.init(
+  ProjectFeature.init(
     {
       id: {
         allowNull: false,
@@ -22,18 +22,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      image: {
+      title: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      caption: {
+      icon: {
         type: DataTypes.STRING,
         allowNull: true,
-      },
-      type: {
-        type: DataTypes.ENUM("image", "video"),
-        allowNull: false,
-        defaultValue: "image",
       },
       sortOrder: {
         type: DataTypes.INTEGER,
@@ -44,9 +39,10 @@ module.exports = (sequelize, DataTypes) => {
     {
       timestamps: true,
       sequelize,
-      tableName: "project_media",
-      modelName: "ProjectMedia",
+      tableName: "project_features",
+      modelName: "ProjectFeature",
     },
   );
-  return ProjectMedia;
+
+  return ProjectFeature;
 };

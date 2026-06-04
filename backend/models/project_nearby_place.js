@@ -1,16 +1,16 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  class ProjectMedia extends Model {
+  class ProjectNearbyPlace extends Model {
     static associate(models) {
       this.belongsTo(models.projectsModel, {
         foreignKey: "projectId",
-        as: "projects",
+        as: "project",
       });
     }
   }
 
-  ProjectMedia.init(
+  ProjectNearbyPlace.init(
     {
       id: {
         allowNull: false,
@@ -22,18 +22,17 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      image: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      caption: {
+      type: {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      type: {
-        type: DataTypes.ENUM("image", "video"),
-        allowNull: false,
-        defaultValue: "image",
+      distance: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       sortOrder: {
         type: DataTypes.INTEGER,
@@ -44,9 +43,10 @@ module.exports = (sequelize, DataTypes) => {
     {
       timestamps: true,
       sequelize,
-      tableName: "project_media",
-      modelName: "ProjectMedia",
+      tableName: "project_nearby_places",
+      modelName: "ProjectNearbyPlace",
     },
   );
-  return ProjectMedia;
+
+  return ProjectNearbyPlace;
 };

@@ -65,20 +65,7 @@
       "slug": "home-banner",
       "responsiveSettings": "",
       "sliderSettings": "",
-      "bannerItems": [
-        {
-          "id": "1",
-          "bannerId": "1",
-          "image": "/test",
-          "caption": "Banner",
-          "title": "Tech Nirvana",
-          "subTitle": "Teach Nirvana",
-          "primaryButton": "",
-          "primaryButtonUrl": "",
-          "secondaryButton": "",
-          "secondaryButtonUrl": ""
-        }
-      ]
+      "bannerItems": []
     },
     {
       "id": "2",

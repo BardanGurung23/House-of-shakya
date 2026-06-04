@@ -4,9 +4,13 @@ const {
   projectCategoryModel,
   projectsModel,
   projectMediaModel,
+  projectFeatureModel,
+  projectNearbyPlaceModel,
+  userModel,
   sequelize,
 } = require("../../models");
 const paginate = require("../../utils/paginate");
+const slugGenerator = require("../../utils/slugify");
 
 const projectInclude = [
   {
@@ -17,12 +21,38 @@ const projectInclude = [
   {
     model: projectMediaModel,
     as: "images",
-    attributes: ["id", "image", "type"],
+    attributes: ["id", "image", "type", "caption", "sortOrder"],
+  },
+  {
+    model: projectFeatureModel,
+    as: "features",
+    attributes: ["id", "title", "icon", "sortOrder"],
+  },
+  {
+    model: projectNearbyPlaceModel,
+    as: "nearbyPlaces",
+    attributes: ["id", "name", "type", "distance", "sortOrder"],
+  },
+  {
+    model: userModel,
+    as: "agent",
+    attributes: ["id", "firstName", "lastName", "email", "mobileNo", "imageUrl"],
   },
 ];
 
 const getMediaType = (path = "") => {
   return /\.(mp4|mpeg|mov|webm|ogg)$/i.test(path) ? "video" : "image";
+};
+
+const mapMediaPayload = (media, index) => {
+  const image = typeof media === "string" ? media : media.image || media.path;
+
+  return {
+    image,
+    type: media.type || getMediaType(image),
+    caption: typeof media === "string" ? null : media.caption || null,
+    sortOrder: typeof media === "string" ? index : media.sortOrder ?? index,
+  };
 };
 
 const syncImages = async (projectId, images, transaction) => {
@@ -40,10 +70,60 @@ const syncImages = async (projectId, images, transaction) => {
   }
 
   await projectMediaModel.bulkCreate(
-    images.map((image) => ({
+    images.map((image, index) => ({
       projectId,
-      image,
-      type: getMediaType(image),
+      ...mapMediaPayload(image, index),
+    })),
+    { transaction },
+  );
+};
+
+const syncFeatures = async (projectId, features, transaction) => {
+  if (!Array.isArray(features)) {
+    return;
+  }
+
+  await projectFeatureModel.destroy({
+    where: { projectId },
+    transaction,
+  });
+
+  if (features.length === 0) {
+    return;
+  }
+
+  await projectFeatureModel.bulkCreate(
+    features.map((feature, index) => ({
+      projectId,
+      title: feature.title,
+      icon: feature.icon || null,
+      sortOrder: feature.sortOrder ?? index,
+    })),
+    { transaction },
+  );
+};
+
+const syncNearbyPlaces = async (projectId, nearbyPlaces, transaction) => {
+  if (!Array.isArray(nearbyPlaces)) {
+    return;
+  }
+
+  await projectNearbyPlaceModel.destroy({
+    where: { projectId },
+    transaction,
+  });
+
+  if (nearbyPlaces.length === 0) {
+    return;
+  }
+
+  await projectNearbyPlaceModel.bulkCreate(
+    nearbyPlaces.map((place, index) => ({
+      projectId,
+      name: place.name,
+      type: place.type || null,
+      distance: place.distance || null,
+      sortOrder: place.sortOrder ?? index,
     })),
     { transaction },
   );
@@ -68,7 +148,24 @@ const create = async (req) => {
       }
     }
 
-    const { images, ...projectData } = req.body;
+    if (req.body.agentId) {
+      const agent = await userModel.findByPk(+req.body.agentId, {
+        transaction,
+      });
+
+      if (!agent) {
+        await transaction.rollback();
+        return {
+          ...generalConstant.EN.USER.User_NOT_FOUND,
+          data: null,
+        };
+      }
+    }
+
+    const { images, features, nearbyPlaces, ...projectData } = req.body;
+    if (!projectData.slug && projectData.name) {
+      projectData.slug = slugGenerator(projectData.name);
+    }
     const result = await projectsModel.create(projectData, { transaction });
 
     if (!result) {
@@ -80,6 +177,8 @@ const create = async (req) => {
     }
 
     await syncImages(result.id, images, transaction);
+    await syncFeatures(result.id, features, transaction);
+    await syncNearbyPlaces(result.id, nearbyPlaces, transaction);
     await transaction.commit();
 
     return {
@@ -104,6 +203,9 @@ const list = async (req) => {
       name,
       location,
       sort = "latest",
+      agentId,
+      slug,
+      status,
     } = req.query;
     const filters = {};
 
@@ -125,6 +227,18 @@ const list = async (req) => {
       filters.location = {
         [Op.like]: `%${location}%`,
       };
+    }
+
+    if (agentId) {
+      filters.agentId = agentId;
+    }
+
+    if (slug) {
+      filters.slug = slug;
+    }
+
+    if (status) {
+      filters.status = status;
     }
 
     let order = [["updatedAt", "DESC"]];
@@ -179,6 +293,29 @@ const getById = async (req) => {
   }
 };
 
+const getBySlug = async (req) => {
+  try {
+    const result = await projectsModel.findOne({
+      where: { slug: req.params.slug },
+      include: projectInclude,
+    });
+
+    if (!result) {
+      return {
+        ...generalConstant.EN.PROJECTS.PROJECTS_NOT_FOUND,
+        data: null,
+      };
+    }
+
+    return {
+      ...generalConstant.EN.PROJECTS.PROJECTS_FOUND,
+      data: result,
+    };
+  } catch (error) {
+    throw error;
+  }
+};
+
 const update = async (req) => {
   const transaction = await sequelize.transaction();
 
@@ -210,9 +347,28 @@ const update = async (req) => {
       }
     }
 
-    const { images, ...projectData } = req.body;
+    if (req.body.agentId) {
+      const agent = await userModel.findByPk(+req.body.agentId, {
+        transaction,
+      });
+
+      if (!agent) {
+        await transaction.rollback();
+        return {
+          ...generalConstant.EN.USER.User_NOT_FOUND,
+          data: null,
+        };
+      }
+    }
+
+    const { images, features, nearbyPlaces, ...projectData } = req.body;
+    if (!projectData.slug && projectData.name) {
+      projectData.slug = slugGenerator(projectData.name);
+    }
     await result.update(projectData, { transaction });
     await syncImages(result.id, images, transaction);
+    await syncFeatures(result.id, features, transaction);
+    await syncNearbyPlaces(result.id, nearbyPlaces, transaction);
     await transaction.commit();
 
     return {
@@ -253,6 +409,7 @@ module.exports = {
   create,
   list,
   getById,
+  getBySlug,
   update,
   deleteById,
 };
