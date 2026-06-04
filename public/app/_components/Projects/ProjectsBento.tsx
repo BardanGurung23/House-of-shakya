@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import Reveal from "../site/Reveal";
 import { IMAGE_BASE_URL } from "@/constants/index";
 import { ProjectItem } from "@/utils/propertyMapper";
@@ -7,6 +7,7 @@ import { ProjectItem } from "@/utils/propertyMapper";
 const fallbackProjects = [
   {
     id: 1,
+    slug: "enova-villa",
     name: "Annapurna Estates",
     location: "Lakeside, Pokhara",
     type: "Premium Villas",
@@ -20,6 +21,7 @@ const fallbackProjects = [
   },
   {
     id: 2,
+    slug: "enova-villa",
     name: "Phewa Heights",
     location: "Sedi, Pokhara",
     type: "Apartments",
@@ -33,6 +35,7 @@ const fallbackProjects = [
   },
   {
     id: 3,
+    slug: "enova-villa",
     name: "Begnas Greens",
     location: "Begnas, Pokhara",
     type: "Land Parcels",
@@ -46,6 +49,7 @@ const fallbackProjects = [
   },
   {
     id: 4,
+    slug: "enova-villa",
     name: "Sarangkot Ridge",
     location: "Sarangkot, Pokhara",
     type: "Hillside Residences",
@@ -79,8 +83,9 @@ export default function ProjectsBento({ projects }: ProjectProps) {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       {projectList.map((project, i) => (
         <Reveal key={project.id} delay={i * 0.08} className={project.span}>
-          <div
-            className="group relative rounded-xl overflow-hidden img-zoom cursor-pointer"
+          <Link
+            href={`/projects/${project.slug}`}
+            className="group relative block w-full rounded-xl overflow-hidden img-zoom cursor-pointer"
             style={{ height: i === 0 || i === 3 ? "340px" : "300px" }}
           >
             <img
@@ -127,7 +132,7 @@ export default function ProjectsBento({ projects }: ProjectProps) {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
         </Reveal>
       ))}
     </div>

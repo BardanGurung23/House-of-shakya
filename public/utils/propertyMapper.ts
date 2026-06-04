@@ -66,6 +66,7 @@ export const mapProperty = (property: ApiProperty): PropertyCard => ({
 
 type ApiProject = {
   id: number;
+  slug?: string | null;
   name: string;
   location: string;
   type: string;
@@ -78,6 +79,7 @@ type ApiProject = {
 };
 export type ProjectItem = {
   id: number;
+  slug: string;
   name: string;
   location: string;
   type: string;
@@ -102,6 +104,7 @@ export const mapProject = (
   index: number
 ): ProjectItem => ({
   id: project.id,
+  slug: project.slug || `${project.id}`,
   name: project.name,
   location: project.location,
   type: project.type,

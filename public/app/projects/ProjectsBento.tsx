@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { MapPin } from "lucide-react";
 import Reveal from "../_components/site/Reveal";
 import { IMAGE_BASE_URL } from "@/constants/index";
@@ -32,8 +33,9 @@ export default function ProjectsBento({ projects }: ProjectProps) {
     <div className="grid lg:grid-cols-1 gap-5">
       {projectList.map((project, i) => (
         <Reveal key={project.id} delay={i * 0.08}>
-          <div
-            className="group relative rounded-xl overflow-hidden img-zoom cursor-pointer"
+          <Link
+            href={`/projects/${project.slug}`}
+            className="group relative block w-full rounded-xl overflow-hidden img-zoom cursor-pointer"
             style={{ height: i === 0 || i === 3 ? "340px" : "300px" }}
           >
             <img
@@ -80,7 +82,7 @@ export default function ProjectsBento({ projects }: ProjectProps) {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
         </Reveal>
       ))}
     </div>
