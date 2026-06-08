@@ -3,8 +3,9 @@ import PageHeader from "../_components/site/PageHeader";
 import ContactForm from "../_components/site/ContactForm";
 import { getData } from "@/utils/apiHandle";
 import { IMAGE_BASE_URL } from "@/constants";
+import { getSeoMetadata } from "@/utils/seo";
 
-export const metadata: Metadata = {
+const fallbackMetadata: Metadata = {
   title: "Contact Us",
   description:
     "Get in touch with Yours Housing in Pokhara. Schedule a consultation, enquire about a property, or visit our New Road office.",
@@ -14,6 +15,9 @@ export const metadata: Metadata = {
       "Schedule a consultation with Nepal's premier real estate developer.",
   },
 };
+
+export const generateMetadata = () =>
+  getSeoMetadata("contact", fallbackMetadata);
 
 export default async function ContactPage() {
   const response = await getData("banner/contact-banner");

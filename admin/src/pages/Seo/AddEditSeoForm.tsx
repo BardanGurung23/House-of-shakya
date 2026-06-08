@@ -47,11 +47,10 @@ export default function AddEditSeoForm({
 
   const [PageOptions, setPageOptions] = useState([
     { label: "Home Page", value: "home" },
-    { label: "Company Page", value: "company" },
-    { label: "Portfolio Page", value: "portfolio" },
-    { label: "Services Page", value: "services" },
-    { label: "Careers Page", value: "careers" },
-    { label: "Blogs Page", value: "blogs" },
+    { label: "About Page", value: "company" },
+    { label: "Project Page", value: "projects" },
+    { label: "Properties Page", value: "properties" },
+    { label: "Contact Page", value: "contact" },
   ]);
 
   const [createSeo] = useCreateSeoMutation();

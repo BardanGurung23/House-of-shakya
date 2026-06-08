@@ -8,8 +8,9 @@ import WhyUs from "./_components/site/WhyUs";
 import CTABanner from "./_components/site/CTABanner";
 import { getData } from "@/utils/apiHandle";
 import { getCompanyStats } from "@/utils/companyStats";
+import { getSeoMetadata } from "@/utils/seo";
 
-export const metadata: Metadata = {
+const fallbackMetadata: Metadata = {
   title: "Yours Housing | Premium Real Estate Development in Pokhara, Nepal",
   description:
     "Yours Housing — Building trust, creating homes, shaping Nepal's future. Premium villas, apartments and land development in Pokhara.",
@@ -19,6 +20,8 @@ export const metadata: Metadata = {
       "Building trust. Creating homes. Shaping Nepal's future of housing.",
   },
 };
+
+export const generateMetadata = () => getSeoMetadata("home", fallbackMetadata);
 
 export default async function HomePage() {
   const settingsResponse = await getData("company-setting");

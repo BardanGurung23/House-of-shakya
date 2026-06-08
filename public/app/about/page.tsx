@@ -9,8 +9,9 @@ import { MissionVision } from "./_components/Mission&Vision";
 import { Stats } from "./_components/Stats";
 import { OurValues } from "./_components/OurValues";
 import { CompanyOverview } from "./_components/CompanyOverview";
+import { getSeoMetadata } from "@/utils/seo";
 
-export const metadata: Metadata = {
+const fallbackMetadata: Metadata = {
   title: "About Us",
   description:
     "Learn about Yours Housing — Pokhara's most trusted real estate developer, building premium homes and communities since 2013.",
@@ -20,6 +21,9 @@ export const metadata: Metadata = {
       "11 years of building trust, creating homes, and shaping Pokhara's housing landscape.",
   },
 };
+
+export const generateMetadata = () =>
+  getSeoMetadata("company", fallbackMetadata);
 
 export default async function AboutPage() {
   const response = await getData("banner/about-banner");

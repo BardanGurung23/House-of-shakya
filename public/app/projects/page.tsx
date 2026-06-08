@@ -6,8 +6,9 @@ import CTABanner from "../_components/site/CTABanner";
 import { getData } from "@/utils/apiHandle";
 import { IMAGE_BASE_URL } from "@/constants";
 import { mapProject } from "@/utils/propertyMapper";
+import { getSeoMetadata } from "@/utils/seo";
 
-export const metadata: Metadata = {
+const fallbackMetadata: Metadata = {
   title: "Projects & Properties",
   description:
     "Explore Yours Housing's portfolio of premium villas, apartments, and land projects across Pokhara's most desirable neighbourhoods.",
@@ -17,6 +18,9 @@ export const metadata: Metadata = {
       "Premium villas, apartments and land in Lakeside, Sedi, Begnas and Sarangkot.",
   },
 };
+
+export const generateMetadata = () =>
+  getSeoMetadata("projects", fallbackMetadata);
 
 export default async function ProjectsPage() {
   const response = await getData("banner/projects-banner");

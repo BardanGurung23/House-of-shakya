@@ -6,8 +6,9 @@ import { getData } from "@/utils/apiHandle";
 import { IMAGE_BASE_URL } from "@/constants";
 import PropertiesSection from "./_components/PropertySection";
 import { mapProperty } from "@/utils/propertyMapper";
+import { getSeoMetadata } from "@/utils/seo";
 
-export const metadata: Metadata = {
+const fallbackMetadata: Metadata = {
   title: "Services",
   description:
     "Yours Housing offers real estate development, housing projects, land planning, and investment opportunities across Pokhara, Nepal.",
@@ -17,6 +18,9 @@ export const metadata: Metadata = {
       "From raw land to finished homes — every real estate service you need in Pokhara.",
   },
 };
+
+export const generateMetadata = () =>
+  getSeoMetadata("properties", fallbackMetadata);
 
 export default async function ServicesPage() {
   const response = await getData("banner/services-banner");
