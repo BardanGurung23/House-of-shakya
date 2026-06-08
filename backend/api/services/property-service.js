@@ -4,9 +4,13 @@ const {
   propertyModel,
   propertyCategoryModel,
   propertyMediaModel,
+  propertyFeatureModel,
+  propertyNearbyPlaceModel,
+  userModel,
   sequelize,
 } = require("../../models");
 const paginate = require("../../utils/paginate");
+const slugGenerator = require("../../utils/slugify");
 
 const propertyInclude = [
   {
@@ -18,6 +22,21 @@ const propertyInclude = [
     model: propertyMediaModel,
     as: "images",
     attributes: ["id", "image", "type"],
+  },
+  {
+    model: propertyFeatureModel,
+    as: "features",
+    attributes: ["id", "title", "icon", "sortOrder"],
+  },
+  {
+    model: propertyNearbyPlaceModel,
+    as: "nearbyPlaces",
+    attributes: ["id", "name", "type", "distance", "sortOrder"],
+  },
+  {
+    model: userModel,
+    as: "agent",
+    attributes: ["id", "firstName", "lastName", "email", "mobileNo", "imageUrl"],
   },
 ];
 
@@ -49,6 +68,57 @@ const syncImages = async (propertyId, images, transaction) => {
   );
 };
 
+const syncFeatures = async (propertyId, features, transaction) => {
+  if (!Array.isArray(features)) {
+    return;
+  }
+
+  await propertyFeatureModel.destroy({
+    where: { propertyId },
+    transaction,
+  });
+
+  if (features.length === 0) {
+    return;
+  }
+
+  await propertyFeatureModel.bulkCreate(
+    features.map((feature, index) => ({
+      propertyId,
+      title: feature.title,
+      icon: feature.icon || null,
+      sortOrder: feature.sortOrder ?? index,
+    })),
+    { transaction },
+  );
+};
+
+const syncNearbyPlaces = async (propertyId, nearbyPlaces, transaction) => {
+  if (!Array.isArray(nearbyPlaces)) {
+    return;
+  }
+
+  await propertyNearbyPlaceModel.destroy({
+    where: { propertyId },
+    transaction,
+  });
+
+  if (nearbyPlaces.length === 0) {
+    return;
+  }
+
+  await propertyNearbyPlaceModel.bulkCreate(
+    nearbyPlaces.map((place, index) => ({
+      propertyId,
+      name: place.name,
+      type: place.type || null,
+      distance: place.distance || null,
+      sortOrder: place.sortOrder ?? index,
+    })),
+    { transaction },
+  );
+};
+
 const getPropertyById = async (id) => {
   return propertyModel.findByPk(+id, {
     include: propertyInclude,
@@ -59,7 +129,11 @@ const create = async (req) => {
   const transaction = await sequelize.transaction();
 
   try {
-    const { images, ...propertyData } = req.body;
+    const { images, features, nearbyPlaces, ...propertyData } = req.body;
+    if (!propertyData.slug && propertyData.name) {
+      propertyData.slug = slugGenerator(propertyData.name);
+    }
+
     const property = await propertyModel.create(propertyData, { transaction });
 
     if (!property) {
@@ -71,6 +145,8 @@ const create = async (req) => {
     }
 
     await syncImages(property.id, images, transaction);
+    await syncFeatures(property.id, features, transaction);
+    await syncNearbyPlaces(property.id, nearbyPlaces, transaction);
     await transaction.commit();
 
     return {
@@ -90,14 +166,29 @@ const list = async (req) => {
       page,
       sort = "latest",
       propertyCategoryId,
+      agentId,
+      slug,
       name,
       location,
+      status,
     } = req.query;
 
     const filters = {};
 
     if (propertyCategoryId) {
       filters.propertyCategoryId = propertyCategoryId;
+    }
+
+    if (agentId) {
+      filters.agentId = agentId;
+    }
+
+    if (status) {
+      filters.status = status;
+    }
+
+    if (slug) {
+      filters.slug = slug;
     }
 
     if (name) {
@@ -162,6 +253,29 @@ const getById = async (req) => {
   }
 };
 
+const getBySlug = async (req) => {
+  try {
+    const property = await propertyModel.findOne({
+      where: { slug: req.params.slug },
+      include: propertyInclude,
+    });
+
+    if (!property) {
+      return {
+        ...generalConstant.EN.PROPERTY.PROPERTY_NOT_FOUND,
+        data: null,
+      };
+    }
+
+    return {
+      ...generalConstant.EN.PROPERTY.PROPERTY_FOUND,
+      data: property,
+    };
+  } catch (error) {
+    throw error;
+  }
+};
+
 const update = async (req) => {
   const transaction = await sequelize.transaction();
 
@@ -178,9 +292,15 @@ const update = async (req) => {
       };
     }
 
-    const { images, ...propertyData } = req.body;
+    const { images, features, nearbyPlaces, ...propertyData } = req.body;
+    if (!propertyData.slug && propertyData.name) {
+      propertyData.slug = slugGenerator(propertyData.name);
+    }
+
     await property.update(propertyData, { transaction });
     await syncImages(property.id, images, transaction);
+    await syncFeatures(property.id, features, transaction);
+    await syncNearbyPlaces(property.id, nearbyPlaces, transaction);
     await transaction.commit();
 
     return {
@@ -219,6 +339,7 @@ module.exports = {
   create,
   list,
   getById,
+  getBySlug,
   update,
   deleteById,
 };
