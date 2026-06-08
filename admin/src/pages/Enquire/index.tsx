@@ -12,6 +12,15 @@ import { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import ViewEnquire from "./ViewEnquire";
 
+const getAgentName = (agent?: {
+  firstName?: string | null;
+  lastName?: string | null;
+  email?: string | null;
+}) => {
+  const name = [agent?.firstName, agent?.lastName].filter(Boolean).join(" ");
+  return name || agent?.email || "-";
+};
+
 export default function Enquires() {
   const accessList = checkAccess("Enquires");
 
@@ -69,16 +78,18 @@ export default function Enquires() {
     "Name",
     "Email",
     "Property",
+    "Agent",
     // "Subject",
     accessList.includes("delete") && "Actions",
   ];
 
   const tableData =
     success && allenquire?.data?.data
-      ? allenquire?.data?.data.map(({ id, full_name, email, property }) => [
+      ? allenquire?.data?.data.map(({ id, full_name, email, property, agent }) => [
           full_name,
           email,
           property?.name || "-",
+          getAgentName(agent),
           <div
             key={id}
             className="flex items-center justify-center cursor-pointer gap-[0.5rem]"

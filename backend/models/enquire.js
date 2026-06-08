@@ -7,6 +7,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "propertyId",
         as: "property",
       });
+
+      this.belongsTo(models.userModel, {
+        foreignKey: "agentId",
+        as: "agent",
+      });
     }
   }
 
@@ -21,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
       propertyId: {
         type: DataTypes.INTEGER,
         allowNull: false,
+      },
+      agentId: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
       },
       full_name: {
         type: DataTypes.STRING,

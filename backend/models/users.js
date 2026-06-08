@@ -35,6 +35,16 @@ module.exports = (sequelize, DataTypes) => {
         as: "agentProjects",
       });
 
+      this.hasMany(models.propertyModel, {
+        foreignKey: "agentId",
+        as: "agentProperties",
+      });
+
+      this.hasMany(models.enquireModel, {
+        foreignKey: "agentId",
+        as: "agentEnquires",
+      });
+
       // define association here
     }
   }

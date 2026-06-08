@@ -18,6 +18,21 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "propertyId",
         as: "enquiries",
       });
+
+      this.hasMany(models.propertyFeatureModel, {
+        foreignKey: "propertyId",
+        as: "features",
+      });
+
+      this.hasMany(models.propertyNearbyPlaceModel, {
+        foreignKey: "propertyId",
+        as: "nearbyPlaces",
+      });
+
+      this.belongsTo(models.userModel, {
+        foreignKey: "agentId",
+        as: "agent",
+      });
     }
   }
 
@@ -36,6 +51,11 @@ module.exports = (sequelize, DataTypes) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      slug: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        unique: true,
       },
       location: {
         type: DataTypes.STRING,
@@ -59,6 +79,54 @@ module.exports = (sequelize, DataTypes) => {
       },
       status: {
         type: DataTypes.ENUM(...PROPERTY_STATUS),
+      },
+      agentId: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
+      overview: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
+      address: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      size: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      parking: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+      view: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      yearBuilt: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+      completionDate: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      latitude: {
+        type: DataTypes.DECIMAL(10, 8),
+        allowNull: true,
+      },
+      longitude: {
+        type: DataTypes.DECIMAL(11, 8),
+        allowNull: true,
+      },
+      googleMapURL: {
+        type: DataTypes.TEXT,
+        allowNull: true,
       },
     },
     {

@@ -4,6 +4,15 @@ import { ENQUIRE_URL } from "@/constants/apiUrlConstants";
 import { useGetApiQuery } from "@/redux/services/crudApi";
 import { RiSeoLine } from "react-icons/ri";
 
+const getAgentName = (agent?: {
+  firstName?: string | null;
+  lastName?: string | null;
+  email?: string | null;
+}) => {
+  const name = [agent?.firstName, agent?.lastName].filter(Boolean).join(" ");
+  return name || agent?.email || "-";
+};
+
 export default function ViewEnquire({ id }: { id: number | null }) {
   const {
     data: enquireData,
@@ -36,6 +45,24 @@ export default function ViewEnquire({ id }: { id: number | null }) {
               label="Email"
               type="text"
               value={enquireData?.data?.email}
+              disabled
+            />
+            <Input
+              label="Property"
+              type="text"
+              value={enquireData?.data?.property?.name || "-"}
+              disabled
+            />
+            <Input
+              label="Agent"
+              type="text"
+              value={getAgentName(enquireData?.data?.agent)}
+              disabled
+            />
+            <Input
+              label="Agent Phone"
+              type="text"
+              value={enquireData?.data?.agent?.mobileNo || "-"}
               disabled
             />
             {/* <Input

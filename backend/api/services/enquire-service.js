@@ -1,5 +1,5 @@
 const generalConstant = require("../../constants/general-constant");
-const { enquireModel, propertyModel } = require("../../models");
+const { enquireModel, propertyModel, userModel } = require("../../models");
 const paginate = require("../../utils/paginate");
 const { sendMail } = require("../../helpers/mailer/mailer");
 
@@ -8,6 +8,11 @@ const includeProperty = [
     model: propertyModel,
     as: "property",
     attributes: ["id", "name", "location", "price"],
+  },
+  {
+    model: userModel,
+    as: "agent",
+    attributes: ["id", "firstName", "lastName", "email", "mobileNo", "imageUrl"],
   },
 ];
 
@@ -22,7 +27,10 @@ const create = async (req) => {
       };
     }
 
-    const result = await enquireModel.create(req.body);
+    const result = await enquireModel.create({
+      ...req.body,
+      agentId: property.agentId || null,
+    });
 
     if (!result) {
       return {
@@ -48,11 +56,15 @@ const create = async (req) => {
 
 const list = async (req) => {
   try {
-    const { limit, page, propertyId } = req.query;
+    const { limit, page, propertyId, agentId } = req.query;
     const filters = {};
 
     if (propertyId) {
       filters.propertyId = propertyId;
+    }
+
+    if (agentId) {
+      filters.agentId = agentId;
     }
 
     const result = await paginate(enquireModel, {

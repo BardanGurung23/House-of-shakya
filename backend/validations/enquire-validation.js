@@ -39,6 +39,7 @@ const enquireListValidation = async (req, res, next) => {
     page: joi.number().optional().label("page"),
     limit: joi.number().optional().label("limit"),
     propertyId: joi.number().optional().label("Property"),
+    agentId: joi.number().optional().label("Agent"),
   });
 
   const errors = await validateRequestQuery(req, res, joiModel);
