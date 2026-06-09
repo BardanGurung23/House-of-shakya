@@ -1,5 +1,7 @@
 import Button from "@/components/Button";
-import { MultipleImageInputUI } from "@/components/ImageInputUIComponent";
+import ImageInputUIComponent, {
+  MultipleImageInputUI,
+} from "@/components/ImageInputUIComponent";
 import Input from "@/components/Input";
 import MediaComponent from "@/components/MediaComponent";
 import PageTitle from "@/components/PageTitle";
@@ -9,7 +11,9 @@ import {
   PROJECT_CATEGORY_URL,
   PROJECTS_URL,
 } from "@/constants/apiUrlConstants";
-import useImageHandler from "@/hooks/useImageHandler";
+import useImageHandler, {
+  useSingleImageHandler,
+} from "@/hooks/useImageHandler";
 import { useGetAllUserQuery } from "@/redux/services/authentication";
 import {
   useCreateApiMutation,
@@ -122,6 +126,7 @@ export default function AddEditProjects() {
     defaultValues: {
       projectCategoryId: "",
       agentId: "",
+      bannerMedia: "",
       images: [],
       features: [],
       nearbyPlaces: [],
@@ -173,6 +178,16 @@ export default function AddEditProjects() {
     handleNextButton,
     handlePrevButton,
   } = useImageHandler(setValue, getValues, "images");
+  const {
+    imageUrl: bannerMedia,
+    handleConfirmImage: handleConfirmBannerMedia,
+    isImageModelOpen: isBannerMediaModelOpen,
+    setIsImageModelOpen: setIsBannerMediaModelOpen,
+  } = useSingleImageHandler<ProjectsFormType>(
+    setValue,
+    getValues,
+    "bannerMedia",
+  );
 
   const [createProjects] = useCreateApiMutation();
   const [updateProjects] = useUpdateApiMutation();
@@ -190,6 +205,8 @@ export default function AddEditProjects() {
         ...projectsData.data,
         agentId: projectsData.data.agentId || "",
         projectCategoryId: projectsData.data.projectCategoryId || "",
+        bannerMedia: projectsData.data.bannerMedia || "",
+        bannerMediaType: projectsData.data.bannerMediaType || null,
         images:
           projectsData.data.images?.map(
             (image: { image: string }) => image.image,
@@ -245,6 +262,7 @@ export default function AddEditProjects() {
       yearBuilt: emptyToNull(data.yearBuilt),
       latitude: emptyToNull(data.latitude),
       longitude: emptyToNull(data.longitude),
+      bannerMedia: data.bannerMedia || null,
       features: data.features?.map((feature, index) => ({
         ...feature,
         icon: feature.icon || null,
@@ -452,51 +470,88 @@ export default function AddEditProjects() {
           </div>
         </FloatingFormSectionWrapper>
         <FloatingFormSectionWrapper title="Media">
-          <div className="flex flex-col items-start w-[20rem]">
-            <label className="input-label text-start mb-[2px]">
-              Project Media
-            </label>
-            <MediaComponent
-              title={
-                <MultipleImageInputUI
-                  images={media}
-                  imageIndex={currentImageIndex}
-                />
-              }
-              isMultiSelect={true}
-              handleConfirmImage={() => handleConfirmImage("images")}
-              open={isImageModelOpen}
-              setOpen={setIsImageModalOpen}
-              acceptFiles="image/*,video/*"
-            />
-            <div className="mt-[1rem] flex w-full justify-between">
-              <button
-                type="button"
-                className="px-[0.75rem] py-[0.5rem] rounded-[0.25rem] bg-primaryColor text-white"
-                onClick={handlePrevButton}
-              >
-                Previous
-              </button>
-              <button
-                type="button"
-                className="px-[0.75rem] py-[0.5rem] rounded-[0.25rem] bg-primaryColor text-white"
-                onClick={handleRemoveButton}
-              >
-                Remove
-              </button>
-              <button
-                type="button"
-                className="px-[0.75rem] py-[0.5rem] rounded-[0.25rem] bg-primaryColor text-white"
-                onClick={handleNextButton}
-              >
-                Next
-              </button>
+          <div className="flex flex-wrap gap-20">
+            <div className="flex flex-col items-start w-[20rem]">
+              <label className="input-label text-start mb-[2px]">
+                Banner Media
+              </label>
+              <MediaComponent
+                title={
+                  <ImageInputUIComponent
+                    type="large"
+                    image={bannerMedia || ""}
+                    error={errors?.bannerMedia?.message}
+                  />
+                }
+                isMultiSelect={false}
+                handleConfirmImage={handleConfirmBannerMedia}
+                open={isBannerMediaModelOpen}
+                setOpen={setIsBannerMediaModelOpen}
+                acceptFiles="image/*,video/*"
+              />
+              {bannerMedia && (
+                <button
+                  type="button"
+                  className="mt-[1rem] px-[0.75rem] py-[0.5rem] rounded-[0.25rem] bg-red-500 text-white"
+                  onClick={() =>
+                    setValue("bannerMedia", "", {
+                      shouldDirty: true,
+                      shouldTouch: true,
+                      shouldValidate: true,
+                    })
+                  }
+                >
+                  Remove Banner
+                </button>
+              )}
             </div>
-            {errors?.images && (
-              <span className="text-red-500 text-sm">
-                {errors.images.message}
-              </span>
-            )}
+
+            <div className="flex flex-col items-start w-[20rem]">
+              <label className="input-label text-start mb-[2px]">
+                Project Media
+              </label>
+              <MediaComponent
+                title={
+                  <MultipleImageInputUI
+                    images={media}
+                    imageIndex={currentImageIndex}
+                  />
+                }
+                isMultiSelect={true}
+                handleConfirmImage={() => handleConfirmImage("images")}
+                open={isImageModelOpen}
+                setOpen={setIsImageModalOpen}
+                acceptFiles="image/*,video/*"
+              />
+              <div className="mt-[1rem] flex w-full justify-between">
+                <button
+                  type="button"
+                  className="px-[0.75rem] py-[0.5rem] rounded-[0.25rem] bg-primaryColor text-white"
+                  onClick={handlePrevButton}
+                >
+                  Previous
+                </button>
+                <button
+                  type="button"
+                  className="px-[0.75rem] py-[0.5rem] rounded-[0.25rem] bg-primaryColor text-white"
+                  onClick={handleRemoveButton}
+                >
+                  Remove
+                </button>
+                <button
+                  type="button"
+                  className="px-[0.75rem] py-[0.5rem] rounded-[0.25rem] bg-primaryColor text-white"
+                  onClick={handleNextButton}
+                >
+                  Next
+                </button>
+              </div>
+              {errors?.images && (
+                <span className="text-red-500 text-sm">
+                  {errors.images.message}
+                </span>
+              )}
+            </div>
           </div>
         </FloatingFormSectionWrapper>
         <div className="md:col-span-2 border border-gray-200 rounded p-4">

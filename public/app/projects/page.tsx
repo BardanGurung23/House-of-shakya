@@ -27,10 +27,17 @@ export default async function ProjectsPage() {
   const aboutbanner = response?.data?.bannerItems;
   const banner = Array.isArray(aboutbanner) ? aboutbanner[0] : null;
 
-  const projectResponse = await getData("/projects/list?page=1&limit=4");
+  const projectResponse = await getData("/projects/list?page=1&limit=999");
+  const categoryResponse = await getData("/project-category/list?limit=999");
   const projects = projectResponse?.data?.data;
   const mappedProjects = Array.isArray(projects)
     ? projects.map(mapProject)
+    : [];
+  const categories = Array.isArray(categoryResponse?.data?.data)
+    ? categoryResponse.data.data.map((category: { id: number; name: string }) => ({
+        id: category.id,
+        name: category.name,
+      }))
     : [];
 
   return (
@@ -47,7 +54,7 @@ export default async function ProjectsPage() {
         overlayDirection={banner?.overlayDirection}
       />
       <div className="py-10 bg-background max-w-7xl mx-auto px-6 lg:px-8">
-        <ProjectsBento projects={mappedProjects} />
+        <ProjectsBento projects={mappedProjects} categories={categories} />
       </div>
 
       <CTABanner />

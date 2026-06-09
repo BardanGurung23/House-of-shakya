@@ -55,6 +55,23 @@ const mapMediaPayload = (media, index) => {
   };
 };
 
+const normalizeProjectMedia = (projectData) => {
+  if (!Object.prototype.hasOwnProperty.call(projectData, "bannerMedia")) {
+    return projectData;
+  }
+
+  if (!projectData.bannerMedia) {
+    projectData.bannerMedia = null;
+    projectData.bannerMediaType = null;
+    return projectData;
+  }
+
+  projectData.bannerMediaType =
+    projectData.bannerMediaType || getMediaType(projectData.bannerMedia);
+
+  return projectData;
+};
+
 const syncImages = async (projectId, images, transaction) => {
   if (!Array.isArray(images)) {
     return;
@@ -163,6 +180,7 @@ const create = async (req) => {
     }
 
     const { images, features, nearbyPlaces, ...projectData } = req.body;
+    normalizeProjectMedia(projectData);
     if (!projectData.slug && projectData.name) {
       projectData.slug = slugGenerator(projectData.name);
     }
@@ -362,6 +380,7 @@ const update = async (req) => {
     }
 
     const { images, features, nearbyPlaces, ...projectData } = req.body;
+    normalizeProjectMedia(projectData);
     if (!projectData.slug && projectData.name) {
       projectData.slug = slugGenerator(projectData.name);
     }

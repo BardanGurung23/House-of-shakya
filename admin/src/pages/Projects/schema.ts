@@ -25,6 +25,8 @@ export const ProjectsSchema = z.object({
   completionDate: optionalText,
   latitude: optionalNumber,
   longitude: optionalNumber,
+  bannerMedia: optionalText,
+  bannerMediaType: z.enum(["image", "video"]).optional().nullable(),
   images: z.array(z.string()).optional(),
   features: z
     .array(

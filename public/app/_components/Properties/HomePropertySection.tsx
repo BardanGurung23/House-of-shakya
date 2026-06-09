@@ -56,8 +56,11 @@ export default function HomePropertiesSection({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
             {visibleProperties.map((prop, i) => (
               <Reveal key={prop.id} delay={i * 0.08}>
-                <div className="rounded-xl overflow-hidden hover-lift shadow-card bg-cream group cursor-pointer">
-                  <div className="relative h-56 overflow-hidden img-zoom">
+                <div className="rounded-xl overflow-hidden hover-lift shadow-card bg-cream group">
+                  <Link
+                    href={`/property/${prop.slug}`}
+                    className="relative block h-56 overflow-hidden img-zoom"
+                  >
                     <img
                       src={`${IMAGE_BASE_URL}${prop.image}`}
                       alt={`${prop.name} - ${prop.category} in ${prop.location}`}
@@ -87,12 +90,15 @@ export default function HomePropertiesSection({
                         {prop.category}
                       </span>
                     </div>
-                  </div>
+                  </Link>
 
                   <div className="p-5">
-                    <h3 className="font-semibold text-navy-deep text-base leading-tight mb-1">
+                    <Link
+                      href={`/property/${prop.slug}`}
+                      className="block font-semibold text-navy-deep text-base leading-tight mb-1 hover:text-forest"
+                    >
                       {prop.name}
-                    </h3>
+                    </Link>
                     <div className="flex items-center gap-1.5 text-xs text-navy/60 mb-3">
                       <MapPin size={11} />
                       <span>{prop.location}</span>
@@ -153,10 +159,10 @@ export default function HomePropertiesSection({
           <Reveal delay={0.3}>
             <div className="mt-12 text-center">
               <Link
-                href="/projects"
-                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded border border-navy-deep text-navy-deep hover:bg-navy-deep hover:text-cream transition-all duration-200"
+                href="/properties"
+                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded border border-navy-deep text-navy-deep hover:bg-navy-deep hover:!text-white transition-all duration-200"
               >
-                View All Projects <ArrowRight size={14} />
+                View All Properties <ArrowRight size={14} />
               </Link>
             </div>
           </Reveal>

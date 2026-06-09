@@ -186,7 +186,6 @@ export default function UserForm({
 
   return (
     <>
-      {JSON.stringify(errors)}
       <div className="mb-[2.5rem]">
         <div className="flex gap-[1.5rem] ">
           <div className="border h-[6.25rem] w-[6.25rem] rounded-[0.375rem]">
@@ -199,7 +198,10 @@ export default function UserForm({
           </div>
           <div className="space-y-[1rem]">
             <div className="flex gap-[1rem]">
-              <button className="bg-primaryColor px-[1.25rem] py-[0.5rem] rounded-[0.375rem] text-white">
+              <button
+                type="button"
+                className="bg-primaryColor px-[1.25rem] py-[0.5rem] rounded-[0.375rem] text-white"
+              >
                 <p className="font-[500] text-[0.9375rem]">
                   <MediaComponent
                     title={translate("Upload New Photo")}
@@ -210,6 +212,7 @@ export default function UserForm({
                 </p>
               </button>
               <button
+                type="button"
                 className="bg-[#EBEEF0] px-[1.25rem] py-[0.5rem] rounded-[0.375rem] "
                 onClick={() => setImage("")}
               >

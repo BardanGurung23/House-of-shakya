@@ -73,6 +73,13 @@ const projectsPostValidation = async (req, res, next) => {
     completionDate: optionalString.label("Completion Date"),
     latitude: optionalNumber.label("Latitude"),
     longitude: optionalNumber.label("Longitude"),
+    bannerMedia: optionalString.label("Banner Media"),
+    bannerMediaType: joi
+      .string()
+      .valid("image", "video")
+      .optional()
+      .allow(null, "")
+      .label("Banner Media Type"),
     images: joi.array().items(mediaSchema).optional().label("Images"),
     features: joi.array().items(featureSchema).optional().label("Features"),
     nearbyPlaces: joi
@@ -117,6 +124,13 @@ const projectsPutValidation = async (req, res, next) => {
     completionDate: optionalString.label("Completion Date"),
     latitude: optionalNumber.label("Latitude"),
     longitude: optionalNumber.label("Longitude"),
+    bannerMedia: optionalString.label("Banner Media"),
+    bannerMediaType: joi
+      .string()
+      .valid("image", "video")
+      .optional()
+      .allow(null, "")
+      .label("Banner Media Type"),
     images: joi.array().items(mediaSchema).optional().label("Images"),
     features: joi.array().items(featureSchema).optional().label("Features"),
     nearbyPlaces: joi

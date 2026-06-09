@@ -1,5 +1,4 @@
 import {
-  optionalNumberToNullWithMessage,
   optionalSelectNumberField,
   optionalStringToNullWithMessage,
 } from "@/utils/validationPreprocessor";
@@ -21,7 +20,11 @@ export const UserSchema = z.object({
     .trim(),
   firstName: optionalStringToNullWithMessage("First Name is Required"),
   lastName: optionalStringToNullWithMessage("First Name is Required"),
-  mobileNo: optionalNumberToNullWithMessage("Mobile Number is Required"),
+  mobileNo: z
+    .string()
+    .trim()
+    .min(1, "Mobile Number is Required")
+    .regex(/^[0-9]{10}$/, "Mobile Number must be exactly 10 digits"),
   roleId: optionalSelectNumberField("Role is Required"),
   gender: optionalStringToNullWithMessage("Gender is Required"),
   mobilePrefix: optionalStringToNullWithMessage("Mobile Prefix is Required"),
