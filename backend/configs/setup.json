@@ -73,20 +73,7 @@
       "slug": "about-banner",
       "responsiveSettings": "",
       "sliderSettings": "",
-      "bannerItems": [
-        {
-          "id": "2",
-          "bannerId": "2",
-          "image": "",
-          "caption": "Banner",
-          "title": "Mudita",
-          "subTitle": "Unimomo Generic Banner",
-          "primaryButton": "",
-          "primaryButtonUrl": "",
-          "secondaryButton": "",
-          "secondaryButtonUrl": ""
-        }
-      ]
+      "bannerItems": []
     },
     {
       "id": "3",
@@ -94,20 +81,7 @@
       "slug": "projects-banner",
       "responsiveSettings": "",
       "sliderSettings": "",
-      "bannerItems": [
-        {
-          "id": "3",
-          "bannerId": "3",
-          "image": "",
-          "caption": "Banner",
-          "title": "Mudita",
-          "subTitle": "Unimomo Generic Banner",
-          "primaryButton": "",
-          "primaryButtonUrl": "",
-          "secondaryButton": "",
-          "secondaryButtonUrl": ""
-        }
-      ]
+      "bannerItems": []
     },
     {
       "id": "4",
@@ -115,20 +89,7 @@
       "slug": "services-banner",
       "responsiveSettings": "",
       "sliderSettings": "",
-      "bannerItems": [
-        {
-          "id": "4",
-          "bannerId": "4",
-          "image": "",
-          "caption": "Banner",
-          "title": "Mudita",
-          "subTitle": "Unimomo Generic Banner",
-          "primaryButton": "",
-          "primaryButtonUrl": "",
-          "secondaryButton": "",
-          "secondaryButtonUrl": ""
-        }
-      ]
+      "bannerItems": []
     },
     {
       "id": "5",
@@ -136,20 +97,7 @@
       "slug": "contact-banner",
       "responsiveSettings": "",
       "sliderSettings": "",
-      "bannerItems": [
-        {
-          "id": "5",
-          "bannerId": "5",
-          "image": "",
-          "caption": "Banner",
-          "title": "Mudita",
-          "subTitle": "Unimomo Generic Banner",
-          "primaryButton": "",
-          "primaryButtonUrl": "",
-          "secondaryButton": "",
-          "secondaryButtonUrl": ""
-        }
-      ]
+      "bannerItems": []
     }
   ],
   "users": [
