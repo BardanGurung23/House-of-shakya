@@ -19,7 +19,9 @@ const create = async (req) => {
       email: `${req.body.email}`,
     };
 
-    await sendMail("contactEnquiry", placeholders, req.body.email);
+    sendMail("contactEnquiry", placeholders, req.body.email).catch((error) => {
+      console.error("Contact enquiry email failed:", error);
+    });
 
     return {
       ...generalConstant.EN.CONTACT.CREATE_CONTACT_SUCCESS,

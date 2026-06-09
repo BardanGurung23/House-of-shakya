@@ -44,7 +44,10 @@ const create = async (req) => {
       propertyName: `${property.name}`,
     };
 
-    await sendMail("propertyEnquiry", placeholders, req.body.email);
+    sendMail("propertyEnquiry", placeholders, req.body.email).catch((error) => {
+      console.error("Property enquiry email failed:", error);
+    });
+
     return {
       ...generalConstant.EN.ENQUIRE.CREATE_ENQUIRE_SUCCESS,
       data: result,
