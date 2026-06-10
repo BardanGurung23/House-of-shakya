@@ -16,21 +16,11 @@ module.exports = {
     host: process.env.STAGING_DB_HOST || "my-mysql",
     dialect: "mysql",
   },
-  // production: {
-  //   username: process.env.PROD_DB_USER,
-  //   password: process.env.PROD_DB_PASSWORD,
-  //   database: process.env.PROD_DB_NAME,
-  //   host: process.env.PROD_DB_HOST || "my-mysql",
-  //   dialect: "mysql",
-  // },
   production: {
     username: process.env.PROD_DB_USER,
     password: process.env.PROD_DB_PASSWORD,
     database: process.env.PROD_DB_NAME,
-    host: process.env.PROD_DB_HOST,
+    host: process.env.PROD_DB_HOST || "my-mysql",
     dialect: "mysql",
-    dialectOptions: {
-      socketPath: "/var/lib/mysql/mysql.sock",
-    },
   },
 };
