@@ -1,0 +1,178 @@
+export type Project = {
+  slug: string;
+  title: string;
+  category: "Hospitality" | "Residential" | "Commercial";
+  location: string;
+  year: string;
+  cover: string;
+  gallery: string[];
+  concept: string;
+  problem: string;
+  solution: string;
+  highlights: string[];
+};
+
+const u = (id: string, w = 1600) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+
+export const projects: Project[] = [
+  {
+    slug: "the-monolith-residence",
+    title: "The Monolith Residence",
+    category: "Residential",
+    location: "Lalitpur, Nepal",
+    year: "2024",
+    cover: u("photo-1600585154340-be6161a56a0c"),
+    gallery: [u("photo-1600566753190-17f0baa2a6c3"), u("photo-1600210492486-724fe5c67fb0"), u("photo-1616594039964-ae9021a400a0")],
+    concept: "A pared-back family home built around silence, stone and northern light.",
+    problem: "The owners had lived through three contractors and two redesigns. Drawings never matched reality.",
+    solution: "Single point of accountability from concept to handover. Weekly walkthroughs. Material library locked in week one.",
+    highlights: ["7 month delivery", "0 change-orders post lock", "Bespoke joinery throughout"],
+  },
+  {
+    slug: "kaze-omakase",
+    title: "Kaze — Omakase Bar",
+    category: "Hospitality",
+    location: "Thamel, Kathmandu",
+    year: "2024",
+    cover: u("photo-1559339352-11d035aa65de"),
+    gallery: [u("photo-1517248135467-4c7edcad34c4"), u("photo-1552566626-52f8b828add9"), u("photo-1414235077428-338989a2e8c0")],
+    concept: "12-seat counter wrapped in charred cedar and lit by a single warm wash.",
+    problem: "Tight 38 sqm shell, complex MEP, opening pegged to a press launch.",
+    solution: "Parallel design + execution sprints, prefabricated joinery offsite, day-by-day site choreography.",
+    highlights: ["Opened on launch date", "Prefab joinery", "Acoustic ceiling"],
+  },
+  {
+    slug: "atelier-noir",
+    title: "Atelier Noir",
+    category: "Commercial",
+    location: "Jhamsikhel",
+    year: "2023",
+    cover: u("photo-1497366216548-37526070297c"),
+    gallery: [u("photo-1497366811353-6870744d04b2"), u("photo-1604328698692-f76ea9498e76"), u("photo-1524758631624-e2822e304c36")],
+    concept: "Studio + showroom in matte black, brushed steel and travertine.",
+    problem: "Brand wanted gallery quality on a commercial budget.",
+    solution: "Material substitution matrix; honest finishes over veneers.",
+    highlights: ["Under budget 6%", "11 week build", "Full MEP rebuild"],
+  },
+  {
+    slug: "villa-himal",
+    title: "Villa Himal",
+    category: "Residential",
+    location: "Budhanilkantha",
+    year: "2024",
+    cover: u("photo-1600596542815-ffad4c1539a9"),
+    gallery: [u("photo-1600607687939-ce8a6c25118c"), u("photo-1600566753086-00f18fb6b3ea"), u("photo-1600566753051-6057b7c5db4e")],
+    concept: "A mountain-facing villa where every threshold frames the Himalaya.",
+    problem: "Sloped site, complex structural plan, premium finishes.",
+    solution: "Structural and interior teams under one roof — no blame ping-pong.",
+    highlights: ["Custom steel staircase", "Underfloor heating", "On-site stone yard"],
+  },
+  {
+    slug: "ember-rooftop",
+    title: "Ember — Rooftop Lounge",
+    category: "Hospitality",
+    location: "Patan",
+    year: "2023",
+    cover: u("photo-1600891964599-f61ba0e24092"),
+    gallery: [u("photo-1551218808-94e220e084d2"), u("photo-1525610553991-2bede1a236e2"), u("photo-1517991104123-1d56a6e81ed9")],
+    concept: "Black steel canopy, warm brass, terracotta floors.",
+    problem: "Heritage building, structural load constraints, monsoon timeline.",
+    solution: "Lightweight modular bar, removable roof system, weather-sealed in 9 weeks.",
+    highlights: ["Heritage compliant", "Modular bar", "All-weather"],
+  },
+  {
+    slug: "house-of-quiet",
+    title: "House of Quiet",
+    category: "Residential",
+    location: "Bhaisepati",
+    year: "2024",
+    cover: u("photo-1505691938895-1758d7feb511"),
+    gallery: [u("photo-1505693416388-ac5ce068fe85"), u("photo-1493809842364-78817add7ffb"), u("photo-1502672260266-1c1ef2d93688")],
+    concept: "A minimalist sanctuary for a writer. White oak, lime plaster, no clutter.",
+    problem: "Client had been burned twice on finish quality.",
+    solution: "Mockup wall before full commit. Sample sign-off protocol.",
+    highlights: ["Lime plaster walls", "Custom oak millwork", "Hidden tech"],
+  },
+  {
+    slug: "noor-boutique-hotel",
+    title: "Noor — Boutique Hotel",
+    category: "Hospitality",
+    location: "Pokhara",
+    year: "2024",
+    cover: u("photo-1564501049412-61c2a3083791"),
+    gallery: [u("photo-1566073771259-6a8506099945"), u("photo-1582719478250-c89cae4dc85b"), u("photo-1611892440504-42a792e24d32")],
+    concept: "16 rooms above the lake. Warm minimalism, locally woven textiles.",
+    problem: "Multi-trade coordination across 4 floors with overlapping deadlines.",
+    solution: "Floor-by-floor handover, dedicated PM, daily snag log.",
+    highlights: ["Opened on schedule", "Local artisans", "Lake-view suites"],
+  },
+  {
+    slug: "studio-grey",
+    title: "Studio Grey",
+    category: "Commercial",
+    location: "Naxal",
+    year: "2023",
+    cover: u("photo-1556909114-f6e7ad7d3136"),
+    gallery: [u("photo-1604328471151-b52226907017"), u("photo-1497366754035-f200968a6e72"), u("photo-1567521464027-f127ff144326")],
+    concept: "Architects' workspace — concrete, glass, deep shadows.",
+    problem: "Working office during renovation.",
+    solution: "Phased night execution. Zero downtime.",
+    highlights: ["Live-site phased build", "Acoustic studio", "Custom desks"],
+  },
+  {
+    slug: "the-courtyard-house",
+    title: "The Courtyard House",
+    category: "Residential",
+    location: "Sanepa",
+    year: "2024",
+    cover: u("photo-1512917774080-9991f1c4c750"),
+    gallery: [u("photo-1600585152220-90363fe7e115"), u("photo-1600596542815-ffad4c1539a9"), u("photo-1600210491892-03d54c0aaf87")],
+    concept: "A traditional newari plan, reimagined with steel and glass.",
+    problem: "Cultural geometry meets modern services.",
+    solution: "Hybrid structural system, hidden services routing.",
+    highlights: ["Inner courtyard", "Hybrid structure", "Custom screens"],
+  },
+  {
+    slug: "saffron-table",
+    title: "Saffron Table",
+    category: "Hospitality",
+    location: "Durbar Marg",
+    year: "2023",
+    cover: u("photo-1517248135467-4c7edcad34c4"),
+    gallery: [u("photo-1559339352-11d035aa65de"), u("photo-1414235077428-338989a2e8c0"), u("photo-1552566626-52f8b828add9")],
+    concept: "Fine-dining, 60-seat. Burnt umber, polished brass, candlelight.",
+    problem: "Acoustics in an open kitchen plan.",
+    solution: "Acoustic ceiling raft + soft furnishings tuned to RT60 target.",
+    highlights: ["Open kitchen", "Acoustic tuning", "Brass detailing"],
+  },
+  {
+    slug: "the-black-pavilion",
+    title: "The Black Pavilion",
+    category: "Residential",
+    location: "Godavari",
+    year: "2024",
+    cover: u("photo-1600573472550-8090b5e0745e"),
+    gallery: [u("photo-1600210492486-724fe5c67fb0"), u("photo-1616594039964-ae9021a400a0"), u("photo-1600566753190-17f0baa2a6c3")],
+    concept: "Guest pavilion in charred timber, set into the hillside.",
+    problem: "Remote site, weather risk.",
+    solution: "Off-site fabrication, two-week on-site assembly.",
+    highlights: ["Off-site build", "Charred timber", "Hillside set"],
+  },
+  {
+    slug: "porto-cafe",
+    title: "Porto Café",
+    category: "Hospitality",
+    location: "Lazimpat",
+    year: "2023",
+    cover: u("photo-1525610553991-2bede1a236e2"),
+    gallery: [u("photo-1600891964599-f61ba0e24092"), u("photo-1517991104123-1d56a6e81ed9"), u("photo-1551218808-94e220e084d2")],
+    concept: "Neighborhood café, all day. Microcement, oak, soft warm light.",
+    problem: "Tight envelope, must seat 40.",
+    solution: "Banquette planning, bar reorganization, kitchen reflow.",
+    highlights: ["40-seat capacity", "Custom banquette", "All-day flow"],
+  },
+];
+
+export const getProject = (slug: string) =>
+  projects.find((p) => p.slug === slug);
