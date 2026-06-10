@@ -7,9 +7,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { to: "/", label: "Index" },
+  { to: "/", label: "Home" },
   { to: "/projects", label: "Projects" },
-  { to: "/about", label: "Studio" },
+  { to: "/about", label: "About Us" },
   { to: "/team", label: "Team" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -78,9 +78,7 @@ export function SideNav() {
                     transition={{ delay: 0.1 + i * 0.06, duration: 0.6 }}
                   >
                     <Link href={l.to} className="group flex items-baseline gap-4 py-3">
-                      <span className="font-mono text-[10px] text-muted-foreground">
-                        0{i + 1}
-                      </span>
+                      <span className="font-mono text-[10px] text-muted-foreground">0{i + 1}</span>
                       <span
                         className={`font-display text-4xl md:text-5xl font-light transition-colors ${
                           active ? "text-gold" : "text-foreground group-hover:text-gold"
@@ -96,7 +94,8 @@ export function SideNav() {
             <div className="p-10 border-t border-border">
               <div className="eyebrow mb-2">Studio</div>
               <p className="text-sm text-muted-foreground">
-                Lalitpur, Nepal<br />
+                Lalitpur, Nepal
+                <br />
                 hello@houseofshakya.com
               </p>
             </div>
