@@ -67,6 +67,9 @@ export const PROJECT_CATEGORY_ADD_ROUTE = "/admin/project-category/";
 export const PROJECTS_LIST_ROUTE = "/admin/projects/list";
 export const PROJECTS_ADD_ROUTE = "/admin/projects/";
 
+export const TEAM_MEMBER_LIST_ROUTE = "/admin/team-member/list";
+export const TEAM_MEMBER_ADD_ROUTE = "/admin/team-member/";
+
 export const SUBSCRIBERS_LIST_ROUTE = "/admin/subscriber";
 
 export const CONTACT_LIST_ROUTE = "/admin/contact";

@@ -8,12 +8,16 @@ const optionalNumber = z
 
 export const PropertySchema = z.object({
   propertyCategoryId: z.union([z.coerce.number(), z.literal("")]).optional(),
-  agentId: z.union([z.coerce.number(), z.literal("")]).optional().nullable(),
+  agentId: z
+    .union([z.coerce.number(), z.literal("")])
+    .optional()
+    .nullable(),
   name: z.string().min(1, "Name is required"),
+  type: z.string().min(1, "Type is required"),
   location: z.string().min(1, "Location is required"),
   description: optionalText,
-  overview: optionalText,
-  address: optionalText,
+  problem: optionalText,
+  solution: optionalText,
   beds: optionalNumber,
   bath: optionalNumber,
   anna: optionalNumber,
@@ -24,8 +28,6 @@ export const PropertySchema = z.object({
   view: optionalText,
   yearBuilt: optionalNumber,
   completionDate: optionalText,
-  latitude: optionalNumber,
-  longitude: optionalNumber,
   googleMapURL: optionalText,
   images: z.array(z.string()).optional(),
   features: z

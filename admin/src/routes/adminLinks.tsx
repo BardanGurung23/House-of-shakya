@@ -43,6 +43,8 @@ import ProjectCategory from "@/pages/ProjectCategory";
 import AddEditProjectCategory from "@/pages/ProjectCategory/AddEditProjectCategory";
 import Projects from "@/pages/Projects";
 import AddEditProjects from "@/pages/Projects/AddEditProjects";
+import TeamMember from "@/pages/TeamMember";
+import AddEditTeamMember from "@/pages/TeamMember/AddEditTeamMember";
 import Contact from "@/pages/Contact";
 import Subscribers from "@/pages/Subscribers";
 import CareerCategory from "@/pages/CareerCategory";
@@ -291,6 +293,18 @@ export const adminLinks = [
   {
     path: "/projects/:id",
     element: <AddEditProjects />,
+  },
+  {
+    path: "/team-member/list",
+    element: <TeamMember />,
+  },
+  {
+    path: "/team-member/",
+    element: <AddEditTeamMember />,
+  },
+  {
+    path: "/team-member/:id",
+    element: <AddEditTeamMember />,
   },
   {
     path: "contact",

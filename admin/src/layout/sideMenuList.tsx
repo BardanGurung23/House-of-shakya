@@ -60,6 +60,12 @@ export const SideMenuList: SideListMenuType[] = [
   },
   {
     key: 6,
+    name: "Team Member",
+    path: "/admin/team-member/list",
+    icon: <MdPeopleAlt />,
+  },
+  {
+    key: 7,
     name: "Media",
     path: "/admin/media-category/list",
     icon: <MdOutlinePermMedia />,

@@ -45,6 +45,7 @@ export const api = createApi({
     "property-category",
     "property",
     "projects",
+    "team-member",
   ],
   endpoints: () => ({}),
 });

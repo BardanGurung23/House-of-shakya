@@ -14,6 +14,8 @@ export const PROJECT_CATEGORY_URL = "project-category/";
 
 export const PROJECTS_URL = "projects/";
 
+export const TEAM_MEMBER_URL = "team-member/";
+
 export const SUBSCRIBERS_URL = "subscriber/";
 
 export const CONTACT_URL = "contact/";

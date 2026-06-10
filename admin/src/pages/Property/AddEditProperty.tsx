@@ -337,15 +337,16 @@ export default function AddEditProperty() {
               )}
             />
             <Input
+              label="Type"
+              isRequired
+              {...register("type")}
+              error={errors?.type?.message}
+            />
+            <Input
               label="Location"
               isRequired
               {...register("location")}
               error={errors?.location?.message}
-            />
-            <Input
-              label="Address"
-              {...register("address")}
-              error={errors?.address?.message}
             />
             <Input
               label="Google Map URL"
@@ -359,7 +360,6 @@ export default function AddEditProperty() {
               {...register("price")}
               error={errors?.price?.message}
             />
-
             <Input
               label="Anna"
               type="number"
@@ -392,15 +392,20 @@ export default function AddEditProperty() {
               )}
             />
             <TextArea
-              label="Description"
+              label="Concept"
               isRequired
               {...register("description")}
               error={errors?.description?.message}
             />
             <TextArea
               label="Overview"
-              {...register("overview")}
-              error={errors?.overview?.message}
+              {...register("problem")}
+              error={errors?.problem?.message}
+            />
+            <TextArea
+              label="Overview"
+              {...register("solution")}
+              error={errors?.solution?.message}
             />
           </div>
         </FloatingFormSectionWrapper>
@@ -439,20 +444,6 @@ export default function AddEditProperty() {
               label="Completion Date"
               {...register("completionDate")}
               error={errors?.completionDate?.message}
-            />
-            <Input
-              label="Latitude"
-              type="number"
-              step="0.00000001"
-              {...register("latitude")}
-              error={errors?.latitude?.message}
-            />
-            <Input
-              label="Longitude"
-              type="number"
-              step="0.00000001"
-              {...register("longitude")}
-              error={errors?.longitude?.message}
             />
           </div>
         </FloatingFormSectionWrapper>

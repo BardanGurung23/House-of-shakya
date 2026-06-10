@@ -1,9 +1,13 @@
 import DragableTable from "@/components/Table/dragableTable";
-import { useListAllQnaQuery } from "@/redux/services/qna";
+import {
+  useListAllQnaQuery,
+  useUpdateQnaOrderMutation,
+} from "@/redux/services/qna";
 import { MdEditSquare } from "react-icons/md";
 import DeleteModal from "@/components/DeleteModal";
 import { checkAccess } from "@/utils/accessHelper";
 import { useState } from "react";
+import { handleError, handleResponse } from "@/utils/responseHandler";
 
 export default function Sort() {
   const accessList = checkAccess("Layout");
@@ -19,6 +23,7 @@ export default function Sort() {
     isSuccess: success,
     refetch,
   } = useListAllQnaQuery(query);
+  const [updateQnaOrder] = useUpdateQnaOrderMutation();
 
   const handleNewUser = (id: number | null) => {
     setEditId(id);
@@ -59,5 +64,24 @@ export default function Sort() {
         ])
       : [];
 
-  return <>{success && <DragableTable tableData={tableData} />}</>;
+  const handleOrderChange = async (items) => {
+    try {
+      const response = await updateQnaOrder(items).unwrap();
+      handleResponse({ res: response, onSuccess: () => refetch() });
+    } catch (error) {
+      handleError({ error });
+    }
+  };
+
+  return (
+    <>
+      {success && (
+        <DragableTable
+          headers={["Title", "Page Name", "Action"]}
+          tableData={tableData}
+          onOrderChange={handleOrderChange}
+        />
+      )}
+    </>
+  );
 }
