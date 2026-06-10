@@ -817,6 +817,60 @@
       ]
     },
     {
+      "title": "Team Member",
+      "key": "teamMember",
+      "actions": [
+        {
+          "title": "Add Team Member",
+          "key": "add",
+          "clientPath": "/team-member",
+          "serverPath": "/team-member",
+          "requestMethod": "POST",
+          "list": "Team Member"
+        },
+        {
+          "title": "View Team Member",
+          "key": "view",
+          "clientPath": "/team-member/list",
+          "serverPath": "/team-member/list",
+          "requestMethod": "GET",
+          "list": "Team Member"
+        },
+        {
+          "title": "View One Team Member",
+          "key": "view-one",
+          "clientPath": "/team-member/:id",
+          "serverPath": "/team-member/:id",
+          "requestMethod": "GET",
+          "list": "Team Member"
+        },
+        {
+          "title": "Edit Team Member",
+          "key": "edit",
+          "clientPath": "/team-member/:id",
+          "serverPath": "/team-member/:id",
+          "requestMethod": "PUT",
+          "list": "Team Member"
+        },
+        {
+          "title": "Sort Team Member",
+          "key": "edit",
+          "clientPath": "/team-member/list",
+          "serverPath": "/team-member/order",
+          "requestMethod": "PUT",
+          "list": "Team Member"
+        },
+        {
+          "title": "Delete Team Member",
+          "key": "delete",
+          "clientPath": "/team-member/:id",
+          "serverPath": "/team-member/:id",
+          "requestMethod": "DELETE",
+          "list": "Team Member"
+        }
+      ]
+    },
+    {
       "title": "Property",
       "key": "property",
       "actions": [

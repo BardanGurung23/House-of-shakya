@@ -16,8 +16,25 @@ const removeForeignKeysForColumn = async (queryInterface, tableName, columnName)
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.addColumn("enquires", "agentId", {
+  async up(queryInterface) {
+    const table = await queryInterface.describeTable("team_members");
+
+    if (!table.userId) {
+      return;
+    }
+
+    await removeForeignKeysForColumn(queryInterface, "team_members", "userId");
+    await queryInterface.removeColumn("team_members", "userId");
+  },
+
+  async down(queryInterface, Sequelize) {
+    const table = await queryInterface.describeTable("team_members");
+
+    if (table.userId) {
+      return;
+    }
+
+    await queryInterface.addColumn("team_members", "userId", {
       type: Sequelize.INTEGER,
       allowNull: true,
       references: {
@@ -26,27 +43,6 @@ module.exports = {
       },
       onUpdate: "CASCADE",
       onDelete: "SET NULL",
-      after: "propertyId",
     });
-
-    await queryInterface.sequelize.query(`
-      UPDATE enquires
-      SET agentId = (
-        SELECT properties.agentId
-        FROM properties
-        WHERE properties.id = enquires.propertyId
-      )
-      WHERE agentId IS NULL
-    `);
-
-    await queryInterface.addIndex("enquires", ["agentId"], {
-      name: "enquires_agent_id_idx",
-    });
-  },
-
-  async down(queryInterface) {
-    await removeForeignKeysForColumn(queryInterface, "enquires", "agentId");
-    await queryInterface.removeIndex("enquires", "enquires_agent_id_idx");
-    await queryInterface.removeColumn("enquires", "agentId");
   },
 };

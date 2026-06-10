@@ -17,10 +17,16 @@ const propertyFields = {
   agentId: joi.number().optional().allow(null).label("Agent"),
   name: joi.string().trim().required().label("Name"),
   slug: joi.string().trim().optional().allow(null, "").label("Slug"),
+  type: joi.string().trim().required().label("Type"),
   location: joi.string().trim().required().label("Location"),
-  description: joi.string().trim().optional().allow(null, "").label("Description"),
-  overview: joi.string().trim().optional().allow(null, "").label("Overview"),
-  address: joi.string().trim().optional().allow(null, "").label("Address"),
+  description: joi
+    .string()
+    .trim()
+    .optional()
+    .allow(null, "")
+    .label("Description"),
+  problem: joi.string().trim().optional().allow(null, "").label("Problem"),
+  solution: joi.string().trim().optional().allow(null, "").label("Solution"),
   beds: joi.number().integer().min(0).optional().allow(null).label("Beds"),
   bath: joi.number().integer().min(0).optional().allow(null).label("Bath"),
   anna: joi.number().min(0).optional().allow(null).label("Anna"),
@@ -48,8 +54,6 @@ const propertyFields = {
     .optional()
     .allow(null, "")
     .label("Completion Date"),
-  latitude: joi.number().optional().allow(null).label("Latitude"),
-  longitude: joi.number().optional().allow(null).label("Longitude"),
   googleMapURL: joi
     .string()
     .trim()
@@ -128,10 +132,11 @@ const propertyPutValidation = async (req, res, next) => {
     agentId: propertyFields.agentId,
     name: joi.string().trim().optional().label("Name"),
     slug: propertyFields.slug,
+    type: propertyFields.type,
     location: joi.string().trim().optional().label("Location"),
     description: propertyFields.description,
-    overview: propertyFields.overview,
-    address: propertyFields.address,
+    problem: propertyFields.problem,
+    solution: propertyFields.solution,
     beds: propertyFields.beds,
     bath: propertyFields.bath,
     anna: propertyFields.anna,
@@ -142,8 +147,6 @@ const propertyPutValidation = async (req, res, next) => {
     view: propertyFields.view,
     yearBuilt: propertyFields.yearBuilt,
     completionDate: propertyFields.completionDate,
-    latitude: propertyFields.latitude,
-    longitude: propertyFields.longitude,
     googleMapURL: propertyFields.googleMapURL,
     images: joi.array().items(joi.string().trim()).optional().label("Images"),
     features: propertyFields.features,

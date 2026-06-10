@@ -25,6 +25,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      slug: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      type: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       location: {
         type: Sequelize.STRING,
         allowNull: false,

@@ -1,9 +1,17 @@
 "use strict";
 
-const removeForeignKeysForColumn = async (queryInterface, tableName, columnName) => {
-  const foreignKeys = await queryInterface.getForeignKeyReferencesForTable(tableName);
+const removeForeignKeysForColumn = async (
+  queryInterface,
+  tableName,
+  columnName,
+) => {
+  const foreignKeys =
+    await queryInterface.getForeignKeyReferencesForTable(tableName);
   const columnForeignKeys = foreignKeys.filter((foreignKey) => {
-    return foreignKey.columnName === columnName || foreignKey.column_name === columnName;
+    return (
+      foreignKey.columnName === columnName ||
+      foreignKey.column_name === columnName
+    );
   });
 
   for (const foreignKey of columnForeignKeys) {
@@ -33,13 +41,12 @@ module.exports = {
       allowNull: true,
     });
 
-    await queryInterface.addColumn("properties", "overview", {
+    await queryInterface.addColumn("properties", "problem", {
       type: Sequelize.TEXT,
       allowNull: true,
     });
-
-    await queryInterface.addColumn("properties", "address", {
-      type: Sequelize.STRING,
+    await queryInterface.addColumn("properties", "solution", {
+      type: Sequelize.TEXT,
       allowNull: true,
     });
 
@@ -68,16 +75,6 @@ module.exports = {
       allowNull: true,
     });
 
-    await queryInterface.addColumn("properties", "latitude", {
-      type: Sequelize.DECIMAL(10, 8),
-      allowNull: true,
-    });
-
-    await queryInterface.addColumn("properties", "longitude", {
-      type: Sequelize.DECIMAL(11, 8),
-      allowNull: true,
-    });
-
     await queryInterface.addColumn("properties", "googleMapURL", {
       type: Sequelize.TEXT,
       allowNull: true,
@@ -92,15 +89,13 @@ module.exports = {
     await removeForeignKeysForColumn(queryInterface, "properties", "agentId");
     await queryInterface.removeIndex("properties", "properties_agent_id_index");
     await queryInterface.removeColumn("properties", "googleMapURL");
-    await queryInterface.removeColumn("properties", "longitude");
-    await queryInterface.removeColumn("properties", "latitude");
     await queryInterface.removeColumn("properties", "completionDate");
     await queryInterface.removeColumn("properties", "yearBuilt");
     await queryInterface.removeColumn("properties", "view");
     await queryInterface.removeColumn("properties", "parking");
     await queryInterface.removeColumn("properties", "size");
-    await queryInterface.removeColumn("properties", "address");
-    await queryInterface.removeColumn("properties", "overview");
+    await queryInterface.removeColumn("properties", "problem");
+    await queryInterface.removeColumn("properties", "solution");
     await queryInterface.removeColumn("properties", "description");
     await queryInterface.removeColumn("properties", "agentId");
   },

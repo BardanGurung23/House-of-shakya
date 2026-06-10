@@ -2226,6 +2226,58 @@ module.exports = {
         message: "Project Category is used in projects",
       },
     },
+    TEAM_MEMBER: {
+      CREATE_TEAM_MEMBER_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Team Member Created Successfully",
+      },
+      CREATE_TEAM_MEMBER_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Team Member Not Created",
+      },
+      TEAM_MEMBER_NOT_FOUND: {
+        status: httpStatus.NOT_FOUND,
+        success: false,
+        message: "Team Member Not Found",
+      },
+      TEAM_MEMBER_FOUND: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Team Member Found",
+      },
+      TEAM_MEMBER_LIST_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Team Member List Success",
+      },
+      TEAM_MEMBER_LIST_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Team Member List Failure",
+      },
+      TEAM_MEMBER_UPDATE_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Team Member Updated Successfully",
+      },
+      TEAM_MEMBER_UPDATE_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Team Member Update Failure",
+      },
+      TEAM_MEMBER_DELETE_SUCCESS: {
+        status: httpStatus.OK,
+        success: true,
+        message: "Team Member Deleted Successfully",
+      },
+      TEAM_MEMBER_DELETE_FAILURE: {
+        status: httpStatus.NOT_ACCEPTABLE,
+        success: false,
+        message: "Team Member Delete Failure",
+      },
+    },
     BLOG: {
       CREATE_BLOG_SUCCESS: {
         status: httpStatus.OK,
