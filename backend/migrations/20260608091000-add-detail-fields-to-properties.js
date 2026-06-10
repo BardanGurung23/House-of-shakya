@@ -1,5 +1,19 @@
 "use strict";
 
+const removeForeignKeysForColumn = async (queryInterface, tableName, columnName) => {
+  const foreignKeys = await queryInterface.getForeignKeyReferencesForTable(tableName);
+  const columnForeignKeys = foreignKeys.filter((foreignKey) => {
+    return foreignKey.columnName === columnName || foreignKey.column_name === columnName;
+  });
+
+  for (const foreignKey of columnForeignKeys) {
+    await queryInterface.removeConstraint(
+      tableName,
+      foreignKey.constraintName || foreignKey.constraint_name,
+    );
+  }
+};
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -75,6 +89,7 @@ module.exports = {
   },
 
   async down(queryInterface) {
+    await removeForeignKeysForColumn(queryInterface, "properties", "agentId");
     await queryInterface.removeIndex("properties", "properties_agent_id_index");
     await queryInterface.removeColumn("properties", "googleMapURL");
     await queryInterface.removeColumn("properties", "longitude");

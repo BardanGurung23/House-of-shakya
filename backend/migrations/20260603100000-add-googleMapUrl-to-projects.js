@@ -9,9 +9,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropColumn("projects", "googleMapURL", {
-      type: Sequelize.TEXT,
-      allowNull: false,
-    });
+    await queryInterface.removeColumn("projects", "googleMapURL");
   },
 };
